@@ -1,0 +1,83 @@
+.layout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.rowKeys {
+    display: flex;
+    flex-direction: row;
+}
+
+.key {
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    cursor: default;
+}
+
+.keyLetter {
+    background-color: black;
+    padding: 5px;
+    border: 1px solid #323537;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.keyLetter > div {
+    display: flex;
+    justify-content: center;
+}
+.keyLetter input {
+    width: 20px;
+    height: 15px;
+    border-radius: 5px;
+    border: 1px solid #424547;
+}
+.oneLetter {
+    word-spacing: 0.7rem;
+    font-size: 14px;
+    text-align-last: center;
+}
+.keyLetter.fail {
+    background: none;
+}
+.key.u075 {
+    width: 36px;
+}
+.key.u15 {
+    width: 72px;
+}
+.key.u125 {
+    width: 60px;
+}
+.key.u175 {
+    width: 84px;
+}
+.key.u2 {
+    width: 96px;
+}
+.key.u275 {
+    width: 132px;
+}
+.key.u6 {
+    width: 288px;
+}
+.key.isoEnter {
+    width: 72px;
+    position: relative;
+}
+.key.isoEnter:after {
+    width: 58px;
+    height: 51px;
+    background: black;
+    color: black;
+    position: absolute;
+    content: "X";
+    top: 44px;
+    left: 13px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

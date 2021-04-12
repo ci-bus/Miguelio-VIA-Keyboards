@@ -1,0 +1,21 @@
+<div class="container" *ngIf="values.backlight">
+    <div class="row">
+        <div class="title">
+            {{ 'light.backlight' | translate }}
+        </div>
+        <mat-icon> highlight</mat-icon>
+        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1"
+            [min]="lightingDefs.backlight.brightness.min" [max]="lightingDefs.backlight.brightness.max"
+            [ngModel]="values.backlight.brightness" (change)="changeBacklightBrightness($event.value)">
+        </mat-slider>
+        <div *ngIf="lightingDefs.backlight.effect" class="title">
+            {{ 'light.effect' | translate }}
+        </div>
+        <select *ngIf="lightingDefs.backlight.effect"
+            [ngModel]="values.backlight.effect" (change)="changeBacklightEffect($event.target.value)">
+            <option *ngFor="let opt of lightingDefs.backlight.effect" [value]="opt.value">
+                {{ opt.label }}
+            </option>
+        </select>
+    </div>
+</div>

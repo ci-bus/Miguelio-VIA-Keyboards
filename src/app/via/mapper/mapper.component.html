@@ -1,0 +1,36 @@
+<div *ngIf="inited">
+    <mat-tab-group>
+        <mat-tab *ngFor="let layout of layoutsLayers" [label]="layout.name">
+            <mat-tab-group color="accent">
+                <mat-tab *ngFor="let keymap of layout.keymaps" [label]="keymap.number">
+                    <div class="layout">
+                        <div class="rowKeys" *ngFor="let rowKeys of keymap.keymap">
+                            <div class="key" *ngFor="let key of rowKeys"
+                                [class.u075]="key.u==0.75"
+                                [class.u125]="key.u==1.25"
+                                [class.u15]="key.u==1.5"
+                                [class.u175]="key.u==1.75"
+                                [class.u2]="key.u==2"
+                                [class.u275]="key.u==2.75"
+                                [class.u6]="key.u==6"
+                                [class.isoEnter]="key.s=='ISO_ENTER'">
+                                <div [class.fail]="key.f" class="keyLetter" 
+                                    [class.oneLetter]="isSymbolKey(key)"
+                                    [matTooltip]="key.code"
+                                    matTooltipPosition="above"
+                                    matTooltipShowDelay="300"
+                                    matTooltipHideDelay="200">
+                                    {{ 'keycode.'+key.code | translate }}
+                                    <div>
+                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte + 1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+    </mat-tab-group>
+    <app-light></app-light>
+</div>

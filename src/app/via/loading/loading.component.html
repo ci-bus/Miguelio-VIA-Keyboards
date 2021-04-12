@@ -1,0 +1,20 @@
+<div class="section">
+    <mat-progress-spinner 
+        [strokeWidth]="strokeWidth" 
+        [diameter]="diameter" 
+        [color]="color" 
+        [mode]="mode"
+        [value]="value">
+    </mat-progress-spinner>
+    <img (click)="getDevices()" src="assets/keyboard.png">
+    <h1 *ngIf="!msgInfo">{{ 'loading.connectKeyboard' | translate }}</h1>
+    <h1 *ngIf="msgInfo">{{ msgInfo }}</h1>
+    <h3 *ngIf="msgInfoSecond=='loadingLayer'">{{ 'loading.loadingLayer' | translate }}</h3>
+    <h3 *ngIf="msgInfoSecond=='error'">{{ 'loading.error' | translate }}</h3>
+    <h3 *ngIf="msgInfoSecond=='unknowModel'">{{ 'loading.unknowModel' | translate }}</h3>
+    <div class="devices">
+        <button (click)="selectDevice(device)" [disabled]="loadingLayers" mat-flat-button *ngFor="let device of devices$ | async">
+            {{ device.product }} <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+.container {
+    position: fixed;
+    top: 49px;
+    right: 0px;
+    z-index: 88;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+mat-card {
+    margin-top: 1rem;
+}
+
+@keyframes openErrorsAnimation {
+    from {
+        left: 10px;
+        opacity: 0;
+    }
+    to {
+        left: 0px;
+        opacity: 1;
+    }
+}
+
+.errors {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    animation: openErrorsAnimation 150ms ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
