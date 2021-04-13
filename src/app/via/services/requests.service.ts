@@ -75,14 +75,14 @@ export class RequestsService {
     }
 
     // Set keycode to key
-    public setKeycode(keyboard: Keyboard, dragKey: Keymapper, dropKey: Keymapper): Promise<boolean> {
+    public setKeycode(keyboard: Keyboard, fromKey: Keymapper, toKey: Keymapper): Promise<boolean> {
         return this.ipcService.invoke('setKeycode', { 
             path: keyboard.path,
-            layer: dropKey.layer,
-            row: dropKey.row,
-            col: dropKey.col,
-            firstByte: dragKey.firstByte,
-            secondByte: dragKey.secondByte
+            layer: toKey.layer,
+            row: toKey.row,
+            col: toKey.col,
+            firstByte: fromKey.firstByte,
+            secondByte: fromKey.secondByte
         });
     }
 

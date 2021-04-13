@@ -93,6 +93,7 @@ export class MapperComponent implements OnInit {
     }
 
     drag(key: Keymapper) {
+        if (key.f) return false;
         this.draggingKey = key;
         this.changeDetectorRef.detach();
     }
@@ -115,19 +116,24 @@ export class MapperComponent implements OnInit {
         event.target.style.color = '#c2185b';
         this.dragLeave(event);
         this.store.dispatch(mapperActions.changeKey({
-            dragKey: this.draggingKey,
-            dropKey: key
-        }))
+            fromKey: this.draggingKey,
+            toKey: key
+        }));
     }
 
     dragEnd() {
         this.changeDetectorRef.reattach();
     }
 
-    changeModKey($event, key) {
-
+    changeModKey(event, key: Keymapper) {
+        event.target.style.color = '#c2185b';
+        let fromKey = { ...key };
+        fromKey.secondByte = event.target.value;
+        this.store.dispatch(mapperActions.changeKey({
+            fromKey: fromKey,
+            toKey: key
+        }));
     }
-
 }
 
 

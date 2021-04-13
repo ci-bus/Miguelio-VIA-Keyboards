@@ -16,7 +16,7 @@ export class MapperEffects {
         mergeMap((action: any) => from(this.store.select('keyboard'))
             .pipe(
                 first(),
-                mergeMap(keyboard => from(this.requestService.setKeycode( keyboard, action.dragKey, action.dropKey ))),
+                mergeMap(keyboard => from(this.requestService.setKeycode( keyboard, action.fromKey, action.toKey ))),
                 map(success => ({ type: mapperActions.keyChanged.type, success })),
                 catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
             )

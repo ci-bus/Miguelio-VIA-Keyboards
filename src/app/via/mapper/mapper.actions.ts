@@ -8,7 +8,7 @@ export const set = createAction(
 
 export const changeKey = createAction(
     '[Mapper] Change key',
-    props<{ dragKey: Keymapper, dropKey: Keymapper }>()
+    props<{ fromKey: Keymapper, toKey: Keymapper }>()
 );
 
 export const keyChanged = createAction(

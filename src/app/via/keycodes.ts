@@ -228,14 +228,42 @@ keycodes[0] = [
     'KC_RCTRL',
     'KC_RSHIFT',
     'KC_RALT',
-    'KC_RGUI'
+    'KC_RGUI',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    'KC_MS_UP',
+    'KC_MS_DOWN',
+    'KC_MS_LEFT',
+    'KC_MS_RIGHT',
+    'KC_MS_BTN1',
+    'KC_MS_BTN2',
+    'KC_MS_BTN3',
+    'KC_MS_BTN4',
+    'KC_MS_BTN5',
+    'KC_MS_WH_UP',
+    'KC_MS_WH_DOWN',
+    'KC_MS_WH_LEFT',
+    'KC_MS_WH_RIGHT',
+    'KC_MS_ACCEL0',
+    'KC_MS_ACCEL1',
+    'KC_MS_ACCEL2'
 ];
 
 // Special keys backlight
 keycodes[92] = [];
 keycodes[92].length = 187; // Jump
 keycodes[92].push.apply(keycodes[92], [
-    'BL_ON', 'BL_OFF', 'BL_DEC', 'BL_INC', 'BL_TOGG', 'BL_STEP', 'BL_BRTG'
+    'BL_ON', 'BL_OFF', 'BL_DEC', 'BL_INC', 'BL_TOGG', 'BL_STEP', 'BL_BRTG', 
+    'RGB_TOG', 'RGB_MODE_FORWARD', 'RGB_MODE_REVERSE', 'RGB_HUI', 'RGB_HUD', 'RGB_SAI', 'RGB_SAD', 
+    'RGB_VAI', 'RGB_VAD', 'RGB_SPI', 'RGB_SPD', 'RGB_MODE_PLAIN', 'RGB_MODE_BREATHE', 'RGB_MODE_RAINBOW', 
+    'RGB_MODE_SWIRL', 'RGB_MODE_SNAKE', 'RGB_MODE_KNIGHT', 'RGB_MODE_XMAS', 'RGB_MODE_GRADIENT', 'RGB_MODE_RGBTEST',
+    //??? 'VLK_TOG', 'KC_LSPO', 'KC_RSPC', 'KC_SFTENT', 'PRINT_ON', 'PRINT_OFF', 'OUT_AUTO', 'OUT_USB'
 ]);
 
 // Special keys FN

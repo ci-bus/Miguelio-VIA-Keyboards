@@ -6,18 +6,18 @@ export const initialState: Layoutmapper[] = [];
 
 const _mapperReducer = createReducer(initialState,
     on(set, (state, { layoutsmapper }) => layoutsmapper),
-    on(changeKey, (state, { dragKey, dropKey }) => state.map(layout => {
+    on(changeKey, (state, { fromKey, toKey }) => state.map(layout => {
         let tempLayout = { ...layout };
-        if (tempLayout.name === dropKey.layout) {
+        if (tempLayout.name === toKey.layout) {
             tempLayout.layers = tempLayout.layers.map(layer => {
                 let tempLayer = { ...layer };
-                if (tempLayer.number === dropKey.layer) {
+                if (tempLayer.number === toKey.layer) {
                     tempLayer.keymap = tempLayer.keymap.map(rowKeys => rowKeys.map(keyState => {
-                        return keyState.row === dropKey.row && keyState.col === dropKey.col
-                            ? Object.assign({ ...dropKey }, { 
-                                code: dragKey.code,
-                                firstByte: dragKey.firstByte,
-                                secondByte: dragKey.secondByte 
+                        return keyState.row === toKey.row && keyState.col === toKey.col
+                            ? Object.assign({ ...toKey }, { 
+                                code: fromKey.code,
+                                firstByte: fromKey.firstByte,
+                                secondByte: fromKey.secondByte 
                             }) : keyState;
                     }))
                 }

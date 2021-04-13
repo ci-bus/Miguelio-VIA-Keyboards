@@ -30,7 +30,7 @@
                                     matTooltipHideDelay="200">
                                     {{ 'keycode.'+key.code | translate }}
                                     <div>
-                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte" (change)="changeModKey($event, key)">
+                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)" (change)="changeModKey($event, key)">
                                     </div>
                                 </div>
                                 <div *ngIf="key.saving" class="keyLetter loading">
@@ -71,6 +71,7 @@
                                 matTooltipShowDelay="300"
                                 matTooltipHideDelay="200">
                                 {{ 'keycode.'+key.code | translate }}
+                                <div *ngIf="key.text" class="onlyText">{{ 'mapper.'+key.text | translate }}</div>
                                 <div>
                                     <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">
                                 </div>
