@@ -6,6 +6,8 @@
                     <div class="layout">
                         <div class="rowKeys" *ngFor="let rowKeys of keymap.keymap">
                             <div class="key" *ngFor="let key of rowKeys"
+                                [class.u025]="key.u==0.25"
+                                [class.u05]="key.u==0.5"
                                 [class.u075]="key.u==0.75"
                                 [class.u125]="key.u==1.25"
                                 [class.u15]="key.u==1.5"
@@ -13,8 +15,14 @@
                                 [class.u2]="key.u==2"
                                 [class.u275]="key.u==2.75"
                                 [class.u6]="key.u==6"
-                                [class.isoEnter]="key.s=='ISO_ENTER'">
-                                <div [class.fail]="key.f" class="keyLetter" 
+                                [class.u625]="key.u==6.25"
+                                [class.u7]="key.u==7"
+                                [class.isoEnter]="key.s=='ISO_ENTER'"
+                                (dragover)="dragOver($event)"
+                                (dragenter)="dragEnter($event)"
+                                (dragleave)="dragLeave($event)"
+                                (drop)="drop($event, key)">
+                                <div *ngIf="!key.saving" [class.fail]="key.f" class="keyLetter" 
                                     [class.oneLetter]="isSymbolKey(key)"
                                     [matTooltip]="key.code"
                                     matTooltipPosition="above"
@@ -22,8 +30,11 @@
                                     matTooltipHideDelay="200">
                                     {{ 'keycode.'+key.code | translate }}
                                     <div>
-                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte + 1">
+                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">
                                     </div>
+                                </div>
+                                <div *ngIf="key.saving" class="keyLetter loading">
+                                    <div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>
                                 </div>
                             </div>
                         </div>
@@ -31,6 +42,44 @@
                 </mat-tab>
             </mat-tab-group>
         </mat-tab>
+        <mat-tab (click)="applyChanges()" label="Keymap reset"></mat-tab>
     </mat-tab-group>
     <app-light></app-light>
+    <div class="mapperKeys">
+        <mat-tab-group>
+            <mat-tab *ngFor="let mapperKeysTab of mapperKeys" [label]="'mapper.'+mapperKeysTab.title | translate">
+                <div class="layout">
+                    <div class="rowKeys" *ngFor="let rowKeys of mapperKeysTab.keymap">
+                        <div class="key" *ngFor="let key of rowKeys"
+                            [class.u025]="key.u==0.25"
+                            [class.u05]="key.u==0.5"
+                            [class.u075]="key.u==0.75"
+                            [class.u125]="key.u==1.25"
+                            [class.u15]="key.u==1.5"
+                            [class.u175]="key.u==1.75"
+                            [class.u2]="key.u==2"
+                            [class.u275]="key.u==2.75"
+                            [class.u6]="key.u==6"
+                            [class.u625]="key.u==6.25"
+                            [class.u7]="key.u==7"
+                            [class.isoEnter]="key.s=='ISO_ENTER'"
+                            draggable="true" (dragstart)="drag(key)"
+                            (dragend)="dragEnd()">
+                            <div [class.fail]="key.f" class="keyLetter" 
+                                [class.oneLetter]="isSymbolKey(key)"
+                                [matTooltip]="key.code"
+                                matTooltipPosition="above"
+                                matTooltipShowDelay="300"
+                                matTooltipHideDelay="200">
+                                {{ 'keycode.'+key.code | translate }}
+                                <div>
+                                    <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
 </div>

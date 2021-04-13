@@ -5,6 +5,10 @@ export interface Keymapper {
     firstByte?: number
     secondByte?: number
     code?: string
+    layer?: number
+    row?: number
+    col?: number
+    saving?: boolean
 }
 
 export interface Key {

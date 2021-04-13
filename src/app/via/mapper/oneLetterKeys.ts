@@ -22,6 +22,8 @@ export default [
     "KC_COMMA",
     "KC_DOT",
     "KC_SLASH",
-    "KC_NONUS_BSLASH"
+    "KC_NONUS_BSLASH",
+    "KC_INT1",
+    "KC_INT3"
 ]
 

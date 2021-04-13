@@ -21,7 +21,7 @@ export class keymapsHelper {
         }));
     }
 
-    public makeKeymap(layout: Layout, keymap: Keymap): Layout {
+    public makeKeymap(layout: Layout, keymap: Keymap, layerNumber: number): Layout {
         let matrix = layout.matrix,
             fullKeymap = this.createKeymapObjects(layout.keymap);
         try {
@@ -37,9 +37,11 @@ export class keymapsHelper {
                     } else {
                         fullKeymap[row][col] = Object.assign({}, 
                             fullKeymap[row][col], 
-                            key, 
-                            { code: keycodes[key.firstByte] && keycodes[key.firstByte][key.secondByte]
-                                ? keycodes[key.firstByte][key.secondByte] : keycodes[0][0]
+                            key, {
+                            code: keycodes[key.firstByte] && keycodes[key.firstByte][key.secondByte]
+                                ? keycodes[key.firstByte][key.secondByte] : keycodes[0][0],
+                            layer: layerNumber,
+                            col, row
                         });
                     }
                 } else if (matrix[i] !== null) {

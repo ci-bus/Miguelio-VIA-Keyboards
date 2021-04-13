@@ -34,12 +34,13 @@ export const MocksService = {
             }
             
         },
-        'changeLight': {
-            'success': true
-        },
+        'changeLight': true
+        ,
+        'setKeycode': true
+        ,
         'loadKeymaps': [
             {
-                "number": 1,
+                "number": 0,
                 "keys": [
                     {
                         "firstByte": 0,
@@ -332,7 +333,7 @@ export const MocksService = {
                 ]
             },
             {
-                "number": 2,
+                "number": 1,
                 "keys": [
                     {
                         "firstByte": 0,
@@ -625,7 +626,7 @@ export const MocksService = {
                 ]
             },
             {
-                "number": 3,
+                "number": 2,
                 "keys": [
                     {
                         "firstByte": 0,
@@ -918,7 +919,7 @@ export const MocksService = {
                 ]
             },
             {
-                "number": 4,
+                "number": 3,
                 "keys": [
                     {
                         "firstByte": 0,

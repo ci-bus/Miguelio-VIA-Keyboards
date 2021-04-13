@@ -4,6 +4,8 @@ const { app, BrowserWindow, ipcMain } = require('electron'),
     HID = require('node-hid'),
     fs = require('fs');
 
+app.disableHardwareAcceleration();
+
 const store = new Store({
     configName: 'user-preferences',
     defaults: {
@@ -178,8 +180,8 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
 
                 // Keymap layer completed
                 if (count % keysByLayer === 0) {
-                    countLayers++;
                     keymaps.push({ number: countLayers, keys });
+                    countLayers++;
                     keys = [];
                 }
 
@@ -296,7 +298,6 @@ ipcMain.handle('changeLight', async (event, data) => {
         });
         // On error
         device.on('error', fail);
-
     })
     .catch(error => event.sender.send('error', error))
     .finally(() => device.close());
@@ -305,4 +306,36 @@ ipcMain.handle('changeLight', async (event, data) => {
         && res.readUInt8(2) == data.firstByte
         && res.readUInt8(3) == data.secondByte;
 });
+
+
+//--------------------//
+//   Change keycode   //
+//--------------------//
+ipcMain.handle('setKeycode', async (event, data) => {
+    // Open conecction
+    var device = new HID.HID(data.path);
+
+    // set backlight prop value
+    device.write([5, data.layer, data.row, data.col, data.firstByte, data.secondByte]);
+
+    // Wait response
+    const res = await new Promise((ok, fail) => {
+        // On receive response
+        device.on("data", ok);
+        // On error
+        device.on('error', fail);
+    })
+    .catch(error => event.sender.send('error', error))
+    .finally(() => device.close());
+
+    // Send finish loading
+    event.sender.send('setKeycodeFinish', true);
+
+    console.log(res);
+
+    return res.readUInt8(1) == data.layer
+        && res.readUInt8(2) == data.row
+        && res.readUInt8(3) == data.col;
+});
+
 

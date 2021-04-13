@@ -6,7 +6,7 @@ import { AppState } from '../../app.reducer';
 import { Keyboard } from '../keyboard/keyboard.model';
 import { IpcService } from 'src/app/ipc.service';
 import { Device } from '../devices/device.model';
-import { Keymap, Lighting } from '../interfaces';
+import { Keymap, Keymapper, Lighting } from '../interfaces';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Defs } from '../keyboard/defs.model';
@@ -72,5 +72,15 @@ export class RequestsService {
         return this.store.select('keymaps').pipe(
             map(keymaps => keymaps.length !== 0)
         )
+    }
+
+    // Set keycode to key
+    public setKeycode(keyboard: Keyboard, key: Keymapper): Promise<boolean> {
+        return this.ipcService.invoke('setKeycode', { ...keyboard, ...key });
+    }
+
+    // Apply changes
+    public applyChanges(keyboard: Keyboard): Promise<boolean> {
+        return this.ipcService.invoke('applyChanges', { ...keyboard });
     }
 }
