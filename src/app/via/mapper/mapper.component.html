@@ -1,10 +1,10 @@
-<div *ngIf="inited">
-    <mat-tab-group>
-        <mat-tab *ngFor="let layout of layoutsLayers" [label]="layout.name">
-            <mat-tab-group color="accent">
-                <mat-tab *ngFor="let keymap of layout.keymaps" [label]="keymap.number">
+<div>
+    <mat-tab-group animationDuration="0ms">
+        <mat-tab *ngFor="let layout of layoutsmapper" [label]="layout.name">
+            <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="onLinkClick($event)">
+                <mat-tab *ngFor="let layer of layout.layers" [label]="layer.number">
                     <div class="layout">
-                        <div class="rowKeys" *ngFor="let rowKeys of keymap.keymap">
+                        <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
                             <div class="key" *ngFor="let key of rowKeys"
                                 [class.u025]="key.u==0.25"
                                 [class.u05]="key.u==0.5"
@@ -30,7 +30,7 @@
                                     matTooltipHideDelay="200">
                                     {{ 'keycode.'+key.code | translate }}
                                     <div>
-                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">
+                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte" (change)="changeModKey($event, key)">
                                     </div>
                                 </div>
                                 <div *ngIf="key.saving" class="keyLetter loading">
@@ -42,7 +42,6 @@
                 </mat-tab>
             </mat-tab-group>
         </mat-tab>
-        <mat-tab (click)="applyChanges()" label="Keymap reset"></mat-tab>
     </mat-tab-group>
     <app-light></app-light>
     <div class="mapperKeys">

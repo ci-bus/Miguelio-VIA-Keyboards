@@ -4,13 +4,15 @@ import { first } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AppState } from '../../app.reducer';
-import { Keymap, Keymapper } from '../interfaces';
+import { Keymap, Keymapper, Layoutmapper } from '../interfaces';
 import { Defs } from '../keyboard/defs.model';
 import { keymapsHelper } from '../keymaps/keymaps.helper';
 import onLetterKey from './oneLetterKeys';
 import mapperKeys from './mapper.keys';
 import * as keymapsActions from '../keymaps/keymaps.actions';
+import * as mapperActions from './mapper.actions';
 import { RequestsService } from '../services/requests.service';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
     selector: 'app-mapper',
@@ -21,13 +23,11 @@ export class MapperComponent implements OnInit {
 
     defs: Defs;
     keymaps: Keymap[] = [];
-    layoutsLayers = [];
-    inited: boolean = false;
+    layoutsmapper: Layoutmapper[] = [];
     mapperKeys = mapperKeys;
+    activeTab: number = 0;
 
     draggingKey: Keymapper;
-    settingKey: Keymapper;
-    saving: boolean = false;
 
     constructor(
         public translate: TranslateService,
@@ -42,32 +42,44 @@ export class MapperComponent implements OnInit {
         this.store.pipe(first()).subscribe(allData => {
             this.defs = allData.defs;
             this.keymaps = allData.keymaps;
-            this.processLayoutsLayers();
+            this.createLayoutsmapper();
         });
 
-        this.requestService.on('setKeycodeFinish', () => {
-            this.saving = false;
+        this.store.select('layoutsmapper').subscribe(layoutsmapper => {
+            this.layoutsmapper = layoutsmapper;
         });
+
     }
 
-    processLayoutsLayers() {
+    onLinkClick(event: MatTabChangeEvent) {
+        this.activeTab = event.index;
+    }
+
+    createLayoutsmapper() {
+        let layoutsmapper = [];
         if (this.defs.layouts.length && this.keymaps.length) {
             // Each json layouts
             this.defs.layouts.forEach(layout => {
-                let tempLayers = [];
+                let tempLayout = {
+                    ...layout,
+                    rows: this.defs.rows,
+                    cols: this.defs.cols
+                },
+                    tempLayers = [];
                 // Each eeprom keymaps
                 this.keymaps.forEach(keymap => {
                     tempLayers.push({
                         number: keymap.number,
-                        keymap: this.keymapsHelper.makeKeymap(layout, keymap, keymap.number)
+                        keymap: this.keymapsHelper.makeKeymapper(tempLayout, keymap, keymap.number)
                     });
                 });
-                this.layoutsLayers.push({
+                layoutsmapper.push({
                     name: layout.name,
-                    keymaps: tempLayers
+                    layers: tempLayers
                 });
             });
-            this.inited = this.layoutsLayers.length > 0;
+
+            this.store.dispatch(mapperActions.set({ layoutsmapper }));
         }
 
     }
@@ -81,7 +93,6 @@ export class MapperComponent implements OnInit {
     }
 
     drag(key: Keymapper) {
-        if (this.saving) return false;
         this.draggingKey = key;
         this.changeDetectorRef.detach();
     }
@@ -101,27 +112,22 @@ export class MapperComponent implements OnInit {
     }
 
     drop(event, key: Keymapper) {
-        key.code = this.draggingKey.code;
-        key.firstByte = this.draggingKey.firstByte;
-        key.secondByte = this.draggingKey.secondByte;
+        event.target.style.color = '#c2185b';
         this.dragLeave(event);
-        this.saving = true;
-        this.settingKey = key;
-        this.store.dispatch(keymapsActions.setKeycode({
-            key
-        }));
+        this.store.dispatch(mapperActions.changeKey({
+            dragKey: this.draggingKey,
+            dropKey: key
+        }))
     }
 
     dragEnd() {
         this.changeDetectorRef.reattach();
     }
 
-    applyChanges() {
-        //this.requestService.applyChanges();
-        return false;
-    }
-}
+    changeModKey($event, key) {
 
-//void dynamic_keymap_set_keycode(uint8_t layer, uint8_t row, uint8_t column, uint16_t keycode) {
+    }
+
+}
 
 

@@ -21,33 +21,37 @@ export class keymapsHelper {
         }));
     }
 
-    public makeKeymap(layout: Layout, keymap: Keymap, layerNumber: number): Layout {
+    public makeKeymapper(layout: Layout, keymap: Keymap, layerNumber: number): Layout {
         let matrix = layout.matrix,
             fullKeymap = this.createKeymapObjects(layout.keymap);
         try {
-            for (let i = 0; i < keymap.keys.length; i ++) {
-                let key = keymap.keys[i];
-                if (matrix[i]) {
-                    let row = matrix[i][0],
-                        col = matrix[i][1];
-                    if (!fullKeymap[row][col]) {
+            for (let matrixRow = 0; matrixRow < layout.rows; matrixRow ++) {
+                for (let matrixCol = 0; matrixCol < layout.cols; matrixCol ++) {
+                    let index = matrixRow * layout.cols + matrixCol;
+                    let key = keymap.keys[index];
+                    if (matrix[matrixRow][matrixCol]) {
+                        let row = matrix[matrixRow][matrixCol][0],
+                            col = matrix[matrixRow][matrixCol][1];
+                        if (!fullKeymap[row][col]) {
+                            this.store.dispatch(errorsActions.add({
+                                textInfo: `Layout mal definido en json, no hay keymap en la posición ${row}, ${col}`
+                            }));
+                        } else {
+                            fullKeymap[row][col] = Object.assign({}, 
+                                fullKeymap[row][col], 
+                                key, {
+                                code: keycodes[key.firstByte] && keycodes[key.firstByte][key.secondByte]
+                                    ? keycodes[key.firstByte][key.secondByte] : keycodes[0][0],
+                                layer: layerNumber,
+                                row: matrixRow, col: matrixCol,
+                                layout: layout.name
+                            });
+                        }
+                    } else if (matrix[matrixRow][matrixCol] !== null) {
                         this.store.dispatch(errorsActions.add({
-                            textInfo: `Layout matrix mal definido en json, no hay keymap en la posición ${row}, ${col}`
+                            textInfo: `Layout mal definido en json, falta matrix en la posición ${matrixRow} ${matrixCol}`
                         }));
-                    } else {
-                        fullKeymap[row][col] = Object.assign({}, 
-                            fullKeymap[row][col], 
-                            key, {
-                            code: keycodes[key.firstByte] && keycodes[key.firstByte][key.secondByte]
-                                ? keycodes[key.firstByte][key.secondByte] : keycodes[0][0],
-                            layer: layerNumber,
-                            col, row
-                        });
                     }
-                } else if (matrix[i] !== null) {
-                    this.store.dispatch(errorsActions.add({
-                        textInfo: `Layout mal definido en json, falta matrix en la posición ${i}`
-                    }));
                 }
             }
         } catch (err) {

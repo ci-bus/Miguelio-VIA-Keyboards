@@ -331,8 +331,6 @@ ipcMain.handle('setKeycode', async (event, data) => {
     // Send finish loading
     event.sender.send('setKeycodeFinish', true);
 
-    console.log(res);
-
     return res.readUInt8(1) == data.layer
         && res.readUInt8(2) == data.row
         && res.readUInt8(3) == data.col;

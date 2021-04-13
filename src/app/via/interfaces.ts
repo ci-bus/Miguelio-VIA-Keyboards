@@ -1,15 +1,3 @@
-export interface Keymapper {
-    u: number
-    s?: string
-    f?: boolean
-    firstByte?: number
-    secondByte?: number
-    code?: string
-    layer?: number
-    row?: number
-    col?: number
-    saving?: boolean
-}
 
 export interface Key {
     firstByte: number
@@ -34,6 +22,8 @@ export interface Layout {
     name: string
     keymap: Array<Array<number | Object>>
     matrix: Array<Array<number> | null>
+    rows?: number
+    cols?: number
 }
 
 export interface MinMax {
@@ -88,5 +78,27 @@ export interface LightValues {
     rgblight?: RgblightValues
 }
 
+export interface Keymapper {
+    u: number
+    s?: string
+    f?: boolean
+    firstByte?: number
+    secondByte?: number
+    code?: string
+    layout?: string // Layout name
+    layer?: number // Layer number
+    row?: number // Matrix row
+    col?: number // Matrix col
+    saving?: boolean
+}
 
+export interface Layermapper {
+    number: number
+    keymap: Array<Keymapper[]>
+}
+
+export interface Layoutmapper {
+    name: string
+    layers: Layermapper[]
+}
 

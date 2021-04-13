@@ -25,7 +25,7 @@ import { DefsEffects } from './via/keyboard/defs.effects';
 import { MenuLanguageComponent } from './via/menuLanguage/menuLanguage.component';
 import { ErrorsComponent } from './via/errors/errors.component';
 import { LightEffects } from './via/light/light.effects';
-import { KeymapsEffects } from './via/keymaps/keymaps.effects';
+import { MapperEffects } from './via/mapper/mapper.effects';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,7 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
             KeyboardEffects,
             DefsEffects,
             LightEffects,
-            KeymapsEffects
+            MapperEffects
         ]),
         StoreDevtoolsModule.instrument({
             maxAge: 25,

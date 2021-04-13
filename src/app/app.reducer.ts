@@ -2,13 +2,14 @@ import { ActionReducerMap } from "@ngrx/store";
 import { Device } from "./via/devices/device.model";
 import { devicesReducer } from "./via/devices/devices.reducer";
 import { errorsReducer } from "./via/errors/errors.reducer";
-import { Error, Keymap, LightValues, Loading } from "./via/interfaces";
+import { Error, Keymap, Layoutmapper, LightValues, Loading } from "./via/interfaces";
 import { defsReducer } from "./via/keyboard/defs.reducer";
 import { Keyboard } from "./via/keyboard/keyboard.model";
 import { Defs } from "./via/keyboard/defs.model";
 import { keyboardReducer } from "./via/keyboard/keyboard.reducer";
 import { keymapsReducer } from "./via/keymaps/keymaps.reduce";
 import { lightReducer } from "./via/light/light.reducer";
+import { mapperReducer } from "./via/mapper/mapper.reducer";
 
 export interface AppState {
     devices: Device[],
@@ -17,6 +18,7 @@ export interface AppState {
     keymaps: Keymap[],
     errors: Error[]
     light: LightValues
+    layoutsmapper: Layoutmapper[]
 }
 
 export const AppReducers: ActionReducerMap<AppState> = { 
@@ -25,5 +27,6 @@ export const AppReducers: ActionReducerMap<AppState> = {
     defs: defsReducer,
     keymaps: keymapsReducer,
     errors: errorsReducer,
-    light: lightReducer
+    light: lightReducer,
+    layoutsmapper: mapperReducer
 }

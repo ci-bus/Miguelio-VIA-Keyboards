@@ -68,16 +68,16 @@ export default [
                     "f": true, "u": 0.25
                 },
                 {
-                    "f": true, "u": 1
+                    "u": 1, "firstByte": 0, "secondByte": 0, "code": "KC_NO"
                 },
                 {
-                    "f": true, "u": 1
+                    "u": 1, "firstByte": 0, "secondByte": 1, "code": "KC_ROLL_OVER"
                 },
                 {
-                    "f": true, "u": 1
+                    "u": 1, "firstByte": 0, "secondByte": 2, "code": "KC_POST_FAIL"
                 },
                 {
-                    "f": true, "u": 1
+                    "u": 1, "firstByte": 0, "secondByte": 3, "code": "KC_UNDEFINED"
                 }
             ]
             , //////////////////////////////////////////////////////////////////////////////////////
