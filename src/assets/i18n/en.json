@@ -1,4 +1,8 @@
 {
+    "menu": {
+        "resetKeycodes": "Reset keycodes",
+        "disconnect": "Disconnect"
+    },
     "loading": {
         "error": "An error has occurred",
         "loadingLayer": "Loading layer",
@@ -213,8 +217,8 @@
         "KC_WWW_STOP": "3w Stop",
         "KC_WWW_REFRESH": "3w refresh",
         "KC_WWW_FAVORITES": "3w fav",
-        "KC_MEDIA_FAST_FORWARD": "Next Track",
-        "KC_MEDIA_REWIND": "Prev Track",
+        "KC_MEDIA_FAST_FORWARD": "Fast forward",
+        "KC_MEDIA_REWIND": "Rewind",
         "KC_BRIGHTNESS_UP": "Light +",
         "KC_BRIGHTNESS_DOWN": "Light -",
         "KC_FN0": "FN0",

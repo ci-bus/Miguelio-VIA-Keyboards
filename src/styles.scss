@@ -31,15 +31,30 @@ body {
     margin: 0;
     font-weight: 200;
     font-size: 19px;
-    letter-spacing: 1px;
     background-color: #323537;
     color: #d2d5d7;
     overflow: hidden;
     overflow-y: auto;
+}
+* {
+    letter-spacing: 1px;
 }
 button {
     background-color: #424547 !important;
 }
 .mat-tab-body-content {
     overflow: hidden !important;
+}
+.mat-menu-trigger {
+    position: relative;
+    top: 2px;
+}
+.mat-menu-panel {
+    margin-top: 6px;
+    .mat-menu-content {
+        overflow: hidden;
+        button {
+            text-transform: none;
+        }
+    }
 }

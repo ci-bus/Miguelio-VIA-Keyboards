@@ -19,5 +19,9 @@ export const changePropValue = createAction(
 export const lightChanged = createAction(
     '[Light] Light changed',
     props<{ success: boolean }>()
-)
+);
+
+export const clear = createAction(
+    '[Light] Clear'
+);
 

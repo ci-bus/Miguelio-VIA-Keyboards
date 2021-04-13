@@ -1,40 +1,31 @@
 <div>
-    <mat-tab-group animationDuration="0ms">
+    <mat-tab-group animationDuration="0ms" [selectedIndex]="activeMainTab" (selectedTabChange)="activeMainTab = $event.index">
         <mat-tab *ngFor="let layout of layoutsmapper" [label]="layout.name">
-            <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="onLinkClick($event)">
+            <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="activeTab = $event.index">
                 <mat-tab *ngFor="let layer of layout.layers" [label]="layer.number">
                     <div class="layout">
                         <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
-                            <div class="key" *ngFor="let key of rowKeys"
-                                [class.u025]="key.u==0.25"
-                                [class.u05]="key.u==0.5"
-                                [class.u075]="key.u==0.75"
-                                [class.u125]="key.u==1.25"
-                                [class.u15]="key.u==1.5"
-                                [class.u175]="key.u==1.75"
-                                [class.u2]="key.u==2"
-                                [class.u275]="key.u==2.75"
-                                [class.u6]="key.u==6"
-                                [class.u625]="key.u==6.25"
-                                [class.u7]="key.u==7"
-                                [class.isoEnter]="key.s=='ISO_ENTER'"
-                                (dragover)="dragOver($event)"
-                                (dragenter)="dragEnter($event)"
-                                (dragleave)="dragLeave($event)"
-                                (drop)="drop($event, key)">
-                                <div *ngIf="!key.saving" [class.fail]="key.f" class="keyLetter" 
-                                    [class.oneLetter]="isSymbolKey(key)"
-                                    [matTooltip]="key.code"
-                                    matTooltipPosition="above"
-                                    matTooltipShowDelay="300"
-                                    matTooltipHideDelay="200">
+                            <div class="key" *ngFor="let key of rowKeys" [class.u025]="key.u==0.25"
+                                [class.u05]="key.u==0.5" [class.u075]="key.u==0.75" [class.u125]="key.u==1.25"
+                                [class.u15]="key.u==1.5" [class.u175]="key.u==1.75" [class.u2]="key.u==2"
+                                [class.u275]="key.u==2.75" [class.u6]="key.u==6" [class.u625]="key.u==6.25"
+                                [class.u7]="key.u==7" [class.isoEnter]="key.s=='ISO_ENTER'"
+                                (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
+                                (dragleave)="dragLeave($event)" (drop)="drop($event, key)">
+                                <div *ngIf="!key.saving" [class.fail]="key.f" class="keyLetter"
+                                    [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code"
+                                    matTooltipPosition="above" matTooltipShowDelay="300" matTooltipHideDelay="200">
                                     {{ 'keycode.'+key.code | translate }}
                                     <div>
-                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)" (change)="changeModKey($event, key)">
+                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte"
+                                            (enter)="changeModKey($event, key)" (change)="changeModKey($event, key)">
                                     </div>
                                 </div>
                                 <div *ngIf="key.saving" class="keyLetter loading">
-                                    <div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>
+                                    <div class="spinner">
+                                        <div class="cube1"></div>
+                                        <div class="cube2"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -49,26 +40,14 @@
             <mat-tab *ngFor="let mapperKeysTab of mapperKeys" [label]="'mapper.'+mapperKeysTab.title | translate">
                 <div class="layout">
                     <div class="rowKeys" *ngFor="let rowKeys of mapperKeysTab.keymap">
-                        <div class="key" *ngFor="let key of rowKeys"
-                            [class.u025]="key.u==0.25"
-                            [class.u05]="key.u==0.5"
-                            [class.u075]="key.u==0.75"
-                            [class.u125]="key.u==1.25"
-                            [class.u15]="key.u==1.5"
-                            [class.u175]="key.u==1.75"
-                            [class.u2]="key.u==2"
-                            [class.u275]="key.u==2.75"
-                            [class.u6]="key.u==6"
-                            [class.u625]="key.u==6.25"
-                            [class.u7]="key.u==7"
-                            [class.isoEnter]="key.s=='ISO_ENTER'"
-                            draggable="true" (dragstart)="drag(key)"
+                        <div class="key" *ngFor="let key of rowKeys" [class.u025]="key.u==0.25" [class.u05]="key.u==0.5"
+                            [class.u075]="key.u==0.75" [class.u125]="key.u==1.25" [class.u15]="key.u==1.5"
+                            [class.u175]="key.u==1.75" [class.u2]="key.u==2" [class.u275]="key.u==2.75"
+                            [class.u6]="key.u==6" [class.u625]="key.u==6.25" [class.u7]="key.u==7"
+                            [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true" (dragstart)="drag(key)"
                             (dragend)="dragEnd()">
-                            <div [class.fail]="key.f" class="keyLetter" 
-                                [class.oneLetter]="isSymbolKey(key)"
-                                [matTooltip]="key.code"
-                                matTooltipPosition="above"
-                                matTooltipShowDelay="300"
+                            <div [class.fail]="key.f" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
+                                [matTooltip]="key.code" matTooltipPosition="above" matTooltipShowDelay="300"
                                 matTooltipHideDelay="200">
                                 {{ 'keycode.'+key.code | translate }}
                                 <div *ngIf="key.text" class="onlyText">{{ 'mapper.'+key.text | translate }}</div>

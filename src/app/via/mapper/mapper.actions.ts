@@ -14,4 +14,17 @@ export const changeKey = createAction(
 export const keyChanged = createAction(
     '[Mapper] Key changed',
     props<{ success: boolean }>()
-)
+);
+
+export const resetKeycodes = createAction(
+    '[Mapper] Reset keycodes'
+);
+
+export const clear = createAction(
+    '[Mapper] Clear'
+);
+
+export const disconnect = createAction(
+    '[Mapper] Disconnect'
+);
+

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Layoutmapper } from '../interfaces';
-import { changeKey, set } from './mapper.actions';
+import { changeKey, clear, set } from './mapper.actions';
 
 export const initialState: Layoutmapper[] = [];
 
@@ -25,7 +25,8 @@ const _mapperReducer = createReducer(initialState,
             });
         }
         return tempLayout;
-    }))
+    })),
+    on(clear, (state) => [])
 );
 
 export function mapperReducer(state, action) {

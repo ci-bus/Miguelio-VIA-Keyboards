@@ -556,7 +556,10 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 176, "code": "KC_MEDIA_EJECT"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 177, "code": "KC_BRIGHTNESS_DOWN"
+                    "u": 1.25, "firstByte": 0, "secondByte": 187, "code": "KC_MEDIA_FAST_FORWARD"
+                },
+                {
+                    "u": 1.25, "firstByte": 0, "secondByte": 188, "code": "KC_MEDIA_REWIND"
                 },
                 {
                     "f": true, "u": 0.25
@@ -855,8 +858,4 @@ export default [
         ]
     }
 ]
-
-
-
-
 

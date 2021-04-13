@@ -312,6 +312,7 @@ ipcMain.handle('changeLight', async (event, data) => {
 //   Change keycode   //
 //--------------------//
 ipcMain.handle('setKeycode', async (event, data) => {
+
     // Open conecction
     var device = new HID.HID(data.path);
 

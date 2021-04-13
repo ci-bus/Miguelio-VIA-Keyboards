@@ -9,7 +9,6 @@ import { Defs } from '../keyboard/defs.model';
 import { keymapsHelper } from '../keymaps/keymaps.helper';
 import onLetterKey from './oneLetterKeys';
 import mapperKeys from './mapper.keys';
-import * as keymapsActions from '../keymaps/keymaps.actions';
 import * as mapperActions from './mapper.actions';
 import { RequestsService } from '../services/requests.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
@@ -25,6 +24,7 @@ export class MapperComponent implements OnInit {
     keymaps: Keymap[] = [];
     layoutsmapper: Layoutmapper[] = [];
     mapperKeys = mapperKeys;
+    activeMainTab: number = 1;
     activeTab: number = 0;
 
     draggingKey: Keymapper;
@@ -49,10 +49,6 @@ export class MapperComponent implements OnInit {
             this.layoutsmapper = layoutsmapper;
         });
 
-    }
-
-    onLinkClick(event: MatTabChangeEvent) {
-        this.activeTab = event.index;
     }
 
     createLayoutsmapper() {
@@ -128,12 +124,11 @@ export class MapperComponent implements OnInit {
     changeModKey(event, key: Keymapper) {
         event.target.style.color = '#c2185b';
         let fromKey = { ...key };
-        fromKey.secondByte = event.target.value;
+        fromKey.secondByte = parseInt(event.target.value);
         this.store.dispatch(mapperActions.changeKey({
             fromKey: fromKey,
             toKey: key
         }));
     }
 }
-
 

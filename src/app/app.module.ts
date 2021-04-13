@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,7 @@ import { environment } from 'src/environments/environment';
 import { DevicesEffects } from './via/devices/devices.effects';
 import { KeyboardEffects } from './via/keyboard/keyboard.effects';
 import { DefsEffects } from './via/keyboard/defs.effects';
-import { MenuLanguageComponent } from './via/menuLanguage/menuLanguage.component';
+import { MenuComponent } from './via/menu/menu.component';
 import { ErrorsComponent } from './via/errors/errors.component';
 import { LightEffects } from './via/light/light.effects';
 import { MapperEffects } from './via/mapper/mapper.effects';
@@ -34,7 +35,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
     declarations: [
         AppComponent,
-        MenuLanguageComponent,
+        MenuComponent,
         ErrorsComponent
     ],
     imports: [
@@ -47,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatIconModule,
         MatCardModule,
         MatBadgeModule,
+        MatMenuModule,
         StoreModule.forRoot(AppReducers),
         EffectsModule.forRoot([
             DevicesEffects, 
