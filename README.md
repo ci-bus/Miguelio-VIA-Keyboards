@@ -28,6 +28,13 @@ Ahora desde el terminal accede a la carpeta del proyecto con el comando cd y con
 npm i
 ```
 
+Si no tienes instalado Angular CLI te recomiendo instalarlo de manera global (esto necesita permisos de administrador o super usuario)
+```
+npm i -g @angular/cli
+```
+Para los usuarios de MAC o Linux tendrán que poner la pabra sudo antes del comando
+> sudo npm i -g @angular/cli
+
 Ya estamos listos, para modificarlo no hace falta tener un teclado, se puede iniciar como una web con datos de pruebas, para ello ejecuta:
 ```
 ng serve -o
