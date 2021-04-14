@@ -76,8 +76,8 @@ app.on('window-all-closed', () => {
 //------------------------//
 ipcMain.handle('getDevicesList', async () => {
     const devices = HID.devices().filter(device => {
-        return device.interface === 1
-            && fs.existsSync(`./src/assets/keyboards/${device.vendorId}_${device.productId}.json`);
+        return device.interface === 1 && 
+            fs.existsSync(`./src/assets/keyboards/${device.vendorId}_${device.productId}.json`); 
     });
     return devices;
 });
@@ -86,26 +86,38 @@ ipcMain.handle('getDevicesList', async () => {
 //    Get count layers    //
 //------------------------//
 ipcMain.handle('countLayers', async (event, keyboard) => {
+
+    console.log('countLayers', keyboard);
+
     // Open conecction
     var device = new HID.HID(keyboard.path);
+
     // Send request
-    device.write([17]);
+    device.write([0x00, 17]);
+
     // Wait response
     const count = await new Promise((ok, fail) => {
         // On receive response
         device.on("data", function (buffer) {
+
+            console.log('buffer', buffer, buffer.length);
+            console.log('buffer 0', buffer.readUInt8(0));
+            console.log('buffer 1', buffer.readUInt8(1));
+
             // Return info
             ok(buffer.readUInt8(1));
         });
         // On error
         device.on('error', fail);
-
     })
     .catch(error => event.sender.send('error', error))
     .finally(() => device.close());
+
+    console.log('result count layers', count);
     
     return count;
 });
+
 
 
 //----------------------------------------//
@@ -115,7 +127,7 @@ ipcMain.handle('keymapReset', async (event, keyboard) => {
     // Open conecction
     var device = new HID.HID(keyboard.path);
     // Send request
-    device.write([6]);
+    device.write([0x00, 6]);
     // Wait reset done
     const response = await new Promise((ok, fail) => {
         // On receive response
@@ -149,10 +161,10 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
         keysByLayer = data.defs.cols * data.defs.rows,
         totalKeys = keysByLayer * layers;
 
-
+    console.log('Leyendo keymaps', data);
 
     // Read first buffer
-    device.write([18, 0, 0, BloqBufferSize]);
+    device.write([0x00, 18, 0, 0, BloqBufferSize]);
 
 
     const keymaps = await new Promise((ok, fail) => {
@@ -200,13 +212,17 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
             let porcentLoaded = Math.ceil(count * 100 / totalKeys);
             event.sender.send('layersPorcent', porcentLoaded);
 
+            console.log('count', count);
+            console.log('totalKeys', totalKeys);
+            console.log('layersPorcent', porcentLoaded);
+
             if (count < totalKeys) {
 
                 // Calcule offset buffer
                 let offSetBuffer = bloq * BloqBufferSize;
 
                 // Read next buffer
-                device.write([18, Math.floor(offSetBuffer / 256), offSetBuffer % 256, BloqBufferSize]);
+                device.write([0x00, 18, Math.floor(offSetBuffer / 256), offSetBuffer % 256, BloqBufferSize]);
 
             }
         });
@@ -232,7 +248,7 @@ ipcMain.handle('loadLight', async (event, data) => {
     var device = new HID.HID(data.keyboard.path);
 
     // Load backlight brightness
-    device.write([8, 9, 0]);
+    device.write([0x00, 8, 9, 0]);
 
     // Wait response
     const brightness = await new Promise((ok, fail) => {
@@ -252,7 +268,7 @@ ipcMain.handle('loadLight', async (event, data) => {
     var device = new HID.HID(data.keyboard.path);
 
     // Load backlight effect
-    device.write([8, 10, 0]);
+    device.write([0x00, 8, 10, 0]);
 
     // Wait response
     const effect = await new Promise((ok, fail) => {
@@ -285,14 +301,14 @@ ipcMain.handle('changeLight', async (event, data) => {
     var device = new HID.HID(data.keyboard.path);
 
     // set backlight prop value
-    device.write([7, data.prop, data.firstByte, data.secondByte]);
+    device.write([0x00, 7, data.prop, data.firstByte, data.secondByte]);
 
     // Wait response
     const res = await new Promise((ok, fail) => {
         // On receive response
         device.on("data", response => {
             // Save changes
-            device.write([9]);
+            device.write([0x00, 9]);
             // Return response
             ok(response);
         });
@@ -317,7 +333,7 @@ ipcMain.handle('setKeycode', async (event, data) => {
     var device = new HID.HID(data.path);
 
     // set backlight prop value
-    device.write([5, data.layer, data.row, data.col, data.firstByte, data.secondByte]);
+    device.write([0x00, 5, data.layer, data.row, data.col, data.firstByte, data.secondByte]);
 
     // Wait response
     const res = await new Promise((ok, fail) => {

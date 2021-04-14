@@ -66,6 +66,14 @@ export class LoadingComponent implements OnInit, OnDestroy {
             this.value = layersPorcent;
             this.changeDetectorRef.detectChanges();
         });
+
+        this.subscriptions.push(
+            this.store.select('errors').subscribe(errors => {
+                if (errors.filter(error => !error.readed).length) {
+                    this.clearAll();
+                }
+            })
+        );
     }
 
     selectDevice(device: Device) {
