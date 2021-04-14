@@ -28,7 +28,7 @@ Clona el repositorio, se recomienda hacer uso de git aunque también puedes desc
 git clone https://github.com/ci-bus/Miguelio-VIA-Keyboards.git
 ```
 
-Entra en la carpeta descargada con el comando cd
+Entra en la carpeta descargada con el comando cd y la ruta a la carpeta:
 ```
 cd Miguelio-VIA-Keyboards
 ```
