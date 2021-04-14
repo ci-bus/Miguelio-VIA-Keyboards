@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { AppState } from 'src/app/app.reducer';
-import { disconnect } from '../mapper/mapper.actions';
+import { disconnect, resetKeycodes } from '../mapper/mapper.actions';
 
 @Component({
     selector: 'app-menu',
@@ -20,8 +20,7 @@ export class MenuComponent implements OnInit {
         private store:Store<AppState>
     ) { }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void { }
 
     changeLanguage(lang: string) {
         this.translate.use(lang);
@@ -31,4 +30,7 @@ export class MenuComponent implements OnInit {
         this.store.dispatch(disconnect());
     }
 
+    resetKeycodes() {
+        this.store.dispatch(resetKeycodes());
+    }
 }

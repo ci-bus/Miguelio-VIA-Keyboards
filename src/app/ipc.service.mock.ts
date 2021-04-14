@@ -38,6 +38,8 @@ export const MocksService = {
         ,
         'setKeycode': true
         ,
+        'resetKeycodes': true
+        ,
         'loadKeymaps': [
             {
                 "number": 0,

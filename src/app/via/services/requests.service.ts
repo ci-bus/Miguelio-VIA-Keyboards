@@ -86,4 +86,9 @@ export class RequestsService {
         });
     }
 
+    // Reset all keycodes from flashed to stored in eeprom 
+    public resetKeycodes(keyboard: Keyboard) {
+        return this.ipcService.invoke('resetKeycodes', { ...keyboard });
+    }
+
 }

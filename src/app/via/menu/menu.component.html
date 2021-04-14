@@ -8,7 +8,7 @@
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>{{ 'menu.resetKeycodes' | translate }}</button>
+            <button (click)="resetKeycodes()" mat-menu-item>{{ 'menu.resetKeycodes' | translate }}</button>
             <button (click)="disconnect()" mat-menu-item>{{ 'menu.disconnect' | translate }}</button>
         </mat-menu>
     </div>

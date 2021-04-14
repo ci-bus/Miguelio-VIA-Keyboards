@@ -14,6 +14,7 @@ import * as devicesActions from '../devices/devices.actions';
 import * as keymapsActions from '../keymaps/keymaps.actions';
 import * as lightActions from '../light/light.actions';
 import * as defsActions from '../keyboard/defs.actions';
+import { Device } from '../devices/device.model';
 
 @Injectable()
 export class MapperEffects {
@@ -40,6 +41,23 @@ export class MapperEffects {
         tap(() => this.router.navigate([ '/' ])),
         map(() => ({ type: mapperActions.clear.type })),
         catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
+    ));
+
+    resetKeycodes$ = createEffect((): any => this.actions$.pipe(
+        ofType(mapperActions.resetKeycodes.type),
+        mergeMap(() => from(this.store.select('keyboard'))
+            .pipe(
+                first(),
+                mergeMap(keyboard => from(this.requestService.resetKeycodes( keyboard ))
+                    .pipe(
+                        map(success => ({ keyboard, success })),
+                        tap(() => this.router.navigate(['/']))
+                    )
+                ),
+                map(({ keyboard, success }) => ({ type: keyboardActions.create.type, device: new Device(keyboard) })),
+                catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
+            )
+        )
     ));
 
     constructor(

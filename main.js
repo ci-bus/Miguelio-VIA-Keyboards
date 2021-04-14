@@ -6,6 +6,11 @@ const { app, BrowserWindow, ipcMain } = require('electron'),
 
 app.disableHardwareAcceleration();
 
+/*******************************************************************\
+|   Put to true to show in console the keycodes when load layouts   |
+\*******************************************************************/
+const consoleKeycodes = false;
+
 const store = new Store({
     configName: 'user-preferences',
     defaults: {
@@ -33,7 +38,8 @@ function createWindow() {
         store.set('windowBounds', { width, height });
     });
 
-    mainWindow.openDevTools();
+    // Discomment to open devTools on init
+    //mainWindow.openDevTools();
 
     mainWindow.loadFile('./dist/index.html');
 
@@ -87,8 +93,6 @@ ipcMain.handle('getDevicesList', async () => {
 //------------------------//
 ipcMain.handle('countLayers', async (event, keyboard) => {
 
-    console.log('countLayers', keyboard);
-
     // Open conecction
     var device = new HID.HID(keyboard.path);
 
@@ -99,11 +103,6 @@ ipcMain.handle('countLayers', async (event, keyboard) => {
     const count = await new Promise((ok, fail) => {
         // On receive response
         device.on("data", function (buffer) {
-
-            console.log('buffer', buffer, buffer.length);
-            console.log('buffer 0', buffer.readUInt8(0));
-            console.log('buffer 1', buffer.readUInt8(1));
-
             // Return info
             ok(buffer.readUInt8(1));
         });
@@ -112,8 +111,6 @@ ipcMain.handle('countLayers', async (event, keyboard) => {
     })
     .catch(error => event.sender.send('error', error))
     .finally(() => device.close());
-
-    console.log('result count layers', count);
     
     return count;
 });
@@ -123,7 +120,7 @@ ipcMain.handle('countLayers', async (event, keyboard) => {
 //----------------------------------------//
 //  Reset keymap to undo dynamic changes  //
 //----------------------------------------//
-ipcMain.handle('keymapReset', async (event, keyboard) => {
+ipcMain.handle('resetKeycodes', async (event, keyboard) => {
     // Open conecction
     var device = new HID.HID(keyboard.path);
     // Send request
@@ -131,7 +128,7 @@ ipcMain.handle('keymapReset', async (event, keyboard) => {
     // Wait reset done
     const response = await new Promise((ok, fail) => {
         // On receive response
-        device.on("data", ok);
+        device.on("data", () => { ok(true) });
         // On error
         device.on('error', fail);
     })
@@ -161,8 +158,6 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
         keysByLayer = data.defs.cols * data.defs.rows,
         totalKeys = keysByLayer * layers;
 
-    console.log('Leyendo keymaps', data);
-
     // Read first buffer
     device.write([0x00, 18, 0, 0, BloqBufferSize]);
 
@@ -188,6 +183,10 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
                     secondByte: buffer.readUInt8(i + 1)
                 });
 
+                if (consoleKeycodes) {
+                    console.log('Keycode', buffer.readUInt8(i), buffer.readUInt8(i + 1), buffer.readUInt16LE(i));
+                }
+
                 count++;
 
                 // Keymap layer completed
@@ -195,6 +194,9 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
                     keymaps.push({ number: countLayers, keys });
                     countLayers++;
                     keys = [];
+                    if (consoleKeycodes) {
+                        console.log("======================================================");
+                    }
                 }
 
                 // All loaded
@@ -211,10 +213,6 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
             // Send porcent loading
             let porcentLoaded = Math.ceil(count * 100 / totalKeys);
             event.sender.send('layersPorcent', porcentLoaded);
-
-            console.log('count', count);
-            console.log('totalKeys', totalKeys);
-            console.log('layersPorcent', porcentLoaded);
 
             if (count < totalKeys) {
 
