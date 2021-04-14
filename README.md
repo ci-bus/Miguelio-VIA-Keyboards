@@ -36,10 +36,7 @@ Si no tienes instalado Angular CLI te recomiendo instalarlo de manera global (es
 ```
 npm i -g @angular/cli
 ```
-Para los usuarios de MAC o Linux tendrán que poner la pabra sudo antes del comando, esto pedirá la contraseña de usuario, ejemplo:
-```
-sudo npm i -g @angular/cli
-```
+
 Si en windows te sale un error diciendo que la ejecución de scripts está desactivada ejecuta desde PowerShell abierto como administrador:
 ```
 Set-ExecutionPolicy Unrestricted
