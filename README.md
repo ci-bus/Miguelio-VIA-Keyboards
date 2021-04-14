@@ -28,6 +28,11 @@ Clona el repositorio, puedes descargar los archivos en .zip y descomprimirlos o 
 git clone https://github.com/ci-bus/Miguelio-VIA-Keyboards.git
 ```
 
+Entra en la carpeta descargada con el comando cd
+```
+cd Miguelio-VIA-Keyboards
+```
+
 Ahora desde el terminal accede a la carpeta del proyecto con el comando cd y con node instalado ejecuta para instalar las librerias:
 ```
 npm i
