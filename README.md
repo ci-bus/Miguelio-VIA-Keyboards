@@ -52,7 +52,7 @@ ng serve -o
 
 Cuando quieras hacer pruebas reales con tu teclado ejecuta:
 ```
-npm start:electron
+npm run start:electron
 ```
 
 ## IMPORTANTE RECUERDA
