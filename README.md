@@ -47,7 +47,7 @@ Si se usa este software con fines comerciales es necesario añadir menciones a e
 - Añadiendo mas traducciones, se requieren conocimientos de archivos JSON.
 - Añadiendo mas layouts de teclados, se requiere conocimientos sobre configuración layouts de teclados con QMK y JSON.
 - Añadiendo keys para funcionalidades que falten, se requiere experimentar para ver como se guarda esto en la memoria eeprom, conocimientos básicos sobre javascript, nodejs y estructura del proyecto.
-- Implementado configuración de macros, se requieren altos conocimientos sobre javascript, Angular, ngrx, rxjs, nodejs, C, Arduino y QMK en general.
+- Implementando la configuración de macros, se requieren altos conocimientos sobre javascript, Angular, ngrx, rxjs, nodejs, C, Arduino y QMK en general.
 - Mejorando la documentación y la wiki.
 
 
