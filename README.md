@@ -2,19 +2,19 @@
 VIA Software Open Source to keyboards with QMK
 
 ## Pre-requisitos
-· [Git](https://git-scm.com/downloads)
-· [Nodejs LTS](https://nodejs.org/en/)
+- [Git](https://git-scm.com/downloads)
+- [Nodejs LTS](https://nodejs.org/en/)
   
 ### Software utilizado (caracter informativo)
-· [Node HID](https://github.com/node-hid/node-hid)
+- [Node HID](https://github.com/node-hid/node-hid)
 > Con esta librería se hace la comunicación con el teclado, en el firmware de QMK el archivo que facilita esto es /quantum/via.c, el mismo utilizado por VIA
-· [Electron](https://www.electronjs.org/)
+- [Electron](https://www.electronjs.org/)
 > Este framework permite compilar el proyecto como una aplicación de escritorio
-· [Angular](https://angular.io/) + [Material](https://material.angular.io/) + [ngrx](https://ngrx.io/) + [rxjs](https://rxjs.dev/)
+- [Angular](https://angular.io/) + [Material](https://material.angular.io/) + [ngrx](https://ngrx.io/) + [rxjs](https://rxjs.dev/)
 > El front (la parte visual) esta desarrollada con Angula + material + ngrx + rxjs
 
 #### Recomendable para editar código
-· [Visual Studio Code](https://code.visualstudio.com/download)
+- [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## ¿Como lo pruebo?
 
