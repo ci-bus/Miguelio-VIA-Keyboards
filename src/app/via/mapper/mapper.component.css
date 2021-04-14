@@ -45,6 +45,9 @@
 .keyLetter.fail {
     background: none;
 }
+.key.u0 {
+    width: 0px;
+}
 .key.u025 {
     width: 12px;
 }
@@ -65,6 +68,9 @@
 }
 .key.u2 {
     width: 96px;
+}
+.key.u225 {
+    width: 108px;
 }
 .key.u275 {
     width: 132px;
