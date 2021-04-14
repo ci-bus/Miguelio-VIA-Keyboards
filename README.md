@@ -3,7 +3,12 @@ VIA Software Open Source to keyboards with QMK
 
 ## Pre-requisitos
 - [Git](https://git-scm.com/downloads)
-- [Nodejs LTS](https://nodejs.org/en/)
+- [NodeJs LTS](https://nodejs.org/en/)
+
+**Muy importante** en los ultimos pasos de la instalación de Node marca el check para instalar las tools necesarias de manera automática
+![Marcar check en la instalación](https://github.com/ci-bus/Miguelio-VIA-Keyboards/blob/master/src/assets/Captura.PNG?raw=true)
+- (Windows) [PowerShell](https://answers.microsoft.com/es-es/windows/forum/windows_10-windows_install-winpc/c%C3%B3mo-instalar-powershell-en-windows-10/eafc6661-a558-4309-a7b1-5f6fa5ecb750)
+
   
 ### Software utilizado (caracter informativo)
 - [Node HID](https://github.com/node-hid/node-hid)
@@ -28,6 +33,18 @@ Ahora desde el terminal accede a la carpeta del proyecto con el comando cd y con
 npm i
 ```
 
+Si no tienes instalado Angular CLI te recomiendo instalarlo de manera global (esto necesita permisos de administrador o super usuario):
+```
+npm i -g @angular/cli
+```
+
+Si en windows te sale un error diciendo que la ejecución de scripts está desactivada ejecuta desde PowerShell abierto como administrador:
+```
+Set-ExecutionPolicy Unrestricted
+```
+Cuando te pregunte escribe una O "si a todo" y pulsa enter, esto solucionará el problema
+
+
 Ya estamos listos, para modificarlo no hace falta tener un teclado, se puede iniciar como una web con datos de pruebas, para ello ejecuta:
 ```
 ng serve -o
@@ -35,7 +52,7 @@ ng serve -o
 
 Cuando quieras hacer pruebas reales con tu teclado ejecuta:
 ```
-npm start:electron
+npm run start:electron
 ```
 
 ## IMPORTANTE RECUERDA
