@@ -43,7 +43,7 @@ Si haces una mejora debes compartirla para decidir si añadirla al proyecto.
 Si se usa este software con fines comerciales es necesario añadir menciones a este proyecto.
 
 
-##¿Como puedes colaborar?
+## ¿Como puedes colaborar?
 - Añadiendo mas traducciones, se requieren conocimientos de archivos JSON
 - Añadiendo mas layouts de teclados, se requiere conocimientos sobre configuración layouts de teclados con QMK y JSON
 - Añadiendo keys para funcionalidades que falten, se requiere experimentar para ver como se guarda esto en la memoria eeprom, conocimientos básicos sobre javascript, nodejs y estructura del proyecto.
