@@ -38,6 +38,9 @@ Cuando quieras hacer pruebas reales con tu teclado ejecuta
 npm start:electron
 ```
 
+## IMPORTANTE
+Recuerda que si haces una mejora debes compartirla para decidir si añadirla al proyecto igual si se usa este software para fines comerciales es necesario añadir menciones a este proyecto.
+
 
 
 
