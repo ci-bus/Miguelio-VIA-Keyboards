@@ -23,7 +23,7 @@ VIA Software Open Source to keyboards with QMK
 
 ## ¿Como lo pruebo?
 
-Clona el repositorio, puedes descargar los archivos en .zip y descomprimirlos o con Git instalado ejecutar desde un terminal o cmd:
+Clona el repositorio, se recomienda hacer uso de git aunque también puedes descargar los archivo en .zip y descomprimirlos
 ```
 git clone https://github.com/ci-bus/Miguelio-VIA-Keyboards.git
 ```
@@ -33,7 +33,7 @@ Entra en la carpeta descargada con el comando cd
 cd Miguelio-VIA-Keyboards
 ```
 
-Ahora desde el terminal accede a la carpeta del proyecto con el comando cd y con node instalado ejecuta para instalar las librerias:
+Con node instalado ejecuta para instalar las librerias:
 ```
 npm i
 ```
