@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { LightValues } from '../interfaces';
-import { set, changePropValue, clear } from './light.actions';
+import { set, clear } from './light.actions';
 
 const initialState: LightValues = {};
 

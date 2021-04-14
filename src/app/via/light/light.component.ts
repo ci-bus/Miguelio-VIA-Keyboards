@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { first, map } from 'rxjs/operators';
@@ -31,8 +31,10 @@ export class LightComponent implements OnInit {
             first(),
             map(defs => defs.lighting)
         ).subscribe(lighting => {
-            this.lightingDefs = lighting;
-            this.store.dispatch(lightActions.get({ lighting }));
+            if (lighting) {
+                this.lightingDefs = lighting;
+                this.store.dispatch(lightActions.get({ lighting }));
+            }
         });
 
         this.store.select('light').subscribe(lightValues => {
