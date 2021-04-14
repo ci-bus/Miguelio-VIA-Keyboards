@@ -3,7 +3,11 @@ VIA Software Open Source to keyboards with QMK
 
 ## Pre-requisitos
 - [Git](https://git-scm.com/downloads)
-- [Nodejs LTS](https://nodejs.org/en/)
+- [NodeJs LTS](https://nodejs.org/en/)
+
+**Muy importante** en los ultimos pasos de la instalación de Node marca el check para instalar las tools necesarias de manera automática
+![Marcar check en la instalación](https://github.com/ci-bus/Miguelio-VIA-Keyboards/blob/master/src/assets/Captura.PNG?raw=true)
+
   
 ### Software utilizado (caracter informativo)
 - [Node HID](https://github.com/node-hid/node-hid)
@@ -33,7 +37,14 @@ Si no tienes instalado Angular CLI te recomiendo instalarlo de manera global (es
 npm i -g @angular/cli
 ```
 Para los usuarios de MAC o Linux tendrán que poner la pabra sudo antes del comando, esto pedirá la contraseña de usuario, ejemplo:
-> sudo npm i -g @angular/cli
+```
+sudo npm i -g @angular/cli
+```
+Si en windows te sale un error diciendo que la ejecución de scripts está desactivada ejecuta desde PowerShell abierto como administrador:
+```
+Set-ExecutionPolicy Unrestricted
+```
+Cuando te pregunte escribe una O "si a todo" y pulsa enter, esto solucionará el problema
 
 
 Ya estamos listos, para modificarlo no hace falta tener un teclado, se puede iniciar como una web con datos de pruebas, para ello ejecuta:
