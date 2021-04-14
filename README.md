@@ -4,7 +4,7 @@ VIA Software Open Source to keyboards with QMK
 ## Pre-requisitos
 - [Git](https://git-scm.com/downloads)
 - [NodeJs LTS](https://nodejs.org/en/)
-- 
+
 **Muy importante** en los ultimos pasos de la instalación de Node marca el check para instalar las tools necesarias de manera automática
 ![Marcar check en la instalación](https://github.com/ci-bus/Miguelio-VIA-Keyboards/blob/master/src/assets/Captura.PNG?raw=true)
 - (Windows) [PowerShell](https://answers.microsoft.com/es-es/windows/forum/windows_10-windows_install-winpc/c%C3%B3mo-instalar-powershell-en-windows-10/eafc6661-a558-4309-a7b1-5f6fa5ecb750)
