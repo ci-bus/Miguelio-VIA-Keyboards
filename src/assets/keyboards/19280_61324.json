@@ -1,5 +1,30 @@
 {
     "name": "BM60 RGB",
+    "lighting": {
+        "rgblight": {
+            "brightness": {
+                "min": 0, "max": 255
+            },
+            "effect": [
+                { "label": "none", "value": 0 },
+                { "label": "static", "value": 1 },
+                { "label": "breathing", "value": 2 },
+                { "label": "rainbow", "value": 6 },
+                { "label": "swirl", "value": 9 },
+                { "label": "snake", "value": 15 },
+                { "label": "knightRider", "value": 21 },
+                { "label": "christmas", "value": 24 },
+                { "label": "staticGradient", "value": 25 },
+                { "label": "redGreenBlue", "value": 35 }
+            ],
+            "hue": {
+                "steps": 10
+            },
+            "sat": {
+                "steps": 17
+            }
+        }
+    },
     "cols": 14,
     "rows": 5,
     "layouts": [{
