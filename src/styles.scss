@@ -23,7 +23,7 @@
     -webkit-font-smoothing: antialiased;
 }
 *:not(.mat-icon) {
-    font-family: 'Helvetica Neue' !important;
+    font-family: "Helvetica Neue" !important;
 }
 html,
 body {
@@ -56,5 +56,12 @@ button {
         button {
             text-transform: none;
         }
+    }
+}
+
+.noLine {
+    .mat-slider-ticks, .mat-slider-ticks-container, .mat-slider-track-wrapper {
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
 }

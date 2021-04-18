@@ -4,17 +4,6 @@ export const MocksService = {
         'getDevicesList': [
             {
                 "vendorId": 19783,
-                "productId": 2,
-                "path": "IOService:/AppleACPIPlatformExpert/PCI0@0/AppleACPIPCI/XHC1@14/XHC1@14000000/HS01@14100000/Miguelio Aquarius@14100000/IOUSBHostInterface@1/AppleUserUSBHostHIDDevice",
-                "serialNumber": "",
-                "manufacturer": "Miguelio",
-                "product": "Miguelio Aquarius",
-                "release": 1,
-                "interface": 1,
-                "usagePage": 65376,
-                "usage": 97
-            }, {
-                "vendorId": 19783,
                 "productId": 3,
                 "path": "IOService:/AppleACPIPlatformExpert/PCI0@0/AppleACPIPCI/XHC1@14/XHC1@14000000/HS01@14100000/Miguelio Aquarius@14100000/IOUSBHostInterface@1/AppleUserUSBHostHIDDevice",
                 "serialNumber": "",
@@ -28,11 +17,15 @@ export const MocksService = {
         ],
         'countLayers': 4,
         'loadLight': {
-            "backlight": {
+            "rgblight": {
                 "brightness": 127,
-                "effect": 0
+                "effect": 1,
+                "effectSpeed": 128,
+                "color": {
+                    "hue": 128,
+                    "sat": 128
+                }
             }
-            
         },
         'changeLight': true
         ,
@@ -74,7 +67,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 0
+                        "secondByte": 74
                     },
                     {
                         "firstByte": 0,
@@ -106,7 +99,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 74
+                        "secondByte": 0
                     },
                     {
                         "firstByte": 0,
@@ -165,12 +158,12 @@ export const MocksService = {
                         "secondByte": 47
                     },
                     {
-                        "firstByte": 0,
-                        "secondByte": 0
+                        "firstByte": 81,
+                        "secondByte": 1
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 0
+                        "secondByte": 1
                     },
                     {
                         "firstByte": 0,
@@ -202,7 +195,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 77
+                        "secondByte": 76
                     },
                     {
                         "firstByte": 0,
@@ -226,15 +219,15 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
                         "secondByte": 52
                     },
                     {
                         "firstByte": 0,
                         "secondByte": 40
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 77
                     },
                     {
                         "firstByte": 0,
@@ -262,11 +255,11 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 81
+                        "secondByte": 229
                     },
                     {
-                        "firstByte": 0,
-                        "secondByte": 56
+                        "firstByte": 81,
+                        "secondByte": 2
                     },
                     {
                         "firstByte": 0,
@@ -290,7 +283,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 229
+                        "secondByte": 56
                     },
                     {
                         "firstByte": 0,
@@ -298,7 +291,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 76
+                        "secondByte": 79
                     },
                     {
                         "firstByte": 0,
@@ -321,7 +314,7 @@ export const MocksService = {
                         "secondByte": 230
                     },
                     {
-                        "firstByte": 81,
+                        "firstByte": 0,
                         "secondByte": 1
                     },
                     {
@@ -330,7 +323,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 79
+                        "secondByte": 81
                     }
                 ]
             },
@@ -367,7 +360,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 0
+                        "secondByte": 167
                     },
                     {
                         "firstByte": 0,
@@ -395,38 +388,6 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 190
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 167
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 92,
-                        "secondByte": 190
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
                         "secondByte": 1
                     },
                     {
@@ -439,39 +400,103 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 92,
                         "secondByte": 189
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 0
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 190
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 166
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
                     },
                     {
                         "firstByte": 0,
@@ -496,38 +521,6 @@ export const MocksService = {
                     {
                         "firstByte": 0,
                         "secondByte": 165
-                    },
-                    {
-                        "firstByte": 92,
-                        "secondByte": 188
-                    },
-                    {
-                        "firstByte": 92,
-                        "secondByte": 187
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 189
                     },
                     {
                         "firstByte": 0,
@@ -555,7 +548,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 170
+                        "secondByte": 1
                     },
                     {
                         "firstByte": 0,
@@ -591,7 +584,7 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 166
+                        "secondByte": 174
                     },
                     {
                         "firstByte": 0,
@@ -623,12 +616,305 @@ export const MocksService = {
                     },
                     {
                         "firstByte": 0,
-                        "secondByte": 174
+                        "secondByte": 170
                     }
                 ]
             },
             {
                 "number": 2,
+                "keys": [
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 206
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 208
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 210
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 212
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 205
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 207
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 209
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 211
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 213
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 0
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 195
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 197
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 199
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 201
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 0
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 194
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 196
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 198
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 200
+                    },
+                    {
+                        "firstByte": 92,
+                        "secondByte": 202
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    },
+                    {
+                        "firstByte": 0,
+                        "secondByte": 1
+                    }
+                ]
+            },
+            {
+                "number": 3,
                 "keys": [
                     {
                         "firstByte": 0,
@@ -917,299 +1203,6 @@ export const MocksService = {
                     {
                         "firstByte": 0,
                         "secondByte": 0
-                    }
-                ]
-            },
-            {
-                "number": 3,
-                "keys": [
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 15,
-                        "secondByte": 126
-                    },
-                    {
-                        "firstByte": 212,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 255,
-                        "secondByte": 255
-                    },
-                    {
-                        "firstByte": 199,
-                        "secondByte": 255
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 120,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 0,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 1,
-                        "secondByte": 0
-                    },
-                    {
-                        "firstByte": 2,
-                        "secondByte": 1
-                    },
-                    {
-                        "firstByte": 4,
-                        "secondByte": 3
-                    },
-                    {
-                        "firstByte": 6,
-                        "secondByte": 5
-                    },
-                    {
-                        "firstByte": 10,
-                        "secondByte": 8
-                    },
-                    {
-                        "firstByte": 15,
-                        "secondByte": 12
-                    },
-                    {
-                        "firstByte": 20,
-                        "secondByte": 17
-                    },
-                    {
-                        "firstByte": 28,
-                        "secondByte": 24
-                    },
-                    {
-                        "firstByte": 36,
-                        "secondByte": 32
-                    },
-                    {
-                        "firstByte": 46,
-                        "secondByte": 41
-                    },
-                    {
-                        "firstByte": 57,
-                        "secondByte": 51
-                    },
-                    {
-                        "firstByte": 70,
-                        "secondByte": 63
-                    },
-                    {
-                        "firstByte": 83,
-                        "secondByte": 76
-                    },
-                    {
-                        "firstByte": 98,
-                        "secondByte": 91
-                    },
-                    {
-                        "firstByte": 113,
-                        "secondByte": 106
-                    },
-                    {
-                        "firstByte": 129,
-                        "secondByte": 121
-                    },
-                    {
-                        "firstByte": 146,
-                        "secondByte": 138
-                    },
-                    {
-                        "firstByte": 162,
-                        "secondByte": 154
-                    },
-                    {
-                        "firstByte": 178,
-                        "secondByte": 170
-                    },
-                    {
-                        "firstByte": 193,
-                        "secondByte": 185
-                    },
-                    {
-                        "firstByte": 207,
-                        "secondByte": 200
-                    },
-                    {
-                        "firstByte": 220,
-                        "secondByte": 213
-                    },
-                    {
-                        "firstByte": 231,
-                        "secondByte": 225
-                    },
-                    {
-                        "firstByte": 240,
-                        "secondByte": 235
-                    },
-                    {
-                        "firstByte": 247,
-                        "secondByte": 244
-                    },
-                    {
-                        "firstByte": 252,
-                        "secondByte": 250
-                    },
-                    {
-                        "firstByte": 254,
-                        "secondByte": 253
-                    },
-                    {
-                        "firstByte": 254,
-                        "secondByte": 255
-                    },
-                    {
-                        "firstByte": 252,
-                        "secondByte": 253
-                    },
-                    {
-                        "firstByte": 247,
-                        "secondByte": 250
-                    },
-                    {
-                        "firstByte": 240,
-                        "secondByte": 244
-                    },
-                    {
-                        "firstByte": 231,
-                        "secondByte": 235
-                    },
-                    {
-                        "firstByte": 220,
-                        "secondByte": 225
-                    },
-                    {
-                        "firstByte": 207,
-                        "secondByte": 213
-                    },
-                    {
-                        "firstByte": 193,
-                        "secondByte": 200
-                    },
-                    {
-                        "firstByte": 178,
-                        "secondByte": 185
-                    },
-                    {
-                        "firstByte": 162,
-                        "secondByte": 170
-                    },
-                    {
-                        "firstByte": 146,
-                        "secondByte": 154
-                    },
-                    {
-                        "firstByte": 129,
-                        "secondByte": 138
-                    },
-                    {
-                        "firstByte": 113,
-                        "secondByte": 121
-                    },
-                    {
-                        "firstByte": 98,
-                        "secondByte": 106
-                    },
-                    {
-                        "firstByte": 83,
-                        "secondByte": 91
-                    },
-                    {
-                        "firstByte": 70,
-                        "secondByte": 76
-                    },
-                    {
-                        "firstByte": 57,
-                        "secondByte": 63
-                    },
-                    {
-                        "firstByte": 46,
-                        "secondByte": 51
-                    },
-                    {
-                        "firstByte": 36,
-                        "secondByte": 41
-                    },
-                    {
-                        "firstByte": 28,
-                        "secondByte": 32
-                    },
-                    {
-                        "firstByte": 20,
-                        "secondByte": 24
-                    },
-                    {
-                        "firstByte": 15,
-                        "secondByte": 17
-                    },
-                    {
-                        "firstByte": 10,
-                        "secondByte": 12
-                    },
-                    {
-                        "firstByte": 6,
-                        "secondByte": 8
                     }
                 ]
             }

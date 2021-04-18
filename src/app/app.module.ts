@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +51,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatCardModule,
         MatBadgeModule,
         MatMenuModule,
+        DragDropModule,
         StoreModule.forRoot(AppReducers),
         EffectsModule.forRoot([
             DevicesEffects, 

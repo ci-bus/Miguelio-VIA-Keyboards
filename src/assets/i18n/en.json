@@ -11,7 +11,9 @@
     },
     "light": {
         "effect": "Effect",
-        "backlight": "Backlight"
+        "backlight": "Backlight",
+        "rgblight": "RGB",
+        "color": "Color"
     },
     "mapper": {
         "commonKeys": "Common keys",
@@ -27,6 +29,16 @@
         "backLight": "Backlight",
         "rgbLight": "RGB Lights"
     },
+    "none": "None",
+    "static": "Static",
+    "breathing": "Breathing",
+    "rainbow": "Rainbow",
+    "swirl": "Swirl",
+    "snake": "Snake",
+    "knightRider": "Rider",
+    "christmas": "Christmas",
+    "staticGradient": "Gradient",
+    "redGreenBlue": "Primary",
     "keycode": {
         "": "",
         "undefined": "",

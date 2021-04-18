@@ -10,8 +10,6 @@ import { keymapsHelper } from '../keymaps/keymaps.helper';
 import onLetterKey from './oneLetterKeys';
 import mapperKeys from './mapper.keys';
 import * as mapperActions from './mapper.actions';
-import { RequestsService } from '../services/requests.service';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
     selector: 'app-mapper',
@@ -31,7 +29,6 @@ export class MapperComponent implements OnInit {
 
     constructor(
         public translate: TranslateService,
-        private requestService: RequestsService,
         private store: Store<AppState>,
         private keymapsHelper: keymapsHelper,
         private changeDetectorRef: ChangeDetectorRef

@@ -39,7 +39,7 @@ function createWindow() {
     });
 
     // Discomment to open devTools on init
-    //mainWindow.openDevTools();
+    mainWindow.openDevTools();
 
     mainWindow.loadFile('./dist/index.html');
 
@@ -245,49 +245,131 @@ ipcMain.handle('loadLight', async (event, data) => {
     // Open conecction
     var device = new HID.HID(data.keyboard.path);
 
-    // Load backlight brightness
-    device.write([0x00, 8, 9, 0]);
+    // Backlight
+    if (data.lighting.backlight) {
 
-    // Wait response
-    const brightness = await new Promise((ok, fail) => {
-        // On receive response
-        device.on("data", function (buffer) {
-            // Return info
-            ok(buffer.readUInt8(2));
-        });
-        // On error
-        device.on('error', fail);
+        // Load backlight brightness
+        device.write([0x00, 8, 9, 0]);
 
-    })
-    .catch(error => event.sender.send('error', error))
-    .finally(() => device.close());
+        // Wait response
+        const brightness = await new Promise((ok, fail) => {
+            // On receive response
+            device.on("data", function (buffer) {
+                // Return info
+                ok(buffer.readUInt8(2));
+            });
+            // On error
+            device.on('error', fail);
 
-    // Open conecction
-    var device = new HID.HID(data.keyboard.path);
+        })
+        .catch(error => event.sender.send('error', error));
 
-    // Load backlight effect
-    device.write([0x00, 8, 10, 0]);
+        // Load backlight effect
+        device.write([0x00, 8, 10, 0]);
 
-    // Wait response
-    const effect = await new Promise((ok, fail) => {
-        // On receive response
-        device.on("data", function (buffer) {
-            // Return info
-            ok(buffer.readUInt8(2));
-        });
-        // On error
-        device.on('error', fail);
+        // Wait response
+        const effect = await new Promise((ok, fail) => {
+            // On receive response
+            device.on("data", function (buffer) {
+                // Return info
+                ok(buffer.readUInt8(2));
+            });
+            // On error
+            device.on('error', fail);
 
-    })
-    .catch(error => event.sender.send('error', error))
-    .finally(() => device.close());
+        })
+        .catch(error => event.sender.send('error', error))
+        .finally(() => device.close());
 
-    return {
-        backlight: {
-            brightness,
-            effect
-        }
-    };
+        return {
+            backlight: {
+                brightness,
+                effect
+            }
+        };
+    }
+
+    // RGB light
+    if (data.lighting.rgblight) {
+
+        // Load RGB brightness
+        device.write([0x00, 8, 128, 0]);
+
+        // Wait response
+        const brightness = await new Promise((ok, fail) => {
+            // On receive response
+            device.on("data", function (buffer) {
+                // Return info
+                ok(buffer.readUInt8(2));
+            });
+            // On error
+            device.on('error', fail);
+
+        })
+        .catch(error => event.sender.send('error', error));
+
+        // Load RGB effect
+        device.write([0x00, 8, 129, 0]);
+
+        // Wait response
+        const effect = await new Promise((ok, fail) => {
+            // On receive response
+            device.on("data", function (buffer) {
+                // Return info
+                ok(buffer.readUInt8(2));
+            });
+            // On error
+            device.on('error', fail);
+
+        })
+        .catch(error => event.sender.send('error', error));
+
+        // Load RGB effect speed
+        device.write([0x00, 8, 130, 0]);
+
+        // Wait response
+        const effectSpeed = await new Promise((ok, fail) => {
+            // On receive response
+            device.on("data", function (buffer) {
+                // Return info
+                ok(buffer.readUInt8(2));
+            });
+            // On error
+            device.on('error', fail);
+
+        })
+        .catch(error => event.sender.send('error', error));
+
+        // Load RGB color
+        device.write([0x00, 8, 131, 0]);
+
+        // Wait response
+        const color = await new Promise((ok, fail) => {
+            // On receive response
+            device.on("data", function (buffer) {
+                // Return info
+                ok({
+                    hue: buffer.readUInt8(2), 
+                    sat: buffer.readUInt8(3)
+                });
+            });
+            // On error
+            device.on('error', fail);
+
+        })
+        .catch(error => event.sender.send('error', error))
+        .finally(() => device.close());
+
+        return {
+            rgblight: {
+                brightness,
+                effect,
+                effectSpeed,
+                color
+            }
+        };
+    }
+    
 });
 
 
@@ -297,6 +379,8 @@ ipcMain.handle('loadLight', async (event, data) => {
 ipcMain.handle('changeLight', async (event, data) => {
     // Open conecction
     var device = new HID.HID(data.keyboard.path);
+
+    console.log(data);
 
     // set backlight prop value
     device.write([0x00, 7, data.prop, data.firstByte, data.secondByte]);

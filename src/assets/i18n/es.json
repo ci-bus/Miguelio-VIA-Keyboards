@@ -11,7 +11,9 @@
     },
     "light": {
         "effect": "Efecto",
-        "backlight": "Luz de fondo"
+        "backlight": "Luz de fondo",
+        "rgblight": "RGB",
+        "color": "Color"
     },
     "mapper": {
         "commonKeys": "Teclas comunes",
@@ -27,6 +29,16 @@
         "backLight": "Luz de fondo",
         "rgbLight": "Leds RGB"
     },
+    "none": "Ninguno",
+    "static": "Estático",
+    "breathing": "Respiración",
+    "rainbow": "Arcoíris",
+    "swirl": "Remolino",
+    "snake": "Serpiente",
+    "knightRider": "Jinete",
+    "christmas": "Navidad",
+    "staticGradient": "Gradiente",
+    "redGreenBlue": "Primarios",
     "keycode": {
         "": "",
         "undefined": "",

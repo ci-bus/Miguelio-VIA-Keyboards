@@ -1,21 +1,62 @@
-<div class="container" *ngIf="values.backlight">
+<div class="container" *ngIf="values.backlight && lightingDefs.backlight">
     <div class="row">
-        <div class="title">
+        <div class="title first">
             {{ 'light.backlight' | translate }}
         </div>
-        <mat-icon> highlight</mat-icon>
-        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1"
-            [min]="lightingDefs.backlight.brightness.min" [max]="lightingDefs.backlight.brightness.max"
-            [ngModel]="values.backlight.brightness" (change)="changeBacklightBrightness($event.value)">
+        <mat-icon>highlight</mat-icon>
+        <mat-slider [displayWith]="formatLabel" tickInterval="1" [min]="lightingDefs.backlight.brightness.min"
+            [max]="lightingDefs.backlight.brightness.max" [ngModel]="values.backlight.brightness"
+            (change)="changeBacklightBrightness($event.value)">
         </mat-slider>
+
         <div *ngIf="lightingDefs.backlight.effect" class="title">
             {{ 'light.effect' | translate }}
         </div>
-        <select *ngIf="lightingDefs.backlight.effect"
-            [ngModel]="values.backlight.effect" (change)="changeBacklightEffect($event.target.value)">
+
+        <select *ngIf="lightingDefs.backlight.effect" [ngModel]="values.backlight.effect"
+            (change)="changeBacklightEffect($event.target.value)">
             <option *ngFor="let opt of lightingDefs.backlight.effect" [value]="opt.value">
-                {{ opt.label }}
+                {{ opt.label | translate }}
             </option>
         </select>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container" *ngIf="values.rgblight && lightingDefs.rgblight">
+    <div class="row">
+        <div class="title first">
+            {{ 'light.rgblight' | translate }}
+        </div>
+        <mat-icon>highlight</mat-icon>
+        <mat-slider [displayWith]="formatLabel" tickInterval="1" [min]="lightingDefs.rgblight.brightness.min"
+            [max]="lightingDefs.rgblight.brightness.max" [ngModel]="values.rgblight.brightness"
+            (change)="changeRGBlightBrightness($event.value)">
+        </mat-slider>
+
+        <div *ngIf="lightingDefs.rgblight.effect" class="title">
+            {{ 'light.effect' | translate }}
+        </div>
+        <select *ngIf="lightingDefs.rgblight.effect" [ngModel]="values.rgblight.effect"
+            (change)="changeRGBlightEffect($event.target.value)">
+            <option *ngFor="let opt of lightingDefs.rgblight.effect" [value]="opt.value">
+                {{ opt.label | translate }}
+            </option>
+        </select>
+        <div class="title">
+            {{ 'light.color' | translate }}
+        </div>
+        <div class="colorBox hueGradient">
+            <mat-slider [min]="0" [max]="255" [(ngModel)]="hue" class="noLine" (change)="changeRGBlightColor()">
+            </mat-slider>
+        </div>
+        <div class="colorBox satGradient">
+            <mat-slider [min]="0" [max]="255" [(ngModel)]="sat" class="noLine" (change)="changeRGBlightColor()">
+            </mat-slider>
+        </div>
     </div>
 </div>

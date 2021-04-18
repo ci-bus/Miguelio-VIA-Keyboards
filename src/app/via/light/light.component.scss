@@ -6,10 +6,14 @@
 }
 .title {
     padding: 10px 20px;
+    &.first {
+        padding-left: 0px;
+    }
 }
 .row {
     display: flex;
     flex-direction: row;
+    align-items: center, baseline;
 }
 .mat-icon {
     margin-top: 5px;
@@ -22,3 +26,25 @@ select {
     color: white;
     margin: 7px 0 0;
 }
+
+.hueGradient {
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(50,53,55,1) 40%, rgba(255,255,255,0) 50%, rgba(50,53,55,1) 60%), 
+                linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 17%, rgba(0,255,0,1) 33%, rgba(0,255,255,1) 50%, rgba(0,0,255,1) 67%, rgba(255,0,255,1) 83%, rgba(255,0,0,1) 100%);
+}
+
+.satGradient {
+    margin-left: 5px;
+    background: linear-gradient(0deg, rgba(50,53,55,1) 40%, rgba(255,255,255,0) 50%, rgba(50,53,55,1) 60%), 
+                linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%),
+                linear-gradient(0deg, rgba(255,0,0,1) 46%, rgba(0,255,0,1) 50%, rgba(0,0,255,1) 54%);
+}
+
+.colorBox {
+    border-radius: 10px;
+    .mat-slider-thumb {
+        background-color: black;
+    }
+}
+
+
