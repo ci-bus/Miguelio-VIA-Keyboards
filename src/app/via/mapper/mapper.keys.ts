@@ -738,6 +738,72 @@ export default [
                     "u": 1, "firstByte": 88, "secondByte": 1, "code": "TT(1)"
                 },
                 
+            ],
+            [
+                {
+                    "f": true, "u": 6, "text": "modKeyCombination"
+                }
+            ]
+            ,
+            [
+                {
+                    "u": 1, "firstByte": 1, "secondByte": 4, "code": "LCTL(A)"
+                },
+                {
+                    "u": 1, "firstByte": 2, "secondByte": 4, "code": "LSFT(A)"
+                },
+                {
+                    "u": 1, "firstByte": 4, "secondByte": 4, "code": "LALT(A)"
+                },
+                {
+                    "u": 1, "firstByte": 8, "secondByte": 4, "code": "LGUI(A)"
+                },
+                {
+                    "u": 1, "firstByte": 17, "secondByte": 4, "code": "RCTL(A)"
+                },
+                {
+                    "u": 1, "firstByte": 18, "secondByte": 4, "code": "RSFT(A)"
+                },
+                {
+                    "u": 1, "firstByte": 20, "secondByte": 4, "code": "RALT(A)"
+                },
+                {
+                    "u": 1, "firstByte": 24, "secondByte": 4, "code": "RGUI(A)"
+                }
+                
+            ]
+            ,
+            [
+                {
+                    "u": 1, "firstByte": 10, "secondByte": 4, "code": "SGUI(A)"
+                },
+                {
+                    "u": 1, "firstByte": 5, "secondByte": 4, "code": "LCA(A)"
+                },
+                {
+                    "u": 1, "firstByte": 6, "secondByte": 4, "code": "LSA(A)"
+                },
+                {
+                    "u": 1, "firstByte": 22, "secondByte": 4, "code": "RSA(A)"
+                },
+                {
+                    "u": 1, "firstByte": 19, "secondByte": 4, "code": "RCA(A)"
+                },
+                {
+                    "u": 1, "firstByte": 13, "secondByte": 4, "code": "LCAG(A)"
+                },
+                {
+                    "u": 1, "firstByte": 7, "secondByte": 4, "code": "MEH(A)"
+                },
+                {
+                    "u": 1, "firstByte": 15, "secondByte": 4, "code": "HYPR(A)"
+                },
+                {
+                    "u": 1, "firstByte": 7, "secondByte": 0, "code": "KC_MEH"
+                },
+                {
+                    "u": 1, "firstByte": 15, "secondByte": 0, "code": "KC_HYPR"
+                }
             ]
         ]
     }

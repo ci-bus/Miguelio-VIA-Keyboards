@@ -6,10 +6,10 @@
                 <mat-tab *ngFor="let layer of layout.layers" [label]="layer.number">
                     <div class="layout">
                         <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
-                            <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u"
-                                [class.u025]="key.u==0.25" [class.u05]="key.u==0.5" [class.u075]="key.u==0.75"
-                                [class.u125]="key.u==1.25" [class.u15]="key.u==1.5" [class.u175]="key.u==1.75"
-                                [class.u2]="key.u==2" [class.u225]="key.u==2.25" [class.u275]="key.u==2.75"
+                            <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u" [class.u025]="key.u==0.25"
+                                [class.u05]="key.u==0.5" [class.u075]="key.u==0.75" [class.u125]="key.u==1.25"
+                                [class.u15]="key.u==1.5" [class.u175]="key.u==1.75" [class.u2]="key.u==2"
+                                [class.u225]="key.u==2.25" [class.u275]="key.u==2.75" [class.u3]="key.u==3"
                                 [class.u6]="key.u==6" [class.u625]="key.u==6.25" [class.u7]="key.u==7"
                                 [class.isoEnter]="key.s=='ISO_ENTER'" (dragover)="dragOver($event)"
                                 (dragenter)="dragEnter($event)" (dragleave)="dragLeave($event)"
@@ -17,10 +17,12 @@
                                 <div *ngIf="!key.saving" [class.fail]="key.f" class="keyLetter"
                                     [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code"
                                     matTooltipPosition="above" matTooltipShowDelay="300" matTooltipHideDelay="200">
-                                    {{ 'keycode.'+key.code | translate }}
-                                    <div>
-                                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte"
-                                            (enter)="changeModKey($event, key)" (change)="changeModKey($event, key)">
+                                    <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate
+                                        }}</span>
+                                    <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
+                                    <div *ngIf="isModKey(key)">
+                                        <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
+                                            (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
                                     </div>
                                 </div>
                                 <div *ngIf="key.saving" class="keyLetter loading">
@@ -45,13 +47,15 @@
                         <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u" [class.u025]="key.u==0.25"
                             [class.u05]="key.u==0.5" [class.u075]="key.u==0.75" [class.u125]="key.u==1.25"
                             [class.u15]="key.u==1.5" [class.u175]="key.u==1.75" [class.u2]="key.u==2"
-                            [class.u275]="key.u==2.75" [class.u225]="key.u==2.25" [class.u6]="key.u==6"
-                            [class.u625]="key.u==6.25" [class.u7]="key.u==7" [class.isoEnter]="key.s=='ISO_ENTER'"
-                            draggable="true" (dragstart)="drag(key)" (dragend)="dragEnd()">
+                            [class.u275]="key.u==2.75" [class.u225]="key.u==2.25" [class.u3]="key.u==3"
+                            [class.u6]="key.u==6" [class.u625]="key.u==6.25" [class.u7]="key.u==7"
+                            [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true" (dragstart)="drag(key)"
+                            (dragend)="dragEnd()">
                             <div [class.fail]="key.f" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
                                 [matTooltip]="key.code" matTooltipPosition="above" matTooltipShowDelay="300"
                                 matTooltipHideDelay="200">
-                                {{ 'keycode.'+key.code | translate }}
+                                <span *ngIf="key.code?.indexOf('(') < 0">{{ 'keycode.'+key.code | translate }}</span>
+                                <span *ngIf="key.code?.indexOf('(') > 0">{{ key.code.split('(')[0] }}</span>
                                 <div *ngIf="key.text" class="onlyText">{{ 'mapper.'+key.text | translate }}</div>
                                 <div>
                                     <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">

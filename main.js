@@ -23,7 +23,7 @@ function createWindow() {
     let mainWindow = new BrowserWindow({
         width, height,
         webPreferences: {
-            minimumFontSize: 14,
+            minimumFontSize: 12,
             defaultFontSize: 17,
             defaultMonospaceFontSize: 19,
             nodeIntegration: true,
@@ -39,7 +39,7 @@ function createWindow() {
     });
 
     // Discomment to open devTools on init
-    mainWindow.openDevTools();
+    //mainWindow.openDevTools();
 
     mainWindow.loadFile('./dist/index.html');
 
@@ -379,8 +379,6 @@ ipcMain.handle('loadLight', async (event, data) => {
 ipcMain.handle('changeLight', async (event, data) => {
     // Open conecction
     var device = new HID.HID(data.keyboard.path);
-
-    console.log(data);
 
     // set backlight prop value
     device.write([0x00, 7, data.prop, data.firstByte, data.secondByte]);

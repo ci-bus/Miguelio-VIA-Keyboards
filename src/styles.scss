@@ -7,6 +7,15 @@
     src: url(assets/fonts/material-icons.woff2) format("woff2");
 }
 
+@font-face {
+    font-family: "Encode Sans Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(assets/fonts/encode.woff2) format("woff2");
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
 .material-icons {
     font-family: "Material Icons";
     font-weight: normal;
@@ -23,7 +32,7 @@
     -webkit-font-smoothing: antialiased;
 }
 *:not(.mat-icon) {
-    font-family: "Helvetica Neue" !important;
+    font-family: "Encode Sans Condensed", sans-serif !important;
 }
 html,
 body {
@@ -36,9 +45,7 @@ body {
     overflow: hidden;
     overflow-y: auto;
 }
-* {
-    letter-spacing: 1px;
-}
+
 button {
     background-color: #424547 !important;
 }
@@ -60,7 +67,9 @@ button {
 }
 
 .noLine {
-    .mat-slider-ticks, .mat-slider-ticks-container, .mat-slider-track-wrapper {
+    .mat-slider-ticks,
+    .mat-slider-ticks-container,
+    .mat-slider-track-wrapper {
         visibility: hidden !important;
         opacity: 0 !important;
     }

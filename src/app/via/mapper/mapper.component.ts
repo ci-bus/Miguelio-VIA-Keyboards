@@ -114,6 +114,18 @@ export class MapperComponent implements OnInit {
         }));
     }
 
+    dropInput(event, key: Keymapper) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.target.style.color = '#c2185b';
+        let fromKey = { ...key };
+        fromKey.secondByte = this.draggingKey.secondByte;
+        this.store.dispatch(mapperActions.changeKey({
+            fromKey: fromKey,
+            toKey: key
+        }));
+    }
+
     dragEnd() {
         this.changeDetectorRef.reattach();
     }
