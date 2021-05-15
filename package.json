@@ -1,15 +1,17 @@
 {
   "name": "miguelio-via-keyboards",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "electron-forge start",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:electron": "ng build --base-href ./ && electron ."
+    "start:electron": "ng build --base-href ./ && electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +31,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@types/electron": "^1.6.10",
+    "electron-squirrel-startup": "^1.0.0",
     "node-hid": "^2.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -38,6 +41,11 @@
     "@angular-devkit/build-angular": "~0.1102.6",
     "@angular/cli": "~11.2.6",
     "@angular/compiler-cli": "~11.2.7",
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^14.14.33",
     "codelyzer": "^6.0.0",
@@ -53,5 +61,32 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.1.5"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "miguelio_via_keyboards"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
