@@ -51,7 +51,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
         this.subscriptions.push(
             this.devices$.subscribe(devices => {
-                if (!devices.length) this.getDevices();
+                this.getDevices();
             })
         );
 

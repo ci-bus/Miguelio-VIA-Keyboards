@@ -6,6 +6,7 @@ export class Keyboard {
     productId: number;
     path: string;
     public layers: number;
+    pathJson: string;
 
     constructor( device?: Device ) {
 
@@ -14,6 +15,7 @@ export class Keyboard {
             this.vendorId = device.vendorId;
             this.productId = device.productId;
             this.path = device.path;
+            this.pathJson = device.pathJson;
         }
 
     }

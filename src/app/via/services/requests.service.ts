@@ -30,7 +30,7 @@ export class RequestsService {
 
     // Get JSON files from assets
     public getJsonAsset(fileName): Promise<object> {
-        return this.http.get(`assets/keyboards/${fileName}.json`).toPromise();
+        return this.http.get(fileName).toPromise();
     }
 
     // Get devices list
@@ -44,8 +44,8 @@ export class RequestsService {
     }
 
     // Get defs into json file
-    public getDefs(keyboard: Keyboard): Promise<object> {
-        return this.getJsonAsset(`${keyboard.vendorId}_${keyboard.productId}`);
+    public getDefs(device: Device): Promise<object> {
+        return this.getJsonAsset(device.pathJson.split('dist/').pop());
     }
 
     // Load layers keymaps

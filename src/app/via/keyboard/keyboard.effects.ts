@@ -12,7 +12,7 @@ import { AppState } from 'src/app/app.reducer';
 @Injectable()
 export class KeyboardEffects {
 
-    loadKeyboard$ = createEffect((): any => this.actions$.pipe(
+    createKeyboard$ = createEffect((): any => this.actions$.pipe(
         ofType(keyboardActions.create.type),
         mergeMap(() => from(this.store.select('keyboard'))
             .pipe(

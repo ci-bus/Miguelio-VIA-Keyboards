@@ -10,8 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start:electron": "ng build --base-href ./ && electron .",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "package": "ng build --base-href ./ && electron-forge package",
+    "make": "ng build --base-href ./ && electron-forge make"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +32,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "@types/electron": "^1.6.10",
     "electron-squirrel-startup": "^1.0.0",
+    "glob": "^7.1.6",
     "node-hid": "^2.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -49,7 +50,7 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^14.14.33",
     "codelyzer": "^6.0.0",
-    "electron": "^12.0.4",
+    "electron": "^12.0.7",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.1.0",
@@ -65,6 +66,7 @@
   "config": {
     "forge": {
       "packagerConfig": {},
+      "ignore": [".*", "src", "e2e", "out"],
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",

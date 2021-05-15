@@ -1,8 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron'),
-    path = require('path'),
     Store = require('./store.js'),
     HID = require('node-hid'),
-    fs = require('fs');
+    fs = require('fs'),
+    glob = require("glob");
 
 app.disableHardwareAcceleration();
 
@@ -81,10 +81,10 @@ app.on('window-all-closed', () => {
 //  Get supported devices //
 //------------------------//
 ipcMain.handle('getDevicesList', async () => {
-    const devices = HID.devices().filter(device => {
-        return device.interface === 1 && 
-            fs.existsSync(`./src/assets/keyboards/${device.vendorId}_${device.productId}.json`); 
-    });
+    const keyboardsDefs = glob.sync(__dirname + "/dist/assets/keyboards/**/*.json");
+    const devices = HID.devices().map(device => ({
+        ...device, pathJson: keyboardsDefs.find(kd => kd.split('/').pop() === `${device.vendorId}_${device.productId}.json`)
+      })).filter(device => device.pathJson && device.interface === 1);
     return devices;
 });
 
