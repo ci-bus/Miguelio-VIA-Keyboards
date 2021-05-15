@@ -66,18 +66,17 @@
   "config": {
     "forge": {
       "packagerConfig": {},
-      "ignore": [".*", "src", "e2e", "out"],
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "miguelio_via_keyboards"
+            "name": "Miguelio"
           }
         },
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin", "win32"
           ]
         },
         {
