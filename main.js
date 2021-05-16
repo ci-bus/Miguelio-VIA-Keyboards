@@ -33,6 +33,8 @@ function createWindow() {
         }
     });
 
+    mainWindow.removeMenu();
+
     mainWindow.on('resize', () => {
         let { width, height } = mainWindow.getBounds();
         store.set('windowBounds', { width, height });
