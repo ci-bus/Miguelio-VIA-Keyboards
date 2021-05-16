@@ -69,14 +69,14 @@
     "forge": {
       "packagerConfig": {
         "icon": "./src/assets/icons/icon.ico",
-        "executableName": "Miguelio VIA Keyboards"
+        "executableName": "Miguelio VIA Keyboards",
+        "name": "Miguelio",
+        "productName": "Miguelio"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "Miguelio"
-          }
+          "config": {}
         },
         {
           "name": "@electron-forge/maker-zip",
