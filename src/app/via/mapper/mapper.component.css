@@ -41,6 +41,9 @@
     font-size: 14px;
     text-align-last: center;
 }
+.keyLetter.none {
+    display: none;
+}
 .keyLetter.fail {
     background: none;
 }

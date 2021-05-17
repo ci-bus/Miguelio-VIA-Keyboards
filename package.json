@@ -6,11 +6,9 @@
   "description": "VIA keyboards software to change key codes config and lights",
   "scripts": {
     "ng": "ng",
-    "start": "electron-forge start",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e",
+    "start:front": "ng serve -o",
     "start:electron": "ng build --base-href ./ && electron .",
     "package": "ng build --base-href ./ && electron-forge package",
     "make": "ng build --base-href ./ && electron-forge make"

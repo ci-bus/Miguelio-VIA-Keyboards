@@ -12,7 +12,8 @@ export const MocksService = {
                 "release": 1,
                 "interface": 1,
                 "usagePage": 65376,
-                "usage": 97
+                "usage": 97,
+                "pathJson": "dist/assets/keyboards/Miguelio/Rock/19783_3.json"
             }
         ],
         'countLayers': 4,
