@@ -52,7 +52,7 @@ Cuando te pregunte escribe una O "si a todo" y pulsa enter, esto solucionará el
 
 Ya estamos listos, para modificarlo no hace falta tener un teclado, se puede iniciar como una web con datos de pruebas, para ello ejecuta:
 ```
-ng serve -o
+npm run start:front
 ```
 
 Cuando quieras hacer pruebas reales con tu teclado ejecuta:
