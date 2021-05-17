@@ -14,7 +14,7 @@
                                 [class.u7]="key.u==7" [class.isoEnter]="key.s=='ISO_ENTER'"
                                 (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
                                 (dragleave)="dragLeave($event)" (drop)="drop($event, key)">
-                                <div *ngIf="!key.saving" [class.fail]="key.f || key.u === 0" class="keyLetter"
+                                <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
                                     [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code"
                                     matTooltipPosition="above" matTooltipShowDelay="300" matTooltipHideDelay="200">
                                     <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate
@@ -51,7 +51,7 @@
                             [class.u375]="key.u==3.75" [class.u6]="key.u==6" [class.u625]="key.u==6.25"
                             [class.u7]="key.u==7" [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true"
                             (dragstart)="drag(key)" (dragend)="dragEnd()">
-                            <div [class.fail]="key.f" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
+                            <div [class.fake]="key.f || key.u === 0" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
                                 [matTooltip]="key.code" matTooltipPosition="above" matTooltipShowDelay="300"
                                 matTooltipHideDelay="200">
                                 <span *ngIf="key.code?.indexOf('(') < 0">{{ 'keycode.'+key.code | translate }}</span>

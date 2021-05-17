@@ -44,7 +44,7 @@
 .keyLetter.none {
     display: none;
 }
-.keyLetter.fail {
+.keyLetter.fake {
     background: none;
 }
 .key.u0 {
