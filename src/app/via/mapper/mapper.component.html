@@ -9,11 +9,11 @@
                             <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u" [class.u025]="key.u==0.25"
                                 [class.u05]="key.u==0.5" [class.u075]="key.u==0.75" [class.u125]="key.u==1.25"
                                 [class.u15]="key.u==1.5" [class.u175]="key.u==1.75" [class.u2]="key.u==2"
-                                [class.u225]="key.u==2.25" [class.u275]="key.u==2.75" [class.u3]="key.u==3"
-                                [class.u6]="key.u==6" [class.u625]="key.u==6.25" [class.u7]="key.u==7"
-                                [class.isoEnter]="key.s=='ISO_ENTER'" (dragover)="dragOver($event)"
-                                (dragenter)="dragEnter($event)" (dragleave)="dragLeave($event)"
-                                (drop)="drop($event, key)">
+                                [class.u225]="key.u==2.25" [class.u275]="key.u==2.75" [class.u3]="key.u==3" 
+                                [class.u375]="key.u==3.75" [class.u6]="key.u==6" [class.u625]="key.u==6.25" 
+                                [class.u7]="key.u==7" [class.isoEnter]="key.s=='ISO_ENTER'" 
+                                (dragover)="dragOver($event)" (dragenter)="dragEnter($event)" 
+                                (dragleave)="dragLeave($event)" (drop)="drop($event, key)">
                                 <div *ngIf="!key.saving" [class.fail]="key.f" class="keyLetter"
                                     [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code"
                                     matTooltipPosition="above" matTooltipShowDelay="300" matTooltipHideDelay="200">
@@ -47,10 +47,10 @@
                         <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u" [class.u025]="key.u==0.25"
                             [class.u05]="key.u==0.5" [class.u075]="key.u==0.75" [class.u125]="key.u==1.25"
                             [class.u15]="key.u==1.5" [class.u175]="key.u==1.75" [class.u2]="key.u==2"
-                            [class.u275]="key.u==2.75" [class.u225]="key.u==2.25" [class.u3]="key.u==3"
-                            [class.u6]="key.u==6" [class.u625]="key.u==6.25" [class.u7]="key.u==7"
-                            [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true" (dragstart)="drag(key)"
-                            (dragend)="dragEnd()">
+                            [class.u275]="key.u==2.75" [class.u225]="key.u==2.25" [class.u3]="key.u==3" 
+                            [class.u375]="key.u==3.75" [class.u6]="key.u==6" [class.u625]="key.u==6.25" 
+                            [class.u7]="key.u==7" [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true" 
+                            (dragstart)="drag(key)" (dragend)="dragEnd()">
                             <div [class.fail]="key.f" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
                                 [matTooltip]="key.code" matTooltipPosition="above" matTooltipShowDelay="300"
                                 matTooltipHideDelay="200">
