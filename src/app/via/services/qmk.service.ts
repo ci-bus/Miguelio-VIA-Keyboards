@@ -15,6 +15,11 @@ export class QmkService {
         private http: HttpClient
     ) { }
 
+    // Get keyboards list
+    public getKeyboardsList(): Observable<String[]> {
+        return this.http.get<String[]>('https://api.qmk.fm/v1/keyboards');
+    }
+
     // Get Qmk keyboard
     public getQmkKeyboard(keyboardModel: string): Observable<GetQmkKeyboardResponse> {
         return this.http.get<GetQmkKeyboardResponse>('https://api.qmk.fm/v1/keyboards/'+keyboardModel);

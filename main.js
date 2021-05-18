@@ -80,6 +80,8 @@ DownloadManager.register({
     downloadFolder: app.getPath("downloads")
 });
 
+console.log('app.getPath("downloads")', app.getPath("downloads"));
+
 ipcMain.handle('downloadFile', async (event, url) => {
     const res = await new Promise((ok, fail) => {
         DownloadManager.download({ url }, (error, info) => {

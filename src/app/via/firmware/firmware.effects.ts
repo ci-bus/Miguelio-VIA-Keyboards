@@ -12,6 +12,13 @@ import { QmkService } from '../services/qmk.service';
 @Injectable()
 export class FirmwareEffects {
 
+    getKeyboardsList$ = createEffect((): any => this.actions$.pipe(
+        ofType(firmwareActions.getKeyboardsList.type),
+        switchMap(() => from(this.qmkService.getKeyboardsList())),
+        map(keyboardsList => ({ type: firmwareActions.setKeyboardsList.type, keyboardsList })),
+        catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
+    ));
+
     getQmkKeyboard$ = createEffect((): any => this.actions$.pipe(
         ofType(firmwareActions.getKeyboard.type),
         map(({ keyboardModel }) => keyboardModel),

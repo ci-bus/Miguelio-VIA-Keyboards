@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AppState } from '../../app.reducer';
-import { Keymapper, QmkKeyboard, QmkKeyboardLayout, QmkKeyboardLayoutDef } from '../interfaces';
+import { FirmwareState, Keymapper, QmkKeyboard, QmkKeyboardLayout, QmkKeyboardLayoutDef } from '../interfaces';
 import * as firmwareActions from './firmware.actions';
 import onLetterKey from '../mapper/oneLetterKeys';
 import mapperKeys from '../mapper/mapper.keys';
@@ -14,6 +14,8 @@ import { add } from '../errors/errors.actions';
 import { RequestsService } from '../services/requests.service';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { from } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -23,7 +25,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 })
 export class FirmwareComponent implements OnInit {
 
-    public qmkKeyboard: QmkKeyboard;
+    public firmware: FirmwareState;
     public layoutSelected: QmkKeyboardLayout;
     public compiling: compileFirmwareResponse;
     public urlFirmware: string;
@@ -37,6 +39,7 @@ export class FirmwareComponent implements OnInit {
     diameter: number = 200;
     strokeWidth: number = 1;
     value: number = 0;
+    loadingMessage: string = 'compiling';
 
     constructor(
         public translate: TranslateService,
@@ -48,16 +51,22 @@ export class FirmwareComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.store.dispatch(firmwareActions.getKeyboard({
-            keyboardModel: 'dz60'
-        }));
+        this.store.dispatch(firmwareActions.getKeyboardsList());
+
+
 
         this.store.select('firmware').subscribe(firmware => {
+            this.firmware = firmware;
             if (firmware && firmware.qmkKeyboard) {
-                this.qmkKeyboard = firmware.qmkKeyboard;
                 this.layoutSelected = firmware.layout;
             }
         });
+    }
+
+    changeKeyboard(event: MatSelectChange) {
+        this.store.dispatch(firmwareActions.getKeyboard({
+            keyboardModel: event.value
+        }));
     }
 
     changeLayout(event: MatSelectChange) {
@@ -134,7 +143,7 @@ export class FirmwareComponent implements OnInit {
     compile() {
         const layer = this.layoutSelected.layout.map(layout => layout.code || 'KC_TRNS');
         const request = {
-            keyboard: this.qmkKeyboard.keyboard_folder,
+            keyboard: this.firmware.qmkKeyboard.keyboard_folder,
             keymap: this.layoutSelected.name,
             "layout": this.layoutSelected.name,
             "layers": [
@@ -145,24 +154,32 @@ export class FirmwareComponent implements OnInit {
             this.compiling = response;
             this.checkCompileStatus();
         });
+        this.loadingMessage = 'waiting';
     }
 
     checkCompileStatus() {
         setTimeout(() => {
             this.qmkService.checkStatus(this.compiling).subscribe(response => {
-                if (response.status == 'running' || response.status == 'queued') {
+                if (response.status == 'queued') {
+                    this.checkCompileStatus();
+                    return;
+                }
+                if (response.status == 'running') {
+                    this.loadingMessage = 'compiling';
                     this.checkCompileStatus();
                     return;
                 }
                 if (response.status == 'finished') {
+                    this.loadingMessage = 'downloading';
                     this.urlFirmware = response.result.firmware_binary_url[0];
-                    this.requestService.downloadFile(this.urlFirmware);
+                    this.requestService.downloadFile(this.urlFirmware).then(() => {
+                        this.compiling = undefined;
+                    });
                 } else {
                     this.store.dispatch(add({
                         textInfo: 'Error compilando el firmware, inténtelo de nuevo mas tarde.'
                     }))
                 }
-                this.compiling.finished = true;
             });
         }, 3000);
     }

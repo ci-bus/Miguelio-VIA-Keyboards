@@ -1,6 +1,15 @@
 import { createAction, props } from '@ngrx/store';
 import { Keymapper, QmkKeyboards, QmkKeyboardLayoutDef, QmkKeyboardLayout } from '../interfaces';
 
+export const getKeyboardsList = createAction(
+    '[Firmware] Get keyboards list'
+);
+
+export const setKeyboardsList = createAction(
+    '[Firmware] Set keyboards list',
+    props<{ keyboardsList: String[] }>()
+);
+
 export const getKeyboard = createAction(
     '[Firmware] Get keyboard',
     props<{ keyboardModel: string }>()

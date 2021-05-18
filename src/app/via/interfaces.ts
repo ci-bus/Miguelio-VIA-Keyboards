@@ -150,6 +150,7 @@ export interface QmkKeyboards {
 }
 
 export interface FirmwareState {
+    keyboardsList: String[],
     model: string,
     qmkKeyboard: QmkKeyboard,
     layout: QmkKeyboardLayout

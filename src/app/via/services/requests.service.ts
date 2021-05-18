@@ -92,8 +92,8 @@ export class RequestsService {
     }
 
     // Download file
-    public downloadFile(url: string) {
-        return this.ipcService.invoke('downloadFile', { url });
+    public downloadFile(url: string): Promise<string> {
+        return this.ipcService.invoke('downloadFile', url);
     }
 
 }

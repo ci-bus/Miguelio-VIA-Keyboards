@@ -145,10 +145,11 @@
     margin: 5px 10px;
 }
 
-.compile-button {
+.submenu-button {
     position: relative;
     top: -4px;
-    left: 5px;
+    margin-left: 10px;
+    color: white;
 }
 
 mat-form-field.mat-form-field {

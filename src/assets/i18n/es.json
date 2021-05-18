@@ -2,7 +2,8 @@
     "menu": {
         "resetKeycodes": "Resetear keycodes",
         "disconnect": "Desconectar",
-        "compileFirmware": "Compilar firmware"
+        "compileFirmware": "Compilar firmware",
+        "exit": "Salir"
     },
     "loading": {
         "error": "Se ha producido un error",
@@ -18,7 +19,10 @@
     },
     "firmware": {
         "compiledSuccess": "Compilado con éxito",
-        "compiling": "Compilando"
+        "compiling": "Compilando",
+        "manualDownload": "Descarga manual",
+        "downloading": "Descargando",
+        "waiting": "Esperando"
     },
     "mapper": {
         "commonKeys": "Teclas comunes",

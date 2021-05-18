@@ -1,4 +1,4 @@
-<div class="section" *ngIf="compiling && !compiling.finished">
+<div class="section" *ngIf="compiling">
     <mat-progress-spinner
         [strokeWidth]="strokeWidth"
         [diameter]="diameter"
@@ -7,27 +7,40 @@
         [value]="value">
     </mat-progress-spinner>
     <img src="assets/keyboard.png">
-    <h1>{{ 'firmware.compiling' | translate }}...</h1>
+    <h1>{{ 'firmware.' + loadingMessage | translate }}</h1>
 </div>
+
 <div>
     <mat-form-field appearance="outline" class="compile-select">
-        <mat-label>Layout</mat-label>
-        <mat-select name="layout" (selectionChange)="changeLayout($event)">
-            <mat-option *ngFor="let layout of qmkKeyboard?.layouts | keyvalue" [value]="layout">
-                {{layout.key}}
+        <mat-label>Keyboards</mat-label>
+        <mat-select name="keyboards" (selectionChange)="changeKeyboard($event)">
+            <mat-option *ngFor="let keyboard of firmware?.keyboardsList" [value]="keyboard">
+                {{ keyboard }}
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <button *ngIf="layoutSelected" mat-button class="compile-button" (click)="compile()">
+    <mat-form-field appearance="outline" class="compile-select">
+        <mat-label>Layout</mat-label>
+        <mat-select name="layout" (selectionChange)="changeLayout($event)">
+            <mat-option *ngFor="let layout of firmware?.qmkKeyboard?.layouts | keyvalue" [value]="layout">
+                {{ layout.key }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button *ngIf="layoutSelected" mat-button class="submenu-button" (click)="compile()">
         {{ 'menu.compileFirmware' | translate }}
     </button>
+    <a *ngIf="urlFirmware" [href]="urlFirmware">
+        <button mat-button class="submenu-button">
+            {{ 'firmware.manualDownload' | translate }}
+        </button>
+    </a>
 </div>
-<div *ngIf="urlFirmware">
-   {{ 'firmware.compiledSuccess' | translate }}: {{ urlFirmware }}
+<div>
 </div>
 <div *ngIf="layoutSelected" class="container">
     <div class="firmware-container"
-        [ngStyle]="{width: qmkKeyboard.matrix_size.cols * 48 + 'px', height: qmkKeyboard.matrix_size.rows * 48 + 'px'}">
+        [ngStyle]="{width: firmware?.qmkKeyboard.matrix_size.cols * 48 + 'px', height: firmware?.qmkKeyboard.matrix_size.rows * 48 + 'px'}">
         <div class="key" *ngFor="let key of layoutSelected.layout"
             [ngStyle]="{top: key.y * 48 + 'px', left: key.x * 48 + 'px', width: key.w * 48 + 'px'}"
             (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
