@@ -76,7 +76,7 @@ export class RequestsService {
 
     // Set keycode to key
     public setKeycode(keyboard: Keyboard, fromKey: Keymapper, toKey: Keymapper): Promise<boolean> {
-        return this.ipcService.invoke('setKeycode', { 
+        return this.ipcService.invoke('setKeycode', {
             path: keyboard.path,
             layer: toKey.layer,
             row: toKey.row,
@@ -86,9 +86,14 @@ export class RequestsService {
         });
     }
 
-    // Reset all keycodes from flashed to stored in eeprom 
+    // Reset all keycodes from flashed to stored in eeprom
     public resetKeycodes(keyboard: Keyboard) {
         return this.ipcService.invoke('resetKeycodes', { ...keyboard });
+    }
+
+    // Download file
+    public downloadFile(url: string) {
+        return this.ipcService.invoke('downloadFile', { url });
     }
 
 }

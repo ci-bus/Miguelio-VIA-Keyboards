@@ -3,13 +3,14 @@
     <div *ngFor="let lang of languages">
         <button (click)="changeLanguage(lang)" mat-icon-button>{{ lang }}</button>
     </div>
-    <div *ngIf="router.url == '/mapper'">
+    <div >
         <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button (click)="resetKeycodes()" mat-menu-item>{{ 'menu.resetKeycodes' | translate }}</button>
-            <button (click)="disconnect()" mat-menu-item>{{ 'menu.disconnect' | translate }}</button>
+            <button *ngIf="router.url == '/mapper'" (click)="resetKeycodes()" mat-menu-item>{{ 'menu.resetKeycodes' | translate }}</button>
+            <button *ngIf="router.url !== '/'" (click)="disconnect()" mat-menu-item>{{ 'menu.disconnect' | translate }}</button>
+            <button *ngIf="router.url == '/'" (click)="compileFirmware()" mat-menu-item>{{ 'menu.compileFirmware' | translate }}</button>
         </mat-menu>
     </div>
 </div>

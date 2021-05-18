@@ -102,3 +102,58 @@ export interface Layoutmapper {
     layers: Layermapper[]
 }
 
+// firmware component
+
+export interface QmkKeyboardLayoutDef extends Keymapper {
+    label: string,
+    matrix: Array<number>,
+    x: number,
+    y: number,
+    w: number,
+    h?: number
+}
+
+export interface QmkKeyboardLayout {
+    name: string
+    key_count: number
+    layout: QmkKeyboardLayoutDef[]
+}
+
+export interface QmkKeyboardLayouts {
+    [name: string]: QmkKeyboardLayout
+}
+
+export interface QmkKeyboardUsb {
+    device_ver: string
+    pid: string
+    vid: string
+}
+
+export interface QmkKeyboardFeatures {
+    [type: string]: boolean
+}
+
+export interface QmkKeyboard {
+    keyboard_folder: string,
+    layouts: QmkKeyboardLayouts,
+    usb: QmkKeyboardUsb,
+    manufacturer: string,
+    features: QmkKeyboardFeatures,
+    matrix_size: {
+        cols: number,
+        rows: number
+    }
+}
+
+export interface QmkKeyboards {
+    [model: string]: QmkKeyboard
+}
+
+export interface FirmwareState {
+    model: string,
+    qmkKeyboard: QmkKeyboard,
+    layout: QmkKeyboardLayout
+}
+
+
+

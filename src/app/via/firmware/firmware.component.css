@@ -1,0 +1,211 @@
+.key {
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    cursor: default;
+    position: absolute;
+}
+
+.layout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.rowKeys {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.firmware-container {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.keyLetter {
+    background-color: black;
+    padding: 5px;
+    border: 1px solid #323537;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.keyLetter > div {
+    display: flex;
+    justify-content: center;
+}
+.keyLetter input {
+    width: 24px;
+    height: 15px;
+    border-radius: 5px;
+    border: 1px solid #424547;
+}
+.oneLetter {
+    word-spacing: 0.6rem;
+    font-size: 14px;
+    text-align-last: center;
+}
+.keyLetter.none {
+    display: none;
+}
+.keyLetter.fake {
+    background: none;
+}
+
+
+.key2 {
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    cursor: default;
+}
+.key2.u0 {
+    width: 0px;
+}
+.key2.u025 {
+    width: 12px;
+}
+.key2.u05 {
+    width: 24px;
+}
+.key2.u075 {
+    width: 36px;
+}
+.key2.u15 {
+    width: 72px;
+}
+.key2.u125 {
+    width: 60px;
+}
+.key2.u175 {
+    width: 84px;
+}
+.key2.u2 {
+    width: 96px;
+}
+.key2.u225 {
+    width: 108px;
+}
+.key2.u275 {
+    width: 132px;
+}
+.key2.u3 {
+    width: 144px;
+}
+.key2.u375 {
+    width: 180px;
+}
+.key2.u6 {
+    width: 288px;
+}
+.key2.u625 {
+    width: 300px;
+}
+.key2.u7 {
+    width: 336px;
+}
+
+
+
+.key.isoEnter {
+    width: 72px;
+    position: relative;
+}
+.key.isoEnter:after {
+    width: 58px;
+    height: 51px;
+    background: black;
+    color: black;
+    position: absolute;
+    content: "X";
+    top: 44px;
+    left: 13px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.dragOver {
+    background-color: #c2c5c7;
+    color: #323537
+}
+
+.onlyText {
+    padding-top: 15px;
+}
+
+.compile-select {
+    margin: 5px 10px;
+}
+
+.compile-button {
+    position: relative;
+    top: -4px;
+    left: 5px;
+}
+
+mat-form-field.mat-form-field {
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.section {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px; left: 0px; z-index: 8;
+    background-color: #323537;
+}
+mat-progress-spinner, h1, h3, img {
+    margin: 0 auto 10px;
+    font-family: "system-ui", "Helvetica Neue", sans-serif;
+    font-weight: 200;
+}
+
+@keyframes moveKeyboard {
+    0% {
+        transform: scale3d(1, 1, 1);
+      }
+
+      30% {
+        transform: scale3d(0.9, 0.9, 1);
+      }
+
+      55% {
+        transform: scale3d(1.2, 1.2, 1);
+      }
+
+      100% {
+        transform: scale3d(1, 1, 1);
+      }
+}
+
+img {
+    position: relative;
+    top: -170px;
+    animation: moveKeyboard 5s ease infinite;
+}
+
+h1, h3 {
+    position: relative;
+    top: -130px;
+}

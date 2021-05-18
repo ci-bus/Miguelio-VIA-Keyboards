@@ -2,7 +2,8 @@ const { app, BrowserWindow, ipcMain } = require('electron'),
     Store = require('./store.js'),
     HID = require('node-hid'),
     fs = require('fs'),
-    glob = require("glob");
+    glob = require("glob"),
+    DownloadManager = require("electron-download-manager");
 
 app.disableHardwareAcceleration();
 
@@ -72,6 +73,29 @@ app.on('window-all-closed', () => {
 
 
 
+//--------------------------//
+//  Download files from web //
+//--------------------------//
+DownloadManager.register({
+    downloadFolder: app.getPath("downloads")
+});
+
+ipcMain.handle('downloadFile', async (event, url) => {
+    const res = await new Promise((ok, fail) => {
+        DownloadManager.download({ url }, (error, info) => {
+            if (error) {
+                fail(error);
+                return;
+            }
+            ok(info);
+        });
+    })
+    .catch(error => event.sender.send('error', error));
+    return res;
+});
+
+
+
 ///////////////////////////////////
 //                               //
 //  QMK COMUNICATION WITH via.c  //
@@ -113,7 +137,7 @@ ipcMain.handle('countLayers', async (event, keyboard) => {
     })
     .catch(error => event.sender.send('error', error))
     .finally(() => device.close());
-    
+
     return count;
 });
 
@@ -351,7 +375,7 @@ ipcMain.handle('loadLight', async (event, data) => {
             device.on("data", function (buffer) {
                 // Return info
                 ok({
-                    hue: buffer.readUInt8(2), 
+                    hue: buffer.readUInt8(2),
                     sat: buffer.readUInt8(3)
                 });
             });
@@ -371,7 +395,7 @@ ipcMain.handle('loadLight', async (event, data) => {
             }
         };
     }
-    
+
 });
 
 

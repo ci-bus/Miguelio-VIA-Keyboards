@@ -1,7 +1,8 @@
 {
     "menu": {
         "resetKeycodes": "Reset keycodes",
-        "disconnect": "Disconnect"
+        "disconnect": "Disconnect",
+        "compileFirmware": "Compile firmware"
     },
     "loading": {
         "error": "An error has occurred",
@@ -14,6 +15,10 @@
         "backlight": "Backlight",
         "rgblight": "RGB",
         "color": "Color"
+    },
+    "firmware": {
+        "compiledSuccess": "Compiled successfully",
+        "compiling": "Compiling"
     },
     "mapper": {
         "commonKeys": "Common keys",

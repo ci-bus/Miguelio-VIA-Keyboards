@@ -31,6 +31,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@types/electron": "^1.6.10",
+    "electron-download-manager": "^2.1.2",
     "electron-squirrel-startup": "^1.0.0",
     "glob": "^7.1.6",
     "node-hid": "^2.1.1",

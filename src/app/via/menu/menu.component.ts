@@ -33,4 +33,8 @@ export class MenuComponent implements OnInit {
     resetKeycodes() {
         this.store.dispatch(resetKeycodes());
     }
+
+    compileFirmware() {
+        this.router.navigate(['/firmware'])
+    }
 }
