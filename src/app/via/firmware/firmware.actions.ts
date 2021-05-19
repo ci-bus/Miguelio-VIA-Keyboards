@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Keymapper, QmkKeyboards, QmkKeyboardLayoutDef, QmkKeyboardLayout } from '../interfaces';
+import { Keymapper, QmkKeyboards, QmkKeyboardKeymapper, QmkKeyboardLayout } from '../interfaces';
 
 export const getKeyboardsList = createAction(
     '[Firmware] Get keyboards list'
@@ -27,7 +27,17 @@ export const setLayout = createAction(
 
 export const changeKey = createAction(
     '[Firmware] Change key',
-    props<{ fromKey: Keymapper, toKey: QmkKeyboardLayoutDef }>()
+    props<{ layerNumber: number, fromKey: Keymapper, toKey: QmkKeyboardKeymapper }>()
 );
+
+export const clear = createAction(
+    '[Firmware] Clear'
+);
+
+export const unselect = createAction(
+    '[Firmware] Unselect',
+    props<{ layerNumber: number, toKey: QmkKeyboardKeymapper }>()
+);
+
 
 

@@ -7,6 +7,10 @@
     position: absolute;
 }
 
+.key.selected div {
+    border-color: white;
+}
+
 .layout {
     position: relative;
     display: flex;
@@ -210,3 +214,24 @@ h1, h3 {
     position: relative;
     top: -130px;
 }
+
+.preloader {
+    width: 20px;
+    height: 20px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25%;
+    animation-name: girar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    position: relative;
+    top: 5px; left: 10px;
+  }
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

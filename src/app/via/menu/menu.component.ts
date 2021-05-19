@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { AppState } from 'src/app/app.reducer';
+import { clear } from '../firmware/firmware.actions';
 import { disconnect, resetKeycodes } from '../mapper/mapper.actions';
 
 @Component({
@@ -35,6 +36,11 @@ export class MenuComponent implements OnInit {
     }
 
     compileFirmware() {
-        this.router.navigate(['/firmware'])
+        this.router.navigate(['/firmware']);
+    }
+
+    exitFirmware() {
+        this.store.dispatch(clear());
+        this.router.navigate(['/'])
     }
 }

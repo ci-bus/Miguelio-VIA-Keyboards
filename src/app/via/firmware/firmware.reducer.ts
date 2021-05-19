@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { FirmwareState } from '../interfaces';
-import { getKeyboard, setKeyboard, changeKey, setLayout, setKeyboardsList } from './firmware.actions';
+import { getKeyboard, setKeyboard, changeKey, setLayout, setKeyboardsList, clear, unselect } from './firmware.actions';
 
 const initialState: FirmwareState = undefined;
 
@@ -14,7 +14,8 @@ const _firmwareReducer = createReducer(
         ...state,
         model: keyboardModel,
         qmkKeyboard: undefined,
-        layout: undefined
+        layout: undefined,
+        layers: undefined
     })),
     on(setKeyboard, (state, { qmkKeyboards }) => ({
         ...state,
@@ -24,21 +25,56 @@ const _firmwareReducer = createReducer(
     })),
     on(setLayout, (state, { qmkKeyboardsLayout }) => ({
         ...state,
-        layout: qmkKeyboardsLayout
+        layout: {
+            name: qmkKeyboardsLayout.name,
+            key_count: qmkKeyboardsLayout.key_count,
+            layout: qmkKeyboardsLayout.layout // TODO temp
+        },
+        layers: [{
+            number: 0,
+            keymap: [...qmkKeyboardsLayout.layout]
+        }, {
+            number: 1,
+            keymap: [...qmkKeyboardsLayout.layout]
+        }, {
+            number: 2,
+            keymap: [...qmkKeyboardsLayout.layout]
+        }, {
+            number: 3,
+            keymap: [...qmkKeyboardsLayout.layout]
+        }]
     })),
-    on(changeKey, (state, { fromKey, toKey }) => {
-        return ({
-            ...state,
-            layout: {
-                ...state.layout,
-                layout: state.layout.layout.map(layoutDef => {
-                    return layoutDef.label == toKey.label
-                        ? { ...toKey, ...fromKey }
-                        : layoutDef;
-                })
-            }
+    on(changeKey, (state, { layerNumber, fromKey, toKey }) => ({
+        ...state,
+        layers: state.layers.map(layer => {
+            return layer.number == layerNumber
+                ? {
+                    ...layer,
+                    keymap: layer.keymap.map(key => {
+                        return key.x == toKey.x && key.y == toKey.y
+                            ? { ...toKey, ...fromKey, selected: fromKey.selected }
+                            : key;
+                    })
+                }
+                : layer;
         })
-    })
+    })),
+    on(clear, () => undefined),
+    on(unselect, (state, { layerNumber, toKey }) => ({
+        ...state,
+        layers: state.layers.map(layer => {
+            return layer.number == layerNumber
+                ? {
+                    ...layer,
+                    keymap: layer.keymap.map(key => {
+                        return key.x == toKey.x && key.y == toKey.y
+                            ? { ...key, selected: false }
+                            : key;
+                    })
+                }
+                : layer;
+        })
+    }))
 );
 
 export function firmwareReducer(state, action) {

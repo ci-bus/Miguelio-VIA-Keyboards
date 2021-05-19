@@ -90,6 +90,8 @@ export interface Keymapper {
     row?: number // Matrix row
     col?: number // Matrix col
     saving?: boolean
+    eventCode?: string
+    selected?: boolean
 }
 
 export interface Layermapper {
@@ -104,19 +106,25 @@ export interface Layoutmapper {
 
 // firmware component
 
-export interface QmkKeyboardLayoutDef extends Keymapper {
+export interface QmkKeyboardKeymapper extends Keymapper {
     label: string,
     matrix: Array<number>,
     x: number,
     y: number,
     w: number,
-    h?: number
+    h?: number,
+    selected?: boolean
 }
 
 export interface QmkKeyboardLayout {
     name: string
     key_count: number
-    layout: QmkKeyboardLayoutDef[]
+    layout?: QmkKeyboardKeymapper[]
+}
+
+export interface QmkKeyboardLayer {
+    number: number
+    keymap: QmkKeyboardKeymapper[]
 }
 
 export interface QmkKeyboardLayouts {
@@ -153,7 +161,8 @@ export interface FirmwareState {
     keyboardsList: String[],
     model: string,
     qmkKeyboard: QmkKeyboard,
-    layout: QmkKeyboardLayout
+    layout: QmkKeyboardLayout,
+    layers: QmkKeyboardLayer[]
 }
 
 

@@ -25,7 +25,7 @@
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button *ngIf="router.url == '/firmware'" (click)="disconnect()" mat-menu-item>{{ 'menu.exit' | translate }}</button>
+            <button *ngIf="router.url == '/firmware'" (click)="exitFirmware()" mat-menu-item>{{ 'menu.exit' | translate }}</button>
         </mat-menu>
     </div>
 </div>

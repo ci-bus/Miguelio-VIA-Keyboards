@@ -1,25 +1,22 @@
 <div class="section" *ngIf="compiling">
-    <mat-progress-spinner
-        [strokeWidth]="strokeWidth"
-        [diameter]="diameter"
-        [color]="color"
-        [mode]="mode"
+    <mat-progress-spinner [strokeWidth]="strokeWidth" [diameter]="diameter" [color]="color" [mode]="mode"
         [value]="value">
     </mat-progress-spinner>
     <img src="assets/keyboard.png">
     <h1>{{ 'firmware.' + loadingMessage | translate }}</h1>
 </div>
 
-<div>
+<div style="display:flex;flex-direction:row;align-items:baseline;">
     <mat-form-field appearance="outline" class="compile-select">
         <mat-label>Keyboards</mat-label>
-        <mat-select name="keyboards" (selectionChange)="changeKeyboard($event)">
+        <mat-select name="keyboards" (selectionChange)="changeKeyboard($event)" [disabled]="!firmware?.keyboardsList">
             <mat-option *ngFor="let keyboard of firmware?.keyboardsList" [value]="keyboard">
                 {{ keyboard }}
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline" class="compile-select">
+    <mat-form-field appearance="outline" class="compile-select" *ngIf="firmware?.qmkKeyboard"
+        [disabled]="!firmware?.qmkKeyboard?.layouts">
         <mat-label>Layout</mat-label>
         <mat-select name="layout" (selectionChange)="changeLayout($event)">
             <mat-option *ngFor="let layout of firmware?.qmkKeyboard?.layouts | keyvalue" [value]="layout">
@@ -27,7 +24,7 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <button *ngIf="layoutSelected" mat-button class="submenu-button" (click)="compile()">
+    <button *ngIf="firmware?.layers" mat-button class="submenu-button" (click)="compile()">
         {{ 'menu.compileFirmware' | translate }}
     </button>
     <a *ngIf="urlFirmware" [href]="urlFirmware">
@@ -35,37 +32,44 @@
             {{ 'firmware.manualDownload' | translate }}
         </button>
     </a>
+    <div class="preloader" *ngIf="showLoading"></div>
 </div>
-<div>
-</div>
-<div *ngIf="layoutSelected" class="container">
-    <div class="firmware-container"
-        [ngStyle]="{width: firmware?.qmkKeyboard.matrix_size.cols * 48 + 'px', height: firmware?.qmkKeyboard.matrix_size.rows * 48 + 'px'}">
-        <div class="key" *ngFor="let key of layoutSelected.layout"
-            [ngStyle]="{top: key.y * 48 + 'px', left: key.x * 48 + 'px', width: key.w * 48 + 'px'}"
-            (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
-            (dragleave)="dragLeave($event)" (drop)="drop($event, key)">
-            <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
-                [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code" matTooltipPosition="above"
-                matTooltipShowDelay="300" matTooltipHideDelay="200">
-                <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate }}</span>
-                <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
-                <div *ngIf="isModKey(key)">
-                    <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
-                        (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
-                </div>
-            </div>
-            <div *ngIf="key.saving" class="keyLetter loading">
-                <div class="spinner">
-                    <div class="cube1"></div>
-                    <div class="cube2"></div>
+
+<mat-tab-group [animationDuration]="sliderTime" color="accent" [selectedIndex]="activeTab" (selectedTabChange)="activeTab = $event.index"
+    *ngIf="firmware?.layers">
+    <mat-tab *ngFor="let layer of firmware.layers" [label]="layer.number">
+        <div class="layout">
+            <div class="firmware-container"
+                [ngStyle]="{width: firmware?.qmkKeyboard.matrix_size.cols * 48 + 'px', height: firmware?.qmkKeyboard.matrix_size.rows * 48 + 'px'}">
+                <div class="key" *ngFor="let key of layer.keymap" [ngClass]="{selected: key.selected}"
+                    [ngStyle]="{top: key.y * 48 + 'px', left: key.x * 48 + 'px', width: key.w * 48 + 'px'}"
+                    (dragover)="dragOver($event)" (dragenter)="dragEnter($event)" (dragleave)="dragLeave($event)"
+                    (drop)="drop($event, key)" (click)="toggleSelectKey($event, key)">
+                    <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
+                        [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code" matTooltipPosition="above"
+                        matTooltipShowDelay="300" matTooltipHideDelay="200">
+                        <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate }}</span>
+                        <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
+                        <div *ngIf="isModKey(key)">
+                            <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
+                                (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
+                        </div>
+                    </div>
+                    <div *ngIf="key.saving" class="keyLetter loading">
+                        <div class="spinner">
+                            <div class="cube1"></div>
+                            <div class="cube2"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div *ngIf="layoutSelected" class="mapperKeys">
-    <mat-tab-group>
+    </mat-tab>
+</mat-tab-group>
+
+
+<div *ngIf="firmware?.layers" class="mapperKeys">
+    <mat-tab-group animationDuration="300ms">
         <mat-tab *ngFor="let mapperKeysTab of mapperKeys" [label]="'mapper.'+mapperKeysTab.title | translate">
             <div class="layout">
                 <div class="rowKeys" *ngFor="let rowKeys of mapperKeysTab.keymap">
