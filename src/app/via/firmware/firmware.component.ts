@@ -128,7 +128,7 @@ export class FirmwareComponent implements OnInit {
         event.stopPropagation();
         event.target.style.color = '#c2185b';
         let fromKey = { ...key };
-        fromKey.secondByte = this.draggingKey.secondByte;
+        fromKey.secondByte = this.draggingKey.code;
         this.changeKey(fromKey, key);
     }
 
@@ -202,7 +202,12 @@ export class FirmwareComponent implements OnInit {
             layers: []
         };
         this.firmware.layers.forEach(layer => {
-            const layerMapper = layer.keymap.map(key => key.code || 'KC_TRNS');
+            const layerMapper = layer.keymap.map(key => {
+                if (key.code && key.code.indexOf('(') > 0) {
+                    return key.code.split('(')[0] + '(' + key.secondByte + ')'
+                }
+                return key.code || 'KC_TRNS'
+            });
             if (layerMapper.find(keycode => keycode != 'KC_TRNS')) {
                 request.layers.push(layerMapper);
             }

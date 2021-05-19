@@ -180,6 +180,11 @@ mat-form-field.mat-form-field {
     top: 0px; left: 0px; z-index: 8;
     background-color: #529e8f;
 }
+.section img {
+    margin-top: 100px;
+    width: 300px;
+    height: 300px;
+}
 mat-progress-spinner, h1, h3, img {
     margin: 0 auto 10px;
     font-family: "system-ui", "Helvetica Neue", sans-serif;
