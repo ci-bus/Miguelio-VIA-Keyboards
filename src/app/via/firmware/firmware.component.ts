@@ -150,8 +150,9 @@ export class FirmwareComponent implements OnInit {
             const keys = [].concat(this.mapperKeys[0].keymap.reduce((ac, cu) => [].concat(ac, ...cu)));
             const key = keys.find(key => key.eventCode == event.code);
             this.selectNextKey();
-            this.changeKey(key, this.lastSelectedKey);
-
+            if (key) {
+                this.changeKey(key, this.lastSelectedKey);
+            }
         }
     }
 

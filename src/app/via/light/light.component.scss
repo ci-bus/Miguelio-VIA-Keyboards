@@ -29,13 +29,13 @@ select {
 
 .hueGradient {
     background: rgb(255,0,0);
-    background: linear-gradient(0deg, rgba(50,53,55,1) 40%, rgba(255,255,255,0) 50%, rgba(50,53,55,1) 60%), 
+    background: linear-gradient(0deg, rgba(82,158,143,1) 40%, rgba(255,255,255,0) 50%, rgba(82,158,143,1) 60%), 
                 linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 17%, rgba(0,255,0,1) 33%, rgba(0,255,255,1) 50%, rgba(0,0,255,1) 67%, rgba(255,0,255,1) 83%, rgba(255,0,0,1) 100%);
 }
 
 .satGradient {
     margin-left: 5px;
-    background: linear-gradient(0deg, rgba(50,53,55,1) 40%, rgba(255,255,255,0) 50%, rgba(50,53,55,1) 60%), 
+    background: linear-gradient(0deg, rgba(82,158,143,1) 40%, rgba(255,255,255,0) 50%, rgba(82,158,143,1) 60%), 
                 linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%),
                 linear-gradient(0deg, rgba(255,0,0,1) 46%, rgba(0,255,0,1) 50%, rgba(0,0,255,1) 54%);
 }

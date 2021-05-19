@@ -22,7 +22,7 @@
 .keyLetter {
     background-color: black;
     padding: 5px;
-    border: 1px solid #323537;
+    border: 1px solid #529e8f;
     border-radius: 5px;
     font-size: 12px;
 }
@@ -115,7 +115,7 @@
 
 .dragOver {
     background-color: #c2c5c7;
-    color: #323537
+    color: #529e8f
 }
 
 .onlyText {
