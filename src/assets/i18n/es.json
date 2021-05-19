@@ -1,7 +1,9 @@
 {
     "menu": {
         "resetKeycodes": "Resetear keycodes",
-        "disconnect": "Desconectar"
+        "disconnect": "Desconectar",
+        "compileFirmware": "Compilar firmware",
+        "exit": "Salir"
     },
     "loading": {
         "error": "Se ha producido un error",
@@ -14,6 +16,13 @@
         "backlight": "Luz de fondo",
         "rgblight": "RGB",
         "color": "Color"
+    },
+    "firmware": {
+        "compiledSuccess": "Compilado con éxito",
+        "compiling": "Compilando",
+        "manualDownload": "Descarga manual",
+        "downloading": "Descargando",
+        "waiting": "Esperando"
     },
     "mapper": {
         "commonKeys": "Teclas comunes",
