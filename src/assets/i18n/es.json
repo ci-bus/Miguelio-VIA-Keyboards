@@ -1,4 +1,7 @@
 {
+    "error": {
+        "unknown": "Error desconocido"
+    },
     "menu": {
         "resetKeycodes": "Resetear keycodes",
         "disconnect": "Desconectar",
@@ -182,7 +185,7 @@
         "KC__MUTE": "Mute",
         "KC__VOLUP": "Vol +",
         "KC__VOLDOWN": "Vol -",
-        "KC_LOCKING_CAPS": "Lock capa",
+        "KC_LOCKING_CAPS": "Lock caps",
         "KC_LOCKING_NUM": "Lock num",
         "KC_LOCKING_SCROLL": "Lock Scroll",
         "KC_KP_COMMA": ",",

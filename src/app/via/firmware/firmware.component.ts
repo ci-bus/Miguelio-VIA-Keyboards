@@ -212,12 +212,15 @@ export class FirmwareComponent implements OnInit {
                 request.layers.push(layerMapper);
             }
         });
+        console.log(request);
+        /*
         this.qmkService.compileFirmware(request).subscribe(response => {
             this.showLoading = false;
             this.compiling = response;
             this.checkCompileStatus();
         });
         this.loadingMessage = 'waiting';
+        */
     }
 
     checkCompileStatus() {
