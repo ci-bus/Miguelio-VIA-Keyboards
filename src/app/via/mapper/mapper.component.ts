@@ -63,7 +63,7 @@ export class MapperComponent implements OnInit {
                 this.keymaps.forEach(keymap => {
                     tempLayers.push({
                         number: keymap.number,
-                        keymap: this.keymapsHelper.makeKeymapper(tempLayout, keymap, keymap.number)
+                        keymap: this.keymapsHelper.compileKeymapper(tempLayout, keymap, keymap.number)
                     });
                 });
                 layoutsmapper.push({

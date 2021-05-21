@@ -16,13 +16,15 @@ import { LoadingComponent } from './loading/loading.component';
 import { MapperComponent } from './mapper/mapper.component';
 import { keymapsHelper } from './keymaps/keymaps.helper';
 import { LightComponent } from './light/light.component';
+import { FirmwareComponent } from './firmware/firmware.component';
 
 
 @NgModule({
     declarations: [
         LoadingComponent,
         MapperComponent,
-        LightComponent
+        LightComponent,
+        FirmwareComponent
     ],
     imports: [
         CommonModule,

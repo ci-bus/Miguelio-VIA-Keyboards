@@ -1,7 +1,12 @@
 {
+    "error": {
+        "unknown": "Unknown Error"
+    },
     "menu": {
         "resetKeycodes": "Reset keycodes",
-        "disconnect": "Disconnect"
+        "disconnect": "Disconnect",
+        "compileFirmware": "Compile firmware",
+        "exit": "Exit"
     },
     "loading": {
         "error": "An error has occurred",
@@ -14,6 +19,13 @@
         "backlight": "Backlight",
         "rgblight": "RGB",
         "color": "Color"
+    },
+    "firmware": {
+        "compiledSuccess": "Compiled successfully",
+        "compiling": "Compiling",
+        "manualDownload": "Manual download",
+        "downloading": "Downloading",
+        "waiting": "Waiting"
     },
     "mapper": {
         "commonKeys": "Common keys",
@@ -173,7 +185,7 @@
         "KC__MUTE": "Mute",
         "KC__VOLUP": "Vol +",
         "KC__VOLDOWN": "Vol -",
-        "KC_LOCKING_CAPS": "Lock capa",
+        "KC_LOCKING_CAPS": "Lock caps",
         "KC_LOCKING_NUM": "Lock num",
         "KC_LOCKING_SCROLL": "Lock Scroll",
         "KC_KP_COMMA": ",",

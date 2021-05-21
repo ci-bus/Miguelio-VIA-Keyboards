@@ -29,6 +29,7 @@ import { MenuComponent } from './via/menu/menu.component';
 import { ErrorsComponent } from './via/errors/errors.component';
 import { LightEffects } from './via/light/light.effects';
 import { MapperEffects } from './via/mapper/mapper.effects';
+import { FirmwareEffects } from './via/firmware/firmware.effects';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,11 +55,12 @@ export function createTranslateLoader(http: HttpClient) {
         DragDropModule,
         StoreModule.forRoot(AppReducers),
         EffectsModule.forRoot([
-            DevicesEffects, 
+            DevicesEffects,
             KeyboardEffects,
             DefsEffects,
             LightEffects,
-            MapperEffects
+            MapperEffects,
+            FirmwareEffects
         ]),
         StoreDevtoolsModule.instrument({
             maxAge: 25,

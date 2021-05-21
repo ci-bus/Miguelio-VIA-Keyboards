@@ -40,4 +40,8 @@ export class ErrorsComponent implements OnInit {
         this.visible = false;
     }
 
+    isString(value: any): boolean {
+        return typeof value === 'string';
+    }
+
 }

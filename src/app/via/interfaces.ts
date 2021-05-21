@@ -83,13 +83,15 @@ export interface Keymapper {
     s?: string
     f?: boolean
     firstByte?: number
-    secondByte?: number
+    secondByte?: number | string
     code?: string
     layout?: string // Layout name
     layer?: number // Layer number
     row?: number // Matrix row
     col?: number // Matrix col
     saving?: boolean
+    eventCode?: string
+    selected?: boolean
 }
 
 export interface Layermapper {
@@ -101,4 +103,67 @@ export interface Layoutmapper {
     name: string
     layers: Layermapper[]
 }
+
+// firmware component
+
+export interface QmkKeyboardKeymapper extends Keymapper {
+    label: string,
+    matrix: Array<number>,
+    x: number,
+    y: number,
+    w: number,
+    h?: number,
+    selected?: boolean
+}
+
+export interface QmkKeyboardLayout {
+    name: string
+    key_count: number
+    layout?: QmkKeyboardKeymapper[]
+}
+
+export interface QmkKeyboardLayer {
+    number: number
+    keymap: QmkKeyboardKeymapper[]
+}
+
+export interface QmkKeyboardLayouts {
+    [name: string]: QmkKeyboardLayout
+}
+
+export interface QmkKeyboardUsb {
+    device_ver: string
+    pid: string
+    vid: string
+}
+
+export interface QmkKeyboardFeatures {
+    [type: string]: boolean
+}
+
+export interface QmkKeyboard {
+    keyboard_folder: string,
+    layouts: QmkKeyboardLayouts,
+    usb: QmkKeyboardUsb,
+    manufacturer: string,
+    features: QmkKeyboardFeatures,
+    matrix_size: {
+        cols: number,
+        rows: number
+    }
+}
+
+export interface QmkKeyboards {
+    [model: string]: QmkKeyboard
+}
+
+export interface FirmwareState {
+    keyboardsList: String[],
+    model: string,
+    qmkKeyboard: QmkKeyboard,
+    layout: QmkKeyboardLayout,
+    layers: QmkKeyboardLayer[]
+}
+
+
 
