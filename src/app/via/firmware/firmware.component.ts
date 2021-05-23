@@ -196,8 +196,11 @@ export class FirmwareComponent implements OnInit {
     compile() {
         this.showLoading = true;
         let request = {
+            version: 1,
+            notes: '',
+            documentation: "\"This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\"\n",
             keyboard: this.firmware.qmkKeyboard.keyboard_folder,
-            keymap: this.firmware.layout.name,
+            keymap: this.firmware.layout.name.toLowerCase() + '_mine',
             layout: this.firmware.layout.name,
             layers: []
         };
@@ -206,6 +209,7 @@ export class FirmwareComponent implements OnInit {
                 if (key.code && key.code.indexOf('(') > 0) {
                     return key.code.split('(')[0] + '(' + key.secondByte + ')'
                 }
+                if (!key.code) debugger;
                 return key.code || 'KC_TRNS'
             });
             if (layerMapper.find(keycode => keycode != 'KC_TRNS')) {

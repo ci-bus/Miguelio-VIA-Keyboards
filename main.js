@@ -42,7 +42,7 @@ function createWindow() {
     });
 
     // Discomment to open devTools on init
-    mainWindow.openDevTools();
+    //mainWindow.openDevTools();
 
     mainWindow.loadFile('./dist/index.html');
 
