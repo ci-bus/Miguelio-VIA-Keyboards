@@ -25,7 +25,7 @@
             }
         }
     },
-    "cols": 14,
+    "cols": 15,
     "rows": 5,
     "layouts": [{
         "name": "ALL",
