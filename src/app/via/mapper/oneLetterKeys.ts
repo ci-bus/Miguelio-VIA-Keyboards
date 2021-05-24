@@ -24,6 +24,7 @@ export default [
     "KC_SLASH",
     "KC_NONUS_BSLASH",
     "KC_INT1",
-    "KC_INT3"
+    "KC_INT3",
+    "GRAVE_ESC"
 ]
 

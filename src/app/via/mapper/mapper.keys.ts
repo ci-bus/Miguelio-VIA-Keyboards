@@ -71,7 +71,7 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 0, "code": "KC_NO"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 1, "code": "KC_ROLL_OVER"
+                    "u": 1, "firstByte": 0, "secondByte": 1, "code": "KC_TRNS"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 2, "code": "KC_POST_FAIL"
@@ -803,6 +803,95 @@ export default [
                 },
                 {
                     "u": 1, "firstByte": 15, "secondByte": 0, "code": "KC_HYPR"
+                }
+            ],
+            [
+                {
+                    "f": true, "u": 6, "text": "magicKeys"
+                }
+            ]
+            ,
+            [
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 2, "code": "MAGIC_SWAP_CONTROL_CAPSLOCK"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 3, "code": "MAGIC_CAPSLOCK_TO_CONTROL"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 4, "code": "MAGIC_SWAP_LALT_LGUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 5, "code": "MAGIC_SWAP_RALT_RGUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 6, "code": "MAGIC_NO_GUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 7, "code": "MAGIC_SWAP_GRAVE_ESC"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 8, "code": "MAGIC_SWAP_BACKSLASH_BACKSPACE"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 9, "code": "MAGIC_HOST_NKRO"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 10, "code": "MAGIC_SWAP_ALT_GUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 11, "code": "MAGIC_UNSWAP_CONTROL_CAPSLOCK"
+                }
+            ]
+            ,
+            [
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 3, "code": "MAGIC_UNCAPSLOCK_TO_CONTROL"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 4, "code": "MAGIC_UNSWAP_LALT_LGUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 5, "code": "MAGIC_UNSWAP_RALT_RGUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 6, "code": "MAGIC_UNNO_GUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 7, "code": "MAGIC_UNSWAP_GRAVE_ESC"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 8, "code": "MAGIC_UNSWAP_BACKSLASH_BACKSPACE"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 9, "code": "MAGIC_UNHOST_NKRO"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 10, "code": "MAGIC_UNSWAP_ALT_GUI"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 11, "code": "MAGIC_TOGGLE_NKRO"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 2, "code": "MAGIC_TOGGLE_ALT_GUI"
+                }
+            ]
+            ,
+            [
+                {
+                    "f": true, "u": 6, "text": "otherKeys"
+                }
+            ]
+            ,
+            [
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 0, "code": "RESET"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 1, "code": "DEBUG"
+                },
+                {
+                    "u": 1, "firstByte": 92, "secondByte": 22, "code": "GRAVE_ESC"
                 }
             ]
         ]

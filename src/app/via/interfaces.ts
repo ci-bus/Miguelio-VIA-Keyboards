@@ -83,7 +83,7 @@ export interface Keymapper {
     s?: string
     f?: boolean
     firstByte?: number
-    secondByte?: number
+    secondByte?: number | string
     code?: string
     layout?: string // Layout name
     layer?: number // Layer number

@@ -1,4 +1,7 @@
 {
+    "error": {
+        "unknown": "Error desconocido"
+    },
     "menu": {
         "resetKeycodes": "Resetear keycodes",
         "disconnect": "Desconectar",
@@ -37,7 +40,8 @@
         "lightKeys": "Leds",
         "backLight": "Luz de fondo",
         "rgbLight": "Leds RGB",
-        "modKeyCombination": "Combinación modificadores"
+        "modKeyCombination": "Combinación modificadores",
+        "magicKeys": "Teclas mágicas"
     },
     "none": "Ninguno",
     "static": "Estático",
@@ -54,6 +58,7 @@
         "undefined": "",
         "KC_NO": "",
         "KC_ROLL_OVER": "",
+        "KC_TRNS": "",
         "KC_POST_FAIL": "",
         "KC_UNDEFINED": "",
         "KC_A": "A",
@@ -182,7 +187,7 @@
         "KC__MUTE": "Mute",
         "KC__VOLUP": "Vol +",
         "KC__VOLDOWN": "Vol -",
-        "KC_LOCKING_CAPS": "Lock capa",
+        "KC_LOCKING_CAPS": "Lock caps",
         "KC_LOCKING_NUM": "Lock num",
         "KC_LOCKING_SCROLL": "Lock Scroll",
         "KC_KP_COMMA": ",",
@@ -308,6 +313,7 @@
         "BL_BRTG": "BL brtg",
         "KC_MEH": "MEH",
         "KC_HYPR": "HYPR",
+
         "RGB_TOG": "RGB toggle",
         "RGB_MODE_FORWARD": "Mode +",
         "RGB_MODE_REVERSE": "Mode -",
@@ -327,7 +333,31 @@
         "RGB_MODE_KNIGHT": "Mode K",
         "RGB_MODE_XMAS": "Mode X",
         "RGB_MODE_GRADIENT": "Mode G",
-        "RGB_MODE_RGBTEST": "Mode T"
+        "RGB_MODE_RGBTEST": "Mode T",
+
+        "RESET": "Reset",
+        "DEBUG": "Debug",
+        "MAGIC_SWAP_CONTROL_CAPSLOCK": "M scc",
+        "MAGIC_CAPSLOCK_TO_CONTROL": "M ctc",
+        "MAGIC_SWAP_LALT_LGUI": "M sll",
+        "MAGIC_SWAP_RALT_RGUI": "M srr",
+        "MAGIC_NO_GUI": "M ng",
+        "MAGIC_SWAP_GRAVE_ESC": "M sge",
+        "MAGIC_SWAP_BACKSLASH_BACKSPACE": "M sbb",
+        "MAGIC_HOST_NKRO": "M hn",
+        "MAGIC_SWAP_ALT_GUI": "M sag",
+        "MAGIC_UNSWAP_CONTROL_CAPSLOCK": "M ucc",
+        "MAGIC_UNCAPSLOCK_TO_CONTROL": "M utc",
+        "MAGIC_UNSWAP_LALT_LGUI": "M ull",
+        "MAGIC_UNSWAP_RALT_RGUI": "M urr",
+        "MAGIC_UNNO_GUI": "M ug",
+        "MAGIC_UNSWAP_GRAVE_ESC": "M uge",
+        "MAGIC_UNSWAP_BACKSLASH_BACKSPACE": "M ubb",
+        "MAGIC_UNHOST_NKRO": "M un",
+        "MAGIC_UNSWAP_ALT_GUI": "M uag",
+        "MAGIC_TOGGLE_NKRO": "M tn",
+        "MAGIC_TOGGLE_ALT_GUI": "M tag",
+        "GRAVE_ESC": "Esc \\ º"
     }
 }
 

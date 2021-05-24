@@ -4,12 +4,7 @@
         <button (click)="changeLanguage(lang)" mat-icon-button>{{ lang }}</button>
     </div>
     <div *ngIf="router.url == '/'">
-        <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button *ngIf="router.url == '/'" (click)="compileFirmware()" mat-menu-item>{{ 'menu.compileFirmware' | translate }}</button>
-        </mat-menu>
+        <button *ngIf="router.url == '/'" (click)="compileFirmware()" mat-button>{{ 'menu.compileFirmware' | translate }}</button>
     </div>
     <div *ngIf="router.url == '/mapper'">
         <button mat-button [matMenuTriggerFor]="menu">

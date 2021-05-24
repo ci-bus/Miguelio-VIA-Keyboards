@@ -1,7 +1,4 @@
 <div class="section" *ngIf="compiling">
-    <mat-progress-spinner [strokeWidth]="strokeWidth" [diameter]="diameter" [color]="color" [mode]="mode"
-        [value]="value">
-    </mat-progress-spinner>
     <img src="assets/keyboard.png">
     <h1>{{ 'firmware.' + loadingMessage | translate }}</h1>
 </div>

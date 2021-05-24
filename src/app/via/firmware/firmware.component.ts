@@ -121,14 +121,22 @@ export class FirmwareComponent implements OnInit {
         event.target.style.color = '#c2185b';
         this.dragLeave(event);
         this.changeKey(this.draggingKey, key);
+        const ROKey = {
+            ...key,
+            firstByte: this.draggingKey.firstByte,
+            secondByte: this.draggingKey.secondByte
+        }
+        this.setRollOverKey(ROKey);
     }
 
     dropInput(event, key: QmkKeyboardKeymapper) {
         event.preventDefault();
         event.stopPropagation();
         event.target.style.color = '#c2185b';
-        let fromKey = { ...key };
-        fromKey.secondByte = this.draggingKey.secondByte;
+        const fromKey = { 
+            ...key,
+            secondByte: this.draggingKey.code
+        };
         this.changeKey(fromKey, key);
     }
 
@@ -138,9 +146,25 @@ export class FirmwareComponent implements OnInit {
 
     changeModKey(event, key: QmkKeyboardKeymapper) {
         event.target.style.color = '#c2185b';
-        let fromKey = { ...key };
-        fromKey.secondByte = parseInt(event.target.value);
+        const fromKey = { 
+            ...key,
+            secondByte: parseInt(event.target.value)
+        };
         this.changeKey(fromKey, key);
+        this.setRollOverKey(fromKey);
+    }
+
+    setRollOverKey(key) {
+        if (key.firstByte > 80 && key.firstByte < 89) {
+            const rollOverKey = {
+                ...key,
+                firstByte: 0,
+                secondByte: 1,
+                code: 'KC_TRNS'
+            };
+            const layerNumber = key.secondByte;
+            this.changeKey(rollOverKey, key, layerNumber);
+        }
     }
 
     onKeyDown(event) {
@@ -150,8 +174,9 @@ export class FirmwareComponent implements OnInit {
             const keys = [].concat(this.mapperKeys[0].keymap.reduce((ac, cu) => [].concat(ac, ...cu)));
             const key = keys.find(key => key.eventCode == event.code);
             this.selectNextKey();
-            this.changeKey(key, this.lastSelectedKey);
-
+            if (key) {
+                this.changeKey(key, this.lastSelectedKey);
+            }
         }
     }
 
@@ -183,26 +208,32 @@ export class FirmwareComponent implements OnInit {
         }
     }
 
-    changeKey(fromKey, toKey) {
+    changeKey(fromKey, toKey, layerNumber = this.activeTab) {
         this.sliderTime = '0ms';
         this.store.dispatch(firmwareActions.changeKey({
-            layerNumber: this.activeTab,
-            fromKey: fromKey,
-            toKey: toKey
+            layerNumber, fromKey, toKey
         }));
     }
 
     compile() {
         this.showLoading = true;
         let request = {
+            version: 1,
+            notes: '',
+            documentation: "\"This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\"\n",
             keyboard: this.firmware.qmkKeyboard.keyboard_folder,
-            keymap: this.firmware.layout.name,
+            keymap: this.firmware.layout.name.toLowerCase() + '_mine',
             layout: this.firmware.layout.name,
             layers: []
         };
         this.firmware.layers.forEach(layer => {
-            const layerMapper = layer.keymap.map(key => key.code || 'KC_TRNS');
-            if (layerMapper.find(keycode => keycode != 'KC_TRNS')) {
+            const layerMapper = layer.keymap.map(key => {
+                if (key.code && key.code.indexOf('(') > 0) {
+                    return key.code.split('(')[0] + '(' + key.secondByte + ')'
+                }
+                return key.code || 'KC_NO'
+            });
+            if (layerMapper.find(keycode => keycode != 'KC_NO')) {
                 request.layers.push(layerMapper);
             }
         });
