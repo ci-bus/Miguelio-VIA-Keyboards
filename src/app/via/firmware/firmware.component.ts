@@ -9,7 +9,7 @@ import { AppState } from '../../app.reducer';
 import { FirmwareState, Keymapper, QmkKeyboardLayout, QmkKeyboardKeymapper } from '../interfaces';
 import * as firmwareActions from './firmware.actions';
 import onLetterKey from '../mapper/oneLetterKeys';
-import mapperKeys from '../mapper/mapper.keys';
+import mapperKeys from './firmware.keys';
 import { QmkService } from '../services/qmk.service';
 import { compileFirmwareResponse } from '../services/services.interfaces';
 import { add } from '../errors/errors.actions';
@@ -133,7 +133,7 @@ export class FirmwareComponent implements OnInit {
         event.preventDefault();
         event.stopPropagation();
         event.target.style.color = '#c2185b';
-        const fromKey = { 
+        const fromKey = {
             ...key,
             secondByte: this.draggingKey.code
         };
@@ -146,7 +146,7 @@ export class FirmwareComponent implements OnInit {
 
     changeModKey(event, key: QmkKeyboardKeymapper) {
         event.target.style.color = '#c2185b';
-        const fromKey = { 
+        const fromKey = {
             ...key,
             secondByte: parseInt(event.target.value)
         };
@@ -171,7 +171,7 @@ export class FirmwareComponent implements OnInit {
         if (event.target.nodeName != 'INPUT' && this.lastSelectedKey) {
             event.preventDefault();
             event.stopPropagation();
-            const keys = [].concat(this.mapperKeys[0].keymap.reduce((ac, cu) => [].concat(ac, ...cu)));
+            const keys = [].concat([].concat(this.mapperKeys[0].keymap).reduce((ac, cu) => [].concat(ac, ...cu)));
             const key = keys.find(key => key.eventCode == event.code);
             this.selectNextKey();
             if (key) {

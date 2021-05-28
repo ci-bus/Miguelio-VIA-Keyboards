@@ -48,7 +48,7 @@
                         <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate }}</span>
                         <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
                         <div *ngIf="isModKey(key)">
-                            <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
+                            <input type="text" [value]="key.secondByte || ''" (enter)="changeModKey($event, key)"
                                 (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <span *ngIf="key.code?.indexOf('(') > 0">{{ key.code.split('(')[0] }}</span>
                             <div *ngIf="key.text" class="onlyText">{{ 'mapper.'+key.text | translate }}</div>
                             <div>
-                                <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">
+                                <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte || ''">
                             </div>
                         </div>
                     </div>
