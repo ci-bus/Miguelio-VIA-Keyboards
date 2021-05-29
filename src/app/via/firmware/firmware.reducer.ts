@@ -66,8 +66,7 @@ const _firmwareReducer = createReducer(
             number: state.layers.length,
             keymap: state.layers[0].keymap.map(key => ({
                 ...key,
-                code: 'KC_NO',
-
+                code: ''
             }))
         })
     })),
