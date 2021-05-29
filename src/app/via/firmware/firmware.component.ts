@@ -241,9 +241,9 @@ export class FirmwareComponent implements OnInit, OnDestroy {
                 if (key.code && key.code.indexOf('(') > 0) {
                     return key.code.split('(')[0] + '(' + key.secondByte + ')'
                 }
-                return key.code || 'KC_TRNS'
+                return key.code || 'KC_NO'
             });
-            if (layerMapper.find(keycode => keycode != 'KC_TRNS')) {
+            if (layerMapper.find(keycode => keycode != 'KC_NO')) {
                 request.layers.push(layerMapper);
             }
         });
