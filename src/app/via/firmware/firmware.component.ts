@@ -158,12 +158,14 @@ export class FirmwareComponent implements OnInit, OnDestroy {
             ...key,
             secondByte: parseInt(event.target.value)
         };
+        debugger;
         this.changeKey(fromKey, key);
         this.setRollOverKey(fromKey);
     }
 
     setRollOverKey(key) {
         if (key.firstByte > 80 && key.firstByte < 89) {
+            debugger;
             const rollOverKey = {
                 ...key,
                 firstByte: 0,
