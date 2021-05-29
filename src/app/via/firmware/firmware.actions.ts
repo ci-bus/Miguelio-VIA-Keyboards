@@ -30,6 +30,10 @@ export const changeKey = createAction(
     props<{ layerNumber: number, fromKey: Keymapper, toKey: QmkKeyboardKeymapper }>()
 );
 
+export const addLayer = createAction(
+    '[Firmware] AddLayer'
+);
+
 export const clear = createAction(
     '[Firmware] Clear'
 );

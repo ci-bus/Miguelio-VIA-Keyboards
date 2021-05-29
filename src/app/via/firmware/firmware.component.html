@@ -62,6 +62,13 @@
             </div>
         </div>
     </mat-tab>
+    <mat-tab disabled>
+        <ng-template mat-tab-label>
+            <button mat-button (click)="addLayer()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+        </ng-template>
+    </mat-tab>
 </mat-tab-group>
 
 
