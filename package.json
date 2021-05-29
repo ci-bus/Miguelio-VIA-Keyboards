@@ -1,6 +1,6 @@
 {
   "name": "miguelio-via-keyboards",
-  "version": "1.0.0",
+  "version": "2.2.8",
   "main": "main.js",
   "author": "Miguelio <teclados@miguelio.com> (https://miguelio.com/)",
   "description": "VIA keyboards software to change key codes config and lights",
