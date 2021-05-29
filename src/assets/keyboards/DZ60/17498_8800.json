@@ -1,30 +1,5 @@
 {
     "name": "DZ60",
-    "lighting": {
-        "rgblight": {
-            "brightness": {
-                "min": 0, "max": 255
-            },
-            "effect": [
-                { "label": "none", "value": 0 },
-                { "label": "static", "value": 1 },
-                { "label": "breathing", "value": 2 },
-                { "label": "rainbow", "value": 6 },
-                { "label": "swirl", "value": 9 },
-                { "label": "snake", "value": 15 },
-                { "label": "knightRider", "value": 21 },
-                { "label": "christmas", "value": 24 },
-                { "label": "staticGradient", "value": 25 },
-                { "label": "redGreenBlue", "value": 35 }
-            ],
-            "hue": {
-                "steps": 10
-            },
-            "sat": {
-                "steps": 17
-            }
-        }
-    },
     "cols": 15,
     "rows": 5,
     "layouts": [{
@@ -34,7 +9,7 @@
             [1.5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5],
             [1.75, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.25, 0],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1.25, 1.25, 0, 1.25, 3, 0, 1, 0, 3.25, 0, 1, 1, 1, 1, 1]
+            [1.25, 1.25, 0, 1.25, 2.25, 0, 1.25, 0, 2.75, 0, 1, 1, 1, 1, 1]
         ],
         "matrix": [
             [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [0,9], [0,10], [0,11], [0,12], [0,13], [0,14]],

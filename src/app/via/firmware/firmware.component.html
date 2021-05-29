@@ -38,7 +38,7 @@
         <div class="layout">
             <div class="firmware-container"
                 [ngStyle]="{width: firmware?.qmkKeyboard.matrix_size.cols * 48 + 'px', height: firmware?.qmkKeyboard.matrix_size.rows * 48 + 'px'}">
-                <div class="key" *ngFor="let key of layer.keymap" [ngClass]="{selected: key.selected}"
+                <div class="key" *ngFor="let key of layer.keymap" [ngClass]="{selected: key.selected, isoEnter: key.h && key.h == 2}"
                     [ngStyle]="{top: key.y * 48 + 'px', left: key.x * 48 + 'px', width: key.w * 48 + 'px'}"
                     (dragover)="dragOver($event)" (dragenter)="dragEnter($event)" (dragleave)="dragLeave($event)"
                     (drop)="drop($event, key)" (click)="toggleSelectKey($event, key)">

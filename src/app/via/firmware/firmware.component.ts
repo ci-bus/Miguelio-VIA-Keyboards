@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,7 +21,7 @@ import { RequestsService } from '../services/requests.service';
     templateUrl: './firmware.component.html',
     styleUrls: ['./firmware.component.css']
 })
-export class FirmwareComponent implements OnInit {
+export class FirmwareComponent implements OnInit, OnDestroy {
 
     public firmware: FirmwareState;
     public layoutSelected: QmkKeyboardLayout;
@@ -32,6 +32,7 @@ export class FirmwareComponent implements OnInit {
     public mapperKeys = mapperKeys;
     private draggingKey: Keymapper;
     public lastSelectedKey;
+    private functionKeyDown: any;
 
     // Progress spinner values config
     color: ThemePalette = 'accent';
@@ -69,8 +70,15 @@ export class FirmwareComponent implements OnInit {
             }
         });
 
+        this.functionKeyDown = this.onKeyDown.bind(this);
+
         this.elementRef.nativeElement.ownerDocument
-            .addEventListener('keydown', this.onKeyDown.bind(this));
+            .addEventListener('keydown', this.functionKeyDown);
+    }
+
+    ngOnDestroy() {
+        this.elementRef.nativeElement.ownerDocument
+            .removeEventListener('keydown', this.functionKeyDown);
     }
 
     changeKeyboard(event: MatSelectChange) {
