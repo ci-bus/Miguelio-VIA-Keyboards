@@ -38,7 +38,7 @@
         <div class="layout">
             <div class="firmware-container"
                 [ngStyle]="{width: firmware?.qmkKeyboard.matrix_size.cols * 48 + 'px', height: firmware?.qmkKeyboard.matrix_size.rows * 48 + 'px'}">
-                <div class="key" *ngFor="let key of layer.keymap" [ngClass]="{selected: key.selected}"
+                <div class="key" *ngFor="let key of layer.keymap" [ngClass]="{selected: key.selected, isoEnter: key.h && key.h == 2}"
                     [ngStyle]="{top: key.y * 48 + 'px', left: key.x * 48 + 'px', width: key.w * 48 + 'px'}"
                     (dragover)="dragOver($event)" (dragenter)="dragEnter($event)" (dragleave)="dragLeave($event)"
                     (drop)="drop($event, key)" (click)="toggleSelectKey($event, key)">
@@ -48,7 +48,7 @@
                         <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate }}</span>
                         <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
                         <div *ngIf="isModKey(key)">
-                            <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
+                            <input type="text" [value]="key.secondByte || ''" (enter)="changeModKey($event, key)"
                                 (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <span *ngIf="key.code?.indexOf('(') > 0">{{ key.code.split('(')[0] }}</span>
                             <div *ngIf="key.text" class="onlyText">{{ 'mapper.'+key.text | translate }}</div>
                             <div>
-                                <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">
+                                <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte || ''">
                             </div>
                         </div>
                     </div>

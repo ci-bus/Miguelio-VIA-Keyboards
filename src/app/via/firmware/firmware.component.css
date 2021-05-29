@@ -120,8 +120,9 @@
 
 
 .key.isoEnter {
-    width: 72px;
+    width: 72px !important;
     position: relative;
+    margin-left: -12px;
 }
 .key.isoEnter:after {
     width: 58px;
@@ -135,8 +136,13 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+.key.isoEnter div {
+    background: black !important;
+    color: white !important;
+}
 
-.dragOver {
+
+.dragOver:not(.isoEnter) {
     background-color: #c2c5c7;
     color: #529e8f
 }

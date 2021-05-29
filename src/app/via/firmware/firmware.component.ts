@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,7 +9,7 @@ import { AppState } from '../../app.reducer';
 import { FirmwareState, Keymapper, QmkKeyboardLayout, QmkKeyboardKeymapper } from '../interfaces';
 import * as firmwareActions from './firmware.actions';
 import onLetterKey from '../mapper/oneLetterKeys';
-import mapperKeys from '../mapper/mapper.keys';
+import mapperKeys from './firmware.keys';
 import { QmkService } from '../services/qmk.service';
 import { compileFirmwareResponse } from '../services/services.interfaces';
 import { add } from '../errors/errors.actions';
@@ -21,7 +21,7 @@ import { RequestsService } from '../services/requests.service';
     templateUrl: './firmware.component.html',
     styleUrls: ['./firmware.component.css']
 })
-export class FirmwareComponent implements OnInit {
+export class FirmwareComponent implements OnInit, OnDestroy {
 
     public firmware: FirmwareState;
     public layoutSelected: QmkKeyboardLayout;
@@ -32,6 +32,7 @@ export class FirmwareComponent implements OnInit {
     public mapperKeys = mapperKeys;
     private draggingKey: Keymapper;
     public lastSelectedKey;
+    private functionKeyDown: any;
 
     // Progress spinner values config
     color: ThemePalette = 'accent';
@@ -69,8 +70,15 @@ export class FirmwareComponent implements OnInit {
             }
         });
 
+        this.functionKeyDown = this.onKeyDown.bind(this);
+
         this.elementRef.nativeElement.ownerDocument
-            .addEventListener('keydown', this.onKeyDown.bind(this));
+            .addEventListener('keydown', this.functionKeyDown);
+    }
+
+    ngOnDestroy() {
+        this.elementRef.nativeElement.ownerDocument
+            .removeEventListener('keydown', this.functionKeyDown);
     }
 
     changeKeyboard(event: MatSelectChange) {
@@ -121,14 +129,22 @@ export class FirmwareComponent implements OnInit {
         event.target.style.color = '#c2185b';
         this.dragLeave(event);
         this.changeKey(this.draggingKey, key);
+        const ROKey = {
+            ...key,
+            firstByte: this.draggingKey.firstByte,
+            secondByte: this.draggingKey.secondByte
+        }
+        this.setRollOverKey(ROKey);
     }
 
     dropInput(event, key: QmkKeyboardKeymapper) {
         event.preventDefault();
         event.stopPropagation();
         event.target.style.color = '#c2185b';
-        let fromKey = { ...key };
-        fromKey.secondByte = this.draggingKey.code;
+        const fromKey = {
+            ...key,
+            secondByte: this.draggingKey.code
+        };
         this.changeKey(fromKey, key);
     }
 
@@ -138,16 +154,32 @@ export class FirmwareComponent implements OnInit {
 
     changeModKey(event, key: QmkKeyboardKeymapper) {
         event.target.style.color = '#c2185b';
-        let fromKey = { ...key };
-        fromKey.secondByte = parseInt(event.target.value);
+        const fromKey = {
+            ...key,
+            secondByte: parseInt(event.target.value)
+        };
         this.changeKey(fromKey, key);
+        this.setRollOverKey(fromKey);
+    }
+
+    setRollOverKey(key) {
+        if (key.firstByte > 80 && key.firstByte < 89) {
+            const rollOverKey = {
+                ...key,
+                firstByte: 0,
+                secondByte: 1,
+                code: 'KC_TRNS'
+            };
+            const layerNumber = key.secondByte;
+            this.changeKey(rollOverKey, key, layerNumber);
+        }
     }
 
     onKeyDown(event) {
         if (event.target.nodeName != 'INPUT' && this.lastSelectedKey) {
             event.preventDefault();
             event.stopPropagation();
-            const keys = [].concat(this.mapperKeys[0].keymap.reduce((ac, cu) => [].concat(ac, ...cu)));
+            const keys = [].concat([].concat(this.mapperKeys[0].keymap).reduce((ac, cu) => [].concat(ac, ...cu)));
             const key = keys.find(key => key.eventCode == event.code);
             this.selectNextKey();
             if (key) {
@@ -184,12 +216,10 @@ export class FirmwareComponent implements OnInit {
         }
     }
 
-    changeKey(fromKey, toKey) {
+    changeKey(fromKey, toKey, layerNumber = this.activeTab) {
         this.sliderTime = '0ms';
         this.store.dispatch(firmwareActions.changeKey({
-            layerNumber: this.activeTab,
-            fromKey: fromKey,
-            toKey: toKey
+            layerNumber, fromKey, toKey
         }));
     }
 
@@ -209,7 +239,6 @@ export class FirmwareComponent implements OnInit {
                 if (key.code && key.code.indexOf('(') > 0) {
                     return key.code.split('(')[0] + '(' + key.secondByte + ')'
                 }
-                if (!key.code) debugger;
                 return key.code || 'KC_TRNS'
             });
             if (layerMapper.find(keycode => keycode != 'KC_TRNS')) {
