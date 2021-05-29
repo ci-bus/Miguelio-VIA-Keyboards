@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { FirmwareState } from '../interfaces';
-import { getKeyboard, setKeyboard, changeKey, setLayout, setKeyboardsList, clear, unselect } from './firmware.actions';
+import { getKeyboard, setKeyboard, changeKey, setLayout, setKeyboardsList, clear, unselect, addLayer } from './firmware.actions';
 
 const initialState: FirmwareState = undefined;
 
@@ -57,6 +57,18 @@ const _firmwareReducer = createReducer(
                     })
                 }
                 : layer;
+        })
+    })),
+    on(addLayer, (state) => ({
+        ...state,
+        layers: state.layers.concat({
+            ...state.layers[0],
+            number: state.layers.length,
+            keymap: state.layers[0].keymap.map(key => ({
+                ...key,
+                code: 'KC_NO',
+
+            }))
         })
     })),
     on(clear, () => undefined),

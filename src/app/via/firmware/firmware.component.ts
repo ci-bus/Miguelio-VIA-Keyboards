@@ -282,5 +282,9 @@ export class FirmwareComponent implements OnInit, OnDestroy {
             });
         }, 3000);
     }
+
+    addLayer() {
+        this.store.dispatch(firmwareActions.addLayer());
+    }
 }
 
