@@ -769,14 +769,13 @@ export default [
                 },
                 {
                     "u": 1, "firstByte": 24, "secondByte": 4, "code": "RGUI(A)"
+                },
+                {
+                    "u": 1, "firstByte": 10, "secondByte": 4, "code": "SGUI(A)"
                 }
-
             ]
             ,
             [
-                {
-                    "u": 1, "firstByte": 10, "secondByte": 4, "code": "SGUI(A)"
-                },
                 {
                     "u": 1, "firstByte": 5, "secondByte": 4, "code": "LCA(A)"
                 },
@@ -787,7 +786,7 @@ export default [
                     "u": 1, "firstByte": 22, "secondByte": 4, "code": "RSA(A)"
                 },
                 {
-                    "u": 1, "firstByte": 19, "secondByte": 4, "code": "RCA(A)"
+                    "u": 1, "firstByte": 19, "secondByte": 4, "code": "RCS(A)"
                 },
                 {
                     "u": 1, "firstByte": 13, "secondByte": 4, "code": "LCAG(A)"

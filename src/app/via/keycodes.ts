@@ -255,26 +255,23 @@ keycodes[0] = [
     'KC_MS_ACCEL2'
 ];
 
-// Special keys backlight
-keycodes[92] = [];
+// Special keys quantum and lights
+keycodes[92] = ['RESET', 'DEBUG', 'MAGIC_SWAP_CONTROL_CAPSLOCK', 'MAGIC_CAPSLOCK_TO_CONTROL', 'MAGIC_SWAP_LALT_LGUI', 'MAGIC_SWAP_RALT_RGUI', 'MAGIC_NO_GUI', 'MAGIC_SWAP_GRAVE_ESC', 'MAGIC_SWAP_BACKSLASH_BACKSPACE', 'MAGIC_HOST_NKRO', 'MAGIC_SWAP_ALT_GUI', 'MAGIC_UNSWAP_CONTROL_CAPSLOCK', 'MAGIC_UNCAPSLOCK_TO_CONTROL', 'MAGIC_UNSWAP_LALT_LGUI', 'MAGIC_UNSWAP_RALT_RGUI', 'MAGIC_UNNO_GUI', 'MAGIC_UNSWAP_GRAVE_ESC', 'MAGIC_UNSWAP_BACKSLASH_BACKSPACE', 'MAGIC_UNHOST_NKRO', 'MAGIC_UNSWAP_ALT_GUI', 'MAGIC_TOGGLE_NKRO', 'MAGIC_TOGGLE_ALT_GUI', 'GRAVE_ESC'];
 keycodes[92].length = 187; // Jump
 keycodes[92].push.apply(keycodes[92], [
-    'BL_ON', 'BL_OFF', 'BL_DEC', 'BL_INC', 'BL_TOGG', 'BL_STEP', 'BL_BRTG', 
-    'RGB_TOG', 'RGB_MODE_FORWARD', 'RGB_MODE_REVERSE', 'RGB_HUI', 'RGB_HUD', 'RGB_SAI', 'RGB_SAD', 
-    'RGB_VAI', 'RGB_VAD', 'RGB_SPI', 'RGB_SPD', 'RGB_MODE_PLAIN', 'RGB_MODE_BREATHE', 'RGB_MODE_RAINBOW', 
+    'BL_ON', 'BL_OFF', 'BL_DEC', 'BL_INC', 'BL_TOGG', 'BL_STEP', 'BL_BRTG',
+    'RGB_TOG', 'RGB_MODE_FORWARD', 'RGB_MODE_REVERSE', 'RGB_HUI', 'RGB_HUD', 'RGB_SAI', 'RGB_SAD',
+    'RGB_VAI', 'RGB_VAD', 'RGB_SPI', 'RGB_SPD', 'RGB_MODE_PLAIN', 'RGB_MODE_BREATHE', 'RGB_MODE_RAINBOW',
     'RGB_MODE_SWIRL', 'RGB_MODE_SNAKE', 'RGB_MODE_KNIGHT', 'RGB_MODE_XMAS', 'RGB_MODE_GRADIENT', 'RGB_MODE_RGBTEST',
     //??? 'VLK_TOG', 'KC_LSPO', 'KC_RSPC', 'KC_SFTENT', 'PRINT_ON', 'PRINT_OFF', 'OUT_AUTO', 'OUT_USB'
 ]);
 
 // Special keys FN
-keycodes[81] = [ 'MO(0)', 'MO(1)', 'MO(2)', 'MO(3)', 'MO(4)', 'MO(5)', 'MO(6)', 'MO(7)', 'MO(8)', 'MO(9)', 'MO(10)', 'MO(11)', 'MO(12)', 'MO(13)', 'MO(14)', 'MO(15)'];
-keycodes[82] = [ 'DF(0)', 'DF(1)', 'DF(2)', 'DF(3)', 'DF(4)', 'DF(5)', 'DF(6)', 'DF(7)', 'DF(8)', 'DF(9)', 'DF(10)', 'DF(11)', 'DF(12)', 'DF(13)', 'DF(14)', 'DF(15)'];
-keycodes[83] = [ 'TG(0)', 'TG(1)', 'TG(2)', 'TG(3)', 'TG(4)', 'TG(5)', 'TG(6)', 'TG(7)', 'TG(8)', 'TG(9)', 'TG(10)', 'TG(11)', 'TG(12)', 'TG(13)', 'TG(14)', 'TG(15)'];
-keycodes[84] = [ 'OSL(0)', 'OSL(1)', 'OSL(2)', 'OSL(3)', 'OSL(4)', 'OSL(5)', 'OSL(6)', 'OSL(7)', 'OSL(8)', 'OSL(9)', 'OSL(10)', 'OSL(11)', 'OSL(12)', 'OSL(13)', 'OSL(14)', 'OSL(15)'];
-keycodes[88] = [ 'TT(0)', 'TT(1)', 'TT(2)', 'TT(3)', 'TT(4)', 'TT(5)', 'TT(6)', 'TT(7)', 'TT(8)', 'TT(9)', 'TT(10)', 'TT(11)', 'TT(12)', 'TT(13)', 'TT(14)', 'TT(15)'];
-
-// More quantum keys
-keycodes[92] = [ 'RESET', 'DEBUG', 'MAGIC_SWAP_CONTROL_CAPSLOCK', 'MAGIC_CAPSLOCK_TO_CONTROL', 'MAGIC_SWAP_LALT_LGUI', 'MAGIC_SWAP_RALT_RGUI', 'MAGIC_NO_GUI', 'MAGIC_SWAP_GRAVE_ESC', 'MAGIC_SWAP_BACKSLASH_BACKSPACE', 'MAGIC_HOST_NKRO', 'MAGIC_SWAP_ALT_GUI', 'MAGIC_UNSWAP_CONTROL_CAPSLOCK', 'MAGIC_UNCAPSLOCK_TO_CONTROL', 'MAGIC_UNSWAP_LALT_LGUI', 'MAGIC_UNSWAP_RALT_RGUI', 'MAGIC_UNNO_GUI', 'MAGIC_UNSWAP_GRAVE_ESC', 'MAGIC_UNSWAP_BACKSLASH_BACKSPACE', 'MAGIC_UNHOST_NKRO', 'MAGIC_UNSWAP_ALT_GUI', 'MAGIC_TOGGLE_NKRO', 'MAGIC_TOGGLE_ALT_GUI', 'GRAVE_ESC' ];
+keycodes[81] = ['MO(0)', 'MO(1)', 'MO(2)', 'MO(3)', 'MO(4)', 'MO(5)', 'MO(6)', 'MO(7)', 'MO(8)', 'MO(9)', 'MO(10)', 'MO(11)', 'MO(12)', 'MO(13)', 'MO(14)', 'MO(15)'];
+keycodes[82] = ['DF(0)', 'DF(1)', 'DF(2)', 'DF(3)', 'DF(4)', 'DF(5)', 'DF(6)', 'DF(7)', 'DF(8)', 'DF(9)', 'DF(10)', 'DF(11)', 'DF(12)', 'DF(13)', 'DF(14)', 'DF(15)'];
+keycodes[83] = ['TG(0)', 'TG(1)', 'TG(2)', 'TG(3)', 'TG(4)', 'TG(5)', 'TG(6)', 'TG(7)', 'TG(8)', 'TG(9)', 'TG(10)', 'TG(11)', 'TG(12)', 'TG(13)', 'TG(14)', 'TG(15)'];
+keycodes[84] = ['OSL(0)', 'OSL(1)', 'OSL(2)', 'OSL(3)', 'OSL(4)', 'OSL(5)', 'OSL(6)', 'OSL(7)', 'OSL(8)', 'OSL(9)', 'OSL(10)', 'OSL(11)', 'OSL(12)', 'OSL(13)', 'OSL(14)', 'OSL(15)'];
+keycodes[88] = ['TT(0)', 'TT(1)', 'TT(2)', 'TT(3)', 'TT(4)', 'TT(5)', 'TT(6)', 'TT(7)', 'TT(8)', 'TT(9)', 'TT(10)', 'TT(11)', 'TT(12)', 'TT(13)', 'TT(14)', 'TT(15)'];
 
 
 

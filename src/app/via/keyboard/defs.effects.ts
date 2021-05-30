@@ -34,6 +34,7 @@ export class DefsEffects {
                     .pipe(
                         first(),
                         mergeMap(defs => from(this.requestService.loadKeymaps(keyboard, defs))),
+                        tap(data => { debugger }),
                         map(keymaps => ({ type: keymapsActions.set.type, keymaps })),
                         catchError(textInfo => of({ type: errorsActions.add.type, textInfo })),
                         tap(() => setTimeout(() => this.router.navigate(['mapper']), 250))
@@ -50,3 +51,4 @@ export class DefsEffects {
         private router: Router
     ) { }
 }
+
