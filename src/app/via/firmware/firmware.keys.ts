@@ -792,7 +792,7 @@ export default [
                     "u": 1, "firstByte": 22, "secondByte": '', "code": "RSA(A)"
                 },
                 {
-                    "u": 1, "firstByte": 19, "secondByte": '', "code": "RCA(A)"
+                    "u": 1, "firstByte": 19, "secondByte": '', "code": "RCS(A)"
                 },
                 {
                     "u": 1, "firstByte": 13, "secondByte": '', "code": "LCAG(A)"

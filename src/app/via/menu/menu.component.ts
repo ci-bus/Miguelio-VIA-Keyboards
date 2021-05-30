@@ -13,7 +13,7 @@ import { disconnect, resetKeycodes } from '../mapper/mapper.actions';
 })
 export class MenuComponent implements OnInit {
 
-    languages: Array<string> = ['es', 'en'];
+    languages: Array<string> = ['es', 'us', 'en'];
 
     constructor(
         public translate: TranslateService,

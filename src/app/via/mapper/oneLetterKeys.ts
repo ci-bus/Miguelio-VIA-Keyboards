@@ -16,6 +16,7 @@ export default [
     "KC_LBRACKET",
     "KC_RBRACKET",
     "KC_BSLASH",
+    "KC_SCOLON",
     "KC_NONUS_HASH",
     "KC_QUOTE",
     "KC_GRAVE",
