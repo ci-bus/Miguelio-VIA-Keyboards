@@ -71,7 +71,7 @@
         "icon": "./src/assets/icons/keebary.ico",
         "executableName": "Keebary",
         "name": "Keebary",
-        "productName": "Keebary"
+        "productName": "Keebary",
         "overwrite": true,
         "ignore": [
           "out"
