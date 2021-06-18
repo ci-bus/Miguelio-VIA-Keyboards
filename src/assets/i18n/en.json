@@ -6,7 +6,13 @@
         "resetKeycodes": "Reset keycodes",
         "disconnect": "Disconnect",
         "compileFirmware": "Compile firmware",
+        "testKeyboard": "Test keyboard",
         "exit": "Exit"
+    },
+    "testing": {
+        "sound": "Sound",
+        "noSound": "No sound",
+        "reset": "Reset"
     },
     "loading": {
         "error": "An error has occurred",

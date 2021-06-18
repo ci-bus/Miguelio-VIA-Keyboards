@@ -146,13 +146,13 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 83, "code": "KC_NUMLOCK", "eventCode": "NumLock"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 84, "code": "KC_KP_SLASH", "eventCode": "/"
+                    "u": 1, "firstByte": 0, "secondByte": 84, "code": "KC_KP_SLASH", "eventCode": "NumpadDivide"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 85, "code": "KC_KP_ASTERISK", "eventCode": "*"
+                    "u": 1, "firstByte": 0, "secondByte": 85, "code": "KC_KP_ASTERISK", "eventCode": "NumpadMultiply"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 86, "code": "KC_KP_MINUS", "eventCode": "-"
+                    "u": 1, "firstByte": 0, "secondByte": 86, "code": "KC_KP_MINUS", "eventCode": "NumpadSubtract"
                 }
             ]
             , //////////////////////////////////////////////////////////////////////////////////////
@@ -377,7 +377,7 @@ export default [
                     "u": 1.25, "firstByte": 0, "secondByte": 224, "code": "KC_LCTRL", "eventCode": "ControlLeft"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 227, "code": "KC_LGUI", "eventCode": "MetaRight"
+                    "u": 1.25, "firstByte": 0, "secondByte": 227, "code": "KC_LGUI", "eventCode": "MetaLeft"
                 },
                 {
                     "u": 1.25, "firstByte": 0, "secondByte": 226, "code": "KC_LALT", "eventCode": "AltLeft"
@@ -389,10 +389,10 @@ export default [
                     "u": 1.25, "firstByte": 0, "secondByte": 230, "code": "KC_RALT", "eventCode": "AltRight"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 231, "code": "KC_RGUI", "eventCode": "OSRight"
+                    "u": 1.25, "firstByte": 0, "secondByte": 231, "code": "KC_RGUI", "eventCode": "MetaRight"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 101, "code": "KC_APPLICATION", "eventCode": ""
+                    "u": 1.25, "firstByte": 0, "secondByte": 101, "code": "KC_APPLICATION", "eventCode": "ContextMenu"
                 },
                 {
                     "u": 1.25, "firstByte": 0, "secondByte": 228, "code": "KC_RCTRL", "eventCode": "ControlRight"

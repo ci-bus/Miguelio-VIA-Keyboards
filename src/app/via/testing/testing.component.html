@@ -1,0 +1,46 @@
+<div class="container-testing">
+    <div>
+        <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" (change)="changeSound($event)">
+            <mat-button-toggle checked="true" value="0">{{ 'testing.noSound' | translate }}</mat-button-toggle>
+            <mat-button-toggle value="1">{{ 'testing.sound' | translate }} 1</mat-button-toggle>
+            <mat-button-toggle value="2">{{ 'testing.sound' | translate }} 2</mat-button-toggle>
+            <mat-button-toggle value="3">{{ 'testing.sound' | translate }} 3</mat-button-toggle>
+        </mat-button-toggle-group> <button class="resetKeysBtn" (click)="resetKeys()" mat-button>{{ 'testing.reset' | translate }}</button><br><br>
+    </div>
+    <div>
+        <div class="rowKeys" *ngFor="let rowKeys of mapperKeys.keymap">
+            <div class="key2" *ngFor="let key of rowKeys" [class.u0]="!key.u" [ngStyle]="{width: key.u * 48 + 'px'}">
+                <div [class.fake]="key.f || key.u === 0" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
+                    [class.keyDown]="key.keyDown" [class.keyUp]="key.keyUp" [matTooltip]="key.code"
+                    matTooltipPosition="above" matTooltipShowDelay="300" matTooltipHideDelay="200">
+                    <span *ngIf="key.code?.indexOf('(') < 0">{{ 'keycode.'+key.code | translate }}</span>
+                    <span *ngIf="key.code?.indexOf('(') > 0">{{ key.code.split('(')[0] }}</span>
+                    <div *ngIf="key.text" class="onlyText">{{ 'mapper.'+key.text | translate }}</div>
+                    <div>
+                        <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte || ''">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="click1_keyup" preload="auto">
+        <source type="audio/mp3" src="assets/mp3/click1_keyup.mp3">
+    </audio>
+    <audio id="click1_keydown" preload="auto">
+        <source type="audio/mp3" src="assets/mp3/click1_keydown.mp3">
+    </audio>
+
+    <audio id="click2_keyup" preload="auto">
+        <source type="audio/mp3" src="assets/mp3/click2_keyup.mp3">
+    </audio>
+    <audio id="click2_keydown" preload="auto">
+        <source type="audio/mp3" src="assets/mp3/click2_keydown.mp3">
+    </audio>
+
+    <audio id="click3_keyup" preload="auto">
+        <source type="audio/mp3" src="assets/mp3/click3_keyup.mp3">
+    </audio>
+    <audio id="click3_keydown" preload="auto">
+        <source type="audio/mp3" src="assets/mp3/click3_keydown.mp3">
+    </audio>
+</div>

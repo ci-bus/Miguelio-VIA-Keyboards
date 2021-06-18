@@ -39,8 +39,16 @@ export class MenuComponent implements OnInit {
         this.router.navigate(['/firmware']);
     }
 
+    testKeyboard() {
+        this.router.navigate(['/testing']);
+    }
+
     exitFirmware() {
         this.store.dispatch(clear());
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
+    }
+
+    exitTesting() {
+        this.router.navigate(['/']);
     }
 }

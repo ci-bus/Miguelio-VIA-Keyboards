@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 import { LoadingComponent } from './loading/loading.component';
@@ -17,6 +18,7 @@ import { MapperComponent } from './mapper/mapper.component';
 import { keymapsHelper } from './keymaps/keymaps.helper';
 import { LightComponent } from './light/light.component';
 import { FirmwareComponent } from './firmware/firmware.component';
+import { TestingComponent } from './testing/testing.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { FirmwareComponent } from './firmware/firmware.component';
         LoadingComponent,
         MapperComponent,
         LightComponent,
-        FirmwareComponent
+        FirmwareComponent,
+        TestingComponent
     ],
     imports: [
         CommonModule,
@@ -37,6 +40,7 @@ import { FirmwareComponent } from './firmware/firmware.component';
         MatTooltipModule,
         MatSliderModule,
         MatSelectModule,
+        MatButtonToggleModule,
         FormsModule
     ],
     providers: [
