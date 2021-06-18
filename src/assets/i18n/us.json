@@ -8,6 +8,11 @@
         "compileFirmware": "Compile firmware",
         "exit": "Exit"
     },
+    "testing": {
+        "sound": "Sound",
+        "noSound": "No sound",
+        "reset": "Reset"
+    },
     "loading": {
         "error": "An error has occurred",
         "loadingLayer": "Loading layer",

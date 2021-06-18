@@ -37,7 +37,7 @@
 .keyLetter {
     background-color: black;
     padding: 5px;
-    border: 1px solid #529e8f;
+    border: 1px solid #323537;
     border-radius: 5px;
     font-size: 12px;
 }
@@ -143,8 +143,8 @@
 
 
 .dragOver:not(.isoEnter) {
-    background-color: #c2c5c7;
-    color: #529e8f
+    background-color: #c2c5c7 !important;
+    color: #323537 !important;
 }
 
 .onlyText {
@@ -178,8 +178,6 @@ mat-form-field.mat-form-field {
 
 
 
-
-
 .section {
     display: grid;
     align-content: center;
@@ -188,12 +186,7 @@ mat-form-field.mat-form-field {
     width: 100%;
     height: 100%;
     top: 0px; left: 0px; z-index: 8;
-    background-color: #529e8f;
-}
-.section img {
-    margin-top: 100px;
-    width: 300px;
-    height: 300px;
+    background-color: #323537;
 }
 mat-progress-spinner, h1, h3, img {
     margin: 0 auto 10px;

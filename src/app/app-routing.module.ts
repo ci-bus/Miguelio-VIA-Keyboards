@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { from } from 'rxjs';
 import { LoadingComponent } from './via/loading/loading.component';
 import { MapperComponent } from './via/mapper/mapper.component';
 import { LoadingGuard } from './via/services/loading.guard';
 import { FirmwareComponent } from './via/firmware/firmware.component';
+import { TestingComponent } from './via/testing/testing.component';
 
 const routes: Routes = [
     {
@@ -18,6 +18,9 @@ const routes: Routes = [
     }, {
         path: 'firmware',
         component: FirmwareComponent
+    }, {
+        path: 'testing',
+        component: TestingComponent
     }
 ];
 

@@ -1,0 +1,109 @@
+.key {
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    cursor: default;
+    position: absolute;
+}
+
+.key.selected div {
+    border-color: white;
+}
+
+.layout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.rowKeys {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.firmware-container {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.keyLetter {
+    background-color: black;
+    padding: 5px;
+    border: 1px solid #323537;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.keyLetter > div {
+    display: flex;
+    justify-content: center;
+}
+.keyLetter input {
+    width: 24px;
+    height: 15px;
+    border-radius: 5px;
+    border: 1px solid #424547;
+}
+.oneLetter {
+    word-spacing: 0.6rem;
+    font-size: 14px;
+    text-align-last: center;
+}
+.keyLetter.none {
+    display: none;
+}
+.keyLetter.fake {
+    background: none;
+}
+.keyLetter.keyDown {
+    background-color: #424547;
+    color: white;
+}
+.keyLetter.keyUp {
+    background-color: #d2d5d7;
+    color: black;
+}
+
+.key2 {
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    cursor: default;
+}
+.key2.u0 {
+    width: 0px;
+}
+
+.onlyText {
+    padding-top: 15px;
+}
+
+mat-form-field.mat-form-field {
+    font-size: 13px;
+}
+
+.container-testing {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+h1 {
+    font-weight: 300;
+    color: #d2d5d7
+}
+
+.resetKeysBtn {
+    margin-left: 20px;
+    position: relative;
+    top: -2px;
+}
