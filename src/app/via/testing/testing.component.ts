@@ -11,7 +11,7 @@ import onLetterKey from '../mapper/oneLetterKeys';
 })
 export class TestingComponent implements OnInit, OnDestroy {
 
-    public mapperKeys: { title: string, keymap: any[] } = { ...mapperKeys[0] };
+    public keymap: any[] = JSON.parse(JSON.stringify(mapperKeys[0].keymap));
     private functionKeyDown: any;
     private functionKeyUp: any;
     private soundSelected: string = "0";
@@ -21,15 +21,22 @@ export class TestingComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.functionKeyDown = this.onKeyDown.bind(this);
+        this.formatKeymap();
 
+        this.functionKeyDown = this.onKeyDown.bind(this);
         this.elementRef.nativeElement.ownerDocument
             .addEventListener('keydown', this.functionKeyDown);
-
         this.functionKeyUp = this.onKeyUp.bind(this);
-
         this.elementRef.nativeElement.ownerDocument
             .addEventListener('keyup', this.functionKeyUp);
+    }
+
+    formatKeymap() {
+        this.keymap.map(keyRow => keyRow.map(key => ({
+            ...key,
+            keyUp: false,
+            keyDown: true
+        })));
     }
 
     isSymbolKey(key: Keymapper): boolean {
@@ -49,7 +56,7 @@ export class TestingComponent implements OnInit, OnDestroy {
         if (event.code == 'OSRight') {
             event.code = 'MetaRight';
         }
-        this.mapperKeys.keymap.map(keyRow => keyRow.map(key => {
+        this.keymap.map(keyRow => keyRow.map(key => {
             if (key.eventCode == event.code) {
                 key.keyUp = false;
                 key.keyDown = true;
@@ -64,7 +71,7 @@ export class TestingComponent implements OnInit, OnDestroy {
     onKeyUp(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.mapperKeys.keymap.map(keyRow => keyRow.map(key => {
+        this.keymap.map(keyRow => keyRow.map(key => {
             if (key.eventCode == event.code) {
                 key.keyUp = true;
             }
@@ -80,7 +87,7 @@ export class TestingComponent implements OnInit, OnDestroy {
     }
 
     resetKeys() {
-        this.mapperKeys.keymap.map(keyRow => keyRow.map(key => {
+        this.keymap.map(keyRow => keyRow.map(key => {
             delete key.keyDown;
             delete key.keyUp;
         }));
@@ -90,7 +97,7 @@ export class TestingComponent implements OnInit, OnDestroy {
         this.elementRef.nativeElement.ownerDocument
             .removeEventListener('keydown', this.functionKeyDown);
         this.elementRef.nativeElement.ownerDocument
-            .removeEventListener('keydown', this.functionKeyUp);
+            .removeEventListener('keyup', this.functionKeyUp);
         this.resetKeys();
     }
 }
