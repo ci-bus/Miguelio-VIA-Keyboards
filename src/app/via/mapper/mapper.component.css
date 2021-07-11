@@ -16,11 +16,10 @@
 
 .key2 {
     border-radius: 5px;
-    width: 48px;
-    height: 48px;
     display: grid;
     cursor: default;
     position: absolute;
+    transform-origin: 50% 50%;
 }
 
 .mapper-container {

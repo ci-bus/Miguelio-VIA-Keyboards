@@ -62,7 +62,6 @@ export class keymapsHelper {
             }));
             return layout;
         }
-        debugger;
         return fullKeymap;
     }
 
@@ -72,9 +71,12 @@ export class keymapsHelper {
             fullKeymap = fullKeymap.map((key: Keymapper) => ({
                 ...key,
                 ...keymap.keys[(key.matrix[0] * layout.cols + key.matrix[1])],
-                w: key.w | 1,
-                h: key.h | 1,
-                layer: layerNumber
+                row: key.matrix[0],
+                col: key.matrix[1],
+                w: key.w || 1,
+                h: key.h || 1,
+                layer: layerNumber,
+                layout: layout.name
             }));
             fullKeymap = fullKeymap.map((key: Keymapper) => ({
                 ...key,
