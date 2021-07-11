@@ -99,7 +99,9 @@ export interface Keymapper {
     saving?: boolean
     eventCode?: string
     selected?: boolean
-
+    // V2
+    x?: number
+    y?: number
     w?: number
     h?: number
     matrix: Array<number>

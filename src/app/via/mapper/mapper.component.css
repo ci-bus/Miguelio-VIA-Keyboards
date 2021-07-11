@@ -6,6 +6,28 @@
     padding-top: 30px;
 }
 
+.layout2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.key2 {
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    cursor: default;
+    position: absolute;
+}
+
+.mapper-container {
+    position: relative;
+    padding-bottom: 20px;
+}
+
 .rowKeys {
     display: flex;
     flex-direction: row;

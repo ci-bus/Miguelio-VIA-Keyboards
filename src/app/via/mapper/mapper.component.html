@@ -4,10 +4,38 @@
         <mat-tab *ngFor="let layout of layoutsmapper" [label]="layout.name">
             <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="activeTab = $event.index">
                 <mat-tab *ngFor="let layer of layout.layers" [label]="layer.number">
-                    <div class="layout">
+                    <div *ngIf="defs.vdoc == 2" class="layout2">
+                        <div *ngIf="layoutsmapper" class="mapper-container" [ngStyle]="{width: containerSize()[0] + 'px', height: containerSize()[1] + 'px'}">
+                            <div class="key2" *ngFor="let key of layer.keymap"
+                                [ngClass]="{selected: key.selected, isoEnter: key.h && key.h == 2}"
+                                [ngStyle]="{top: key.y * widthKeys + 'px', left: key.x * widthKeys + 'px', width: key.w * widthKeys + 'px', height: key.h * widthKeys + 'px'}"
+                                (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
+                                (dragleave)="dragLeave($event)" (drop)="drop($event, key)"
+                                (click)="toggleSelectKey($event, key)">
+                                <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
+                                    [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code"
+                                    matTooltipPosition="above" matTooltipShowDelay="300" matTooltipHideDelay="200">
+                                    <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate }}</span>
+                                    <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
+                                    <div *ngIf="isModKey(key)">
+                                        <input type="text" [value]="key.secondByte || ''"
+                                            (enter)="changeModKey($event, key)" (change)="changeModKey($event, key)"
+                                            (drop)="dropInput($event, key)">
+                                    </div>
+                                </div>
+                                <div *ngIf="key.saving" class="keyLetter loading">
+                                    <div class="spinner">
+                                        <div class="cube1"></div>
+                                        <div class="cube2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="defs.vdoc != 2" class="layout">
                         <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
                             <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u"
-                                [class.isoEnter]="key.s=='ISO_ENTER'" [style.width.px]="key.u * 48"
+                                [class.isoEnter]="key.s=='ISO_ENTER'" [style.width.px]="key.u * widthKeys"
                                 (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
                                 (dragleave)="dragLeave($event)" (drop)="drop($event, key)">
                                 <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
@@ -40,12 +68,12 @@
             <mat-tab *ngFor="let mapperKeysTab of mapperKeys" [label]="'mapper.'+mapperKeysTab.title | translate">
                 <div class="layout">
                     <div class="rowKeys" *ngFor="let rowKeys of mapperKeysTab.keymap">
-                        <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u"
-                            [style.width.px]="key.u * 48" [class.isoEnter]="key.s=='ISO_ENTER'"
-                            draggable="true" (dragstart)="drag(key)" (dragend)="dragEnd()">
-                            <div [class.fake]="key.f || key.u === 0" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
-                                [matTooltip]="key.code" matTooltipPosition="above" matTooltipShowDelay="300"
-                                matTooltipHideDelay="200">
+                        <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u" [style.width.px]="key.u * widthKeys"
+                            [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true" (dragstart)="drag(key)"
+                            (dragend)="dragEnd()">
+                            <div [class.fake]="key.f || key.u === 0" class="keyLetter"
+                                [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code" matTooltipPosition="above"
+                                matTooltipShowDelay="300" matTooltipHideDelay="200">
                                 <span *ngIf="key.code?.indexOf('(') < 0">{{ 'keycode.'+key.code | translate }}</span>
                                 <span *ngIf="key.code?.indexOf('(') > 0">{{ key.code.split('(')[0] }}</span>
                                 <div *ngIf="key.text" class="onlyText">{{ 'mapper.'+key.text | translate }}</div>
