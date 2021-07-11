@@ -26,6 +26,13 @@ export interface Layout {
     cols?: number
 }
 
+export interface LayoutV2 {
+    name: string
+    keymap: Array<Keymapper>
+    rows?: number
+    cols?: number
+}
+
 export interface MinMax {
     min: number
     max: number
@@ -92,6 +99,10 @@ export interface Keymapper {
     saving?: boolean
     eventCode?: string
     selected?: boolean
+
+    w?: number
+    h?: number
+    matrix: Array<number>
 }
 
 export interface Layermapper {
