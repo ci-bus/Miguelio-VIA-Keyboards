@@ -1,5 +1,5 @@
 <div>
-    <mat-tab-group animationDuration="0ms" [selectedIndex]="activeMainTab"
+    <mat-tab-group #firstab animationDuration="0ms" [selectedIndex]="activeMainTab"
         (selectedTabChange)="activeMainTab = $event.index">
         <mat-tab *ngFor="let layout of layoutsmapper" [label]="layout.name">
             <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="activeTab = $event.index">
@@ -9,8 +9,8 @@
                         <div *ngIf="layoutsmapper" class="mapper-container" [ngStyle]="{width: containerSize(layout)[0] + 'px', height: containerSize(layout)[1] + 'px'}">
                             <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
                                 <div class="key2" *ngFor="let key of rowKeys"
-                                    [ngClass]="{selected: key.selected, isoEnter: key.h && key.h == 2}"
-                                    [ngStyle]="{top: key.y * sizeKeys + 'px', left: key.x * sizeKeys + 'px', width: key.w * sizeKeys + 'px', height: key.h * sizeKeys + 'px', transform: key.t || 'none'}"
+                                    [ngClass]="{selected: key.selected, isoEnter2: key.h && key.h == 2}"
+                                    [ngStyle]="{top: key.y * sizeKeys + 'px', left: key.x * sizeKeys + 'px', width: key.w * sizeKeys + 'px', height: key.h == 2 ? '48px' : key.h * sizeKeys + 'px', transform: key.t || 'none'}"
                                     (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
                                     (dragleave)="dragLeave($event)" (drop)="drop($event, key)"
                                     (click)="toggleSelectKey($event, key)">

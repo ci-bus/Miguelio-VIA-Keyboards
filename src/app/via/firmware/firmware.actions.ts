@@ -43,5 +43,13 @@ export const unselect = createAction(
     props<{ layerNumber: number, toKey: QmkKeyboardKeymapper }>()
 );
 
+export const addSupport = createAction(
+    '[Mapper] addSupport',
+    props<{ support: any, fileName: string, keyboardDir: string }>()
+);
+
+export const addSupportSuccess = createAction(
+    '[Mapper] addSupportSuccess'
+);
 
 

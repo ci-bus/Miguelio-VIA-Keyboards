@@ -1,11 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import { FirmwareState } from '../interfaces';
-import { getKeyboard, setKeyboard, changeKey, setLayout, setKeyboardsList, clear, unselect, addLayer } from './firmware.actions';
+import { getKeyboard, setKeyboard, changeKey, setLayout, setKeyboardsList, clear, unselect, addLayer, addSupport, addSupportSuccess, getKeyboardsList } from './firmware.actions';
 
 const initialState: FirmwareState = undefined;
 
 const _firmwareReducer = createReducer(
     initialState,
+    on(getKeyboardsList, state => ({
+        ...state,
+        savedSupport: false
+    })),
     on(setKeyboardsList, (state, { keyboardsList }) => ({
         ...state,
         keyboardsList
@@ -85,6 +89,14 @@ const _firmwareReducer = createReducer(
                 }
                 : layer;
         })
+    })),
+    on(addSupport, (state) => ({
+        ...state,
+        savedSupport: false
+    })),
+    on(addSupportSuccess, state => ({
+        ...state,
+        savedSupport: true
     }))
 );
 

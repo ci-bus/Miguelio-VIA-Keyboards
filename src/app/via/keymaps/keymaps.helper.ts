@@ -16,7 +16,6 @@ export class keymapsHelper {
     ) { }
 
     private createKeymapObjects(keymap) {
-        debugger;
         return keymap.map(row => row.map(key => {
             return typeof key == 'number' ? { u: key} : key;
         }));

@@ -1,9 +1,5 @@
 <div class="section">
-    <mat-progress-spinner 
-        [strokeWidth]="strokeWidth" 
-        [diameter]="diameter" 
-        [color]="color" 
-        [mode]="mode"
+    <mat-progress-spinner [strokeWidth]="strokeWidth" [diameter]="diameter" [color]="color" [mode]="mode"
         [value]="value">
     </mat-progress-spinner>
     <img (click)="getDevices()" src="assets/keyboard.png">
@@ -13,8 +9,54 @@
     <h3 *ngIf="msgInfoSecond=='error'">{{ 'loading.error' | translate }}</h3>
     <h3 *ngIf="msgInfoSecond=='unknowModel'">{{ 'loading.unknowModel' | translate }}</h3>
     <div class="devices">
-        <button (click)="selectDevice(device)" [disabled]="loadingLayers" mat-flat-button *ngFor="let device of devices$ | async">
+        <button (click)="selectDevice(device)" [disabled]="loadingLayers" mat-flat-button
+            *ngFor="let device of devices$ | async">
             {{ device.product }} <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
+    </div>
+    <div class="add-support">
+        <div>
+            <h5>¿No aparece tu teclado?</h5>
+            <button (click)="showAddSupport = !showAddSupport" mat-flat-button>Añadir soporte</button>
+        </div>
+    </div>
+    <div *ngIf="showAddSupport" class="add-support-input">
+        <div>
+            <p>Seleccione el teclado que desea añadir soporte</p>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Keyboard</mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Keyboards" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                <mat-autocomplete (optionSelected)="changeKeyboard($event)" autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="compile-select" *ngIf="firmware?.qmkKeyboard"
+                [disabled]="!firmware?.qmkKeyboard?.layouts">
+                <mat-label>Layouts</mat-label>
+                <mat-select (selectionChange)="selectionLayouts($event)" multiple>
+                    <mat-option *ngFor="let layout of firmware?.qmkKeyboard?.layouts | keyvalue" [value]="layout">
+                        {{ layout.key }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div *ngIf="firmware?.model && firmware?.qmkKeyboard && !showLoading" class="light-configs">
+                <mat-slide-toggle (change)="rgbUnderglow = $event.checked" color="primary" class="switch">RGB Underglow
+                </mat-slide-toggle>
+                <mat-slide-toggle (change)="backlight = $event.checked" color="primary" class="switch">Backlight
+                </mat-slide-toggle>
+            </div>
+            <div *ngIf="!showLoading" class="support-buttons">
+                <button (click)="addSupport()" *ngIf="firmware?.model && firmware?.qmkKeyboard && !showLoading"
+                    mat-flat-button>Añadir soporte</button>
+                <button (click)="showAddSupport = !showAddSupport" mat-flat-button>Cancelar</button>
+            </div>
+            <div class="preloader" *ngIf="showLoading"></div>
+        </div>
     </div>
 </div>

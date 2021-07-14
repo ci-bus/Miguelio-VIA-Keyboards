@@ -155,6 +155,7 @@ export interface QmkKeyboardFeatures {
 }
 
 export interface QmkKeyboard {
+    keyboard_name: string,
     keyboard_folder: string,
     layouts: QmkKeyboardLayouts,
     usb: QmkKeyboardUsb,
@@ -175,7 +176,8 @@ export interface FirmwareState {
     model: string,
     qmkKeyboard: QmkKeyboard,
     layout: QmkKeyboardLayout,
-    layers: QmkKeyboardLayer[]
+    layers: QmkKeyboardLayer[],
+    savedSupport: boolean
 }
 
 

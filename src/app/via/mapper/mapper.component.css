@@ -22,6 +22,33 @@
     transform-origin: 50% 50%;
 }
 
+.key2.isoEnter2 {
+    width: 72px !important;
+    position: relative;
+    margin-left: -12px;
+}
+.key2.isoEnter2:after {
+    width: 58px;
+    height: 51px;
+    background: black;
+    color: black;
+    position: absolute;
+    content: "X";
+    top: 44px;
+    left: 13px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.key2.isoEnter2 div {
+    background: black !important;
+    color: white !important;
+}
+
+.dragOver:not(.isoEnter2) {
+    background-color: #c2c5c7 !important;
+    color: #323537 !important;
+}
+
 .mapper-container {
     position: relative;
     padding-bottom: 20px;

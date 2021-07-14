@@ -74,3 +74,15 @@ button {
         opacity: 0 !important;
     }
 }
+
+.mat-select-panel {
+    max-width: none !important;
+    min-height: 500px !important;
+}
+.mat-option-text {
+    user-select: none;
+}
+
+app-mapper > div > mat-tab-group > mat-tab-header:first-child {
+    margin-right: 250px;
+}

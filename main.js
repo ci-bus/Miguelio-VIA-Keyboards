@@ -92,7 +92,7 @@ ipcMain.handle('downloadFile', async (event, url) => {
             ok(info);
         });
     })
-    .catch(error => event.sender.send('error', error));
+        .catch(error => event.sender.send('error', error));
     return res;
 });
 
@@ -112,7 +112,7 @@ ipcMain.handle('getDevicesList', async () => {
     const keyboardsDefs = glob.sync(__dirname + "/dist/assets/keyboards/**/*.json");
     const devices = HID.devices().map(device => ({
         ...device, pathJson: keyboardsDefs.find(kd => kd.split('/').pop() === `${device.vendorId}_${device.productId}.json`)
-      })).filter(device => device.pathJson && device.interface === 1);
+    })).filter(device => device.pathJson && device.interface === 1);
     return devices;
 });
 
@@ -137,8 +137,8 @@ ipcMain.handle('countLayers', async (event, keyboard) => {
         // On error
         device.on('error', fail);
     })
-    .catch(error => event.sender.send('error', error))
-    .finally(() => device.close());
+        .catch(error => event.sender.send('error', error))
+        .finally(() => device.close());
 
     return count;
 });
@@ -160,8 +160,8 @@ ipcMain.handle('resetKeycodes', async (event, keyboard) => {
         // On error
         device.on('error', fail);
     })
-    .catch(error => event.sender.send('error', error))
-    .finally(() => device.close());
+        .catch(error => event.sender.send('error', error))
+        .finally(() => device.close());
 
     return response;
 });
@@ -259,8 +259,8 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
         });
 
     })
-    .catch(error => event.sender.send('error', error))
-    .finally(() => device.close());
+        .catch(error => event.sender.send('error', error))
+        .finally(() => device.close());
 
     return keymaps;
 });
@@ -290,7 +290,7 @@ ipcMain.handle('loadLight', async (event, data) => {
             device.on('error', fail);
 
         })
-        .catch(error => event.sender.send('error', error));
+            .catch(error => event.sender.send('error', error));
 
         // Load backlight effect
         device.write([0x00, 8, 10, 0]);
@@ -306,8 +306,8 @@ ipcMain.handle('loadLight', async (event, data) => {
             device.on('error', fail);
 
         })
-        .catch(error => event.sender.send('error', error))
-        .finally(() => device.close());
+            .catch(error => event.sender.send('error', error))
+            .finally(() => device.close());
 
         return {
             backlight: {
@@ -334,7 +334,7 @@ ipcMain.handle('loadLight', async (event, data) => {
             device.on('error', fail);
 
         })
-        .catch(error => event.sender.send('error', error));
+            .catch(error => event.sender.send('error', error));
 
         // Load RGB effect
         device.write([0x00, 8, 129, 0]);
@@ -350,7 +350,7 @@ ipcMain.handle('loadLight', async (event, data) => {
             device.on('error', fail);
 
         })
-        .catch(error => event.sender.send('error', error));
+            .catch(error => event.sender.send('error', error));
 
         // Load RGB effect speed
         device.write([0x00, 8, 130, 0]);
@@ -366,7 +366,7 @@ ipcMain.handle('loadLight', async (event, data) => {
             device.on('error', fail);
 
         })
-        .catch(error => event.sender.send('error', error));
+            .catch(error => event.sender.send('error', error));
 
         // Load RGB color
         device.write([0x00, 8, 131, 0]);
@@ -385,8 +385,8 @@ ipcMain.handle('loadLight', async (event, data) => {
             device.on('error', fail);
 
         })
-        .catch(error => event.sender.send('error', error))
-        .finally(() => device.close());
+            .catch(error => event.sender.send('error', error))
+            .finally(() => device.close());
 
         return {
             rgblight: {
@@ -423,8 +423,8 @@ ipcMain.handle('changeLight', async (event, data) => {
         // On error
         device.on('error', fail);
     })
-    .catch(error => event.sender.send('error', error))
-    .finally(() => device.close());
+        .catch(error => event.sender.send('error', error))
+        .finally(() => device.close());
 
     return res.readUInt8(1) == data.prop
         && res.readUInt8(2) == data.firstByte
@@ -450,8 +450,8 @@ ipcMain.handle('setKeycode', async (event, data) => {
         // On error
         device.on('error', fail);
     })
-    .catch(error => event.sender.send('error', error))
-    .finally(() => device.close());
+        .catch(error => event.sender.send('error', error))
+        .finally(() => device.close());
 
     // Send finish loading
     event.sender.send('setKeycodeFinish', true);
@@ -461,4 +461,25 @@ ipcMain.handle('setKeycode', async (event, data) => {
         && res.readUInt8(3) == data.col;
 });
 
+//-------------//
+// Add Support //
+//-------------//
+ipcMain.handle('addSupport', async (event, data) => {
+    let jsonString = JSON.stringify(data.support);
+    fs.mkdir(__dirname + "/dist/assets/keyboards/" + data.keyboardDir, { recursive: true }, err => {
+        if (err) {
+            console.log('Error', err);
+            event.sender.send('error', err);
+        } else {
+            fs.writeFile(__dirname + "/dist/assets/keyboards/" + data.keyboardDir + "/" + data.fileName, jsonString, error => {
+                if (error) {
+                    console.log("Error:", error);
+                    event.sender.send('error', error);
+                } else {
+                    event.sender.send('success', true);
+                }
+            });
+        }
+    });
+});
 

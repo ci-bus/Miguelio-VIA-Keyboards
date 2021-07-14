@@ -3,14 +3,16 @@
     <h1>{{ 'firmware.' + loadingMessage | translate }}</h1>
 </div>
 
-<div style="display:flex;flex-direction:row;align-items:baseline;">
-    <mat-form-field appearance="outline" class="compile-select">
-        <mat-label>Keyboards</mat-label>
-        <mat-select name="keyboards" (selectionChange)="changeKeyboard($event)" [disabled]="!firmware?.keyboardsList">
-            <mat-option *ngFor="let keyboard of firmware?.keyboardsList" [value]="keyboard">
-                {{ keyboard }}
+<div class="main-container">
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Keyboard</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Keyboards" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+        <mat-autocomplete (optionSelected)="changeKeyboard($event)" autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
             </mat-option>
-        </mat-select>
+        </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="outline" class="compile-select" *ngIf="firmware?.qmkKeyboard"
         [disabled]="!firmware?.qmkKeyboard?.layouts">
@@ -36,10 +38,9 @@
     *ngIf="firmware?.layers">
     <mat-tab *ngFor="let layer of firmware.layers" [label]="layer.number">
         <div class="layout">
-            <div class="firmware-container"
-                [ngStyle]="{width: firmware?.qmkKeyboard.matrix_size.cols * 48 + 'px', height: firmware?.qmkKeyboard.matrix_size.rows * 48 + 'px'}">
+            <div class="firmware-container" [ngStyle]="{width: containerSize(layer)[0] + 'px', height: containerSize(layer)[1] + 'px'}">
                 <div class="key" *ngFor="let key of layer.keymap" [ngClass]="{selected: key.selected, isoEnter: key.h && key.h == 2}"
-                    [ngStyle]="{top: key.y * 48 + 'px', left: key.x * 48 + 'px', width: key.w * 48 + 'px'}"
+                    [ngStyle]="{top: key.y * 48 + 'px', left: key.x * 48 + 'px', width: key.w * 48 + 'px', height: key.h == 2 ? '48px' : key.h * sizeKeys + 'px'}"
                     (dragover)="dragOver($event)" (dragenter)="dragEnter($event)" (dragleave)="dragLeave($event)"
                     (drop)="drop($event, key)" (click)="toggleSelectKey($event, key)">
                     <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"

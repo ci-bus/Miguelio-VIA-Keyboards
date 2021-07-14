@@ -100,8 +100,6 @@ export class MapperComponent implements OnInit {
                     });
                 });
 
-                debugger;
-
                 this.store.dispatch(mapperActions.set({ layoutsmapper }));
             }
         }

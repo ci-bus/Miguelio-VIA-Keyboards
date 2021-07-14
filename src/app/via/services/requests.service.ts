@@ -96,4 +96,9 @@ export class RequestsService {
         return this.ipcService.invoke('downloadFile', url);
     }
 
+    // Add support
+    public addSupport(supportData): Promise<string> {
+        return this.ipcService.invoke('addSupport', supportData);
+    }
+
 }
