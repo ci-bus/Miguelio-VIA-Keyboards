@@ -67,7 +67,7 @@ export class FirmwareComponent implements OnInit, OnDestroy {
 
         this.store.select('firmware').subscribe(firmware => {
             this.firmware = firmware;
-            if (firmware) {
+            if (firmware && firmware.keyboardsList) {
                 this.showLoading = false;
                 setTimeout(() => {
                     this.sliderTime = '400ms';
