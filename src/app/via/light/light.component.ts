@@ -45,9 +45,11 @@ export class LightComponent implements OnInit, OnDestroy {
         });
 
         this.subscription = this.store.select('light').subscribe(lightValues => {
-            this.values = lightValues;
-            this.hue = lightValues.rgblight?.color.hue;
-            this.sat = lightValues.rgblight?.color.sat;
+            if (lightValues) {
+                this.values = lightValues;
+                this.hue = lightValues.rgblight?.color.hue;
+                this.sat = lightValues.rgblight?.color.sat;
+            }
         });
 
     }

@@ -14,10 +14,10 @@ const _mapperReducer = createReducer(initialState,
                 if (tempLayer.number === toKey.layer) {
                     tempLayer.keymap = tempLayer.keymap.map(rowKeys => rowKeys.map(keyState => {
                         return keyState.row === toKey.row && keyState.col === toKey.col
-                            ? Object.assign({ ...toKey }, { 
+                            ? Object.assign({ ...toKey }, {
                                 code: fromKey.code,
                                 firstByte: fromKey.firstByte,
-                                secondByte: fromKey.secondByte 
+                                secondByte: fromKey.secondByte
                             }) : keyState;
                     }))
                 }

@@ -24,6 +24,7 @@ export class MapperComponent implements OnInit {
     mapperKeys = mapperKeys;
     activeMainTab: number = 1;
     activeTab: number = 0;
+    public sizeKeys: number = 48;
 
     draggingKey: Keymapper;
 
@@ -51,30 +52,69 @@ export class MapperComponent implements OnInit {
     createLayoutsmapper() {
         let layoutsmapper = [];
         if (this.defs.layouts.length && this.keymaps.length) {
-            // Each json layouts
-            this.defs.layouts.forEach(layout => {
-                let tempLayout = {
-                    ...layout,
-                    rows: this.defs.rows,
-                    cols: this.defs.cols
-                },
-                    tempLayers = [];
-                // Each eeprom keymaps
-                this.keymaps.forEach(keymap => {
-                    tempLayers.push({
-                        number: keymap.number,
-                        keymap: this.keymapsHelper.compileKeymapper(tempLayout, keymap, keymap.number)
+            // V2
+            if (this.defs.vdoc == 2) {
+                // Each json layouts
+                this.defs.layouts.forEach(layout => {
+                    let tempLayout = {
+                        ...layout,
+                        rows: this.defs.rows,
+                        cols: this.defs.cols
+                    },
+                        tempLayers = [];
+                    // Each eeprom keymaps
+                    this.keymaps.forEach(keymap => {
+                        tempLayers.push({
+                            number: keymap.number,
+                            keymap: [this.keymapsHelper.compileKeymapperV2(tempLayout, keymap, keymap.number)]
+                        });
+                    });
+                    layoutsmapper.push({
+                        name: layout.name,
+                        layers: tempLayers
                     });
                 });
-                layoutsmapper.push({
-                    name: layout.name,
-                    layers: tempLayers
+
+                this.store.dispatch(mapperActions.set({ layoutsmapper }));
+
+                // V1
+            } else {
+                // Each json layouts
+                this.defs.layouts.forEach(layout => {
+                    let tempLayout = {
+                        ...layout,
+                        rows: this.defs.rows,
+                        cols: this.defs.cols
+                    },
+                        tempLayers = [];
+                    // Each eeprom keymaps
+                    this.keymaps.forEach(keymap => {
+                        tempLayers.push({
+                            number: keymap.number,
+                            keymap: this.keymapsHelper.compileKeymapper(tempLayout, keymap, keymap.number)
+                        });
+                    });
+                    layoutsmapper.push({
+                        name: layout.name,
+                        layers: tempLayers
+                    });
                 });
-            });
 
-            this.store.dispatch(mapperActions.set({ layoutsmapper }));
+                this.store.dispatch(mapperActions.set({ layoutsmapper }));
+            }
         }
+    }
 
+    containerSize(layout) {
+        let maxWidth = 0,
+            maxHeight = 0;
+        layout.layers[0].keymap.flat().map(key => {
+            let width = key.x * this.sizeKeys + key.w * this.sizeKeys,
+                height = key.y * this.sizeKeys + key.h * this.sizeKeys;
+            maxWidth = width > maxWidth ? width : maxWidth;
+            maxHeight = height > maxHeight ? height : maxHeight;
+        });
+        return [maxWidth, maxHeight];
     }
 
     isModKey(key: Keymapper): boolean {

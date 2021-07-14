@@ -11,6 +11,11 @@ import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { LoadingComponent } from './loading/loading.component';
@@ -41,7 +46,12 @@ import { TestingComponent } from './testing/testing.component';
         MatSliderModule,
         MatSelectModule,
         MatButtonToggleModule,
-        FormsModule
+        FormsModule,
+        MatSlideToggleModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule
     ],
     providers: [
         keymapsHelper

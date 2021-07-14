@@ -1,4 +1,4 @@
-<div class="container" *ngIf="values.backlight && lightingDefs.backlight">
+<div class="container" *ngIf="values?.backlight && lightingDefs.backlight">
     <div class="row">
         <div class="title first">
             {{ 'light.backlight' | translate }}
@@ -27,7 +27,7 @@
 
 
 
-<div class="container" *ngIf="values.rgblight && lightingDefs.rgblight">
+<div class="container" *ngIf="values?.rgblight && lightingDefs.rgblight">
     <div class="row">
         <div class="title first">
             {{ 'light.rgblight' | translate }}

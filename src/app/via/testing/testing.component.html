@@ -8,7 +8,7 @@
         </mat-button-toggle-group> <button class="resetKeysBtn" (click)="resetKeys()" mat-button>{{ 'testing.reset' | translate }}</button><br><br>
     </div>
     <div>
-        <div class="rowKeys" *ngFor="let rowKeys of keymap">
+        <div class="rowKeys" *ngFor="let rowKeys of mapperKeys.keymap">
             <div class="key2" *ngFor="let key of rowKeys" [class.u0]="!key.u" [ngStyle]="{width: key.u * 48 + 'px'}">
                 <div [class.fake]="key.f || key.u === 0" class="keyLetter" [class.oneLetter]="isSymbolKey(key)"
                     [class.keyDown]="key.keyDown" [class.keyUp]="key.keyUp" [matTooltip]="key.code"

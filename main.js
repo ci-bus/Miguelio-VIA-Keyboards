@@ -113,20 +113,7 @@ ipcMain.handle('getDevicesList', async () => {
     const devices = HID.devices().map(device => ({
         ...device, pathJson: keyboardsDefs.find(kd => kd.split('/').pop() === `${device.vendorId}_${device.productId}.json`)
     })).filter(device => device.pathJson && device.interface === 1);
-    let validDevices = [],
-        failedDevices = [];
-    devices.forEach(device => {
-        let testingDevice = new HID.HID(device.path);
-        try {
-            testingDevice.write([0x00, 17]);
-            validDevices.push(device);
-            testingDevice.close();
-        } catch {
-            failedDevices.push(device);
-            testingDevice.close();
-        }
-    });
-    return validDevices;
+    return devices;
 });
 
 //------------------------//
@@ -474,4 +461,25 @@ ipcMain.handle('setKeycode', async (event, data) => {
         && res.readUInt8(3) == data.col;
 });
 
+//-------------//
+// Add Support //
+//-------------//
+ipcMain.handle('addSupport', async (event, data) => {
+    let jsonString = JSON.stringify(data.support);
+    fs.mkdir(__dirname + "/dist/assets/keyboards/" + data.keyboardDir, { recursive: true }, err => {
+        if (err) {
+            console.log('Error', err);
+            event.sender.send('error', err);
+        } else {
+            fs.writeFile(__dirname + "/dist/assets/keyboards/" + data.keyboardDir + "/" + data.fileName, jsonString, error => {
+                if (error) {
+                    console.log("Error:", error);
+                    event.sender.send('error', error);
+                } else {
+                    event.sender.send('success', true);
+                }
+            });
+        }
+    });
+});
 

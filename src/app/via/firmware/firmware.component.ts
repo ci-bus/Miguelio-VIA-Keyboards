@@ -14,6 +14,10 @@ import { QmkService } from '../services/qmk.service';
 import { compileFirmwareResponse } from '../services/services.interfaces';
 import { add } from '../errors/errors.actions';
 import { RequestsService } from '../services/requests.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 
 @Component({
@@ -33,6 +37,10 @@ export class FirmwareComponent implements OnInit, OnDestroy {
     private draggingKey: Keymapper;
     public lastSelectedKey;
     private functionKeyDown: any;
+    public sizeKeys: number = 48;
+    myControl = new FormControl();
+    filteredOptions: Observable<String[]>;
+    layoutsSelected: any[];
 
     // Progress spinner values config
     color: ThemePalette = 'accent';
@@ -54,6 +62,7 @@ export class FirmwareComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
 
+        this.store.dispatch(firmwareActions.clear());
         this.store.dispatch(firmwareActions.getKeyboardsList());
 
         this.store.select('firmware').subscribe(firmware => {
@@ -74,6 +83,16 @@ export class FirmwareComponent implements OnInit, OnDestroy {
 
         this.elementRef.nativeElement.ownerDocument
             .addEventListener('keydown', this.functionKeyDown);
+
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+            startWith(''),
+            map(value => this._filter(value))
+        );
+    }
+
+    private _filter(value: String): String[] {
+        const filterValue = value.toLowerCase();
+        return this.firmware.keyboardsList ? this.firmware.keyboardsList.filter(option => option.toLowerCase().includes(filterValue)) : [];
     }
 
     ngOnDestroy() {
@@ -81,9 +100,9 @@ export class FirmwareComponent implements OnInit, OnDestroy {
             .removeEventListener('keydown', this.functionKeyDown);
     }
 
-    changeKeyboard(event: MatSelectChange) {
+    changeKeyboard(event: MatAutocompleteSelectedEvent) {
         this.store.dispatch(firmwareActions.getKeyboard({
-            keyboardModel: event.value
+            keyboardModel: event.option.value
         }));
         this.showLoading = true;
     }
@@ -279,6 +298,18 @@ export class FirmwareComponent implements OnInit, OnDestroy {
                 }
             });
         }, 3000);
+    }
+
+    containerSize(layer) {
+        let maxWidth = 0,
+            maxHeight = 250;
+        layer.keymap.flat().map(key => {
+            let width = key.x * this.sizeKeys + key.w * this.sizeKeys,
+                height = key.y * this.sizeKeys + (key.h || 1) * this.sizeKeys;
+            maxWidth = width > maxWidth ? width : maxWidth;
+            maxHeight = height > maxHeight ? height : maxHeight;
+        });
+        return [maxWidth, maxHeight];
     }
 
     addLayer() {
