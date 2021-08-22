@@ -26,6 +26,13 @@ export interface Layout {
     cols?: number
 }
 
+export interface LayoutV2 {
+    name: string
+    keymap: Array<Keymapper>
+    rows?: number
+    cols?: number
+}
+
 export interface MinMax {
     min: number
     max: number
@@ -92,6 +99,12 @@ export interface Keymapper {
     saving?: boolean
     eventCode?: string
     selected?: boolean
+    // V2
+    x?: number
+    y?: number
+    w?: number
+    h?: number
+    matrix: Array<number>
 }
 
 export interface Layermapper {
@@ -142,6 +155,7 @@ export interface QmkKeyboardFeatures {
 }
 
 export interface QmkKeyboard {
+    keyboard_name: string,
     keyboard_folder: string,
     layouts: QmkKeyboardLayouts,
     usb: QmkKeyboardUsb,
@@ -162,7 +176,8 @@ export interface FirmwareState {
     model: string,
     qmkKeyboard: QmkKeyboard,
     layout: QmkKeyboardLayout,
-    layers: QmkKeyboardLayer[]
+    layers: QmkKeyboardLayer[],
+    savedSupport: boolean
 }
 
 

@@ -27,4 +27,3 @@ export const clear = createAction(
 export const disconnect = createAction(
     '[Mapper] Disconnect'
 );
-

@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { from, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
 import { AppState } from '../../app.reducer';
 import * as firmwareActions from './firmware.actions';
 import * as errorsActions from '../errors/errors.actions';
 import { QmkService } from '../services/qmk.service';
+import { RequestsService } from '../services/requests.service';
 
 @Injectable()
 export class FirmwareEffects {
@@ -27,9 +28,16 @@ export class FirmwareEffects {
         catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
     ));
 
+    addSupport$ = createEffect((): any => this.actions$.pipe(
+        ofType(firmwareActions.addSupport.type),
+        mergeMap(actionData => from(this.requestService.addSupport( actionData ))),
+        map(success => ({ type: firmwareActions.addSupportSuccess.type, success })),
+        catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
+    ));
+
     constructor(
         private actions$: Actions,
-        private store: Store<AppState>,
+        private requestService: RequestsService,
         private qmkService: QmkService
     ) { }
 }
