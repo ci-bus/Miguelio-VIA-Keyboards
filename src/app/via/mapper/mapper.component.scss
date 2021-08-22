@@ -98,6 +98,87 @@
 .key.u0 {
     width: 0px;
 }
+
+.key {
+    &.encoderLeft,
+    &.encoderRight,
+    &.faderUp,
+    &.faderDown {
+        overflow: hidden;
+        border-radius: 0;
+    }
+    &.encoderLeft .keyLetter:not(.dragOver) {
+        border-radius: 50%;
+        position: relative;
+        left: 50%;
+    }
+    &.encoderRight .keyLetter:not(.dragOver) {
+        border-radius: 50%;
+        position: relative;
+        right: 50%;
+    }
+    &.faderUp .keyLetter:not(.dragOver) {
+        width: 50%;
+        padding: 0;
+        position: relative;
+        left: 25%;
+        top: 70%;
+        &::before {
+            content: " ";
+            position: absolute;
+            margin-left: 18px;
+            margin-top: -30px;
+            border: 1px solid #727577;
+            width: 10px;
+            height: 48px;
+            border-radius: 5px;
+            z-index: -1;
+        }
+    }
+    &.faderDown .keyLetter:not(.dragOver) {
+        width: 50%;
+        padding: 0;
+        position: relative;
+        left: 25%;
+        bottom: 70%;
+        &::before {
+            content: " ";
+            position: absolute;
+            margin-left: 18px;
+            margin-top: 27px;
+            border: 1px solid #727577;
+            width: 10px;
+            height: 48px;
+            border-radius: 5px;
+            z-index: -1;
+        }
+    }
+    &.encoderLeft .keyLetter:not(.dragOver),
+    &.encoderRight .keyLetter:not(.dragOver),
+    &.faderUp .keyLetter:not(.dragOver),
+    &.faderDown .keyLetter:not(.dragOver) {
+        padding: 5px;
+        span {
+            display: none;
+        }
+        &:hover {
+            width: auto;
+            border-radius: 5px;
+            position: static;
+            left: auto;
+            right: auto;
+            top: auto;
+            bottom: auto;
+            span {
+                display: block;
+            }
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+
 .key.isoEnter {
     width: 72px;
     position: relative;
@@ -121,12 +202,9 @@
 
 .dragOver {
     background-color: #c2c5c7;
-    color: #323537
+    color: #323537;
 }
 
 .onlyText {
     padding-top: 15px;
 }
-
-
-
