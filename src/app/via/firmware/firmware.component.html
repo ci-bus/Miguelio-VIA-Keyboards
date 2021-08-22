@@ -4,7 +4,7 @@
 </div>
 
 <div class="main-container">
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="compile-select" appearance="outline" *ngIf="firmware.keyboardsList">
         <mat-label>Keyboard</mat-label>
         <input type="text" placeholder="Pick one" aria-label="Keyboards" matInput [formControl]="myControl"
             [matAutocomplete]="auto">
