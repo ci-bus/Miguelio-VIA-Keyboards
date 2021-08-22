@@ -6,7 +6,8 @@
                 <mat-tab *ngFor="let layer of layout.layers" [label]="layer.number">
                     <!-- V2 -->
                     <div *ngIf="defs.vdoc == 2" class="layout2">
-                        <div *ngIf="layoutsmapper" class="mapper-container" [ngStyle]="{width: containerSize(layout)[0] + 'px', height: containerSize(layout)[1] + 'px'}">
+                        <div *ngIf="layoutsmapper" class="mapper-container"
+                            [ngStyle]="{width: containerSize(layout)[0] + 'px', height: containerSize(layout)[1] + 'px'}">
                             <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
                                 <div class="key2" *ngFor="let key of rowKeys"
                                     [ngClass]="{selected: key.selected, isoEnter2: key.h && key.h == 2}"
@@ -39,14 +40,16 @@
                     <div *ngIf="defs.vdoc != 2" class="layout">
                         <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
                             <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u"
-                                [class.isoEnter]="key.s=='ISO_ENTER'" [style.width.px]="key.u * sizeKeys"
+                                [class.isoEnter]="key.s=='ISO_ENTER'" [class.encoderLeft]="key.s=='ENCODER_LEFT'"
+                                [class.encoderRight]="key.s=='ENCODER_RIGHT'" [class.faderUp]="key.s=='FADER_UP'"
+                                [class.faderDown]="key.s=='FADER_DOWN'" [style.width.px]="key.u * sizeKeys"
                                 (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
                                 (dragleave)="dragLeave($event)" (drop)="drop($event, key)">
                                 <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
-                                    [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code"
-                                    matTooltipPosition="above" matTooltipShowDelay="300" matTooltipHideDelay="200">
-                                    <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate
-                                        }}</span>
+                                    [style.background-color]="key.color" [class.oneLetter]="isSymbolKey(key)"
+                                    [matTooltip]="key.code" matTooltipPosition="above" matTooltipShowDelay="300"
+                                    matTooltipHideDelay="200">
+                                    <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate}}</span>
                                     <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
                                     <div *ngIf="isModKey(key)">
                                         <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
@@ -72,9 +75,9 @@
             <mat-tab *ngFor="let mapperKeysTab of mapperKeys" [label]="'mapper.'+mapperKeysTab.title | translate">
                 <div class="layout">
                     <div class="rowKeys" *ngFor="let rowKeys of mapperKeysTab.keymap">
-                        <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u" [style.width.px]="key.u * sizeKeys"
-                            [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true" (dragstart)="drag(key)"
-                            (dragend)="dragEnd()">
+                        <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u"
+                            [style.width.px]="key.u * sizeKeys" [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true"
+                            (dragstart)="drag(key)" (dragend)="dragEnd()">
                             <div [class.fake]="key.f || key.u === 0" class="keyLetter"
                                 [class.oneLetter]="isSymbolKey(key)" [matTooltip]="key.code" matTooltipPosition="above"
                                 matTooltipShowDelay="300" matTooltipHideDelay="200">
