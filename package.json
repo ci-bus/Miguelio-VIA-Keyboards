@@ -68,10 +68,10 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "./src/assets/icons/icon.ico",
-        "executableName": "Miguelio VIA Keyboards",
-        "name": "Miguelio",
-        "productName": "Miguelio",
+        "icon": "./src/assets/icons/keebary.ico",
+        "executableName": "Keebary",
+        "name": "Keebary",
+        "productName": "Keebary",
         "overwrite": true,
         "ignore": [
           "out"

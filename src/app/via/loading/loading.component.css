@@ -6,7 +6,7 @@
     width: 100%;
     height: 100%;
     top: 0px; left: 0px; z-index: 8;
-    background-color: #323537;
+    background-color: #529e8f;
 }
 mat-progress-spinner, h1, h3, img {
     margin: 0 auto 10px;
@@ -34,7 +34,9 @@ mat-progress-spinner, h1, h3, img {
 
 img {
     position: relative;
-    top: -170px;
+    top: -186px;
+    width: 150px;
+    height: 150px;
     animation: moveKeyboard 5s ease infinite;
 }
 
