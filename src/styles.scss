@@ -40,14 +40,14 @@ body {
     margin: 0;
     font-weight: 200;
     font-size: 19px;
-    background-color: #529e8f;
+    background-color: #323537;
     color: #d2d5d7;
     overflow: hidden;
     overflow-y: auto;
 }
 
-button, select, .mat-menu-panel, .mat-select-panel {
-    background-color: #345f56 !important;
+button {
+    background-color: #424547 !important;
 }
 .mat-tab-body-content {
     overflow: hidden !important;
