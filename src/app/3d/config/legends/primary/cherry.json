@@ -1,0 +1,13 @@
+{
+  "id": "cherry",
+  "fontFamily": "legends",
+  "subsSupported": true,
+  "centered": false,
+  "encoded": true,
+  "offsetX": 20,
+  "offsetY": 20,
+  "yOffsetTop": 30,
+  "yOffsetBottom": 70,
+  "yOffsetMod": 25,
+  "fontsize": 80
+}

@@ -17,7 +17,8 @@
   "dependencies": {
     "electron-download-manager": "~2.1.2",
     "glob": "~7.1.6",
-    "node-hid": "~2.1.1"
+    "node-hid": "~2.1.1",
+    "three": "^0.119.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.6",
@@ -33,12 +34,12 @@
     "@angular/platform-browser": "~11.2.7",
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
-    "@electron-forge/cli": "~6.0.0-beta.54",
-    "@electron-forge/maker-deb": "~6.0.0-beta.54",
-    "@electron-forge/maker-dmg": "~6.0.0-beta.57",
-    "@electron-forge/maker-rpm": "~6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "~6.0.0-beta.54",
-    "@electron-forge/maker-zip": "~6.0.0-beta.54",
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "@ngrx/effects": "~11.1.0",
     "@ngrx/store": "~11.1.0",
     "@ngrx/store-devtools": "~11.1.0",

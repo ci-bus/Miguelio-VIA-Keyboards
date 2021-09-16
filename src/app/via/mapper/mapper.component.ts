@@ -11,6 +11,8 @@ import onLetterKey from './oneLetterKeys';
 import mapperKeys from './mapper.keys';
 import * as mapperActions from './mapper.actions';
 
+import threeApp from "../../3d/three/index";
+
 @Component({
     selector: 'app-mapper',
     templateUrl: './mapper.component.html',
@@ -27,6 +29,9 @@ export class MapperComponent implements OnInit {
     public sizeKeys: number = 48;
 
     draggingKey: Keymapper;
+
+    // Three js keyboard
+    private layout3d: Keymapper[] = [];
 
     constructor(
         public translate: TranslateService,
@@ -45,8 +50,62 @@ export class MapperComponent implements OnInit {
 
         this.store.select('layoutsmapper').subscribe(layoutsmapper => {
             this.layoutsmapper = layoutsmapper;
+            this.create3dLayout();
+            threeApp(document.getElementById('keyboard3d'), {
+                layout: this.layout3d,
+                keymap: this.layoutsmapper[0].layers[0].keymap.flat().map(key => ({
+                    ...key,
+                    serigraphy: this.translate.instant(`keycode.${key.code}`) != `keycode.${key.code}`
+                        ? this.translate.instant(`keycode.${key.code}`)
+                        : key.code
+                }))
+            });
         });
 
+
+    }
+
+    create3dLayout() {
+        let layoutNumber = 0;
+        this.layout3d = [];
+        if (this.defs.layouts.length && this.keymaps.length) {
+            // V2
+            if (this.defs.vdoc == 2) {
+
+            // V1
+            } else {
+                for (let row = 0; row < this.defs.layouts[layoutNumber].keymap.length; row++) {
+                    let offsetX = 0;
+                    for (let col = 0; col < this.defs.layouts[layoutNumber].keymap[row].length; col++) {
+                        const tempKey = this.defs.layouts[layoutNumber].keymap[row][col];
+                        let tempLayoutKey = undefined;
+                        if (typeof tempKey == "number") {
+                            tempLayoutKey = {
+                                x: col + offsetX,
+                                y: row,
+                                w: <number>tempKey
+                            };
+                        } else {
+                            if (!tempKey.f) {
+                                tempLayoutKey = {
+                                    ...tempKey,
+                                    h: tempKey.s == "ISO_ENTER" ? 2 : 0,
+                                    w: tempKey.u || tempKey.w
+                                };
+                            } else if (tempLayoutKey.u) {
+                                offsetX += tempLayoutKey.u - 1;
+                            }
+                        }
+                        if (tempLayoutKey?.w > 1) {
+                            offsetX += tempLayoutKey.w - 1;
+                        }
+                        if (tempLayoutKey) {
+                            this.layout3d.push(tempLayoutKey);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     createLayoutsmapper() {
@@ -77,7 +136,7 @@ export class MapperComponent implements OnInit {
 
                 this.store.dispatch(mapperActions.set({ layoutsmapper }));
 
-                // V1
+            // V1
             } else {
                 // Each json layouts
                 this.defs.layouts.forEach(layout => {

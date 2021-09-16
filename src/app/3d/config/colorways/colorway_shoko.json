@@ -1,0 +1,29 @@
+{
+  "id": "shoko",
+  "label": "Shoko",
+  "manufacturer": "",
+  "swatches": {
+    "base": {
+      "background": "#dde5ed",
+      "color": "#7a99ac"
+    },
+    "mods": {
+      "background": "#7a99ac",
+      "color": "#dde5ed"
+    },
+    "accent": {
+      "background": "#8dcbe0",
+      "color": "#dde5ed"
+    }
+  },
+  "override": {
+    "KC_SPC": "base",
+    "KC_ENT": "accent",
+    "KC_ESC": "accent",
+    "KC_GESC": "accent",
+    "KC_F5": "mods",
+    "KC_F6": "mods",
+    "KC_F7": "mods",
+    "KC_F8": "mods"
+  }
+}

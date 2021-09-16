@@ -20,8 +20,8 @@ export interface Error {
 
 export interface Layout {
     name: string
-    keymap: Array<Array<number | Object>>
-    matrix: Array<Array<number> | null>
+    keymap: Array<Array<number | Keymapper>>
+    matrix: Array<Array<number | null>>
     rows?: number
     cols?: number
 }
@@ -86,7 +86,7 @@ export interface LightValues {
 }
 
 export interface Keymapper {
-    u: number
+    u?: number
     s?: string
     f?: boolean
     firstByte?: number
@@ -104,7 +104,7 @@ export interface Keymapper {
     y?: number
     w?: number
     h?: number
-    matrix: Array<number>
+    matrix?: Array<number>
 }
 
 export interface Layermapper {
