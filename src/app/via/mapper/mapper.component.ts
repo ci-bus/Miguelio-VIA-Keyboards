@@ -12,6 +12,7 @@ import mapperKeys from './mapper.keys';
 import * as mapperActions from './mapper.actions';
 
 import threeApp from "../../3d/three/index";
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-mapper',
@@ -24,13 +25,16 @@ export class MapperComponent implements OnInit {
     keymaps: Keymap[] = [];
     layoutsmapper: Layoutmapper[] = [];
     mapperKeys = mapperKeys;
-    activeMainTab: number = 1;
+    activeMainTab: number = 0;
     activeTab: number = 0;
     public sizeKeys: number = 48;
 
     draggingKey: Keymapper;
 
+    keyboard3dCallbacks = new BehaviorSubject(undefined);
+
     // Three js keyboard
+    private keyboard3dInited: boolean;
     private layout3d: Keymapper[] = [];
 
     constructor(
@@ -42,6 +46,10 @@ export class MapperComponent implements OnInit {
 
     ngOnInit(): void {
 
+        this.translate.onLangChange.subscribe(() => {
+            this.keyboard3d('updateKeys');
+        });
+
         this.store.pipe(first()).subscribe(allData => {
             this.defs = allData.defs;
             this.keymaps = allData.keymaps;
@@ -50,29 +58,51 @@ export class MapperComponent implements OnInit {
 
         this.store.select('layoutsmapper').subscribe(layoutsmapper => {
             this.layoutsmapper = layoutsmapper;
-            this.create3dLayout();
-            threeApp(document.getElementById('keyboard3d'), {
-                layout: this.layout3d,
-                keymap: this.layoutsmapper[0].layers[0].keymap.flat().map(key => ({
-                    ...key,
-                    serigraphy: this.translate.instant(`keycode.${key.code}`) != `keycode.${key.code}`
-                        ? this.translate.instant(`keycode.${key.code}`)
-                        : key.code
-                }))
-            });
+            if (!this.keyboard3dInited) {
+                this.keyboard3dInited = true;
+                this.keyboard3d('init');
+            } else {
+                this.keyboard3d('updateKeys');
+            }
         });
 
+        this.keyboard3dCallbacks.subscribe(event => {
+            switch (event?.action) {
+                case 'drop':
+                    this.drop(event.data.e, event.data.key);
+                    break;
+            }
+        });
+    }
 
+    keyboard3d(action: string) {
+        const layout = this.create3dLayout();
+        const keymap = this.create3dKeymap();
+        if (layout && keymap) {
+            threeApp(document.getElementById('keyboard3d'), action, {
+                layout, keymap,
+                callbacks: this.keyboard3dCallbacks
+            });
+        }
+    }
+
+    create3dKeymap() {
+        return this.layoutsmapper[this.activeMainTab]?.layers[this.activeTab]?.keymap.flat().map(key => ({
+            ...key,
+            serigraphy: this.translate.instant(`keycode.${key.code}`) != `keycode.${key.code}`
+                ? this.translate.instant(`keycode.${key.code}`)
+                : key.code
+        }));
     }
 
     create3dLayout() {
         let layoutNumber = 0;
-        this.layout3d = [];
+        let layout3d = [];
         if (this.defs.layouts.length && this.keymaps.length) {
             // V2
             if (this.defs.vdoc == 2) {
 
-            // V1
+                // V1
             } else {
                 for (let row = 0; row < this.defs.layouts[layoutNumber].keymap.length; row++) {
                     let offsetX = 0;
@@ -100,12 +130,13 @@ export class MapperComponent implements OnInit {
                             offsetX += tempLayoutKey.w - 1;
                         }
                         if (tempLayoutKey) {
-                            this.layout3d.push(tempLayoutKey);
+                            layout3d.push(tempLayoutKey);
                         }
                     }
                 }
             }
         }
+        return layout3d;
     }
 
     createLayoutsmapper() {
@@ -136,7 +167,7 @@ export class MapperComponent implements OnInit {
 
                 this.store.dispatch(mapperActions.set({ layoutsmapper }));
 
-            // V1
+                // V1
             } else {
                 // Each json layouts
                 this.defs.layouts.forEach(layout => {
@@ -162,6 +193,16 @@ export class MapperComponent implements OnInit {
                 this.store.dispatch(mapperActions.set({ layoutsmapper }));
             }
         }
+    }
+
+    changeMap(newTabIndex) {
+        this.activeTab = newTabIndex;
+        this.keyboard3d('updateKeys');
+    }
+
+    changeLayout(newMainTapIndex) {
+        this.activeMainTab = newMainTapIndex;
+        this.keyboard3d('updateKeys');
     }
 
     containerSize(layout) {

@@ -13,6 +13,7 @@ export default class SceneManager extends Collection {
         this.scale = options.scale || 1;
         this.textureLoader = new THREE.TextureLoader();
         this.el = options.el || document.body;
+        this.callbacks = options.callbacks;
         this.init();
     }
     init() {
@@ -42,6 +43,8 @@ export default class SceneManager extends Collection {
         window.addEventListener("resize", (e) => this.resize(e), false);
         this.el.addEventListener("mousemove", (e) => this.move(e), false);
         this.el.addEventListener("click", (e) => this.mouseClick(e), false);
+        this.el.addEventListener("dragover", (e) => this.dragOver(e), false);
+        this.el.addEventListener("drop", (e) => this.drop(e), false);
         this.el.addEventListener(
             "touchstart",
             (e) => {
@@ -57,6 +60,7 @@ export default class SceneManager extends Collection {
             },
             false
         );
+
         /*
             subscribe("colorways.editing", (state) => {
               this.editing = state.colorways.editing;
@@ -120,11 +124,33 @@ export default class SceneManager extends Collection {
             document.dispatchEvent(event);
         }
     }
-    move(e) {
+    dragOver(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        this.editing = true;
+        this.move(e);
+        this.checkIntersections();
+    }
+    drop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        this.editing = false;
+        this.move(e);
+        this.checkIntersections();
+        if (this.intersectedObj) {
+            this.callbacks.next({
+                action: "drop",
+                data: { e, key: this.intersectedObj.key  }
+            });
+        }
+    }
+    move(e, offSetTop = 100) {
         e.preventDefault();
         let isTouch = e.type === "touchstart";
         let l = (isTouch ? e.touches[0].clientX : e.clientX) - this.sidebarWidth;
-        let t = (isTouch ? e.touches[0].clientY : e.clientY) - 0;
+        let t = (isTouch ? e.touches[0].clientY : e.clientY) + document.body.scrollTop - offSetTop;
         this.mouse.x = (l / this.w) * 2 - 1;
         this.mouse.y = -(t / this.h) * 2 + 1;
     }

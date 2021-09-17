@@ -10,7 +10,7 @@ export const keyTexture = (opts) => {
     let w = opts.w;
     let h = opts.h;
     let legend = opts.legend;
-    let sublegend = "arabic";
+    let sublegend = opts.sublegend;
     let key = opts.key;
     let code = opts.code;
     var texture;
@@ -108,7 +108,7 @@ export const keyTexture = (opts) => {
 
 
     let modWord = !l.encoded && mainChar.length > 1; //mods use multi chacter words instead of symbols (sa)
-    let subChar = SUBS[sublegend].chars[code] || "";
+    let subChar = sublegend ? SUBS[sublegend].chars[code] || "" : "";
 
     //font size
     let proportion = 2.5 * key.u / mainChar["top"].replace(' ', '').length;

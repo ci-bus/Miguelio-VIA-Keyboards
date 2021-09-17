@@ -94,7 +94,7 @@ export const updateActiveMaterials = (mesh, opts) => {
 
 //simulate highlighting by toggling lightmap intensity
 export const enableHighlight = (key_mesh, layer) => {
-  key_mesh.material.forEach((m) => (m.lightMapIntensity = 0.2));
+  key_mesh.material.forEach((m) => (m.lightMapIntensity = 0.5));
 };
 export const disableHighlight = (key_mesh, layer) => {
   key_mesh.material.forEach((m) => (m.lightMapIntensity = 0));

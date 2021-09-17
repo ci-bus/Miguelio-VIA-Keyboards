@@ -72,9 +72,9 @@
     </mat-tab-group>
 -->
     <mat-tab-group #firstab animationDuration="0ms" [selectedIndex]="activeMainTab"
-        (selectedTabChange)="activeMainTab = $event.index">
+        (selectedTabChange)="changeLayout($event.index)">
         <mat-tab *ngFor="let layout of layoutsmapper" [label]="layout.name">
-            <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="activeTab = $event.index">
+            <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="changeMap($event.index)">
                 <mat-tab *ngFor="let layer of layout.layers" [label]="layer.number"></mat-tab>
             </mat-tab-group>
         </mat-tab>

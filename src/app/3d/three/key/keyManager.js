@@ -15,6 +15,7 @@ export default class KeyManager extends Collection {
     }
 
     setup(opts) {
+        this.el = opts.el;
         this.group = new THREE.Object3D();
         this.group.name = "KEYS";
         this.editing = false;
@@ -40,6 +41,12 @@ export default class KeyManager extends Collection {
               this.paintWithKeys = state.settings.paintWithKeys;
             });
             */
+    }
+
+    updateKeys(opts) {
+        this.getLayout(opts.layout);
+        this.getKeymap(opts.keymap);
+        this.createKeys()
     }
 
     get width() {
@@ -68,7 +75,7 @@ export default class KeyManager extends Collection {
     }
 
     bindPressedEvents() {
-        document.addEventListener("keydown", (e) => {
+        this.el.addEventListener("keydown", (e) => {
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -80,7 +87,7 @@ export default class KeyManager extends Collection {
             }
             key.setState(KEYSTATES.MOVING_DOWN);
         });
-        document.addEventListener("keyup", (e) => {
+        this.el.addEventListener("keyup", (e) => {
             let code = KeyUtil.getKeyCode(e.code);
             let key = this.getKey(code);
             if (!key) return;
@@ -89,7 +96,7 @@ export default class KeyManager extends Collection {
     }
 
     bindPaintEvent() {
-        document.addEventListener("key_painted", (e) => {
+        this.el.addEventListener("key_painted", (e) => {
             this.paintKey(e.detail);
         });
     }

@@ -53,6 +53,7 @@ export class Key {
 
         this.cap = new THREE.Mesh(geometry, materials);
         this.cap.name = this.key.code;
+        this.cap.key = this.key;
         KeyUtil.setKeyLayers(this.key.code, this.cap);
         setKeyMaterialState(
             this.cap,
