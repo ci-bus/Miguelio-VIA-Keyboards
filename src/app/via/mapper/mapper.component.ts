@@ -14,7 +14,7 @@ import * as mapperActions from './mapper.actions';
 @Component({
     selector: 'app-mapper',
     templateUrl: './mapper.component.html',
-    styleUrls: ['./mapper.component.css']
+    styleUrls: ['./mapper.component.scss']
 })
 export class MapperComponent implements OnInit {
 
