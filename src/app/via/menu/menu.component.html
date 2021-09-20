@@ -4,8 +4,15 @@
         <button (click)="changeLanguage(lang)" mat-icon-button>{{ lang }}</button>
     </div>
     <div *ngIf="router.url == '/'">
-        <button *ngIf="router.url == '/'" (click)="compileFirmware()" mat-button>{{ 'menu.compileFirmware' | translate }}</button>
-        <button *ngIf="router.url == '/'" (click)="testKeyboard()" mat-button>{{ 'menu.testKeyboard' | translate }}</button>
+        <button (click)="compileFirmware()" mat-button>{{ 'menu.compileFirmware' | translate }}</button>
+        <button (click)="testKeyboard()" mat-button>{{ 'menu.testKeyboard' | translate }}</button>
+        <button mat-button [matMenuTriggerFor]="menu">
+            {{ 'menu.version' | translate }}
+        </button>
+        <mat-menu #menu="matMenu">
+            <button (click)="setVersion('miguelio')" mat-menu-item>Miguelio</button>
+            <button (click)="setVersion('keebary')" mat-menu-item>Keebary</button>
+        </mat-menu>
     </div>
     <div *ngIf="router.url == '/mapper'">
         <button mat-button [matMenuTriggerFor]="menu">

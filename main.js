@@ -15,24 +15,37 @@ const consoleKeycodes = false;
 const store = new Store({
     configName: 'user-preferences',
     defaults: {
-        windowBounds: { width: 1200, height: 800 }
+        windowBounds: { width: 1200, height: 800 },
+        config: {  }
     }
 });
 
+const getConfig = () => {
+    const storedConfig = store.get('config'),
+        config = JSON.parse(fs.readFileSync(__dirname + '/default-config.json'));
+
+    return Object.assign(config, storedConfig);
+}
+
 function createWindow() {
-    let { width, height } = store.get('windowBounds');
-    let mainWindow = new BrowserWindow({
-        width, height,
-        webPreferences: {
-            minimumFontSize: 12,
-            defaultFontSize: 17,
-            defaultMonospaceFontSize: 19,
-            nodeIntegration: true,
-            nodeIntegrationInWorker: true,
-            webSecurity: false,
-            contextIsolation: false
-        }
-    });
+    const { width, height } = store.get('windowBounds'),
+        { version } = getConfig();
+
+    const mainWindow = new BrowserWindow({
+            width, height,
+            webPreferences: {
+                minimumFontSize: 12,
+                defaultFontSize: 17,
+                defaultMonospaceFontSize: 19,
+                nodeIntegration: true,
+                nodeIntegrationInWorker: true,
+                webSecurity: false,
+                contextIsolation: false,
+                additionalArguments: [
+                    `--version=${version}`
+                ]
+            }
+        });
 
     mainWindow.removeMenu();
 
@@ -45,10 +58,6 @@ function createWindow() {
     //mainWindow.openDevTools();
 
     mainWindow.loadFile('./dist/index.html');
-
-    mainWindow.on('closed', function () {
-        mainWindow = null
-    });
 }
 
 ipcMain.handle('ping', async (event, someArgument) => {
@@ -483,3 +492,11 @@ ipcMain.handle('addSupport', async (event, data) => {
     });
 });
 
+
+//-------------//
+//   Version   //
+//-------------//
+ipcMain.handle('setVersion', async (event, version) => {
+    store.set('config', { version });
+    event.sender.send('success', true);
+});

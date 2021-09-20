@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "miguelio-via-keyboards": {
+    "miguelio-via": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "miguelio-via-keyboards:build"
+            "browserTarget": "miguelio-via:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "miguelio-via-keyboards:build:production"
+              "browserTarget": "miguelio-via:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "miguelio-via-keyboards:build"
+            "browserTarget": "miguelio-via:build"
           }
         },
         "test": {
@@ -115,16 +115,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "miguelio-via-keyboards:serve"
+            "devServerTarget": "miguelio-via:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "miguelio-via-keyboards:serve:production"
+              "devServerTarget": "miguelio-via:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "miguelio-via-keyboards"
+  "defaultProject": "miguelio-via"
 }
