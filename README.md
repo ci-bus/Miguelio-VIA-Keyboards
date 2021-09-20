@@ -1,4 +1,4 @@
-# Miguelio-VIA-Keyboards
+# miguelio-via
 VIA Software Open Source to keyboards with QMK
 
 ## Pre-requisitos
@@ -6,7 +6,7 @@ VIA Software Open Source to keyboards with QMK
 - [NodeJs LTS](https://nodejs.org/en/)
 
 **Muy importante** en los ultimos pasos de la instalación de Node marca el check para instalar las tools necesarias de manera automática
-![Marcar check en la instalación](https://github.com/ci-bus/Miguelio-VIA-Keyboards/blob/master/src/assets/Captura.PNG?raw=true)
+![Marcar check en la instalación](https://github.com/ci-bus/miguelio-via/blob/master/src/assets/Captura.PNG?raw=true)
 - (Windows) [PowerShell](https://answers.microsoft.com/es-es/windows/forum/windows_10-windows_install-winpc/c%C3%B3mo-instalar-powershell-en-windows-10/eafc6661-a558-4309-a7b1-5f6fa5ecb750)
 
   
@@ -25,12 +25,12 @@ VIA Software Open Source to keyboards with QMK
 
 Clona el repositorio, se recomienda hacer uso de git aunque también puedes descargar los archivo en .zip y descomprimirlos
 ```
-git clone https://github.com/ci-bus/Miguelio-VIA-Keyboards.git
+git clone https://github.com/ci-bus/miguelio-via.git
 ```
 
 Entra en la carpeta descargada con el comando cd y la ruta a la carpeta:
 ```
-cd Miguelio-VIA-Keyboards
+cd miguelio-via
 ```
 
 Con node instalado ejecuta para instalar las librerias:
