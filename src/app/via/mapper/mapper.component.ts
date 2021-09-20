@@ -136,6 +136,9 @@ export class MapperComponent implements OnInit {
     }
 
     dragEnter(event) {
+        if (event.target.tagName == 'SPAN') {
+            event.target.parentElement.className += ' dragOver';
+        }
         if (event.target.className.indexOf('dragOver') < 0)
             event.target.className += ' dragOver';
         return false;

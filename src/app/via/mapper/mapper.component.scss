@@ -68,12 +68,13 @@
 }
 
 .keyLetter {
-    background-color: black;
+    background-color: #222527;
     padding: 5px;
     border: 1px solid #323537;
     border-radius: 5px;
     font-size: 12px;
 }
+
 .keyLetter > div {
     display: flex;
     justify-content: center;

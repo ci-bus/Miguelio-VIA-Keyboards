@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        window.process.argv.forEach(arg => {
+        window.process?.argv?.forEach(arg => {
             console.log(arg);
             if (arg.indexOf('--version=') === 0) {
                 const version = arg.split('=')[1];
