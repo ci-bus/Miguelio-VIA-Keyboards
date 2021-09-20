@@ -10,7 +10,7 @@
     <h3 *ngIf="msgInfoSecond=='unknowModel'">{{ 'loading.unknowModel' | translate }}</h3>
     <div class="devices">
         <button (click)="selectDevice(device)" [disabled]="loadingLayers" mat-flat-button
-            *ngFor="let device of devices$ | async">
+            *ngFor="let device of devices$ | async; trackBy: trackByDevices">
             {{ device.product }} <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
     </div>
