@@ -174,6 +174,7 @@ export default class SceneManager extends Collection {
             document.body.classList.remove("intersecting-key");
             return;
         }
+        console.log(intersects[0]);
         //same obj dont do anything
         if (this.intersectedObj === intersects[0].object) return;
         //reset old object
@@ -188,7 +189,7 @@ export default class SceneManager extends Collection {
         this.update();
         this.controls.update();
         this.raycaster.setFromCamera(this.mouse, this.camera);
-        this.checkIntersections();
+        if (this.editing) this.checkIntersections();
         this.renderer.render(this.scene, this.camera);
     }
     tick() {
