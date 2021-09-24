@@ -49,6 +49,7 @@
         "backLight": "Luz de fondo",
         "rgbLight": "Leds RGB",
         "modKeyCombination": "Combinación modificadores",
+        "modTapKeyCombination": "Modificadores con tap",
         "magicKeys": "Teclas mágicas"
     },
     "none": "Ninguno",

@@ -803,7 +803,56 @@ export default [
                 {
                     "u": 1, "firstByte": 15, "secondByte": 0, "code": "KC_HYPR"
                 }
-            ],
+            ]
+            ,
+            [
+                {
+                    "f": true, "u": 6, "text": "modTapKeyCombination"
+                }
+            ]
+            ,
+            [
+                {
+                    "u": 1.25, "firstByte": 97, "secondByte": 4, "code": "CTL_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 98, "secondByte": 4, "code": "SFT_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 100, "secondByte": 4, "code": "ALT_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 104, "secondByte": 4, "code": "GUI_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 106, "secondByte": 4, "code": "LSG_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 108, "secondByte": 4, "code": "LAG_T(A)"
+                },
+                {
+                    "f": true, "u": 1
+                },
+                {
+                    "u": 1.25, "firstByte": 113, "secondByte": 4, "code": "RCTL_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 114, "secondByte": 4, "code": "RSFT_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 116, "secondByte": 4, "code": "RALT_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 120, "secondByte": 4, "code": "RGUI_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 122, "secondByte": 4, "code": "RSG_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 124, "secondByte": 4, "code": "RAG_T(A)"
+                }
+            ]
+            ,
             [
                 {
                     "f": true, "u": 6, "text": "magicKeys"

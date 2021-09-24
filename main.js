@@ -10,7 +10,7 @@ app.disableHardwareAcceleration();
 /*******************************************************************\
 |   Put to true to show in console the keycodes when load layouts   |
 \*******************************************************************/
-const consoleKeycodes = false;
+const consoleKeycodes = true;
 
 const store = new Store({
     configName: 'user-preferences',
