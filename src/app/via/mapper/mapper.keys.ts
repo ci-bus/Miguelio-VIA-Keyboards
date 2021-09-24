@@ -855,6 +855,39 @@ export default [
             ,
             [
                 {
+                    "u": 1.25, "firstByte": 101, "secondByte": 4, "code": "LCA_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 102, "secondByte": 4, "code": "LSA_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 118, "secondByte": 4, "code": "LCAG_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 115, "secondByte": 4, "code": "C_S_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 109, "secondByte": 4, "code": "MEH_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 125, "secondByte": 4, "code": "ALL_T(A)"
+                },
+                {
+                    "f": true, "u": 1
+                },
+                {
+                    "u": 1.25, "firstByte": 99, "secondByte": 4, "code": "RSA_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 103, "secondByte": 4, "code": "RCS_T(A)"
+                },
+                {
+                    "u": 1.25, "firstByte": 111, "secondByte": 4, "code": "RCAG_T(A)"
+                }
+            ]
+            ,
+            [
+                {
                     "f": true, "u": 6, "text": "magicKeys"
                 }
             ]

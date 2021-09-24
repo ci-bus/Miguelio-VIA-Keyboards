@@ -36,6 +36,7 @@
 }
 html,
 body {
+    transition: all 0.3s ease-out;
     height: 100%;
     margin: 0;
     font-weight: 200;
@@ -54,6 +55,7 @@ body {
     .mat-menu-panel {
         margin-top: 6px;
         .mat-menu-content {
+            padding-right: 10px;
             overflow: hidden;
             button {
                 text-transform: none;
@@ -84,6 +86,7 @@ body {
 }
 
 body.keebary {
+    color: white;
     background-color: #529e8f;
     button,
     select,
@@ -100,6 +103,7 @@ body.keebary {
         animation: moveKeyboard 5s ease infinite;
     }
     .keyLetter {
+        background-color: #222527;
         border: 1px solid #529e8f;
     }
     .hueGradient {

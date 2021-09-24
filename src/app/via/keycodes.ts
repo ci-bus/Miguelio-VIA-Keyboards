@@ -273,16 +273,52 @@ keycodes[83] = ['TG(0)', 'TG(1)', 'TG(2)', 'TG(3)', 'TG(4)', 'TG(5)', 'TG(6)', '
 keycodes[84] = ['OSL(0)', 'OSL(1)', 'OSL(2)', 'OSL(3)', 'OSL(4)', 'OSL(5)', 'OSL(6)', 'OSL(7)', 'OSL(8)', 'OSL(9)', 'OSL(10)', 'OSL(11)', 'OSL(12)', 'OSL(13)', 'OSL(14)', 'OSL(15)'];
 keycodes[88] = ['TT(0)', 'TT(1)', 'TT(2)', 'TT(3)', 'TT(4)', 'TT(5)', 'TT(6)', 'TT(7)', 'TT(8)', 'TT(9)', 'TT(10)', 'TT(11)', 'TT(12)', 'TT(13)', 'TT(14)', 'TT(15)'];
 
+// modKeyCombination
+keycodes[1]  = 'LCTL(KC)';
+keycodes[2]  = 'LSFT(KC)';
+keycodes[4]  = 'LALT(KC)';
+keycodes[8]  = 'LGUI(KC)';
+keycodes[17] = 'RCTL(KC)';
+keycodes[18] = 'RSFT(KC)';
+keycodes[20] = 'RALT(KC)';
+keycodes[24] = 'RGUI(KC)';
+keycodes[10] = 'SGUI(KC)';
 
+keycodes[5]  = 'LCA(KC)';
+keycodes[6]  = 'LSA(KC)';
+keycodes[22] = 'RSA(KC)';
+keycodes[19] = 'RCS(KC)';
+keycodes[13] = 'LCAG(KC)';
+keycodes[7]  = 'MEH(KC)';
+keycodes[15] = 'HYPR(KC)';
+keycodes[7]  = 'KC_MEH';
+keycodes[15] = 'KC_HYPR';
 
+// modTapKeyCombination
+keycodes[97] =  "CTL_T(KC)";
+keycodes[98] =  "SFT_T(KC)";
+keycodes[100] = "ALT_T(KC)";
+keycodes[104] = "GUI_T(KC)";
+keycodes[106] = "LSG_T(KC)";
+keycodes[108] = "LAG_T(KC)";
 
+keycodes[113] = "RCTL_T(KC)";
+keycodes[114] = "RSFT_T(KC)";
+keycodes[116] = "RALT_T(KC)";
+keycodes[120] = "RGUI_T(KC)";
+keycodes[122] = "RSG_T(KC)";
+keycodes[124] = "RAG_T(KC)";
 
+keycodes[101] = "LCA_T(A)";
+keycodes[102] = "LSA_T(A)";
+keycodes[118] = "LCAG_T(A";
+keycodes[115] = "C_S_T(A)";
+keycodes[109] = "MEH_T(A)";
+keycodes[125] = "ALL_T(A)";
 
-
-
-
-
-
+keycodes[99]  = "RSA_T(A)";
+keycodes[103] = "RCS_T(A)";
+keycodes[111] = "RCAG_T(A)";
 
 
 export default keycodes;

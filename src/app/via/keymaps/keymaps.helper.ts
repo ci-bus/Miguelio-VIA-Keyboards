@@ -38,11 +38,18 @@ export class keymapsHelper {
                                 textInfo: `Layout mal definido en json, no hay keymap en la posición ${row}, ${col}`
                             }));
                         } else {
+                            let code = keycodes[0][0];
+                            if (keycodes[key.firstByte]) {
+                                if (typeof keycodes[key.firstByte] == 'string') {
+                                    code = keycodes[key.firstByte];
+                                } else if (keycodes[key.firstByte][key.secondByte]) {
+                                    code = keycodes[key.firstByte][key.secondByte];
+                                }
+                            }
                             fullKeymap[row][col] = Object.assign({},
                                 fullKeymap[row][col],
                                 key, {
-                                code: keycodes[key.firstByte] && keycodes[key.firstByte][key.secondByte]
-                                    ? keycodes[key.firstByte][key.secondByte] : keycodes[0][0],
+                                code,
                                 layer: layerNumber,
                                 row: matrixRow, col: matrixCol,
                                 layout: layout.name

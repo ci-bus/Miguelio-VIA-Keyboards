@@ -1,0 +1,40 @@
+.container {
+    position: fixed;
+    top: 0px;
+    right: 25px;
+    z-index: 44;
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    text-transform: uppercase;
+    margin: 5px 0 0 5px;
+}
+
+.mat-menu-panel {
+    margin-top: 5px;
+}
+
+.btn-keebary {
+    background-color: #529e8f !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    img {
+        margin-right: 15px;
+    }
+}
+
+.btn-miguelio {
+    background-color: #323537 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    img {
+        margin-right: 15px;
+        border-radius: 5px;
+    }
+}
