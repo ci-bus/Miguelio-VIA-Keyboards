@@ -44,45 +44,95 @@ body {
     color: #d2d5d7;
     overflow: hidden;
     overflow-y: auto;
-}
 
-button {
-    background-color: #424547 !important;
-}
-.mat-tab-body-content {
-    overflow: hidden !important;
-}
-.mat-menu-trigger {
-    position: relative;
-    top: 2px;
-}
-.mat-menu-panel {
-    margin-top: 6px;
-    .mat-menu-content {
-        overflow: hidden;
-        button {
-            text-transform: none;
+    button {
+        background-color: #424547 !important;
+    }
+    .mat-tab-body-content {
+        overflow: hidden !important;
+    }
+    .mat-menu-panel {
+        margin-top: 6px;
+        .mat-menu-content {
+            overflow: hidden;
+            button {
+                text-transform: none;
+            }
         }
     }
-}
 
-.noLine {
-    .mat-slider-ticks,
-    .mat-slider-ticks-container,
-    .mat-slider-track-wrapper {
-        visibility: hidden !important;
-        opacity: 0 !important;
+    .noLine {
+        .mat-slider-ticks,
+        .mat-slider-ticks-container,
+        .mat-slider-track-wrapper {
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+    }
+
+    .mat-select-panel {
+        max-width: none !important;
+        min-height: 500px !important;
+    }
+    .mat-option-text {
+        user-select: none;
+    }
+
+    app-mapper > div > mat-tab-group > mat-tab-header:first-child {
+        margin-right: 250px;
     }
 }
 
-.mat-select-panel {
-    max-width: none !important;
-    min-height: 500px !important;
-}
-.mat-option-text {
-    user-select: none;
-}
-
-app-mapper > div > mat-tab-group > mat-tab-header:first-child {
-    margin-right: 250px;
+body.keebary {
+    background-color: #529e8f;
+    button,
+    select,
+    .mat-menu-panel,
+    .mat-select-panel {
+        background-color: #345f56 !important;
+    }
+    img.main-image {
+        content: url(assets/keebary.png);
+        position: relative;
+        top: -186px;
+        width: 150px;
+        height: 150px;
+        animation: moveKeyboard 5s ease infinite;
+    }
+    .keyLetter {
+        border: 1px solid #529e8f;
+    }
+    .hueGradient {
+        background: rgb(255, 0, 0);
+        background: linear-gradient(
+                0deg,
+                rgba(82, 158, 143, 1) 40%,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(82, 158, 143, 1) 60%
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 1) 0%,
+                rgba(255, 255, 0, 1) 17%,
+                rgba(0, 255, 0, 1) 33%,
+                rgba(0, 255, 255, 1) 50%,
+                rgba(0, 0, 255, 1) 67%,
+                rgba(255, 0, 255, 1) 83%,
+                rgba(255, 0, 0, 1) 100%
+            );
+    }
+    .satGradient {
+        margin-left: 5px;
+        background: linear-gradient(
+                0deg,
+                rgba(82, 158, 143, 1) 40%,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(82, 158, 143, 1) 60%
+            ),
+            linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(0deg, rgba(255, 0, 0, 1) 46%, rgba(0, 255, 0, 1) 50%, rgba(0, 0, 255, 1) 54%);
+    }
+    .dragOver {
+        color: #529e8f;
+    }
 }

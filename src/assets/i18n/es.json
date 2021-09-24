@@ -7,7 +7,8 @@
         "disconnect": "Desconectar",
         "compileFirmware": "Compilar firmware",
         "testKeyboard": "Probar teclado",
-        "exit": "Salir"
+        "exit": "Salir",
+        "version": "Versión"
     },
     "testing": {
         "sound": "Sonido",

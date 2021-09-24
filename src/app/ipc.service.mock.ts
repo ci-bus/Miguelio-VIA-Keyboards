@@ -1207,7 +1207,8 @@ export const MocksService = {
                     }
                 ]
             }
-        ]
+        ],
+        'setVersion': true
     }
 }
 

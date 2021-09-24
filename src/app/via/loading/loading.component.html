@@ -2,7 +2,7 @@
     <mat-progress-spinner [strokeWidth]="strokeWidth" [diameter]="diameter" [color]="color" [mode]="mode"
         [value]="value">
     </mat-progress-spinner>
-    <img (click)="getDevices()" src="assets/keyboard.png">
+    <img class="main-image" (click)="getDevices()">
     <h1 *ngIf="!msgInfo">{{ 'loading.connectKeyboard' | translate }}</h1>
     <h1 *ngIf="msgInfo">{{ msgInfo }}</h1>
     <h3 *ngIf="msgInfoSecond=='loadingLayer'">{{ 'loading.loadingLayer' | translate }}</h3>
@@ -10,14 +10,14 @@
     <h3 *ngIf="msgInfoSecond=='unknowModel'">{{ 'loading.unknowModel' | translate }}</h3>
     <div class="devices">
         <button (click)="selectDevice(device)" [disabled]="loadingLayers" mat-flat-button
-            *ngFor="let device of devices$ | async">
+            *ngFor="let device of devices$ | async; trackBy: trackByDevices">
             {{ device.product }} <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
     </div>
     <div class="add-support">
         <div>
             <h5>¿No aparece tu teclado?</h5>
-            <button (click)="showAddSupport = !showAddSupport" mat-flat-button>Añadir soporte</button>
+            <button (click)="showAddSupport = !showAddSupport" mat-flat-button>{{ 'loading.addSupport' | translate }}</button>
         </div>
     </div>
     <div *ngIf="showAddSupport" class="add-support-input">
@@ -53,7 +53,7 @@
             </div>
             <div *ngIf="!showLoading" class="support-buttons">
                 <button (click)="addSupport()" *ngIf="firmware?.model && firmware?.qmkKeyboard && !showLoading"
-                    mat-flat-button>Añadir soporte</button>
+                    mat-flat-button>{{ 'loading.addSupport' | translate }}</button>
                 <button (click)="showAddSupport = !showAddSupport" mat-flat-button>Cancelar</button>
             </div>
             <div class="preloader" *ngIf="showLoading"></div>

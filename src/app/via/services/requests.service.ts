@@ -101,4 +101,9 @@ export class RequestsService {
         return this.ipcService.invoke('addSupport', supportData);
     }
 
+    // Set version
+    public setVersion(version: string): Promise<string> {
+        return this.ipcService.invoke('setVersion', version);
+    }
+
 }

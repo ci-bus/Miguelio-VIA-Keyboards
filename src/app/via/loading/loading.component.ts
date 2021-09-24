@@ -136,6 +136,10 @@ export class LoadingComponent implements OnInit, OnDestroy {
         this.getDevices();
     }
 
+    trackByDevices(index: number, device: Device) {
+        return device.path;
+    }
+
     getDevices() {
         setTimeout(() => this.store.dispatch(devicesActions.get()), 500);
     }
