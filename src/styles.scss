@@ -45,7 +45,9 @@ body {
     color: #d2d5d7;
     overflow: hidden;
     overflow-y: auto;
-
+    img.main-image {
+        content: url(assets/keyboard.png);
+    }
     button {
         background-color: #424547 !important;
     }
@@ -59,6 +61,7 @@ body {
             overflow: hidden;
             button {
                 text-transform: none;
+                border-radius: 5px;
             }
         }
     }
@@ -138,5 +141,78 @@ body.keebary {
     }
     .dragOver {
         color: #529e8f;
+    }
+}
+
+body.quark {
+    color: #070707;
+    background-color: #40434e;
+    h1,
+    h2,
+    h3 {
+        color: #070707;
+        text-shadow: -1px -1px 1px #e7e5df, 1px 1px 1px #e7e5df, -1px 1px 1px #e7e5df, 1px -1px 1px #e7e5df,
+            3px 3px 1px #44bba4 !important;
+        font-weight: 500 !important;
+    }
+    h4,
+    h5 {
+        color: #e7e5df;
+    }
+    button,
+    select,
+    .mat-menu-panel,
+    .mat-select-panel {
+        background-color: #44bba4 !important;
+        color: #070707 !important;
+        border: 1px solid #070707 !important;
+        box-shadow: 2px 2px 1px #e7e5df !important;
+    }
+    input {
+        caret-color: #44bba4 !important;
+        color: #e7e5df !important;
+    }
+    mat-label {
+        color: #44bba4 !important;
+    }
+    .mat-form-field.mat-focused .mat-form-field-ripple,
+    mat-ink-bar {
+        background-color: #44bba4 !important;
+    }
+    img.main-image {
+        content: url(assets/quarkworks.svg);
+        position: relative;
+        top: -186px;
+        width: 150px;
+        height: 150px;
+        animation: moveKeyboard 5s ease infinite;
+    }
+    .keyLetter {
+        background-color: #070707;
+        border: 1px solid #40434e;
+        color: #e7e5df;
+    }
+    .hueGradient {
+        background: rgb(255, 0, 0);
+        background: linear-gradient(0deg, #40434e 40%, rgba(255, 255, 255, 0) 50%, #40434e 60%),
+            linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 1) 0%,
+                rgba(255, 255, 0, 1) 17%,
+                rgba(0, 255, 0, 1) 33%,
+                rgba(0, 255, 255, 1) 50%,
+                rgba(0, 0, 255, 1) 67%,
+                rgba(255, 0, 255, 1) 83%,
+                rgba(255, 0, 0, 1) 100%
+            );
+    }
+    .satGradient {
+        margin-left: 5px;
+        background: linear-gradient(0deg, #40434e 40%, rgba(255, 255, 255, 0) 50%, #40434e 60%),
+            linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(0deg, rgba(255, 0, 0, 1) 46%, rgba(0, 255, 0, 1) 50%, rgba(0, 0, 255, 1) 54%);
+    }
+    .dragOver {
+        color: #44bba4;
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,7 +12,7 @@ import { RequestsService } from '../services/requests.service';
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
     languages: Array<string> = ['es', 'us', 'en'];
 
@@ -22,16 +22,6 @@ export class MenuComponent implements OnInit {
         private store: Store<AppState>,
         private requestsService: RequestsService
     ) { }
-
-    ngOnInit(): void {
-        window.process?.argv?.forEach(arg => {
-            console.log(arg);
-            if (arg.indexOf('--version=') === 0) {
-                const version = arg.split('=')[1];
-                this.setVersion(version);
-            }
-        })
-    }
 
     changeLanguage(lang: string) {
         this.translate.use(lang);
@@ -64,7 +54,8 @@ export class MenuComponent implements OnInit {
 
     setVersion(version: string) {
         switch (version) {
-            case 'keebary': document.body.classList.add('keebary'); break;
+            case 'keebary': document.body.className = 'keebary'; break;
+            case 'quark': document.body.className = 'quark'; break;
             default: document.body.className = ""; break;
         }
         this.requestsService.setVersion(version);

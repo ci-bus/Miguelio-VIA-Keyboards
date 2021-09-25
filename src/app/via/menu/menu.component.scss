@@ -22,6 +22,7 @@ button {
     flex-direction: row;
     align-items: center;
     border-radius: 5px;
+    color: white !important;
     img {
         margin-right: 15px;
     }
@@ -33,6 +34,22 @@ button {
     flex-direction: row;
     align-items: center;
     border-radius: 5px;
+    color: white !important;
+    img {
+        margin-right: 15px;
+        border-radius: 5px;
+    }
+}
+
+.btn-quark {
+    background-color: #40434E !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    color: white !important;
     img {
         margin-right: 15px;
         border-radius: 5px;
