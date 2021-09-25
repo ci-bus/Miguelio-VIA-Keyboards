@@ -1,6 +1,6 @@
 {
   "name": "miguelio-via",
-  "version": "3.2.2",
+  "version": "3.3.2",
   "main": "main.js",
   "author": "Miguelio <teclados@miguelio.com> (https://miguelio.com/)",
   "description": "VIA keyboards software to change key codes config and lights",
@@ -71,8 +71,8 @@
       "packagerConfig": {
         "icon": "./src/assets/icons/icon.ico",
         "executableName": "Miguelio VIA",
-        "name": "Miguelio",
-        "productName": "Miguelio",
+        "name": "Miguelio VIA",
+        "productName": "Miguelio VIA",
         "overwrite": true,
         "ignore": [
           "out"

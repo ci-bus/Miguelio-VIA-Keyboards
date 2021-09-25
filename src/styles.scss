@@ -109,6 +109,10 @@ body.keebary {
         background-color: #222527;
         border: 1px solid #529e8f;
     }
+    .key.isoEnter:after {
+        background: #222527;
+        color: #222527;
+    }
     .hueGradient {
         background: rgb(255, 0, 0);
         background: linear-gradient(
@@ -191,6 +195,14 @@ body.quark {
         background-color: #44bba4;
         border: 1px solid #40434e;
         color: black;
+    }
+    .key.isoEnter:after {
+        background: #44bba4;
+        color: #44bba4;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        width: 57px;
+        top: 43px;
     }
     .keyLetter:not(.fake) {
         border: 2px solid black;
