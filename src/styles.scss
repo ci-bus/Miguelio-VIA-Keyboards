@@ -150,14 +150,14 @@ body.quark {
     h1,
     h2,
     h3 {
-        color: #070707;
-        text-shadow: -1px -1px 1px #e7e5df, 1px 1px 1px #e7e5df, -1px 1px 1px #e7e5df, 1px -1px 1px #e7e5df,
-            3px 3px 1px #44bba4 !important;
+        color: #fff;
+        text-shadow: 2px 2px 1px #000, 4px 4px 1px #44bba4 !important;
         font-weight: 500 !important;
     }
     h4,
     h5 {
-        color: #e7e5df;
+        color: #fff;
+        font-weight: 500;
     }
     button,
     select,
@@ -170,7 +170,7 @@ body.quark {
     }
     input {
         caret-color: #44bba4 !important;
-        color: #e7e5df !important;
+        color: #fff !important;
     }
     mat-label {
         color: #44bba4 !important;
@@ -188,9 +188,15 @@ body.quark {
         animation: moveKeyboard 5s ease infinite;
     }
     .keyLetter {
-        background-color: #070707;
+        background-color: #44bba4;
         border: 1px solid #40434e;
-        color: #e7e5df;
+        color: black;
+    }
+    .keyLetter:not(.fake) {
+        border: 2px solid black;
+    }
+    .keyLetter input {
+        color: black !important;
     }
     .hueGradient {
         background: rgb(255, 0, 0);
