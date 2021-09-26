@@ -234,3 +234,66 @@ body.quark {
         color: #44bba4;
     }
 }
+
+body.tecladitos {
+    color: white;
+    background-color: #69238a;
+    button,
+    select,
+    .mat-menu-panel,
+    .mat-select-panel {
+        color: black !important;
+        background-color: white !important;
+        border: 1px solid black;
+    }
+    img.main-image {
+        content: url(assets/tecladitos.png);
+        position: relative;
+        top: -186px;
+        width: 170px;
+        height: 170px;
+        animation: moveKeyboard 5s ease infinite;
+    }
+    .keyLetter {
+        background-color: white;
+        border: 1px solid #69238a;
+        color: black;
+    }
+    .key.isoEnter:after {
+        background: white;
+        color: white;
+    }
+    .hueGradient {
+        background: rgb(255, 0, 0);
+        background: linear-gradient(
+                0deg,
+                #69238a 40%,
+                rgba(255, 255, 255, 0) 50%,
+                #69238a 60%
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 1) 0%,
+                rgba(255, 255, 0, 1) 17%,
+                rgba(0, 255, 0, 1) 33%,
+                rgba(0, 255, 255, 1) 50%,
+                rgba(0, 0, 255, 1) 67%,
+                rgba(255, 0, 255, 1) 83%,
+                rgba(255, 0, 0, 1) 100%
+            );
+    }
+    .satGradient {
+        margin-left: 5px;
+        background: linear-gradient(
+                0deg,
+                #69238a 40%,
+                rgba(255, 255, 255, 0) 50%,
+                #69238a 60%
+            ),
+            linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(0deg, rgba(255, 0, 0, 1) 46%, rgba(0, 255, 0, 1) 50%, rgba(0, 0, 255, 1) 54%);
+    }
+    .dragOver {
+        color: #69238a;
+    }
+}

@@ -55,3 +55,15 @@ button {
         border-radius: 5px;
     }
 }
+
+.btn-tecladitos {
+    background-color: #69238a !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    color: white !important;
+    img {
+        margin-right: 15px;
+    }
+}
