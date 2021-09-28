@@ -79,7 +79,7 @@ body {
         max-width: none !important;
         min-height: 500px !important;
     }
-    .mat-option-text {
+    .mat-option-text, .mat-tab-label {
         user-select: none;
     }
 
@@ -250,8 +250,8 @@ body.tecladitos {
         content: url(assets/tecladitos.png);
         position: relative;
         top: -186px;
-        width: 170px;
-        height: 170px;
+        width: 160px;
+        height: 160px;
         animation: moveKeyboard 5s ease infinite;
     }
     .keyLetter {
@@ -265,12 +265,7 @@ body.tecladitos {
     }
     .hueGradient {
         background: rgb(255, 0, 0);
-        background: linear-gradient(
-                0deg,
-                #69238a 40%,
-                rgba(255, 255, 255, 0) 50%,
-                #69238a 60%
-            ),
+        background: linear-gradient(0deg, #69238a 40%, rgba(255, 255, 255, 0) 50%, #69238a 60%),
             linear-gradient(
                 90deg,
                 rgba(255, 0, 0, 1) 0%,
@@ -284,16 +279,69 @@ body.tecladitos {
     }
     .satGradient {
         margin-left: 5px;
-        background: linear-gradient(
-                0deg,
-                #69238a 40%,
-                rgba(255, 255, 255, 0) 50%,
-                #69238a 60%
-            ),
+        background: linear-gradient(0deg, #69238a 40%, rgba(255, 255, 255, 0) 50%, #69238a 60%),
             linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%),
             linear-gradient(0deg, rgba(255, 0, 0, 1) 46%, rgba(0, 255, 0, 1) 50%, rgba(0, 0, 255, 1) 54%);
     }
     .dragOver {
         color: #69238a;
+    }
+}
+
+body.arq {
+    color: white;
+    background-color: #fa2929;
+    button,
+    select,
+    .mat-menu-panel,
+    .mat-select-panel {
+        color: #232222 !important;
+        background-color: white !important;
+        border: 1px solid #232222;
+    }
+    img.main-image {
+        content: url(assets/arq.png);
+        position: relative;
+        top: -180px;
+        width: 140px;
+        height: 140px;
+        animation: moveKeyboard 5s ease infinite;
+    }
+    .keyLetter {
+        background-color: white;
+        border: 1px solid #fa2929;
+        color: #232222;
+    }
+    .key.isoEnter:after {
+        background-color: white;
+        color: white;
+    }
+    .mat-tab-group.mat-primary .mat-ink-bar,
+    .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+        background-color: white !important;
+        color: #232222 !important;
+    }
+    .hueGradient {
+        background: rgb(255, 0, 0);
+        background: linear-gradient(0deg, #fa2929 40%, rgba(255, 255, 255, 0) 50%, #fa2929 60%),
+            linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 1) 0%,
+                rgba(255, 255, 0, 1) 17%,
+                rgba(0, 255, 0, 1) 33%,
+                rgba(0, 255, 255, 1) 50%,
+                rgba(0, 0, 255, 1) 67%,
+                rgba(255, 0, 255, 1) 83%,
+                rgba(255, 0, 0, 1) 100%
+            );
+    }
+    .satGradient {
+        margin-left: 5px;
+        background: linear-gradient(0deg, #fa2929 40%, rgba(255, 255, 255, 0) 50%, #fa2929 60%),
+            linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(0deg, rgba(255, 0, 0, 1) 46%, rgba(0, 255, 0, 1) 50%, rgba(0, 0, 255, 1) 54%);
+    }
+    .dragOver {
+        color: #fa2929;
     }
 }

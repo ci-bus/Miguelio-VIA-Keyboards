@@ -22,7 +22,7 @@ export class MenuComponent {
         private store: Store<AppState>,
         private requestsService: RequestsService
     ) {
-        window.process.argv.forEach(arg => {
+        window.process?.argv.forEach(arg => {
             if (arg.indexOf('--version=') === 0) {
                 this.setVersion(arg.split('=')[1]);
             }
@@ -63,6 +63,7 @@ export class MenuComponent {
             case 'keebary': document.body.className = 'keebary'; break;
             case 'quark': document.body.className = 'quark'; break;
             case 'tecladitos': document.body.className = 'tecladitos'; break;
+            case 'arq': document.body.className = 'arq'; break;
             default: document.body.className = ""; break;
         }
         this.requestsService.setVersion(version);

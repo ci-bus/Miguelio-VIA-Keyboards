@@ -64,6 +64,20 @@ button {
     border-radius: 5px;
     color: white !important;
     img {
-        margin-right: 15px;
+        margin-right: 13px;
+        margin-left: -3px;
+    }
+}
+
+.btn-arq {
+    background-color: #fa2929 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    color: white !important;
+    img {
+        margin-right: 18px;
+        margin-left: -3px;
     }
 }
