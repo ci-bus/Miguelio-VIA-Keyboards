@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { Layoutmapper } from '../interfaces';
-import { changeKey, clear, set } from './mapper.actions';
+import { changeKey, clear, keyChanged, set } from './mapper.actions';
 
 export const initialState: Layoutmapper[] = [];
 
 const _mapperReducer = createReducer(initialState,
     on(set, (state, { layoutsmapper }) => layoutsmapper),
     on(changeKey, (state, { fromKey, toKey }) => state.map(layout => {
-        let tempLayout = { ...layout };
+        let tempLayout = { ...layout, loading: true };
         if (tempLayout.name === toKey.layout) {
             tempLayout.layers = tempLayout.layers.map(layer => {
                 let tempLayer = { ...layer };
@@ -26,7 +26,8 @@ const _mapperReducer = createReducer(initialState,
         }
         return tempLayout;
     })),
-    on(clear, (state) => [])
+    on(clear, (state) => []),
+    on(keyChanged, state => state.map(layout => ({...layout, loading: false})))
 );
 
 export function mapperReducer(state, action) {

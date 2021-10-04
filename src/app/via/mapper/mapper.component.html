@@ -1,15 +1,15 @@
-<div>
+<div (contextmenu)="onRightClick($event)">
     <mat-tab-group #firstab animationDuration="0ms" [selectedIndex]="activeMainTab"
         (selectedTabChange)="activeMainTab = $event.index">
-        <mat-tab *ngFor="let layout of layoutsmapper" [label]="layout.name">
+        <mat-tab *ngFor="let layout of layoutsmapper;trackBy: trackByLayout" [label]="layout.name">
             <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="activeTab = $event.index">
-                <mat-tab *ngFor="let layer of layout.layers" [label]="layer.number">
+                <mat-tab *ngFor="let layer of layout.layers;trackBy: trackByLayer" [label]="layer.number">
                     <!-- V2 -->
                     <div *ngIf="defs.vdoc == 2" class="layout2">
                         <div *ngIf="layoutsmapper" class="mapper-container"
                             [ngStyle]="{width: containerSize(layout)[0] + 'px', height: containerSize(layout)[1] + 'px'}">
-                            <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
-                                <div class="key2" *ngFor="let key of rowKeys"
+                            <div class="rowKeys" *ngFor="let rowKeys of layer.keymap;trackBy: trackByKeymap">
+                                <div class="key2" *ngFor="let key of rowKeys;trackBy: trackByKey"
                                     [ngClass]="{selected: key.selected, isoEnter2: key.h && key.h == 2}"
                                     [ngStyle]="{top: key.y * sizeKeys + 'px', left: key.x * sizeKeys + 'px', width: key.w * sizeKeys + 'px', height: key.h == 2 ? '48px' : key.h * sizeKeys + 'px', transform: key.t || 'none'}"
                                     (dragover)="dragOver($event)" (dragenter)="dragEnter($event)"
@@ -38,8 +38,8 @@
                     </div>
                     <!-- V1 -->
                     <div *ngIf="defs.vdoc != 2" class="layout">
-                        <div class="rowKeys" *ngFor="let rowKeys of layer.keymap">
-                            <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u"
+                        <div class="rowKeys" *ngFor="let rowKeys of layer.keymap;trackBy: trackByKeymap">
+                            <div class="key" *ngFor="let key of rowKeys;trackBy: trackByKey" [class.u0]="!key.u"
                                 [class.isoEnter]="key.s=='ISO_ENTER'" [class.encoderLeft]="key.s=='ENCODER_LEFT'"
                                 [class.encoderRight]="key.s=='ENCODER_RIGHT'" [class.faderUp]="key.s=='FADER_UP'"
                                 [class.faderDown]="key.s=='FADER_DOWN'" [style.width.px]="key.u * sizeKeys"
@@ -88,6 +88,15 @@
                                     <input *ngIf="isModKey(key)" type="text" [value]="key.secondByte">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Operaciones">
+                <div class="layout">
+                    <div class="rowKeys">
+                        <div class="key click" style="width:80px;">
+                            <div class="keyLetter" (click)="AllTransToNo()">TRNS → NO</div>
                         </div>
                     </div>
                 </div>

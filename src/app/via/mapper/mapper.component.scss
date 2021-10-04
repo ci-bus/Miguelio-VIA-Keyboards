@@ -196,6 +196,10 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+.key.click {
+    cursor: pointer;
+    user-select: none;
+}
 
 .mapperKeys .layout {
     padding-bottom: 30px;

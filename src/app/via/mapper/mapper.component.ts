@@ -4,12 +4,13 @@ import { first } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AppState } from '../../app.reducer';
-import { Keymap, Keymapper, Layoutmapper } from '../interfaces';
+import { Key, Keymap, Keymapper, Layermapper, Layout, Layoutmapper } from '../interfaces';
 import { Defs } from '../keyboard/defs.model';
 import { keymapsHelper } from '../keymaps/keymaps.helper';
 import onLetterKey from './oneLetterKeys';
 import mapperKeys from './mapper.keys';
 import * as mapperActions from './mapper.actions';
+import { add } from '../errors/errors.actions';
 
 @Component({
     selector: 'app-mapper',
@@ -22,11 +23,12 @@ export class MapperComponent implements OnInit {
     keymaps: Keymap[] = [];
     layoutsmapper: Layoutmapper[] = [];
     mapperKeys = mapperKeys;
-    activeMainTab: number = 1;
+    activeMainTab: number = 0;
     activeTab: number = 0;
     public sizeKeys: number = 48;
 
     draggingKey: Keymapper;
+    changingTransToNo: Keymapper;
 
     constructor(
         public translate: TranslateService,
@@ -44,7 +46,12 @@ export class MapperComponent implements OnInit {
         });
 
         this.store.select('layoutsmapper').subscribe(layoutsmapper => {
-            this.layoutsmapper = layoutsmapper;
+            if (!layoutsmapper[0]?.loading) {
+                this.layoutsmapper = layoutsmapper;
+                if (this.changingTransToNo) {
+                    this.AllTransToNo();
+                }
+            }
         });
 
     }
@@ -126,61 +133,139 @@ export class MapperComponent implements OnInit {
     }
 
     drag(key: Keymapper) {
-        if (key.f) return false;
-        this.draggingKey = key;
-        this.changeDetectorRef.detach();
+        try {
+            if (key.f) return false;
+            this.draggingKey = key;
+            this.changeDetectorRef?.detach();
+        } catch (err) {
+            this.store.dispatch(add({
+                textInfo: err
+            }));
+        }
+
     }
 
     dragOver(event) {
-        event.preventDefault();
+        event?.preventDefault();
+        event?.stopPropagation();
     }
 
     dragEnter(event) {
-        if (event.target.tagName == 'SPAN') {
-            event.target.parentElement.className += ' dragOver';
+        try {
+            if (event?.target?.tagName == 'SPAN') {
+                event.target.parentElement.className += ' dragOver';
+            }
+            if (event?.target?.className?.indexOf('dragOver') < 0)
+                event.target.className += ' dragOver';
+        } catch (err) {
+            this.store.dispatch(add({
+                textInfo: err
+            }));
         }
-        if (event.target.className.indexOf('dragOver') < 0)
-            event.target.className += ' dragOver';
         return false;
     }
 
     dragLeave(event) {
-        event.target.className = event.target.className.replace(' dragOver', '');
+        try {
+            if (event?.target?.className) {
+                event.target.className = event.target.className.replace(' dragOver', '');
+            }
+        } catch (err) {
+            this.store.dispatch(add({
+                textInfo: err
+            }));
+        }
     }
 
     drop(event, key: Keymapper) {
-        event.target.style.color = '#c2185b';
-        this.dragLeave(event);
-        this.store.dispatch(mapperActions.changeKey({
-            fromKey: this.draggingKey,
-            toKey: key
-        }));
+        try {
+            if (event?.target && !this.layoutsmapper[0]?.loading) {
+                if (event?.target?.className) {
+                    event.target.className = event.target.className.replace(' dragOver', '');
+                }
+                this.store.dispatch(mapperActions.changeKey({
+                    fromKey: this.draggingKey,
+                    toKey: key
+                }));
+            }
+        } catch (err) {
+            this.store.dispatch(add({
+                textInfo: err
+            }));
+        }
     }
 
     dropInput(event, key: Keymapper) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.target.style.color = '#c2185b';
-        let fromKey = { ...key };
-        fromKey.secondByte = this.draggingKey.secondByte;
-        this.store.dispatch(mapperActions.changeKey({
-            fromKey: fromKey,
-            toKey: key
-        }));
+        event?.preventDefault();
+        event?.stopPropagation();
+        try {
+            if (event?.target && !this.layoutsmapper[0]?.loading) {
+                event.target.style.color = '#c2185b';
+                let fromKey = { ...key };
+                fromKey.secondByte = this.draggingKey.secondByte;
+                this.store.dispatch(mapperActions.changeKey({
+                    fromKey: fromKey,
+                    toKey: key
+                }));
+            }
+        } catch (err) {
+            this.store.dispatch(add({
+                textInfo: err
+            }));
+        }
     }
 
     dragEnd() {
-        this.changeDetectorRef.reattach();
+        this.changeDetectorRef?.reattach();
     }
 
     changeModKey(event, key: Keymapper) {
-        event.target.style.color = '#c2185b';
-        let fromKey = { ...key };
-        fromKey.secondByte = parseInt(event.target.value);
-        this.store.dispatch(mapperActions.changeKey({
-            fromKey: fromKey,
-            toKey: key
-        }));
+        if (!this.layoutsmapper[0]?.loading) {
+            event.target.style.color = '#c2185b';
+            let fromKey = { ...key };
+            fromKey.secondByte = parseInt(event.target.value);
+            this.store.dispatch(mapperActions.changeKey({
+                fromKey: fromKey,
+                toKey: key
+            }));
+        }
+    }
+
+    trackByLayout(index: number, layout: Layout): string {
+        return layout.name;
+    }
+
+    trackByLayer(index: number, layer: Layermapper): number {
+        return layer.number;
+    }
+
+    trackByKeymap(index: number, keymap: Keymapper[]) {
+        return index;
+    }
+
+    trackByKey(index: number, key: Keymapper) {
+        return `key_${key.col}_${key.row}`;
+    }
+
+    onRightClick(event) {
+        event?.preventDefault();
+        event?.stopPropagation();
+        return false;
+    }
+
+    AllTransToNo() {
+        const keys = this.layoutsmapper[this.activeMainTab]?.layers[this.activeTab]?.keymap?.flat();
+        this.changingTransToNo = keys.find(key => !key.firstByte && key.secondByte === 1);
+        if (this.changingTransToNo) {
+            this.store.dispatch(mapperActions.changeKey({
+                fromKey: {
+                    code: 'KC_NO',
+                    firstByte: 0,
+                    secondByte: 0
+                },
+                toKey: this.changingTransToNo
+            }));
+        }
     }
 }
 

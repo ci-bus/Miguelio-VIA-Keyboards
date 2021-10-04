@@ -86,7 +86,7 @@ export interface LightValues {
 }
 
 export interface Keymapper {
-    u: number
+    u?: number
     s?: string
     f?: boolean
     firstByte?: number
@@ -104,7 +104,7 @@ export interface Keymapper {
     y?: number
     w?: number
     h?: number
-    matrix: Array<number>
+    matrix?: Array<number>
 }
 
 export interface Layermapper {
@@ -114,6 +114,7 @@ export interface Layermapper {
 
 export interface Layoutmapper {
     name: string
+    loading: boolean,
     layers: Layermapper[]
 }
 

@@ -49,7 +49,7 @@ export class TestingComponent implements OnInit, OnDestroy {
         if (event.code == 'OSRight') {
             event.code = 'MetaRight';
         }
-        this.mapperKeys.keymap.map(keyRow => keyRow.map(key => {
+        this.mapperKeys.keymap.forEach(keyRow => keyRow.forEach(key => {
             if (key.eventCode == event.code) {
                 key.keyUp = false;
                 key.keyDown = true;
@@ -57,21 +57,21 @@ export class TestingComponent implements OnInit, OnDestroy {
         }));
         if (this.soundSelected != "0") {
             const ele = <HTMLAudioElement>document.getElementById(`click${this.soundSelected}_keydown`);
-            ele.play();
+            ele?.play();
         }
     }
 
     onKeyUp(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.mapperKeys.keymap.map(keyRow => keyRow.map(key => {
+        this.mapperKeys.keymap.forEach(keyRow => keyRow.forEach(key => {
             if (key.eventCode == event.code) {
                 key.keyUp = true;
             }
         }));
         if (this.soundSelected != "0") {
             const ele = <HTMLAudioElement>document.getElementById(`click${this.soundSelected}_keyup`);
-            ele.play();
+            ele?.play();
         }
     }
 
