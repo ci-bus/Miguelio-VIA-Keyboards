@@ -181,5 +181,23 @@ export interface FirmwareState {
     savedSupport: boolean
 }
 
-
-
+export interface Colorway {
+    id: string
+    label: string
+    manufacturer: string
+    override: any
+    swatches: {
+        base: {
+            background: string
+            color: string
+        },
+        mods: {
+            background: string
+            color: string
+        },
+        accent: {
+            background: string
+            color: string
+        }
+    }
+}

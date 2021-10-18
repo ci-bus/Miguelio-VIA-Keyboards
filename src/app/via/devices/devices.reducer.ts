@@ -6,7 +6,7 @@ const initialState: Device[] = [];
 
 const _devicesReducer = createReducer(
     initialState,
-    on(set, (state, { devices }) => devices.map(device => new Device(device))),
+    on(set, (state, { devices }) => devices),
     on(clear, state => [])
 );
 

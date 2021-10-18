@@ -4,7 +4,7 @@ import { first } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AppState } from '../../app.reducer';
-import { Key, Keymap, Keymapper, Layermapper, Layout, Layoutmapper } from '../interfaces';
+import { Keymap, Keymapper, Layermapper, Layout, Layoutmapper } from '../interfaces';
 import { Defs } from '../keyboard/defs.model';
 import { keymapsHelper } from '../keymaps/keymaps.helper';
 import onLetterKey from './oneLetterKeys';
@@ -132,7 +132,7 @@ export class MapperComponent implements OnInit {
         return key.code && onLetterKey.indexOf(key.code) >= 0;
     }
 
-    drag(key: Keymapper) {
+    dragStart(key: Keymapper) {
         try {
             if (key.f) return false;
             this.draggingKey = key;
@@ -145,31 +145,19 @@ export class MapperComponent implements OnInit {
 
     }
 
-    dragOver(event) {
-        event?.preventDefault();
-        event?.stopPropagation();
-    }
-
     dragEnter(event) {
         try {
-            if (event?.target?.tagName == 'SPAN') {
-                event.target.parentElement.className += ' dragOver';
-            }
-            if (event?.target?.className?.indexOf('dragOver') < 0)
-                event.target.className += ' dragOver';
+            event.target.classList.add('dragOver');
         } catch (err) {
             this.store.dispatch(add({
                 textInfo: err
             }));
         }
-        return false;
     }
 
     dragLeave(event) {
         try {
-            if (event?.target?.className) {
-                event.target.className = event.target.className.replace(' dragOver', '');
-            }
+            event.target.classList.remove('dragOver');
         } catch (err) {
             this.store.dispatch(add({
                 textInfo: err
@@ -179,15 +167,13 @@ export class MapperComponent implements OnInit {
 
     drop(event, key: Keymapper) {
         try {
-            if (event?.target && !this.layoutsmapper[0]?.loading) {
-                if (event?.target?.className) {
-                    event.target.className = event.target.className.replace(' dragOver', '');
-                }
+            if (event.target && !this.layoutsmapper[0]?.loading) {
                 this.store.dispatch(mapperActions.changeKey({
                     fromKey: this.draggingKey,
                     toKey: key
                 }));
             }
+            event.target.classList.remove('dragOver');
         } catch (err) {
             this.store.dispatch(add({
                 textInfo: err
@@ -196,8 +182,7 @@ export class MapperComponent implements OnInit {
     }
 
     dropInput(event, key: Keymapper) {
-        event?.preventDefault();
-        event?.stopPropagation();
+        event.stopImmediatePropagation();
         try {
             if (event?.target && !this.layoutsmapper[0]?.loading) {
                 event.target.style.color = '#c2185b';
@@ -216,17 +201,29 @@ export class MapperComponent implements OnInit {
     }
 
     dragEnd() {
-        this.changeDetectorRef?.reattach();
+        try {
+            this.changeDetectorRef.reattach();
+        } catch (err) {
+            this.store.dispatch(add({
+                textInfo: err
+            }));
+        }
     }
 
     changeModKey(event, key: Keymapper) {
-        if (!this.layoutsmapper[0]?.loading) {
-            event.target.style.color = '#c2185b';
-            let fromKey = { ...key };
-            fromKey.secondByte = parseInt(event.target.value);
-            this.store.dispatch(mapperActions.changeKey({
-                fromKey: fromKey,
-                toKey: key
+        try {
+            if (!this.layoutsmapper[0]?.loading) {
+                event.target.style.color = '#c2185b';
+                let fromKey = { ...key };
+                fromKey.secondByte = parseInt(event.target.value);
+                this.store.dispatch(mapperActions.changeKey({
+                    fromKey: fromKey,
+                    toKey: key
+                }));
+            }
+        } catch (err) {
+            this.store.dispatch(add({
+                textInfo: err
             }));
         }
     }

@@ -54,7 +54,7 @@ export class MapperEffects {
                         tap(() => this.router.navigate(['/']))
                     )
                 ),
-                map(({ keyboard }) => ({ type: keyboardActions.create.type, device: new Device(keyboard) })),
+                map(({ keyboard }) => ({ type: keyboardActions.create.type, device: keyboard })),
                 catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
             )
         )

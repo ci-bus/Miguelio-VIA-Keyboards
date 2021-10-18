@@ -1,0 +1,30 @@
+{
+  "id": "rainy_day",
+  "label": "Rainy Day",
+  "manufacturer": "",
+  "swatches": {
+    "base": {
+      "background": "#a7abae",
+      "color": "#505356"
+    },
+    "mods": {
+      "background": "#4b4e51",
+      "color": "#b5d1d2"
+    },
+    "accent": {
+      "background": "#b5d1d2",
+      "color": "#505356"
+    }
+  },
+  "override": {
+    "KC_SPC": "base",
+    "KC_ENT": "accent",
+    "KC_ESC": "accent",
+    "KC_GESC": "accent",
+    "KC_PENT": "accent",
+    "KC_F5": "mods",
+    "KC_F6": "mods",
+    "KC_F7": "mods",
+    "KC_F8": "mods"
+  }
+}

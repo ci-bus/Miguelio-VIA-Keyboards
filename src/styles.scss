@@ -16,6 +16,13 @@
     unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
 
+* {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 .material-icons {
     font-family: "Material Icons";
     font-weight: normal;
@@ -45,6 +52,9 @@ body {
     color: #d2d5d7;
     overflow: hidden;
     overflow-y: auto;
+    .pt {
+        padding-top: 30px;
+    }
     img.main-image {
         content: url(assets/keyboard.png);
     }
@@ -64,6 +74,21 @@ body {
                 border-radius: 5px;
             }
         }
+    }
+    .color-option {
+        .mat-option-text {
+            display: flex;
+            div {
+                min-width: 15px;
+                height: 30px;
+            }
+            :last-child {
+                margin-left: 10px;
+            }
+        }
+    }
+    ::ng-deep mat-autocomplete {
+        width: fit-content !important;
     }
 
     .noLine {
@@ -107,7 +132,6 @@ body.keebary {
     }
     .keyLetter {
         background-color: #222527;
-        border: 1px solid #529e8f;
     }
     .key.isoEnter:after {
         background: #222527;
@@ -193,7 +217,6 @@ body.quark {
     }
     .keyLetter {
         background-color: #44bba4;
-        border: 1px solid #40434e;
         color: black;
     }
     .key.isoEnter:after {
@@ -256,7 +279,6 @@ body.tecladitos {
     }
     .keyLetter {
         background-color: white;
-        border: 1px solid #69238a;
         color: black;
     }
     .key.isoEnter:after {
@@ -309,7 +331,6 @@ body.arq {
     }
     .keyLetter {
         background-color: white;
-        border: 1px solid #fa2929;
         color: #232222;
     }
     .key.isoEnter:after {

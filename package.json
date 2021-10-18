@@ -18,6 +18,7 @@
   "dependencies": {
     "electron-download-manager": "~2.1.2",
     "glob": "~7.1.6",
+    "ngx-color-picker": "^11.0.0",
     "node-hid": "~2.1.1"
   },
   "devDependencies": {

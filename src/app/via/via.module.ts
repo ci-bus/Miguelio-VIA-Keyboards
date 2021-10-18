@@ -16,6 +16,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ReactiveFormsModule } from '@angular/forms';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 import { LoadingComponent } from './loading/loading.component';
@@ -24,6 +25,7 @@ import { keymapsHelper } from './keymaps/keymaps.helper';
 import { LightComponent } from './light/light.component';
 import { FirmwareComponent } from './firmware/firmware.component';
 import { TestingComponent } from './testing/testing.component';
+import { OrderByPipe } from './pipes/orderBy.pipe';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { TestingComponent } from './testing/testing.component';
         MapperComponent,
         LightComponent,
         FirmwareComponent,
-        TestingComponent
+        TestingComponent,
+        OrderByPipe
     ],
     imports: [
         CommonModule,
@@ -51,7 +54,8 @@ import { TestingComponent } from './testing/testing.component';
         MatAutocompleteModule,
         MatInputModule,
         MatFormFieldModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ColorPickerModule
     ],
     providers: [
         keymapsHelper

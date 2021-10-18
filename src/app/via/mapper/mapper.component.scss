@@ -20,6 +20,22 @@
     cursor: default;
     position: absolute;
     transform-origin: 50% 50%;
+
+    .keyContent {
+        background-color: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2px 2px 0;
+        word-spacing: 6px;
+        pointer-events: none;
+
+        input {
+            pointer-events: auto;
+        }
+    }
 }
 
 .key2.isoEnter2 {
@@ -60,19 +76,35 @@
 }
 
 .key {
-    border-radius: 5px;
     width: 48px;
     height: 48px;
     display: grid;
     cursor: default;
+    overflow: hidden;
+
+    .keyContent {
+        background-color: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2px 2px 0;
+        word-spacing: 6px;
+        pointer-events: none;
+
+        input {
+            pointer-events: auto;
+        }
+    }
 }
 
 .keyLetter {
     background-color: #121517;
-    padding: 5px;
+    padding: 3px 5px 8px;
     border: 1px solid #323537;
-    border-radius: 6px;
-    font-size: 12px;
+    font-size: 10px;
+    border-radius: 4px;
 }
 
 .keyLetter > div {
@@ -87,7 +119,7 @@
 }
 .oneLetter {
     word-spacing: 0.6rem;
-    font-size: 14px;
+    font-size: 13px;
     text-align-last: center;
 }
 .keyLetter.none {
@@ -95,6 +127,7 @@
 }
 .keyLetter.fake {
     background: none;
+    visibility: hidden;
 }
 .key.u0 {
     width: 0px;

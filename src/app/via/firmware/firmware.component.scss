@@ -1,14 +1,33 @@
 .key {
-    border-radius: 5px;
     width: 48px;
     height: 48px;
     display: grid;
     cursor: default;
     position: absolute;
+
+    .keyContent {
+        background-color: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2px 2px 0;
+        word-spacing: 6px;
+        pointer-events: none;
+        box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px -1px 0px inset;
+        padding-left: 3px;
+
+        input {
+            pointer-events: auto;
+        }
+    }
 }
 
-.key.selected div {
-    border-color: white;
+.selected {
+    z-index: 8888;
+    transform: scale(1.1);
+    box-shadow: white 0 0 0 2px, black 0 0 10px 1px;
 }
 
 .layout {
@@ -16,7 +35,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
 }
 
 .rowKeys {
@@ -35,17 +53,25 @@
     justify-content: center;
 }
 
+.case {
+    border: 10px solid;
+    border-radius: 5px;
+    margin: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px inset;
+}
+
 .firmware-container {
     position: relative;
-    padding-bottom: 20px;
+    border: 2px solid;
+    border-radius: 5px;
 }
 
 .keyLetter {
-    background-color: black;
-    padding: 5px;
-    border: 1px solid #323537;
-    border-radius: 6px;
-    font-size: 12px;
+    background-color: #121517;
+    padding: 3px 5px 8px;
+    margin: 1px;
+    font-size: 11px;
+    border-radius: 4px;
 }
 .keyLetter > div {
     display: flex;
@@ -59,8 +85,11 @@
 }
 .oneLetter {
     word-spacing: 0.6rem;
-    font-size: 14px;
-    text-align-last: center;
+    font-size: 13px;
+    text-align-last: left;
+    .keyContent {
+        padding-left: 5px;
+    }
 }
 .keyLetter.none {
     display: none;
@@ -151,6 +180,7 @@
 
 .onlyText {
     padding-top: 15px;
+    font-size: 15px;
 }
 
 .compile-select {
@@ -182,7 +212,7 @@ mat-form-field.mat-form-field {
     top: 0px;
     left: 0px;
     z-index: 8;
-    background-color: #323537;
+    background: rgba(0, 0, 0, 0.8);
 }
 mat-progress-spinner,
 h1,
@@ -236,6 +266,20 @@ h3 {
     top: 5px;
     left: 10px;
 }
+
+input.color {
+    border-radius: 25%;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+}
+
+.color-select {
+    width: 100px;
+}
+
 @keyframes girar {
     from {
         transform: rotate(0deg);

@@ -6,7 +6,7 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 import { AppState } from '../../app.reducer';
-import { FirmwareState, Keymapper, QmkKeyboardLayout, QmkKeyboardKeymapper } from '../interfaces';
+import { FirmwareState, Keymapper, QmkKeyboardLayout, QmkKeyboardKeymapper, Layermapper, Colorway, Key } from '../interfaces';
 import * as firmwareActions from './firmware.actions';
 import onLetterKey from '../mapper/oneLetterKeys';
 import mapperKeys from './firmware.keys';
@@ -19,11 +19,13 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
+import colorways from 'src/assets/colorways/colorways';
+
 
 @Component({
     selector: 'app-firmware',
     templateUrl: './firmware.component.html',
-    styleUrls: ['./firmware.component.css']
+    styleUrls: ['./firmware.component.scss']
 })
 export class FirmwareComponent implements OnInit, OnDestroy {
 
@@ -38,6 +40,12 @@ export class FirmwareComponent implements OnInit, OnDestroy {
     public lastSelectedKey;
     private functionKeyDown: any;
     public sizeKeys: number = 48;
+    // Colors
+    public caseColor: string = '#c2c5c7';
+    public plateColor: string = '#929597';
+    public keycapsColor: Colorway = JSON.parse(localStorage.getItem("keycapsColor"));
+    public colorways: Colorway[] = colorways;
+
     myControl = new FormControl();
     filteredOptions: Observable<String[]>;
     layoutsSelected: any[];
@@ -74,7 +82,7 @@ export class FirmwareComponent implements OnInit, OnDestroy {
                 }, 100);
                 if (firmware.layers) {
                     this.lastSelectedKey = firmware.layers.map(layer => layer.keymap)
-                                            .flat().find(key => key.selected);
+                        .flat().find(key => key.selected);
                 }
             }
         });
@@ -145,7 +153,6 @@ export class FirmwareComponent implements OnInit, OnDestroy {
     }
 
     drop(event, key: QmkKeyboardKeymapper) {
-        event.target.style.color = '#c2185b';
         this.dragLeave(event);
         this.changeKey(this.draggingKey, key);
         const ROKey = {
@@ -159,9 +166,9 @@ export class FirmwareComponent implements OnInit, OnDestroy {
     dropInput(event, key: QmkKeyboardKeymapper) {
         event.preventDefault();
         event.stopPropagation();
-        event.target.style.color = '#c2185b';
         const fromKey = {
             ...key,
+            code: key.code.split('(').shift() + `(${this.draggingKey.code})`,
             secondByte: this.draggingKey.code
         };
         this.changeKey(fromKey, key);
@@ -172,7 +179,6 @@ export class FirmwareComponent implements OnInit, OnDestroy {
     }
 
     changeModKey(event, key: QmkKeyboardKeymapper) {
-        event.target.style.color = '#c2185b';
         const fromKey = {
             ...key,
             secondByte: parseInt(event.target.value)
@@ -187,7 +193,8 @@ export class FirmwareComponent implements OnInit, OnDestroy {
                 ...key,
                 firstByte: 0,
                 secondByte: 1,
-                code: 'KC_TRNS'
+                code: 'KC_TRNS',
+                selected: false
             };
             const layerNumber = key.secondByte;
             this.changeKey(rollOverKey, key, layerNumber);
@@ -301,19 +308,45 @@ export class FirmwareComponent implements OnInit, OnDestroy {
     }
 
     containerSize(layer) {
-        let maxWidth = 0,
-            maxHeight = 250;
+        let fullWidth = 0,
+            fullHeight = 0;
         layer.keymap.flat().map(key => {
-            let width = key.x * this.sizeKeys + key.w * this.sizeKeys,
+            const width = key.x * this.sizeKeys + (key.w || 1) * this.sizeKeys,
                 height = key.y * this.sizeKeys + (key.h || 1) * this.sizeKeys;
-            maxWidth = width > maxWidth ? width : maxWidth;
-            maxHeight = height > maxHeight ? height : maxHeight;
+            fullWidth = width > fullWidth ? width : fullWidth;
+            fullHeight = height > fullHeight ? height : fullHeight;
         });
-        return [maxWidth, maxHeight];
+        return [fullWidth, fullHeight];
     }
 
     addLayer() {
         this.store.dispatch(firmwareActions.addLayer());
+    }
+
+    changeKeycapsColor(event: MatSelectChange) {
+        localStorage.setItem("keycapsColor", JSON.stringify(event.value));
+        this.keycapsColor = event.value;
+    }
+
+    getKeycapColor(key: Keymapper, colorType: string) {
+        if (this.keycapsColor) {
+            if (key.code && this.keycapsColor.override[key.code]) {
+                return this.keycapsColor.swatches[this.keycapsColor.override[key.code]][colorType];
+            }
+            if (key.w <= 1) {
+                return this.keycapsColor.swatches.base[colorType];
+            } else {
+                return this.keycapsColor.swatches.mods[colorType];
+            }
+        }
+    }
+
+    trackByLayer(index: number, layer: Layermapper): number {
+        return layer.number;
+    }
+
+    trackByKey(index: number, key: Keymapper) {
+        return `key_${key.x}_${key.y}`;
     }
 }
 
