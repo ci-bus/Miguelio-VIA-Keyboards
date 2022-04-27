@@ -56,6 +56,8 @@ function createWindow() {
 
     mainWindow.on('resize', () => {
         let { width, height } = mainWindow.getBounds();
+        if (width < 1000) width = 1000;
+        if (height < 600) height = 600;
         store.set('windowBounds', { width, height });
     });
 
