@@ -1,0 +1,29 @@
+{
+  "id": "80082",
+  "label": "80082 B100",
+  "manufacturer": "",
+  "swatches": {
+    "base": {
+      "background": "#747e92",
+      "color": "#0e1415"
+    },
+    "mods": {
+      "background": "#2b313f",
+      "color": "#67c4e5"
+    },
+    "accent": {
+      "background": "#67c4e5",
+      "color": "#0e1415"
+    }
+  },
+  "override": {
+    "KC_SPC": "base",
+    "KC_ENT": "accent",
+    "KC_ESC": "accent",
+    "KC_GESC": "accent",
+    "KC_F5": "mods",
+    "KC_F6": "mods",
+    "KC_F7": "mods",
+    "KC_F8": "mods"
+  }
+}

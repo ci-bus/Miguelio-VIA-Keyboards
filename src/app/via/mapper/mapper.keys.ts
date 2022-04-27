@@ -5,7 +5,7 @@ export default [
         keymap: [
             [
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 41, "code": "KC_ESCAPE", "eventCode": "Escape"
+                    "u": 1, "firstByte": 0, "secondByte": 41, "code": "KC_ESC", "eventCode": "Escape"
                 },
                 {
                     "f": true, "u": 1
@@ -56,13 +56,13 @@ export default [
                     "f": true, "u": 0.25
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 70, "code": "KC_PSCREEN", "eventCode": ""
+                    "u": 1, "firstByte": 0, "secondByte": 70, "code": "KC_PSCR", "eventCode": ""
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 71, "code": "KC_SCROLLLOCK", "eventCode": ""
+                    "u": 1, "firstByte": 0, "secondByte": 71, "code": "KC_SLCK", "eventCode": ""
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 72, "code": "KC_PAUSE", "eventCode": ""
+                    "u": 1, "firstByte": 0, "secondByte": 72, "code": "KC_PAUS", "eventCode": ""
                 },
                 {
                     "f": true, "u": 0.25
@@ -83,7 +83,7 @@ export default [
             , //////////////////////////////////////////////////////////////////////////////////////
             [
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 53, "code": "KC_GRAVE", "eventCode": "Backquote"
+                    "u": 1, "firstByte": 0, "secondByte": 53, "code": "KC_GRV", "eventCode": "Backquote"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 30, "code": "KC_1", "eventCode": "Digit1"
@@ -116,22 +116,22 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 39, "code": "KC_0", "eventCode": "Digit0"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 45, "code": "KC_MINUS", "eventCode": "Minus"
+                    "u": 1, "firstByte": 0, "secondByte": 45, "code": "KC_MINS", "eventCode": "Minus"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 46, "code": "KC_EQUAL", "eventCode": "Equal"
+                    "u": 1, "firstByte": 0, "secondByte": 46, "code": "KC_EQL", "eventCode": "Equal"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 137, "code": "KC_INT3"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 42, "code": "KC_BSPACE", "eventCode": "Backspace"
+                    "u": 1, "firstByte": 0, "secondByte": 42, "code": "KC_BSPC", "eventCode": "Backspace"
                 },
                 {
                     "f": true, "u": 0.25
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 73, "code": "KC_INSERT", "eventCode": "Insert"
+                    "u": 1, "firstByte": 0, "secondByte": 73, "code": "KC_INS", "eventCode": "Insert"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 74, "code": "KC_HOME", "eventCode": "Home"
@@ -143,16 +143,16 @@ export default [
                     "f": true, "u": 0.25
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 83, "code": "KC_NUMLOCK", "eventCode": "NumLock"
+                    "u": 1, "firstByte": 0, "secondByte": 83, "code": "KC_NLCK", "eventCode": "NumLock"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 84, "code": "KC_KP_SLASH", "eventCode": "/"
+                    "u": 1, "firstByte": 0, "secondByte": 84, "code": "KC_PSLS", "eventCode": "/"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 85, "code": "KC_KP_ASTERISK", "eventCode": "*"
+                    "u": 1, "firstByte": 0, "secondByte": 85, "code": "KC_PAST", "eventCode": "*"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 86, "code": "KC_KP_MINUS", "eventCode": "-"
+                    "u": 1, "firstByte": 0, "secondByte": 86, "code": "KC_PMNS", "eventCode": "-"
                 }
             ]
             , //////////////////////////////////////////////////////////////////////////////////////
@@ -191,25 +191,25 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 19, "code": "KC_P", "eventCode": "KeyP"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 47, "code": "KC_LBRACKET", "eventCode": "BracketLeft"
+                    "u": 1, "firstByte": 0, "secondByte": 47, "code": "KC_LBRC", "eventCode": "BracketLeft"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 48, "code": "KC_RBRACKET", "eventCode": "BracketRight"
+                    "u": 1, "firstByte": 0, "secondByte": 48, "code": "KC_RBRC", "eventCode": "BracketRight"
                 },
                 {
-                    "u": 1.5, "firstByte": 0, "secondByte": 49, "code": "KC_BSLASH", "eventCode": "Backslash"
+                    "u": 1.5, "firstByte": 0, "secondByte": 49, "code": "KC_BSLS", "eventCode": "Backslash"
                 },
                 {
                     "f": true, "u": 0.25
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 76, "code": "KC_DELETE", "eventCode": "Delete"
+                    "u": 1, "firstByte": 0, "secondByte": 76, "code": "KC_DEL", "eventCode": "Delete"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 77, "code": "KC_END", "eventCode": "End"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 78, "code": "KC_PGDOWN", "eventCode": "PageDown"
+                    "u": 1, "firstByte": 0, "secondByte": 78, "code": "KC_PGDN", "eventCode": "PageDown"
                 },
                 {
                     "f": true, "u": 0.25
@@ -224,13 +224,13 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 97, "code": "KC_KP_9", "eventCode": "Numpad9"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 87, "code": "KC_KP_PLUS", "eventCode": "NumpadAdd"
+                    "u": 1, "firstByte": 0, "secondByte": 87, "code": "KC_PPLS", "eventCode": "NumpadAdd"
                 }
             ]
             , //////////////////////////////////////////////////////////////////////////////////////
             [
                 {
-                    "u": 1.75, "firstByte": 0, "secondByte": 57, "code": "KC_CAPSLOCK", "eventCode": "CapsLock"
+                    "u": 1.75, "firstByte": 0, "secondByte": 57, "code": "KC_CAPS", "eventCode": "CapsLock"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 4, "code": "KC_A", "eventCode": "KeyA"
@@ -260,16 +260,16 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 15, "code": "KC_L", "eventCode": "KeyL"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 51, "code": "KC_SCOLON", "eventCode": "Semicolon"
+                    "u": 1, "firstByte": 0, "secondByte": 51, "code": "KC_SCLN", "eventCode": "Semicolon"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 52, "code": "KC_QUOTE", "eventCode": "Quote"
+                    "u": 1, "firstByte": 0, "secondByte": 52, "code": "KC_QUOT", "eventCode": "Quote"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 50, "code": "KC_NONUS_HASH", "eventCode": "Backslash"
+                    "u": 1, "firstByte": 0, "secondByte": 50, "code": "KC_NUHS", "eventCode": "Backslash"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 40, "code": "KC_ENTER", "eventCode": "Enter"
+                    "u": 1.25, "firstByte": 0, "secondByte": 40, "code": "KC_ENT", "eventCode": "Enter"
                 },
                 {
                     "f": true, "u": 0.25
@@ -296,16 +296,16 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 94, "code": "KC_KP_6", "eventCode": "Numpad6"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 133, "code": "KC_KP_COMMA", "eventCode": "NumpadComma"
+                    "u": 1, "firstByte": 0, "secondByte": 133, "code": "KC_PCMM", "eventCode": "NumpadComma"
                 }
             ]
             , //////////////////////////////////////////////////////////////////////////////////////
             [
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 225, "code": "KC_LSHIFT", "eventCode": "ShiftLeft"
+                    "u": 1.25, "firstByte": 0, "secondByte": 225, "code": "KC_LSFT", "eventCode": "ShiftLeft"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 100, "code": "KC_NONUS_BSLASH", "eventCode": "IntlBackslash"
+                    "u": 1, "firstByte": 0, "secondByte": 100, "code": "KC_NUBS", "eventCode": "IntlBackslash"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 29, "code": "KC_Z", "eventCode": "KeyZ"
@@ -329,19 +329,19 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 16, "code": "KC_M", "eventCode": "KeyM"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 54, "code": "KC_COMMA", "eventCode": "Comma"
+                    "u": 1, "firstByte": 0, "secondByte": 54, "code": "KC_COMM", "eventCode": "Comma"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 55, "code": "KC_DOT", "eventCode": "Period"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 56, "code": "KC_SLASH", "eventCode": "Slash"
+                    "u": 1, "firstByte": 0, "secondByte": 56, "code": "KC_SLSH", "eventCode": "Slash"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 135, "code": "KC_INT1", "eventCode": ""
                 },
                 {
-                    "u": 1.75, "firstByte": 0, "secondByte": 229, "code": "KC_RSHIFT", "eventCode": "ShiftRight"
+                    "u": 1.75, "firstByte": 0, "secondByte": 229, "code": "KC_RSFT", "eventCode": "ShiftRight"
                 },
                 {
                     "f": true, "u": 0.25
@@ -368,22 +368,22 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 91, "code": "KC_KP_3", "eventCode": "Numpad3"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 103, "code": "KC_KP_EQUAL", "eventCode": "NumpadEqual"
+                    "u": 1, "firstByte": 0, "secondByte": 103, "code": "KC_PEQL", "eventCode": "NumpadEqual"
                 }
             ]
             , //////////////////////////////////////////////////////////////////////////////////////
             [
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 224, "code": "KC_LCTRL", "eventCode": "ControlLeft"
+                    "u": 1.25, "firstByte": 0, "secondByte": 224, "code": "KC_LCTL", "eventCode": "ControlLeft"
                 },
                 {
                     "u": 1.25, "firstByte": 0, "secondByte": 227, "code": "KC_LGUI", "eventCode": "MetaRight"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 226, "code": "KC_LALT", "eventCode": "AltLeft"
+                    "u": 1.25, "firstByte": 0, "secondByte": 226, "code": "KC_LOPT", "eventCode": "AltLeft"
                 },
                 {
-                    "u": 6.25, "firstByte": 0, "secondByte": 44, "code": "KC_SPACE", "eventCode": "Space"
+                    "u": 6.25, "firstByte": 0, "secondByte": 44, "code": "KC_SPC", "eventCode": "Space"
                 },
                 {
                     "u": 1.25, "firstByte": 0, "secondByte": 230, "code": "KC_RALT", "eventCode": "AltRight"
@@ -392,10 +392,10 @@ export default [
                     "u": 1.25, "firstByte": 0, "secondByte": 231, "code": "KC_RGUI", "eventCode": "OSRight"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 101, "code": "KC_APPLICATION", "eventCode": ""
+                    "u": 1.25, "firstByte": 0, "secondByte": 101, "code": "KC_APP", "eventCode": ""
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 228, "code": "KC_RCTRL", "eventCode": "ControlRight"
+                    "u": 1.25, "firstByte": 0, "secondByte": 228, "code": "KC_RCTL", "eventCode": "ControlRight"
                 },
                 {
                     "f": true, "u": 0.25
@@ -407,7 +407,7 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 81, "code": "KC_DOWN", "eventCode": "ArrowDown"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 79, "code": "KC_RIGHT", "eventCode": "ArrowRight"
+                    "u": 1, "firstByte": 0, "secondByte": 79, "code": "KC_RGHT", "eventCode": "ArrowRight"
                 },
                 {
                     "f": true, "u": 0.25
@@ -416,10 +416,10 @@ export default [
                     "u": 2, "firstByte": 0, "secondByte": 98, "code": "KC_KP_0", "eventCode": "Numpad0"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 99, "code": "KC_KP_DOT", "eventCode": "NumpadDecimal"
+                    "u": 1, "firstByte": 0, "secondByte": 99, "code": "KC_PDOT", "eventCode": "NumpadDecimal"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 88, "code": "KC_KP_ENTER", "eventCode": "NumpadEnter"
+                    "u": 1, "firstByte": 0, "secondByte": 88, "code": "KC_PENT", "eventCode": "NumpadEnter"
                 }
             ]
         ]
@@ -436,19 +436,19 @@ export default [
             ,
             [
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 165, "code": "KC_SYSTEM_POWER"
+                    "u": 1, "firstByte": 0, "secondByte": 165, "code": "KC_PWR"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 166, "code": "KC_SYSTEM_SLEEP"
+                    "u": 1, "firstByte": 0, "secondByte": 166, "code": "KC_SLEP"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 167, "code": "KC_SYSTEM_WAKE"
+                    "u": 1, "firstByte": 0, "secondByte": 167, "code": "KC_WAKE"
                 },
                 {
                     "f": true, "u": 0.5
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 116, "code": "KC_EXECUTE"
+                    "u": 1, "firstByte": 0, "secondByte": 116, "code": "KC_EXEC"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 117, "code": "KC_HELP"
@@ -457,13 +457,13 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 118, "code": "KC_MENU"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 119, "code": "KC_SELECT"
+                    "u": 1, "firstByte": 0, "secondByte": 119, "code": "KC_SLCT"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 120, "code": "KC_STOP"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 121, "code": "KC_AGAIN"
+                    "u": 1, "firstByte": 0, "secondByte": 121, "code": "KC_AGIN"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 122, "code": "KC_UNDO"
@@ -475,7 +475,7 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 124, "code": "KC_COPY"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 125, "code": "KC_PASTE"
+                    "u": 1, "firstByte": 0, "secondByte": 125, "code": "KC_PSTE"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 126, "code": "KC_FIND"
@@ -484,49 +484,49 @@ export default [
             ,
             [
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 178, "code": "KC_CALCULATOR"
+                    "u": 1, "firstByte": 0, "secondByte": 178, "code": "KC_CALC"
                 },
                 {
                     "u": 1, "firstByte": 0, "secondByte": 177, "code": "KC_MAIL"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 175, "code": "KC_MEDIA_SELECT"
+                    "u": 1, "firstByte": 0, "secondByte": 175, "code": "KC_MSEL"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 179, "code": "KC_MY_COMPUTER"
-                },
-                {
-                    "f": true, "u": 0.25
-                },
-                {
-                    "u": 1.25, "firstByte": 0, "secondByte": 180, "code": "KC_WWW_SEARCH"
-                },
-                {
-                    "u": 1, "firstByte": 0, "secondByte": 181, "code": "KC_WWW_HOME"
-                },
-                {
-                    "u": 1, "firstByte": 0, "secondByte": 182, "code": "KC_WWW_BACK"
-                },
-                {
-                    "u": 1.25, "firstByte": 0, "secondByte": 183, "code": "KC_WWW_FORWARD"
-                },
-                {
-                    "u": 1, "firstByte": 0, "secondByte": 184, "code": "KC_WWW_STOP"
-                },
-                {
-                    "u": 1.25, "firstByte": 0, "secondByte": 185, "code": "KC_WWW_REFRESH"
-                },
-                {
-                    "u": 1, "firstByte": 0, "secondByte": 186, "code": "KC_WWW_FAVORITES"
+                    "u": 1.25, "firstByte": 0, "secondByte": 179, "code": "KC_MYCM"
                 },
                 {
                     "f": true, "u": 0.25
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 189, "code": "KC_BRIGHTNESS_UP"
+                    "u": 1.25, "firstByte": 0, "secondByte": 180, "code": "KC_WSCH"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 190, "code": "KC_BRIGHTNESS_DOWN"
+                    "u": 1, "firstByte": 0, "secondByte": 181, "code": "KC_WHOM"
+                },
+                {
+                    "u": 1, "firstByte": 0, "secondByte": 182, "code": "KC_WBAK"
+                },
+                {
+                    "u": 1.25, "firstByte": 0, "secondByte": 183, "code": "KC_WFWD"
+                },
+                {
+                    "u": 1, "firstByte": 0, "secondByte": 184, "code": "KC_WSTP"
+                },
+                {
+                    "u": 1.25, "firstByte": 0, "secondByte": 185, "code": "KC_WREF"
+                },
+                {
+                    "u": 1, "firstByte": 0, "secondByte": 186, "code": "KC_WFAV"
+                },
+                {
+                    "f": true, "u": 0.25
+                },
+                {
+                    "u": 1, "firstByte": 0, "secondByte": 189, "code": "KC_BRIU"
+                },
+                {
+                    "u": 1, "firstByte": 0, "secondByte": 190, "code": "KC_BRID"
                 }
             ]
             ,
@@ -538,40 +538,40 @@ export default [
             ,
             [
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 171, "code": "KC_MEDIA_NEXT_TRACK"
+                    "u": 1, "firstByte": 0, "secondByte": 171, "code": "KC_MNXT"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 172, "code": "KC_MEDIA_PREV_TRACK"
+                    "u": 1, "firstByte": 0, "secondByte": 172, "code": "KC_MPRV"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 173, "code": "KC_MEDIA_STOP"
+                    "u": 1, "firstByte": 0, "secondByte": 173, "code": "KC_MSTP"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 174, "code": "KC_MEDIA_PLAY_PAUSE"
+                    "u": 1, "firstByte": 0, "secondByte": 174, "code": "KC_MPLY"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 175, "code": "KC_MEDIA_SELECT"
+                    "u": 1, "firstByte": 0, "secondByte": 175, "code": "KC_MSEL"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 176, "code": "KC_MEDIA_EJECT"
+                    "u": 1, "firstByte": 0, "secondByte": 176, "code": "KC_EJCT"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 187, "code": "KC_MEDIA_FAST_FORWARD"
+                    "u": 1.25, "firstByte": 0, "secondByte": 187, "code": "KC_MFFD"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 188, "code": "KC_MEDIA_REWIND"
+                    "u": 1.25, "firstByte": 0, "secondByte": 188, "code": "KC_MRWD"
                 },
                 {
                     "f": true, "u": 0.25
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 168, "code": "KC_AUDIO_MUTE"
+                    "u": 1, "firstByte": 0, "secondByte": 168, "code": "KC_MUTE"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 169, "code": "KC_AUDIO_VOL_UP"
+                    "u": 1, "firstByte": 0, "secondByte": 169, "code": "KC_VOLU"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 170, "code": "KC_AUDIO_VOL_DOWN"
+                    "u": 1, "firstByte": 0, "secondByte": 170, "code": "KC_VOLD"
                 }
             ]
             ,
@@ -700,13 +700,13 @@ export default [
             ,
             [
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 130, "code": "KC_LOCKING_CAPS"
+                    "u": 1, "firstByte": 0, "secondByte": 130, "code": "KC_LCAP"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 131, "code": "KC_LOCKING_NUM"
+                    "u": 1, "firstByte": 0, "secondByte": 131, "code": "KC_LNUM"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 132, "code": "KC_LOCKING_SCROLL"
+                    "u": 1, "firstByte": 0, "secondByte": 132, "code": "KC_LSCR"
                 }
             ]
         ]

@@ -4,6 +4,8 @@ const { app, BrowserWindow, ipcMain } = require('electron'),
     fs = require('fs'),
     glob = require("glob"),
     DownloadManager = require("electron-download-manager");
+const path = require('path');
+const url = require('url');
 
 app.disableHardwareAcceleration();
 
@@ -28,8 +30,11 @@ const getConfig = () => {
 }
 
 function createWindow() {
-    const { width, height } = store.get('windowBounds'),
+    let { width, height } = store.get('windowBounds'),
         { version } = getConfig();
+
+    if (width < 1000) width = 1000;
+    if (height < 600) height = 600;
 
     const mainWindow = new BrowserWindow({
             width, height,
@@ -51,13 +56,18 @@ function createWindow() {
 
     mainWindow.on('resize', () => {
         let { width, height } = mainWindow.getBounds();
+        if (width < 1000) width = 1000;
+        if (height < 600) height = 600;
         store.set('windowBounds', { width, height });
     });
 
     // Discomment to open devTools on init
     //mainWindow.openDevTools();
 
-    mainWindow.loadFile('./dist/index.html');
+    mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'dist/index.html'),
+        protocol: 'file:'
+}));
 }
 
 ipcMain.handle('ping', async (event, someArgument) => {
