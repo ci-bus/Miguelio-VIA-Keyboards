@@ -31,6 +31,8 @@
         padding: 2px 2px 0;
         word-spacing: 6px;
         pointer-events: none;
+        box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px -1px 0px inset;
+        padding-left: 3px;
 
         input {
             pointer-events: auto;
@@ -93,6 +95,8 @@
         padding: 2px 2px 0;
         word-spacing: 6px;
         pointer-events: none;
+        box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px -1px 0px inset;
+        padding-left: 3px;
 
         input {
             pointer-events: auto;
@@ -121,7 +125,10 @@
 .oneLetter {
     word-spacing: 0.6rem;
     font-size: 13px;
-    text-align-last: center;
+    text-align-last: left;
+    .keyContent {
+        padding-left: 5px;
+    }
 }
 .keyLetter.none {
     display: none;

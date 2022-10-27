@@ -17,7 +17,6 @@
     },
     "loading": {
         "error": "An error has occurred",
-        "loadingLayer": "Loading layer",
         "unknowModel": "Unknow Model",
         "connectKeyboard": "Connect your keyboard"
     },

@@ -3,9 +3,8 @@
         [value]="value">
     </mat-progress-spinner>
     <img class="main-image" (click)="getDevices()">
-    <h1 *ngIf="!msgInfo">{{ 'loading.connectKeyboard' | translate }}</h1>
-    <h1 *ngIf="msgInfo">{{ msgInfo }}</h1>
-    <h3 *ngIf="msgInfoSecond=='loadingLayer'">{{ 'loading.loadingLayer' | translate }}</h3>
+    <h1 class="title" *ngIf="!msgInfo">{{ 'loading.connectKeyboard' | translate }}</h1>
+    <h1 class="title" *ngIf="msgInfo">{{ msgInfo }}</h1>
     <h3 *ngIf="msgInfoSecond=='error'">{{ 'loading.error' | translate }}</h3>
     <h3 *ngIf="msgInfoSecond=='unknowModel'">{{ 'loading.unknowModel' | translate }}</h3>
     <div class="devices">

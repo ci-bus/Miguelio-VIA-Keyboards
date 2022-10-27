@@ -121,7 +121,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
         this.store.dispatch(keyboardActions.create({ device }));
         this.mode = 'determinate';
         this.strokeWidth = 2;
-        this.msgInfoSecond = 'loadingLayer';
         this.loadingLayers = true;
     }
 

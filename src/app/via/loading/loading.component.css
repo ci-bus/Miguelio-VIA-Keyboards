@@ -1,5 +1,6 @@
 .section {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     align-content: center;
     align-items: center;
     position: fixed;
@@ -42,14 +43,12 @@ mat-progress-spinner {
 
 img.main-image {
     position: relative;
-    top: -170px;
+    margin-top: -170px;
     animation: moveKeyboard 5s ease infinite;
 }
 
-h1,
-h3 {
-    position: relative;
-    top: -130px;
+.title {
+    margin: 50px 0 30px;
 }
 
 .devices {

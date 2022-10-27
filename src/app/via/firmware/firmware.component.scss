@@ -241,16 +241,10 @@ img {
     }
 }
 
-img {
+img.main-image {
     position: relative;
-    top: -170px;
+    margin-top: -210px;
     animation: moveKeyboard 5s ease infinite;
-}
-
-h1,
-h3 {
-    position: relative;
-    top: -130px;
 }
 
 .preloader {

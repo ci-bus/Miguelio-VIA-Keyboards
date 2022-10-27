@@ -125,7 +125,7 @@ body.keebary {
     img.main-image {
         content: url(assets/keebary.png);
         position: relative;
-        top: -186px;
+        margin-top: -186px;
         width: 150px;
         height: 150px;
         animation: moveKeyboard 5s ease infinite;
@@ -211,7 +211,7 @@ body.quark {
     img.main-image {
         content: url(assets/quarkworks.svg);
         position: relative;
-        top: -186px;
+        margin-top: -186px;
         width: 150px;
         height: 150px;
         animation: moveKeyboard 5s ease infinite;
@@ -274,7 +274,7 @@ body.tecladitos {
     img.main-image {
         content: url(assets/tecladitos.png);
         position: relative;
-        top: -186px;
+        margin-top: -186px;
         width: 160px;
         height: 160px;
         animation: moveKeyboard 5s ease infinite;
@@ -327,7 +327,7 @@ body.arq {
     img.main-image {
         content: url(assets/arq.png);
         position: relative;
-        top: -180px;
+        margin-top: -180px;
         width: 140px;
         height: 140px;
         animation: moveKeyboard 5s ease infinite;
@@ -384,7 +384,7 @@ body.tecleate {
     img.main-image {
         content: url(assets/tecleate.png);
         position: relative;
-        top: -186px;
+        margin-top: -186px;
         width: 150px;
         height: 150px;
         animation: moveKeyboard 5s ease infinite;

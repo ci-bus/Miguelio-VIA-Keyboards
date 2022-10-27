@@ -17,7 +17,6 @@
     },
     "loading": {
         "error": "Se ha producido un error",
-        "loadingLayer": "Leyendo capa",
         "unknowModel": "Modelo desconocido",
         "connectKeyboard": "Conecte su teclado",
         "notShowing": "¿No se muestrra tu teclado?",
