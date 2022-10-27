@@ -1,24 +1,25 @@
 {
-  "id": "nuclear_data",
-  "label": "Nuclear Data",
-  "manufacturer": "",
-  "swatches": {
-    "base": {
-      "background": "#005d35",
-      "color": "#e4dedd"
+    "index": 49,
+    "id": "nuclear_data",
+    "label": "Nuclear Data",
+    "manufacturer": "",
+    "swatches": {
+        "base": {
+            "background": "#005d35",
+            "color": "#e4dedd"
+        },
+        "mods": {
+            "background": "#005d35",
+            "color": "#e4dedd"
+        },
+        "accent": {
+            "background": "#ff6800",
+            "color": "#e4dedd"
+        }
     },
-    "mods": {
-      "background": "#005d35",
-      "color": "#e4dedd"
-    },
-    "accent": {
-      "background": "#ff6800",
-      "color": "#e4dedd"
+    "override": {
+        "KC_ENT": "accent",
+        "KC_ESC": "accent",
+        "KC_GESC": "accent"
     }
-  },
-  "override": {
-    "KC_ENT": "accent",
-    "KC_ESC": "accent",
-    "KC_GESC": "accent"
-  }
 }

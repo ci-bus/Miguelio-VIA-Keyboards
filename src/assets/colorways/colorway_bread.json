@@ -1,25 +1,26 @@
 {
-  "id": "bread",
-  "label": "Bread",
-  "manufacturer": "",
-  "designer": "",
-  "swatches": {
-    "base": {
-      "background": "#e6d2b5",
-      "color": "#724a24"
+    "index": 14,
+    "id": "bread",
+    "label": "Bread",
+    "manufacturer": "",
+    "designer": "",
+    "swatches": {
+        "base": {
+            "background": "#e6d2b5",
+            "color": "#724a24"
+        },
+        "mods": {
+            "background": "#724a24",
+            "color": "#e6d2b5"
+        },
+        "accent": {
+            "background": "#af804f",
+            "color": "#e6d2b5"
+        }
     },
-    "mods": {
-      "background": "#724a24",
-      "color": "#e6d2b5"
-    },
-    "accent": {
-      "background": "#af804f",
-      "color": "#e6d2b5"
+    "override": {
+        "KC_ENT": "accent",
+        "KC_ESC": "accent",
+        "KC_GESC": "accent"
     }
-  },
-  "override": {
-    "KC_ENT": "accent",
-    "KC_ESC": "accent",
-    "KC_GESC": "accent"
-  }
 }

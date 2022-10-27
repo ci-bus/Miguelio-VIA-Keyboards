@@ -370,3 +370,64 @@ body.arq {
         color: #fa2929;
     }
 }
+
+
+body.tecleate {
+    color: white;
+    background-color: #281b25;
+    button,
+    select,
+    .mat-menu-panel,
+    .mat-select-panel {
+        background-color: #ED5B2D !important;
+    }
+    img.main-image {
+        content: url(assets/tecleate.png);
+        position: relative;
+        top: -186px;
+        width: 150px;
+        height: 150px;
+        animation: moveKeyboard 5s ease infinite;
+    }
+    .keyLetter {
+        background-color: #222527;
+        border-color: #281b25 !important;
+    }
+    .key.isoEnter:after {
+        background: #222527;
+        color: #222527;
+    }
+    .hueGradient {
+        background: rgb(255, 0, 0);
+        background: linear-gradient(
+                0deg,
+                rgba(40, 27, 37, 1) 40%,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(40, 27, 37, 1) 60%
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 1) 0%,
+                rgba(255, 255, 0, 1) 17%,
+                rgba(0, 255, 0, 1) 33%,
+                rgba(0, 255, 255, 1) 50%,
+                rgba(0, 0, 255, 1) 67%,
+                rgba(255, 0, 255, 1) 83%,
+                rgba(255, 0, 0, 1) 100%
+            );
+    }
+    .satGradient {
+        margin-left: 5px;
+        background: linear-gradient(
+                0deg,
+                rgba(40, 27, 37, 1) 40%,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(40, 27, 37, 1) 60%
+            ),
+            linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(0deg, rgba(255, 0, 0, 1) 46%, rgba(0, 255, 0, 1) 50%, rgba(0, 0, 255, 1) 54%);
+    }
+    .dragOver {
+        color: #281b25;
+    }
+}

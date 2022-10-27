@@ -1,30 +1,31 @@
 {
-  "id": "night_sakura",
-  "label": "夜桜 NightSakura",
-  "manufacturer": "JTK",
-  "designer": "rifen",
-  "swatches": {
-    "base": {
-      "background": "#41414e",
-      "color": "#b08d91"
+    "index": 46,
+    "id": "night_sakura",
+    "label": "夜桜 NightSakura",
+    "manufacturer": "JTK",
+    "designer": "rifen",
+    "swatches": {
+        "base": {
+            "background": "#41414e",
+            "color": "#b08d91"
+        },
+        "mods": {
+            "background": "#27262b",
+            "color": "#b08d91"
+        },
+        "accent": {
+            "background": "#27262b",
+            "color": "#b08d91"
+        }
     },
-    "mods": {
-      "background": "#27262b",
-      "color": "#b08d91"
-    },
-    "accent": {
-      "background": "#27262b",
-      "color": "#b08d91"
+    "override": {
+        "KC_ENT": "accent",
+        "KC_ESC": "accent",
+        "KC_GESC": "accent",
+        "KC_GRV": "base",
+        "KC_F5": "accent",
+        "KC_F6": "accent",
+        "KC_F7": "accent",
+        "KC_F8": "accent"
     }
-  },
-  "override": {
-    "KC_ENT": "accent",
-    "KC_ESC": "accent",
-    "KC_GESC": "accent",
-    "KC_GRV": "base",
-    "KC_F5": "accent",
-    "KC_F6": "accent",
-    "KC_F7": "accent",
-    "KC_F8": "accent"
-  }
 }

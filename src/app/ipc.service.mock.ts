@@ -34,6 +34,8 @@ export const MocksService = {
         ,
         'resetKeycodes': true
         ,
+        'saveFreeSpaceValues': true
+        ,
         'loadKeymaps': [
             {
                 "number": 0,

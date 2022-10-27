@@ -14,7 +14,6 @@ import * as devicesActions from '../devices/devices.actions';
 import * as keymapsActions from '../keymaps/keymaps.actions';
 import * as lightActions from '../light/light.actions';
 import * as defsActions from '../keyboard/defs.actions';
-import { Device } from '../devices/device.model';
 
 @Injectable()
 export class MapperEffects {
@@ -55,6 +54,18 @@ export class MapperEffects {
                     )
                 ),
                 map(({ keyboard }) => ({ type: keyboardActions.create.type, device: keyboard })),
+                catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
+            )
+        )
+    ));
+
+    saveFreeSpaceValues$ = createEffect((): any => this.actions$.pipe(
+        ofType(mapperActions.saveFreeSpaceValues.type),
+        mergeMap((action: any) => from(this.store.select('keyboard'))
+            .pipe(
+                first(),
+                mergeMap(keyboard => from(this.requestService.saveFreeSpaceValues( keyboard, action.freeSpaceValues ))),
+                map(success => ({ type: mapperActions.freeSpaceValuesSaved.type, success })),
                 catchError(textInfo => of({ type: errorsActions.add.type, textInfo }))
             )
         )

@@ -1,4 +1,4 @@
-import { Layout, Lighting } from "../interfaces";
+import { freeSpaceMatrix, Layout, Lighting } from "../interfaces";
 
 export class Defs {
     name: string;
@@ -8,8 +8,9 @@ export class Defs {
     layers: number;
     layouts: Layout[];
     lighting?: Lighting;
+    freeSpaceMatrix?: freeSpaceMatrix[];
 
-    constructor (data?: any) {
+    constructor(data?: any) {
         Object.assign(this, data);
     }
 }

@@ -51,7 +51,8 @@
         "rgbLight": "Leds RGB",
         "modKeyCombination": "Combinación modificadores",
         "modTapKeyCombination": "Modificadores con tap",
-        "magicKeys": "Teclas mágicas"
+        "magicKeys": "Teclas mágicas",
+        "customizeStyle": "Personalizar el estilo"
     },
     "none": "Ninguno",
     "static": "Estático",

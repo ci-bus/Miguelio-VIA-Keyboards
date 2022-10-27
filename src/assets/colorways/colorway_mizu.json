@@ -1,25 +1,26 @@
 {
-  "id": "mizu",
-  "label": "Mizu",
-  "manufacturer": "gmk, sa",
-  "designer": "",
-  "swatches": {
-    "base": {
-      "background": "#b7d8eb",
-      "color": "#233746"
+    "index": 39,
+    "id": "mizu",
+    "label": "Mizu",
+    "manufacturer": "gmk, sa",
+    "designer": "",
+    "swatches": {
+        "base": {
+            "background": "#b7d8eb",
+            "color": "#233746"
+        },
+        "mods": {
+            "background": "#233746",
+            "color": "#f8f7f3"
+        },
+        "accent": {
+            "background": "#f8f7f3",
+            "color": "#233746"
+        }
     },
-    "mods": {
-      "background": "#233746",
-      "color": "#f8f7f3"
-    },
-    "accent": {
-      "background": "#f8f7f3",
-      "color": "#233746"
+    "override": {
+        "KC_ENT": "accent",
+        "KC_ESC": "accent",
+        "KC_GESC": "accent"
     }
-  },
-  "override": {
-    "KC_ENT": "accent",
-    "KC_ESC": "accent",
-    "KC_GESC": "accent"
-  }
 }

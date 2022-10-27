@@ -6,7 +6,7 @@ import { AppState } from '../../app.reducer';
 import { Keyboard } from '../keyboard/keyboard.model';
 import { IpcService } from 'src/app/ipc.service';
 import { Device } from '../devices/device.model';
-import { Keymap, Keymapper, Lighting } from '../interfaces';
+import { freeSpaceValues, Keymap, Keymapper, Lighting } from '../interfaces';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Defs } from '../keyboard/defs.model';
@@ -24,17 +24,17 @@ export class RequestsService {
     ) { }
 
     // Listeners ipc on
-    public on(channel, listener) {
+    public on(channel: string, listener: any) {
         return this.ipcService.on(channel, listener);
     }
 
     // Get JSON files from assets
-    public getJsonAsset(fileName): Promise<object> {
+    public getJsonAsset(fileName: string): Promise<object> {
         return this.http.get(fileName).toPromise();
     }
 
     // Get devices list
-    public getDevicesList(): Promise<Device[]>  {
+    public getDevicesList(): Promise<Device[]> {
         return this.ipcService.invoke('getDevicesList');
     }
 
@@ -106,4 +106,11 @@ export class RequestsService {
         return this.ipcService.invoke('setVersion', version);
     }
 
+    // Set keycaps Color
+    public saveFreeSpaceValues(keyboard: Keyboard, freeSpaceValues: freeSpaceValues[]): Promise<string> {
+        return this.ipcService.invoke('saveFreeSpaceValues', {
+            path: keyboard.path,
+            freeSpaceValues
+        });
+    }
 }

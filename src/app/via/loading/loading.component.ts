@@ -112,7 +112,9 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
     private _filter(value: String): String[] {
         const filterValue = value.toLowerCase();
-        return this.firmware.keyboardsList.filter(option => option.toLowerCase().includes(filterValue));
+        return this.firmware.keyboardsList
+            ? this.firmware.keyboardsList.filter(option => option.toLowerCase().includes(filterValue))
+            : [];
     }
 
     selectDevice(device: Device) {
@@ -152,6 +154,11 @@ export class LoadingComponent implements OnInit, OnDestroy {
     }
 
     addSupport() {
+
+        // Show loading
+        this.loadingLayers = true;
+
+        // Create definitions
         let rgblight = {
             brightness: { min: 0, max: 255 },
             effect: [
@@ -169,40 +176,73 @@ export class LoadingComponent implements OnInit, OnDestroy {
             hue: { steps: 10 },
             sat: { steps: 17 }
         },
-        backlight = {
-            brightness: {
-                min: 0, max: 255
+            backlight = {
+                brightness: {
+                    min: 0, max: 255
+                },
+                effect: [
+                    { label: 'none', value: 0 },
+                    { label: 'breathing', value: 1 }
+                ]
             },
-            effect: [
-                { label: 'none', value: 0 },
-                { label: 'breathing', value: 1 }
-            ]
-        },
-        support = {
-            name: this.firmware.qmkKeyboard.keyboard_name,
-            vdoc: 2,
-            lighting: {},
-            ...this.firmware.qmkKeyboard.matrix_size,
-            layouts: this.layoutsSelected.map(layoutData => ({
-                name: layoutData.key,
-                keymap: layoutData.value.layout
-            }))
-        },
-        fileName = parseInt(this.firmware.qmkKeyboard.usb.vid) + '_' + parseInt(this.firmware.qmkKeyboard.usb.pid) + '.json',
-        keyboardDir = this.firmware.qmkKeyboard.keyboard_name;
+            support = {
+                name: this.firmware.qmkKeyboard.keyboard_name,
+                vdoc: 2,
+                lighting: {},
+                ...this.firmware.qmkKeyboard.matrix_size,
+                layouts: this.layoutsSelected.map(layoutData => ({
+                    name: layoutData.key,
+                    keymap: layoutData.value.layout
+                })),
+                freeSpaceMatrix: undefined
+            },
+            fileName = parseInt(this.firmware.qmkKeyboard.usb.vid) + '_' + parseInt(this.firmware.qmkKeyboard.usb.pid) + '.json',
+            keyboardDir = this.firmware.qmkKeyboard.keyboard_name;
 
+        // Add RGB underglow
         if (this.rgbUnderglow) {
             support.lighting['rgblight'] = rgblight;
         }
 
+        // Add back light
         if (this.backlight) {
             support.lighting['backlight'] = backlight;
         }
 
-        this.loadingLayers = true;
+        // Search free space to save styles
+        const freeSpaceMatrix = this.searchFreeSpaceToStyles(support);
+
+        if (freeSpaceMatrix.length) {
+            support.freeSpaceMatrix = freeSpaceMatrix;
+        }
+
         this.store.dispatch(firmwareActions.addSupport({
             support, fileName, keyboardDir
         }));
+    }
+
+    searchFreeSpaceToStyles(support: any) {
+        // Create empty matrix array
+        let freeSpaceMatrix = [];
+        for (let r = 0; r < support.rows; r++) {
+            freeSpaceMatrix[r] = [];
+        }
+        // Mark space in use
+        for (let layout of support.layouts) {
+            for (let key of layout.keymap) {
+                freeSpaceMatrix[key.matrix[0]][key.matrix[1]] = 1;
+            }
+        }
+        // Get free space
+        let freeSpaces = [];
+        for (let r = 0; r < support.rows; r++) {
+            for (let c = 0; c < support.cols; c++) {
+                if (freeSpaceMatrix[r][c] === undefined) {
+                    freeSpaces.push([r, c]);
+                }
+            }
+        }
+        return freeSpaces;
     }
 
     selectionLayouts(ev) {

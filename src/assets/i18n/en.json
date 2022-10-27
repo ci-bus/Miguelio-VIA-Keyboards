@@ -48,7 +48,8 @@
         "backLight": "Backlight",
         "rgbLight": "RGB Lights",
         "modKeyCombination": "Mod keys combination",
-        "magicKeys": "Magic keys"
+        "magicKeys": "Magic keys",
+        "customizeStyle": "Customize style"
     },
     "none": "None",
     "static": "Static",

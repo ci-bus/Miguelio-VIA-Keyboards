@@ -182,6 +182,7 @@ export interface FirmwareState {
 }
 
 export interface Colorway {
+    index: number
     id: string
     label: string
     manufacturer: string
@@ -200,4 +201,14 @@ export interface Colorway {
             color: string
         }
     }
+}
+
+export interface freeSpaceMatrix {
+    layer?: number
+    row: number
+    col: number
+}
+
+export interface freeSpaceValues extends freeSpaceMatrix {
+    values?: Key
 }

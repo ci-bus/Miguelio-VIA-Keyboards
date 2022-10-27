@@ -1,20 +1,21 @@
 {
-  "id": "wob",
-  "label": "White on Black",
-  "manufacturer": "",
-  "swatches": {
-    "base": {
-      "background": "#222222",
-      "color": "#FFFFFF"
+    "index": 70,
+    "id": "wob",
+    "label": "White on Black",
+    "manufacturer": "",
+    "swatches": {
+        "base": {
+            "background": "#222222",
+            "color": "#FFFFFF"
+        },
+        "mods": {
+            "background": "#222222",
+            "color": "#FFFFFF"
+        },
+        "accent": {
+            "background": "#222222",
+            "color": "#FFFFFF"
+        }
     },
-    "mods": {
-      "background": "#222222",
-      "color": "#FFFFFF"
-    },
-    "accent": {
-      "background": "#222222",
-      "color": "#FFFFFF"
-    }
-  },
-  "override": {}
+    "override": {}
 }

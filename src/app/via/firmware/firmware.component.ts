@@ -100,7 +100,9 @@ export class FirmwareComponent implements OnInit, OnDestroy {
 
     private _filter(value: String): String[] {
         const filterValue = value.toLowerCase();
-        return this.firmware.keyboardsList ? this.firmware.keyboardsList.filter(option => option.toLowerCase().includes(filterValue)) : [];
+        return this.firmware.keyboardsList
+            ? this.firmware.keyboardsList.filter(option => option.toLowerCase().includes(filterValue))
+            : [];
     }
 
     ngOnDestroy() {

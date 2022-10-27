@@ -1,25 +1,26 @@
 {
-  "id": "bento",
-  "label": "Bento",
-  "manufacturer": "",
-  "swatches": {
-    "base": {
-      "background": "#eee2d0",
-      "subColor": "#fb7279",
-      "color": "#367f9a"
+    "index": 8,
+    "id": "bento",
+    "label": "Bento",
+    "manufacturer": "",
+    "swatches": {
+        "base": {
+            "background": "#eee2d0",
+            "subColor": "#fb7279",
+            "color": "#367f9a"
+        },
+        "mods": {
+            "background": "#367f9a",
+            "color": "#fb7279"
+        },
+        "accent": {
+            "background": "#fb7279",
+            "color": "#eee2d0"
+        }
     },
-    "mods": {
-      "background": "#367f9a",
-      "color": "#fb7279"
-    },
-    "accent": {
-      "background": "#fb7279",
-      "color": "#eee2d0"
+    "override": {
+        "KC_ENT": "accent",
+        "KC_ESC": "accent",
+        "KC_GESC": "accent"
     }
-  },
-  "override": {
-    "KC_ENT": "accent",
-    "KC_ESC": "accent",
-    "KC_GESC": "accent"
-  }
 }

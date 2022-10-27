@@ -18,7 +18,7 @@ const store = new Store({
     configName: 'user-preferences',
     defaults: {
         windowBounds: { width: 1200, height: 800 },
-        config: {  }
+        config: {}
     }
 });
 
@@ -37,20 +37,20 @@ function createWindow() {
     if (height < 600) height = 600;
 
     const mainWindow = new BrowserWindow({
-            width, height,
-            webPreferences: {
-                minimumFontSize: 12,
-                defaultFontSize: 17,
-                defaultMonospaceFontSize: 19,
-                nodeIntegration: true,
-                nodeIntegrationInWorker: true,
-                webSecurity: false,
-                contextIsolation: false,
-                additionalArguments: [
-                    `--version=${version}`
-                ]
-            }
-        });
+        width, height,
+        webPreferences: {
+            minimumFontSize: 12,
+            defaultFontSize: 17,
+            defaultMonospaceFontSize: 19,
+            nodeIntegration: true,
+            nodeIntegrationInWorker: true,
+            webSecurity: false,
+            contextIsolation: false,
+            additionalArguments: [
+                `--version=${version}`
+            ]
+        }
+    });
 
     mainWindow.removeMenu();
 
@@ -62,12 +62,12 @@ function createWindow() {
     });
 
     // Discomment to open devTools on init
-    //mainWindow.openDevTools();
+    mainWindow.openDevTools();
 
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
         protocol: 'file:'
-}));
+    }));
 }
 
 ipcMain.handle('ping', async (event, someArgument) => {
@@ -98,8 +98,6 @@ app.on('window-all-closed', () => {
 DownloadManager.register({
     downloadFolder: app.getPath("downloads")
 });
-
-console.log('app.getPath("downloads")', app.getPath("downloads"));
 
 ipcMain.handle('downloadFile', async (event, url) => {
     const res = await new Promise((ok, fail) => {
@@ -247,7 +245,7 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
                 }
 
                 // All loaded
-                if (count == totalKeys) {
+                if (count == totalKeys + 1) {
 
                     // Return keymaps
                     ok(keymaps);
@@ -280,6 +278,7 @@ ipcMain.handle('loadKeymaps', async (event, data) => {
     })
         .catch(error => event.sender.send('error', error))
         .finally(() => device.close());
+
 
     return keymaps;
 });
@@ -427,7 +426,7 @@ ipcMain.handle('changeLight', async (event, data) => {
     // Open conecction
     var device = new HID.HID(data.keyboard.path);
 
-    // set backlight prop value
+    // Set backlight prop value
     device.write([0x00, 7, data.prop, data.firstByte, data.secondByte]);
 
     // Wait response
@@ -459,7 +458,7 @@ ipcMain.handle('setKeycode', async (event, data) => {
     // Open conecction
     var device = new HID.HID(data.path);
 
-    // set backlight prop value
+    // Set keycode prop value
     device.write([0x00, 5, data.layer, data.row, data.col, data.firstByte, data.secondByte]);
 
     // Wait response
@@ -472,7 +471,7 @@ ipcMain.handle('setKeycode', async (event, data) => {
         .catch(error => event.sender.send('error', error))
         .finally(() => device.close());
 
-    // Send finish loading
+    // Send finish seting
     event.sender.send('setKeycodeFinish', true);
 
     return res.readUInt8(1) == data.layer
@@ -509,4 +508,33 @@ ipcMain.handle('addSupport', async (event, data) => {
 ipcMain.handle('setVersion', async (event, version) => {
     store.set('config', { version });
     event.sender.send('success', true);
+});
+
+
+//-------------------//
+// Free Space Values //
+//-------------------//
+ipcMain.handle('saveFreeSpaceValues', async (event, data) => {
+
+    // Open conecction
+    var device = new HID.HID(data.path);
+
+    for (let item of data.freeSpaceValues) {
+        // Save values
+        device.write([0x00, 5, item.layer, item.row, item.col, item.values.firstByte, item.values.secondByte]);
+
+        // Wait response
+        await new Promise((ok, fail) => {
+            // On receive response
+            device.on("data", ok);
+            // On error
+            device.on('error', fail);
+        })
+            .catch(error => event.sender.send('error', error));
+    }
+
+    device.close()
+    event.sender.send('success', true);
+
+    return true;
 });

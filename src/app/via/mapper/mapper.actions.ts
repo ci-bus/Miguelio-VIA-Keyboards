@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Keymapper, Layoutmapper } from '../interfaces';
+import { freeSpaceMatrix, freeSpaceValues, Keymapper, Layoutmapper } from '../interfaces';
 
 export const set = createAction(
     '[Mapper] Set',
@@ -26,4 +26,14 @@ export const clear = createAction(
 
 export const disconnect = createAction(
     '[Mapper] Disconnect'
+);
+
+export const saveFreeSpaceValues = createAction(
+    '[Mapper] Save free space values',
+    props<{ freeSpaceValues: freeSpaceValues[] }>()
+);
+
+export const freeSpaceValuesSaved = createAction(
+    '[Mapper] Free space values saved',
+    props<{ success: boolean }>()
 );

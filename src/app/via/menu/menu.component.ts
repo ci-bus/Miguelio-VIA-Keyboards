@@ -64,6 +64,7 @@ export class MenuComponent {
             case 'quark': document.body.className = 'quark'; break;
             case 'tecladitos': document.body.className = 'tecladitos'; break;
             case 'arq': document.body.className = 'arq'; break;
+            case 'tecleate': document.body.className = 'tecleate'; break;
             default: document.body.className = ""; break;
         }
         this.requestsService.setVersion(version);

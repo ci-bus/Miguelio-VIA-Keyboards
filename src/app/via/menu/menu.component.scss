@@ -81,3 +81,17 @@ button {
         margin-left: -3px;
     }
 }
+
+.btn-tecleate {
+    background-color: #281b25 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    color: white !important;
+    img {
+        margin-right: 2px;
+        margin-left: -7px;
+        zoom: 1.7;
+    }
+}

@@ -29,7 +29,8 @@
     <mat-form-field appearance="outline" class="color-select" *ngIf="firmware?.layers">
         <mat-label>Keycaps color</mat-label>
         <mat-select name="keycapscolor" (selectionChange)="changeKeycapsColor($event)">
-            <mat-option class="color-option" *ngFor="let color of colorways | orderBy: {property: 'label', direction: 1}" [value]="color">
+            <mat-option class="color-option"
+                *ngFor="let color of colorways | orderBy: {property: 'label', direction: 1}" [value]="color">
                 <div [style.backgroundColor]="color.swatches.base.background"></div>
                 <div [style.backgroundColor]="color.swatches.mods.background"></div>
                 <div [style.backgroundColor]="color.swatches.accent.background"></div>
