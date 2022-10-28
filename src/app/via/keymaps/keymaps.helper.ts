@@ -29,7 +29,6 @@ export class keymapsHelper {
                 for (let matrixCol = 0; matrixCol < layout.cols; matrixCol ++) {
                     let index = matrixRow * layout.cols + matrixCol;
                     let key = keymap.keys[index];
-                    if (!key) console.log('no esta la key', index);
                     if (matrix[matrixRow][matrixCol]) {
                         let row = matrix[matrixRow][matrixCol][0],
                             col = matrix[matrixRow][matrixCol][1];

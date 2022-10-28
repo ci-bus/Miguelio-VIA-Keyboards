@@ -389,10 +389,10 @@ export default [
                     "u": 1.25, "firstByte": 0, "secondByte": 230, "code": "KC_RALT", "eventCode": "AltRight"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 231, "code": "KC_RGUI", "eventCode": "OSRight"
+                    "u": 1.25, "firstByte": 0, "secondByte": 231, "code": "KC_RGUI", "eventCode": "MetaRight"
                 },
                 {
-                    "u": 1.25, "firstByte": 0, "secondByte": 101, "code": "KC_APP", "eventCode": ""
+                    "u": 1.25, "firstByte": 0, "secondByte": 101, "code": "KC_APP", "eventCode": "ContextMenu"
                 },
                 {
                     "u": 1.25, "firstByte": 0, "secondByte": 228, "code": "KC_RCTL", "eventCode": "ControlRight"

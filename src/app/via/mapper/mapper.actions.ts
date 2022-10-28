@@ -37,3 +37,13 @@ export const freeSpaceValuesSaved = createAction(
     '[Mapper] Free space values saved',
     props<{ success: boolean }>()
 );
+
+export const pressKey = createAction(
+    '[Mapper] Press key to test',
+    props<{ key: Keymapper }>()
+);
+
+export const releaseKey = createAction(
+    '[Mapper] Release key to test',
+    props<{ key: Keymapper }>()
+);

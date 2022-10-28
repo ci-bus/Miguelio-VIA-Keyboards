@@ -105,6 +105,8 @@ export interface Keymapper {
     w?: number
     h?: number
     matrix?: Array<number>
+    // Testing keyboard
+    pressed?: boolean
 }
 
 export interface Layermapper {

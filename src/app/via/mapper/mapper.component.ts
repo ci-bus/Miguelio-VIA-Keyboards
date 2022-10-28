@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { first } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
@@ -20,12 +20,11 @@ import { MatSelectChange } from '@angular/material/select';
     templateUrl: './mapper.component.html',
     styleUrls: ['./mapper.component.scss']
 })
-export class MapperComponent implements OnInit {
+export class MapperComponent implements OnInit, OnDestroy {
 
     defs: Defs;
     keymaps: Keymap[] = [];
     layoutsmapper: Layoutmapper[] = [];
-    mapperKeys = mapperKeys;
     activeMainTab: number = 0;
     activeTab: number = 0;
     defaultKeycapsIndex = 70;
@@ -33,20 +32,27 @@ export class MapperComponent implements OnInit {
     freeSpaceValues: freeSpaceValues[] = [];
     customStylesInited: boolean = false;
 
+    public mapperKeys = mapperKeys;
     public sizeKeys: number = 48;
     public caseColor: string = '#c2c5c7';
     public plateColor: string = '#929597';
     public colorways: Colorway[] = colorways;
     public keycapsColor: Colorway = this.colorways.find(color => color.index == this.defaultKeycapsIndex);
+    public containerWidth: string = 'auto';
+    public containerHeight: string = 'auto';
 
     draggingKey: Keymapper;
     changingTransToNo: Keymapper;
+
+    private functionKeyDown: any;
+    private functionKeyUp: any;
 
     constructor(
         public translate: TranslateService,
         private store: Store<AppState>,
         private keymapsHelper: keymapsHelper,
-        private changeDetectorRef: ChangeDetectorRef
+        private changeDetectorRef: ChangeDetectorRef,
+        private elementRef: ElementRef
     ) { }
 
     ngOnInit(): void {
@@ -72,14 +78,91 @@ export class MapperComponent implements OnInit {
         });
 
 
-        this.store.select('layoutsmapper').subscribe(layoutsmapper => {
+        this.store.select('layoutsmapper').subscribe((layoutsmapper: Layoutmapper[]) => {
             if (!layoutsmapper[0]?.loading) {
+                // First setting
+                if (!this.layoutsmapper.length) {
+                    // Calcule layout size
+                    if (this.defs.vdoc > 1) {
+                        const sizes = this.getContainerSize(layoutsmapper[0]);
+                        this.containerWidth = `${sizes[0]}px`;
+                        this.containerHeight = `${sizes[1]}px`;
+                    }
+                    // Init testing funcionality
+                    this.initTestingListeners();
+                }
+                // Setting layout mapper
                 this.layoutsmapper = layoutsmapper;
                 if (this.changingTransToNo) {
                     this.AllTransToNo();
                 }
             }
         });
+    }
+
+    // Init testing
+    initTestingListeners(): void {
+        this.functionKeyDown = this.onKeyDown.bind(this);
+        this.elementRef.nativeElement.ownerDocument
+            .addEventListener('keydown', this.functionKeyDown);
+
+        this.functionKeyUp = this.onKeyUp.bind(this);
+        this.elementRef.nativeElement.ownerDocument
+            .addEventListener('keyup', this.functionKeyUp);
+    }
+
+    parseEventCodeToKeyCode(eventCode: string): string {
+        const key: Keymapper = this.mapperKeys[0].keymap.flat().find((key: Keymapper) => key.eventCode == eventCode);
+        return key?.code;
+    }
+
+    onKeyDown(event: KeyboardEvent): void {
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.code == 'OSLeft') {
+            event = {
+                ...event,
+                code: 'MetaLeft'
+            };
+        }
+        if (event.code == 'OSRight') {
+            event = {
+                ...event,
+                code: 'MetaRight'
+            };
+        }
+        const keyCode = this.parseEventCodeToKeyCode(event.code);
+        const key = {
+            code: keyCode,
+            layout: this.layoutsmapper[this.activeMainTab]?.name,
+            layer: this.activeTab
+        };
+        this.store.dispatch(mapperActions.pressKey({ key }));
+    }
+
+    onKeyUp(event: KeyboardEvent): void {
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.code == 'OSLeft') {
+            event = {
+                ...event,
+                code: 'MetaLeft'
+            };
+        }
+        if (event.code == 'OSRight') {
+            event = {
+                ...event,
+                code: 'MetaRight'
+            };
+        }
+        const keyCode = this.parseEventCodeToKeyCode(event.code);
+        const key = {
+            code: keyCode,
+            layout: this.layoutsmapper[this.activeMainTab]?.name,
+            layer: this.activeTab
+        };
+
+        this.store.dispatch(mapperActions.releaseKey({ key }));
     }
 
     // Set configured keycaps style
@@ -191,7 +274,7 @@ export class MapperComponent implements OnInit {
         }
     }
 
-    containerSize(layout) {
+    getContainerSize(layout: Layoutmapper): [number, number] {
         let maxWidth = 0,
             maxHeight = 0;
         layout.layers[0].keymap.flat().map(key => {
@@ -405,15 +488,15 @@ export class MapperComponent implements OnInit {
         this.freeSpaceValues[1] = {
             ...this.freeSpaceValues[1],
             values: {
-                firstByte: parseInt(event.slice(1,3), 16),
-                secondByte: parseInt(event.slice(3,5), 16)
+                firstByte: parseInt(event.slice(1, 3), 16),
+                secondByte: parseInt(event.slice(3, 5), 16)
             }
         }
         this.freeSpaceValues[2] = {
             ...this.freeSpaceValues[2],
             values: {
                 ...this.freeSpaceValues[2].values,
-                firstByte: parseInt(event.slice(5,7), 16),
+                firstByte: parseInt(event.slice(5, 7), 16),
             }
         }
         // Save data
@@ -432,14 +515,14 @@ export class MapperComponent implements OnInit {
             ...this.freeSpaceValues[2],
             values: {
                 ...this.freeSpaceValues[2].values,
-                secondByte: parseInt(event.slice(1,3), 16),
+                secondByte: parseInt(event.slice(1, 3), 16),
             }
         }
         this.freeSpaceValues[3] = {
             ...this.freeSpaceValues[3],
             values: {
-                firstByte: parseInt(event.slice(3,5), 16),
-                secondByte: parseInt(event.slice(5,7), 16)
+                firstByte: parseInt(event.slice(3, 5), 16),
+                secondByte: parseInt(event.slice(5, 7), 16)
             }
         }
         // Save data
@@ -450,6 +533,17 @@ export class MapperComponent implements OnInit {
                 ...this.freeSpaceValues[3]
             }]
         }));
+    }
+
+    selectKey(key: Keymapper): void {
+        console.log(key.code);
+    }
+
+    ngOnDestroy(): void {
+        this.elementRef.nativeElement.ownerDocument
+            .removeEventListener('keydown', this.functionKeyDown);
+        this.elementRef.nativeElement.ownerDocument
+            .removeEventListener('keydown', this.functionKeyUp);
     }
 }
 

@@ -1,288 +1,308 @@
 .layout {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
 }
 
 .layout2 {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
 }
 
 .key2 {
-    border-radius: 5px;
-    display: grid;
-    cursor: default;
-    position: absolute;
-    transform-origin: 50% 50%;
+  border-radius: 5px;
+  display: grid;
+  cursor: default;
+  position: absolute;
+  transform-origin: 50% 50%;
 
-    .keyContent {
-        background-color: rgba(255, 255, 255, 0.06);
-        border-radius: 4px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 2px 2px 0;
-        word-spacing: 6px;
-        pointer-events: none;
-        box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px -1px 0px inset;
-        padding-left: 3px;
+  .keyContent {
+    background-color: rgba(255, 255, 255, 0.06);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 99%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+    border-radius: 4px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2px 2px 0;
+    word-spacing: 6px;
+    pointer-events: none;
+    box-shadow: rgba(255, 255, 255, 0.02) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px -1px 0px inset,
+      0px 0px 8px 0px rgb(0, 0, 0, 0.1);
+    padding-left: 3px;
 
-        input {
-            pointer-events: auto;
-        }
+    input {
+      pointer-events: auto;
     }
+  }
 }
 
 .key2.isoEnter2 {
-    width: 72px !important;
-    position: relative;
-    margin-left: -12px;
+  width: 72px !important;
+  position: relative;
+  margin-left: -12px;
 }
 .key2.isoEnter2:after {
-    width: 58px;
-    height: 51px;
-    background: #121517;
-    color: #121517;
-    position: absolute;
-    content: "X";
-    top: 44px;
-    left: 13px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+  width: 58px;
+  height: 51px;
+  background: #121517;
+  color: #121517;
+  position: absolute;
+  content: "X";
+  top: 44px;
+  left: 13px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .key2.isoEnter2 div {
-    background: #121517 !important;
-    color: white !important;
+  background: #121517 !important;
+  color: white !important;
 }
 
 .dragOver:not(.isoEnter2) {
-    background-color: #c2c5c7 !important;
-    color: #323537 !important;
+  background-color: #c2c5c7 !important;
+  color: #323537 !important;
 }
 
 .mapper-container {
-    position: relative;
-    border: 2px solid;
-    border-radius: 5px;
+  position: relative;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
 .rowKeys {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .key {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    cursor: default;
-    overflow: hidden;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  cursor: default;
+  overflow: hidden;
 
-    .keyContent {
-        background-color: rgba(255, 255, 255, 0.06);
-        border-radius: 4px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 2px 2px 0;
-        word-spacing: 6px;
-        pointer-events: none;
-        box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px -1px 0px inset;
-        padding-left: 3px;
+  .keyContent {
+    background-color: rgba(255, 255, 255, 0.06);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 99%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+    border-radius: 4px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2px 2px 0;
+    word-spacing: 6px;
+    pointer-events: none;
+    box-shadow: rgba(255, 255, 255, 0.02) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px -1px 0px inset,
+      0px 0px 8px 0px rgb(0, 0, 0, 0.1);
+    padding-left: 3px;
 
-        input {
-            pointer-events: auto;
-        }
+    input {
+      pointer-events: auto;
     }
+  }
 }
 
 .keyLetter {
-    background-color: #121517;
-    padding: 3px 5px 8px;
-    margin: 1px;
-    font-size: 11px;
-    border-radius: 4px;
+  background-color: #121517;
+  padding: 3px 5px 8px;
+  margin: 1px;
+  font-size: 11px;
+  border-radius: 4px;
 }
 
 .keyLetter > div {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .keyLetter input {
-    width: 24px;
-    height: 15px;
-    border-radius: 5px;
-    border: 1px solid #424547;
+  width: 24px;
+  height: 15px;
+  border-radius: 5px;
+  border: 1px solid #424547;
 }
 .oneLetter {
-    word-spacing: 0.6rem;
-    font-size: 13px;
-    text-align-last: left;
-    .keyContent {
-        padding-left: 5px;
-    }
+  word-spacing: 0.6rem;
+  font-size: 13px;
+  text-align-last: left;
+  .keyContent {
+    padding-left: 5px;
+  }
 }
 .keyLetter.none {
-    display: none;
+  display: none;
 }
 .keyLetter.fake {
-    background: none;
-    visibility: hidden;
+  background: none;
+  visibility: hidden;
 }
 .key.u0 {
-    width: 0px;
+  width: 0px;
 }
 
 .key {
-    &.encoderLeft,
-    &.encoderRight,
-    &.faderUp,
-    &.faderDown {
-        overflow: hidden;
-        border-radius: 0;
+  &.encoderLeft,
+  &.encoderRight,
+  &.faderUp,
+  &.faderDown {
+    overflow: hidden;
+    border-radius: 0;
+  }
+  &.encoderLeft .keyLetter:not(.dragOver) {
+    border-radius: 50%;
+    position: relative;
+    left: 50%;
+  }
+  &.encoderRight .keyLetter:not(.dragOver) {
+    border-radius: 50%;
+    position: relative;
+    right: 50%;
+  }
+  &.faderUp .keyLetter:not(.dragOver) {
+    width: 50%;
+    padding: 0;
+    position: relative;
+    left: 25%;
+    top: 70%;
+    &::before {
+      content: " ";
+      position: absolute;
+      margin-left: 18px;
+      margin-top: -30px;
+      border: 1px solid #727577;
+      width: 10px;
+      height: 48px;
+      border-radius: 5px;
+      z-index: -1;
     }
-    &.encoderLeft .keyLetter:not(.dragOver) {
-        border-radius: 50%;
-        position: relative;
-        left: 50%;
+  }
+  &.faderDown .keyLetter:not(.dragOver) {
+    width: 50%;
+    padding: 0;
+    position: relative;
+    left: 25%;
+    bottom: 70%;
+    &::before {
+      content: " ";
+      position: absolute;
+      margin-left: 18px;
+      margin-top: 25px;
+      border: 1px solid #727577;
+      width: 10px;
+      height: 48px;
+      border-radius: 5px;
+      z-index: -1;
     }
-    &.encoderRight .keyLetter:not(.dragOver) {
-        border-radius: 50%;
-        position: relative;
-        right: 50%;
+  }
+  &.encoderLeft .keyLetter:not(.dragOver),
+  &.encoderRight .keyLetter:not(.dragOver),
+  &.faderUp .keyLetter:not(.dragOver),
+  &.faderDown .keyLetter:not(.dragOver) {
+    padding: 5px;
+    span {
+      display: none;
     }
-    &.faderUp .keyLetter:not(.dragOver) {
-        width: 50%;
-        padding: 0;
-        position: relative;
-        left: 25%;
-        top: 70%;
-        &::before {
-            content: " ";
-            position: absolute;
-            margin-left: 18px;
-            margin-top: -30px;
-            border: 1px solid #727577;
-            width: 10px;
-            height: 48px;
-            border-radius: 5px;
-            z-index: -1;
-        }
+    &:hover {
+      width: auto;
+      border-radius: 5px;
+      position: static;
+      left: auto;
+      right: auto;
+      top: auto;
+      bottom: auto;
+      span {
+        display: block;
+      }
+      &::before {
+        display: none;
+      }
     }
-    &.faderDown .keyLetter:not(.dragOver) {
-        width: 50%;
-        padding: 0;
-        position: relative;
-        left: 25%;
-        bottom: 70%;
-        &::before {
-            content: " ";
-            position: absolute;
-            margin-left: 18px;
-            margin-top: 25px;
-            border: 1px solid #727577;
-            width: 10px;
-            height: 48px;
-            border-radius: 5px;
-            z-index: -1;
-        }
-    }
-    &.encoderLeft .keyLetter:not(.dragOver),
-    &.encoderRight .keyLetter:not(.dragOver),
-    &.faderUp .keyLetter:not(.dragOver),
-    &.faderDown .keyLetter:not(.dragOver) {
-        padding: 5px;
-        span {
-            display: none;
-        }
-        &:hover {
-            width: auto;
-            border-radius: 5px;
-            position: static;
-            left: auto;
-            right: auto;
-            top: auto;
-            bottom: auto;
-            span {
-                display: block;
-            }
-            &::before {
-                display: none;
-            }
-        }
-    }
+  }
 }
 
+.key.pressed {
+  transform: scale(0.95);
+  .keyLetter {
+    box-shadow: inset 0px 0px 50px 0px rgba(0,0,0,0.2);
+  }
+}
 .key.isoEnter {
-    width: 72px;
-    position: relative;
+  width: 72px;
+  position: relative;
 }
 .key.isoEnter:after {
-    width: 58px;
-    height: 51px;
-    background: #121517;
-    color: #121517;
-    position: absolute;
-    content: "X";
-    top: 44px;
-    left: 13px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+  width: 58px;
+  height: 51px;
+  background: #121517;
+  color: #121517;
+  position: absolute;
+  content: "X";
+  top: 44px;
+  left: 13px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .key.click {
-    cursor: pointer;
-    user-select: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 .mapperKeys .layout {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .dragOver {
-    background-color: #c2c5c7;
-    color: #323537;
+  background-color: #c2c5c7;
+  color: #323537;
 }
 
 .onlyText {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
 .case {
-    border: 10px solid;
-    border-radius: 5px;
-    margin: 30px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px inset;
+  border: 10px solid;
+  border-radius: 5px;
+  margin: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px inset;
 }
 
 mat-form-field.mat-form-field {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 ::ng-deep .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .main-container {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
 button {
-    margin: 5px 0 0;
+  margin: 5px 0 0;
 }
 
 input.color {
-    border-radius: 25%;
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-    position: relative;
-    top: -5px;
+  border-radius: 25%;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  position: relative;
+  top: -5px;
 }
