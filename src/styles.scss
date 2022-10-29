@@ -1,4 +1,5 @@
 @import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import "@angular/cdk/overlay-prebuilt.css";
 
 @font-face {
     font-family: "Material Icons";
@@ -21,6 +22,10 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+.cdk-global-scrollblock {
+  overflow-y: hidden !important;
 }
 
 .material-icons {
@@ -116,6 +121,9 @@ body {
 body.keebary {
     color: white;
     background-color: #529e8f;
+    mat-dialog-container {
+      background-color: #529e8f;
+    }
     button,
     select,
     .mat-menu-panel,
@@ -176,6 +184,9 @@ body.keebary {
 body.quark {
     color: #070707;
     background-color: #40434e;
+    mat-dialog-container {
+      background-color: #40434e;
+    }
     h1,
     h2,
     h3 {
@@ -263,6 +274,9 @@ body.quark {
 body.tecladitos {
     color: white;
     background-color: #69238a;
+    mat-dialog-container {
+      background-color: #69238a;
+    }
     button,
     select,
     .mat-menu-panel,
@@ -316,6 +330,9 @@ body.tecladitos {
 body.arq {
     color: white;
     background-color: #fa2929;
+    mat-dialog-container {
+      background-color: #fa2929;
+    }
     button,
     select,
     .mat-menu-panel,
@@ -375,6 +392,9 @@ body.arq {
 body.tecleate {
     color: white;
     background-color: #281b25;
+    mat-dialog-container {
+      background-color: #281b25;
+    }
     button,
     select,
     .mat-menu-panel,
@@ -431,3 +451,4 @@ body.tecleate {
         color: #281b25;
     }
 }
+

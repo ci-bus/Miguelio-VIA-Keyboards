@@ -1,0 +1,22 @@
+h1 {
+  margin: 0px;
+}
+
+.content {
+  padding: 15px 25px 15px;
+  .list {
+    padding-top: 10px;
+    .item {
+      padding-top: 5px;
+      display: flex;
+      align-items: center;
+      mat-icon {
+        padding-right: 5px;
+      }
+    }
+  }
+}
+
+.buttons {
+  justify-content: center;
+}

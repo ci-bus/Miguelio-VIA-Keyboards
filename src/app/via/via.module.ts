@@ -29,36 +29,36 @@ import { OrderByPipe } from './pipes/orderBy.pipe';
 
 
 @NgModule({
-    declarations: [
-        LoadingComponent,
-        MapperComponent,
-        LightComponent,
-        FirmwareComponent,
-        TestingComponent,
-        OrderByPipe
-    ],
-    imports: [
-        CommonModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-        MatCardModule,
-        MatTabsModule,
-        TranslateModule,
-        MatButtonModule,
-        MatTooltipModule,
-        MatSliderModule,
-        MatSelectModule,
-        MatButtonToggleModule,
-        FormsModule,
-        MatSlideToggleModule,
-        MatAutocompleteModule,
-        MatInputModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        ColorPickerModule
-    ],
-    providers: [
-        keymapsHelper
-    ]
+  declarations: [
+    LoadingComponent,
+    MapperComponent,
+    LightComponent,
+    FirmwareComponent,
+    TestingComponent,
+    OrderByPipe
+  ],
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatCardModule,
+    MatTabsModule,
+    TranslateModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatButtonToggleModule,
+    FormsModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    ColorPickerModule
+  ],
+  providers: [
+    keymapsHelper
+  ]
 })
 export class ViaModule { }

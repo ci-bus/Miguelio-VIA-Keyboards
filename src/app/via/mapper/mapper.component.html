@@ -26,6 +26,37 @@
     <mat-tab *ngFor="let layout of layoutsmapper;trackBy: trackByLayout" [label]="layout.name">
       <mat-tab-group color="accent" [selectedIndex]="activeTab" (selectedTabChange)="activeTab = $event.index">
         <mat-tab *ngFor="let layer of layout.layers;trackBy: trackByLayer" [label]="layer.number">
+          <!-- V1 -->
+          <div *ngIf="!defs.vdoc" class="layout">
+            <div class="case" [style.background]="caseColor" [style.borderColor]="caseColor">
+              <div *ngIf="layoutsmapper" class="mapper-container" [ngStyle]="{width: 'auto', height: 'auto'}"
+                [style.background]="plateColor" [style.borderColor]="plateColor">
+                <div class="rowKeys" *ngFor="let rowKeys of layer.keymap;trackBy: trackByKeymap">
+                  <div class="key" *ngFor="let key of rowKeys;trackBy: trackByKey" [class.u0]="!key.u"
+                    [class.selected]="key.selected" [class.pressed]="key.pressed" [class.isoEnter]="key.s=='ISO_ENTER'"
+                    [class.encoderLeft]="key.s=='ENCODER_LEFT'" [class.encoderRight]="key.s=='ENCODER_RIGHT'"
+                    [class.faderUp]="key.s=='FADER_UP'" [class.faderDown]="key.s=='FADER_DOWN'"
+                    [style.width.px]="key.u * sizeKeys" (click)="toggleSelectedKey($event, key)">
+                    <div *ngIf="!key.saving" class="keyLetter" [class.mouseOver]="selectedMapperKey"
+                      [class.fake]="key.f || key.u === 0" [class.selected]="key.selected"
+                      [style.background-color]="key.color" [class.oneLetter]="isSymbolKey(key)"
+                      [style.backgroundColor]="getKeycapColor(key, 'background')"
+                      [style.color]="getKeycapColor(key, 'color')" (dragenter)="dragEnter($event)"
+                      (dragleave)="dragLeave($event)" (dragover)="false" (drop)="drop($event, key)">
+                      <div class="keyContent">
+                        <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate}}</span>
+                        <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
+                        <div *ngIf="isModKey(key)">
+                          <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
+                            (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- V2 -->
           <div *ngIf="defs.vdoc == 2" class="layout2">
             <div class="case" [style.background]="caseColor" [style.borderColor]="caseColor">
@@ -33,10 +64,12 @@
                 [ngStyle]="{width: containerWidth, height: containerHeight}" [style.background]="plateColor"
                 [style.borderColor]="plateColor">
                 <div class="rowKeys" *ngFor="let rowKeys of layer.keymap;trackBy: trackByKeymap">
-                  <div class="key2" *ngFor="let key of rowKeys;trackBy: trackByKey"
-                    [ngClass]="{selected: key.selected, isoEnter2: key.h && key.h == 2}"
-                    [ngStyle]="{top: key.y * sizeKeys + 'px', left: key.x * sizeKeys + 'px', width: key.w * sizeKeys + 'px', height: key.h == 2 ? '48px' : key.h * sizeKeys + 'px', transform: key.t || 'none'}">
-                    <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
+                  <div class="key2" *ngFor="let key of rowKeys;trackBy: trackByKey" [class.selected]="key.selected"
+                    [class.pressed]="key.pressed" [ngClass]="{selected: key.selected, isoEnter2: key.h && key.h == 2}"
+                    [ngStyle]="{top: key.y * sizeKeys + 'px', left: key.x * sizeKeys + 'px', width: key.w * sizeKeys + 'px', height: key.h == 2 ? '48px' : key.h * sizeKeys + 'px', transform: key.t || 'none'}"
+                    (click)="toggleSelectedKey($event, key)">
+                    <div *ngIf="!key.saving" class="keyLetter" [class.mouseOver]="selectedMapperKey"
+                      [class.selected]="key.selected" [class.fake]="key.f || key.u === 0"
                       [class.oneLetter]="isSymbolKey(key)" [style.backgroundColor]="getKeycapColor(key, 'background')"
                       [style.color]="getKeycapColor(key, 'color')" (dragover)="false" (dragenter)="dragEnter($event)"
                       (dragleave)="dragLeave($event)" (drop)="drop($event, key)">
@@ -61,37 +94,6 @@
               </div>
             </div>
           </div>
-          <!-- V1 -->
-          <div *ngIf="!defs.vdoc" class="layout">
-            <div class="case" [style.background]="caseColor" [style.borderColor]="caseColor">
-              <div *ngIf="layoutsmapper" class="mapper-container" [ngStyle]="{width: 'auto', height: 'auto'}"
-                [style.background]="plateColor" [style.borderColor]="plateColor">
-                <div class="rowKeys" *ngFor="let rowKeys of layer.keymap;trackBy: trackByKeymap">
-                  <div class="key" *ngFor="let key of rowKeys;trackBy: trackByKey" [class.u0]="!key.u"
-                    [class.pressed]="key.pressed" [class.isoEnter]="key.s=='ISO_ENTER'"
-                    [class.encoderLeft]="key.s=='ENCODER_LEFT'" [class.encoderRight]="key.s=='ENCODER_RIGHT'"
-                    [class.faderUp]="key.s=='FADER_UP'" [class.faderDown]="key.s=='FADER_DOWN'"
-                    [style.width.px]="key.u * sizeKeys"
-                    (click)="selectKey(key)">
-                    <div *ngIf="!key.saving" [class.fake]="key.f || key.u === 0" class="keyLetter"
-                      [style.background-color]="key.color" [class.oneLetter]="isSymbolKey(key)"
-                      [style.backgroundColor]="getKeycapColor(key, 'background')"
-                      [style.color]="getKeycapColor(key, 'color')" (dragenter)="dragEnter($event)"
-                      (dragleave)="dragLeave($event)" (dragover)="false" (drop)="drop($event, key)">
-                      <div class="keyContent">
-                        <span *ngIf="!isModKey(key)">{{ 'keycode.'+key.code | translate}}</span>
-                        <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
-                        <div *ngIf="isModKey(key)">
-                          <input type="text" [value]="key.secondByte" (enter)="changeModKey($event, key)"
-                            (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </mat-tab>
       </mat-tab-group>
     </mat-tab>
@@ -100,13 +102,15 @@
 
 
   <div class="mapperKeys">
-    <mat-tab-group>
+    <mat-tab-group animationDuration="0ms">
       <mat-tab *ngFor="let mapperKeysTab of mapperKeys" [label]="'mapper.'+mapperKeysTab.title | translate">
         <div class="layout">
           <div class="rowKeys" *ngFor="let rowKeys of mapperKeysTab.keymap">
-            <div class="key" *ngFor="let key of rowKeys" [class.u0]="!key.u" [style.width.px]="key.u * sizeKeys"
+            <div class="key" *ngFor="let key of rowKeys" (click)="toggleSelectedMapperKey($event, key)"
+              [class.selected]="key.selected" [class.u0]="!key.u" [style.width.px]="key.u * sizeKeys"
               [class.isoEnter]="key.s=='ISO_ENTER'" draggable="true" (dragstart)="dragStart(key)" (dragend)="dragEnd()">
-              <div [class.fake]="key.f || key.u === 0" class="keyLetter" [class.oneLetter]="isSymbolKey(key)">
+              <div [class.fake]="key.f || key.u === 0" class="keyLetter" [class.mouseOver]="selectedKey"
+                [class.oneLetter]="isSymbolKey(key)">
                 <span *ngIf="key.code?.indexOf('(') < 0">{{ 'keycode.'+key.code | translate
                   }}</span>
                 <span *ngIf="key.code?.indexOf('(') > 0">{{ key.code.split('(')[0] }}</span>

@@ -124,6 +124,23 @@
   margin: 1px;
   font-size: 11px;
   border-radius: 4px;
+  &.selected {
+    margin: 0px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.mouseOver:hover {
+    background-color: #c2c5c7 !important;
+    color: #323537 !important;
+  }
+  &.none {
+    display: none;
+  }
+  &.fake {
+    background: none;
+    visibility: hidden;
+  }
 }
 
 .keyLetter > div {
@@ -144,13 +161,7 @@
     padding-left: 5px;
   }
 }
-.keyLetter.none {
-  display: none;
-}
-.keyLetter.fake {
-  background: none;
-  visibility: hidden;
-}
+
 .key.u0 {
   width: 0px;
 }
@@ -233,33 +244,34 @@
       }
     }
   }
-}
-
-.key.pressed {
-  transform: scale(0.95);
-  .keyLetter {
-    box-shadow: inset 0px 0px 50px 0px rgba(0,0,0,0.2);
+  &.isoEnter {
+    width: 72px;
+    position: relative;
+  }
+  &.isoEnter:after {
+    width: 58px;
+    height: 51px;
+    background: #121517;
+    color: #121517;
+    position: absolute;
+    content: "X";
+    top: 44px;
+    left: 13px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  &.click {
+    cursor: pointer;
+    user-select: none;
   }
 }
-.key.isoEnter {
-  width: 72px;
-  position: relative;
-}
-.key.isoEnter:after {
-  width: 58px;
-  height: 51px;
-  background: #121517;
-  color: #121517;
-  position: absolute;
-  content: "X";
-  top: 44px;
-  left: 13px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-.key.click {
-  cursor: pointer;
-  user-select: none;
+
+.key.pressed,
+.key2.pressed {
+  transform: scale(0.95) !important;
+  .keyLetter {
+    box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .mapperKeys .layout {
@@ -305,4 +317,12 @@ input.color {
   margin-left: 10px;
   position: relative;
   top: -5px;
+}
+
+.key.selected,
+.key2.selected {
+  z-index: 8888;
+  transform: scale(1.1) !important;
+  box-shadow: white 0 0 0 2px, black 0 0 10px 1px;
+  border-radius: 5px;
 }

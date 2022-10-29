@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Layoutmapper } from '../interfaces';
-import { changeKey, clear, keyChanged, pressKey, releaseKey, set } from './mapper.actions';
+import { changeKey, clear, keyChanged, pressKey, releaseKey, set, toogleSelected } from './mapper.actions';
 
 export const initialState: Layoutmapper[] = [];
 
@@ -12,13 +12,18 @@ const _mapperReducer = createReducer(initialState,
       tempLayout.layers = tempLayout.layers.map(layer => {
         let tempLayer = { ...layer };
         if (tempLayer.number === toKey.layer) {
-          tempLayer.keymap = tempLayer.keymap.map(rowKeys => rowKeys.map(keyState => {
-            return keyState.row === toKey.row && keyState.col === toKey.col
-              ? Object.assign({ ...toKey }, {
+          tempLayer.keymap = tempLayer.keymap.map(rowKeys => rowKeys.map(tempKey => {
+            return tempKey.row !== toKey.row || tempKey.col !== toKey.col
+              ? {
+                ...tempKey,
+                selected: false
+              } : {
+                ...toKey,
                 code: fromKey.code,
                 firstByte: fromKey.firstByte,
-                secondByte: fromKey.secondByte
-              }) : keyState;
+                secondByte: fromKey.secondByte,
+                selected: false
+              };
           }))
         }
         return tempLayer;
@@ -62,6 +67,24 @@ const _mapperReducer = createReducer(initialState,
                     pressed: false
                   }
               }))
+            }
+        })
+      }
+  })),
+  on(toogleSelected, (state, { key }) => state.map(layout => {
+    return layout.name !== key.layout ? layout
+      : {
+        ...layout,
+        layers: layout.layers.map(layer => {
+          return layer.number !== key.layer ? layer
+            : {
+              ...layer,
+              keymap: layer.keymap.map(rowKeys => rowKeys.map(tempKey => ({
+                ...tempKey,
+                selected: tempKey.row === key.row && tempKey.col === key.col
+                  ? !tempKey.selected
+                  : false
+              })))
             }
         })
       }

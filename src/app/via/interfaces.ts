@@ -6,7 +6,12 @@ export interface Key {
 
 export interface Keymap {
     number: number
-    keys: Array<Key>
+    keys: Key[]
+}
+
+export interface mapperKeysTab {
+  title: string
+  keymap: Keymapper[][]
 }
 
 export interface Loading {
@@ -20,15 +25,15 @@ export interface Error {
 
 export interface Layout {
     name: string
-    keymap: Array<Array<number | Object>>
-    matrix: Array<Array<number> | null>
+    keymap: (number | Object)[][]
+    matrix: number[] | null[]
     rows?: number
     cols?: number
 }
 
 export interface LayoutV2 {
     name: string
-    keymap: Array<Keymapper>
+    keymap: Keymapper[]
     rows?: number
     cols?: number
 }
@@ -40,7 +45,7 @@ export interface MinMax {
 
 export interface Backlight {
     brightness: MinMax,
-    effect: Array<number>
+    effect: number[]
 }
 
 export interface LightColor {
@@ -56,7 +61,7 @@ export interface LightEffect {
 export interface Rgblight {
     brightness: MinMax
     effect: LightEffect[]
-    effectSpeed: Array<number>
+    effectSpeed: number[]
     color: LightColor
 }
 
@@ -104,14 +109,14 @@ export interface Keymapper {
     y?: number
     w?: number
     h?: number
-    matrix?: Array<number>
+    matrix?: number[]
     // Testing keyboard
     pressed?: boolean
 }
 
 export interface Layermapper {
     number: number
-    keymap: Array<Keymapper[]>
+    keymap: Keymapper[][]
 }
 
 export interface Layoutmapper {
@@ -124,7 +129,7 @@ export interface Layoutmapper {
 
 export interface QmkKeyboardKeymapper extends Keymapper {
     label: string,
-    matrix: Array<number>,
+    matrix: number[],
     x: number,
     y: number,
     w: number,
@@ -213,4 +218,16 @@ export interface freeSpaceMatrix {
 
 export interface freeSpaceValues extends freeSpaceMatrix {
     values?: Key
+}
+
+export interface DialogData {
+  title: string
+  content: string
+  ok: string
+  list?: {
+    icon: string
+    text: string
+  }[]
+  cancel?: string
+
 }

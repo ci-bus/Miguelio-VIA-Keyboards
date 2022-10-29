@@ -47,3 +47,8 @@ export const releaseKey = createAction(
     '[Mapper] Release key to test',
     props<{ key: Keymapper }>()
 );
+
+export const toogleSelected = createAction(
+  '[Mapper] Toogle key to select',
+  props<{ key: Keymapper }>()
+);

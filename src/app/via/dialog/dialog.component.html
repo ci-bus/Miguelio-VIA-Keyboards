@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content class="content">
+  <div [innerHTML]="data.content"></div>
+  <div class="list">
+    <div *ngFor="let item of data.list">
+      <div class="item"><mat-icon>{{item.icon}}</mat-icon> {{item.text}}</div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="buttons">
+  <button *ngIf="data.cancel" [mat-dialog-close]="false" mat-flat-button mat-button>{{data.cancel}}</button>
+  <button mat-flat-button mat-button [mat-dialog-close]="true" cdkFocusInitial>{{data.ok}}</button>
+</div>

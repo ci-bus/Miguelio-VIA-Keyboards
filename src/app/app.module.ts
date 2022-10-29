@@ -13,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,53 +31,59 @@ import { ErrorsComponent } from './via/errors/errors.component';
 import { LightEffects } from './via/light/light.effects';
 import { MapperEffects } from './via/mapper/mapper.effects';
 import { FirmwareEffects } from './via/firmware/firmware.effects';
+import { DialogComponent } from './via/dialog/dialog.component';
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        MenuComponent,
-        ErrorsComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        ViaModule,
-        HttpClientModule,
-        MatButtonModule,
-        MatIconModule,
-        MatCardModule,
-        MatBadgeModule,
-        MatMenuModule,
-        DragDropModule,
-        StoreModule.forRoot(AppReducers),
-        EffectsModule.forRoot([
-            DevicesEffects,
-            KeyboardEffects,
-            DefsEffects,
-            LightEffects,
-            MapperEffects,
-            FirmwareEffects
-        ]),
-        StoreDevtoolsModule.instrument({
-            maxAge: 25,
-            logOnly: environment.production,
-        }),
-        TranslateModule.forRoot({
-            defaultLanguage: 'es',
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient]
-            }
-        })
-    ],
-    providers: [IpcService],
-    bootstrap: [AppComponent],
-    exports: [TranslateModule]
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    ErrorsComponent,
+    DialogComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ViaModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatBadgeModule,
+    MatMenuModule,
+    DragDropModule,
+    MatDialogModule,
+    StoreModule.forRoot(AppReducers),
+    EffectsModule.forRoot([
+      DevicesEffects,
+      KeyboardEffects,
+      DefsEffects,
+      LightEffects,
+      MapperEffects,
+      FirmwareEffects
+    ]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    TranslateModule.forRoot({
+      defaultLanguage: 'es',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
+  ],
+  providers: [
+    IpcService,
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
+  ],
+  bootstrap: [AppComponent],
+  exports: [TranslateModule]
 })
 export class AppModule { }
