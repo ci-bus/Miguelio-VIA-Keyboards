@@ -1,5 +1,8 @@
-# miguelio-via
+# Miguelio-VIA
 VIA Software Open Source to keyboards with QMK
+
+## Documentación
+[Link aquí](https://github.com/ci-bus/Miguelio-VIA-Keyboards/wiki)
 
 ## Pre-requisitos
 - [Git](https://git-scm.com/downloads)
