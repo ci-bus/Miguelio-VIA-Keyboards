@@ -62,7 +62,7 @@ function createWindow() {
     });
 
     // Discomment to open devTools on init
-    mainWindow.openDevTools();
+    // mainWindow.openDevTools();
 
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
