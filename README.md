@@ -69,7 +69,8 @@ Si se usa este software con fines comerciales es necesario añadir menciones a e
 
 
 ## ¿Como puedes colaborar?
-- Añadiendo mas traducciones, se requieren conocimientos de archivos JSON.
+- Añadiendo mas set de keycaps
+- Añadiendo mas traducciones
 - Creando renderizado de cases de teclados split como corne
 - Añadiendo funcionalidad para macros
 - Optimizando el componente mapper, firmware y testing
