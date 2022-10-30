@@ -207,7 +207,7 @@ export class MapperComponent implements OnInit, OnDestroy {
   createFreeSpaceMatrixValues(): void {
     let count = 0;
     for (let keymap of this.keymaps) {
-      for (let freeSpaceMatrix of this.defs.freeSpaceMatrix) {
+      for (let freeSpaceMatrix of this.defs.freeSpaceMatrix || []) {
         let indexValue = freeSpaceMatrix[0] * this.defs.cols + freeSpaceMatrix[1];
         if (count >= this.freeSpaceLimits[0] && count <= this.freeSpaceLimits[1]) {
           this.freeSpaceValues.push({
@@ -414,11 +414,9 @@ export class MapperComponent implements OnInit, OnDestroy {
   }
 
   onRightClick(event) {
-    /*
     event?.preventDefault();
     event?.stopPropagation();
     return false;
-    */
   }
 
   AllTransToNo() {
@@ -473,8 +471,8 @@ export class MapperComponent implements OnInit, OnDestroy {
     let data: DialogData = {
       title: this.translate.instant('dialog.customizeStyle.title'),
       content: this.translate.instant('dialog.customizeStyle.content'),
-      ok: this.translate.instant('dialog.customizeStyle.ok'),
-      cancel: this.translate.instant('dialog.customizeStyle.cancel'),
+      ok: this.translate.instant('dialog.ok'),
+      cancel: this.translate.instant('dialog.cancel'),
       list: [{
         icon: 'check',
         text: 'Keycaps'

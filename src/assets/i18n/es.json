@@ -17,10 +17,10 @@
   },
   "loading": {
     "error": "Se ha producido un error",
-    "unknowModel": "Modelo desconocido",
     "connectKeyboard": "Conecte su teclado",
     "notShowing": "¿No se muestrra tu teclado?",
-    "addSupport": "Añadir soporte"
+    "addSupport": "Añadir soporte QMK",
+    "loadFile": "Cargar archivo"
   },
   "light": {
     "effect": "Efecto",
@@ -54,11 +54,16 @@
     "customizeStyle": "Personalizar el estilo"
   },
   "dialog": {
+    "ok": "Ok",
+    "cancel": "Cancelar",
     "customizeStyle": {
       "title": "Personalizar el estilo",
-      "content": "<div>Las opciones de personalización pueden estar limitadas por el espacio libre en memoria</div>",
-      "ok": "Aceptar",
-      "cancel": "Cancelar"
+      "content": "Las opciones de personalización pueden estar limitadas por el espacio libre en memoria"
+    },
+    "support": {
+      "title": "Soporte para teclados",
+      "addedOk": "Añadido con éxito",
+      "addedFail": "Error añadiendo soporte"
     }
   },
   "none": "Ninguno",

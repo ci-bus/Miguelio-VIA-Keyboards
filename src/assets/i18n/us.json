@@ -17,8 +17,10 @@
   },
   "loading": {
     "error": "An error has occurred",
-    "unknowModel": "Unknow Model",
-    "connectKeyboard": "Connect your keyboard"
+    "connectKeyboard": "Connect your keyboard",
+    "notShowing": "Your keyboard is not showing?",
+    "addSupport": "Add QMK support",
+    "loadFile": "Load file"
   },
   "light": {
     "effect": "Effect",
@@ -51,11 +53,16 @@
     "customizeStyle": "Customize style"
   },
   "dialog": {
+    "ok": "Accept",
+    "cancel": "Cancel",
     "customizeStyle": {
       "title": "Customize style",
-      "content": "<div>Customization options may be limited by free memory space</div>",
-      "ok": "Ok",
-      "cancel": "Cancel"
+      "content": "Customization options may be limited by free memory space"
+    },
+    "support": {
+      "title": "Keyboards support",
+      "addedOk": "Successfully added",
+      "addedFail": "Error adding support"
     }
   },
   "none": "None",
