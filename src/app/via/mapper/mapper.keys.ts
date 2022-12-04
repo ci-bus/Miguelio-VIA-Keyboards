@@ -56,13 +56,13 @@ export default [
                     "f": true, "u": 0.25
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 70, "code": "KC_PSCR", "eventCode": ""
+                    "u": 1, "firstByte": 0, "secondByte": 70, "code": "KC_PSCR", "eventCode": "PrintScreen"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 71, "code": "KC_SLCK", "eventCode": ""
+                    "u": 1, "firstByte": 0, "secondByte": 71, "code": "KC_SLCK", "eventCode": "ScrollLock"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 72, "code": "KC_PAUS", "eventCode": ""
+                    "u": 1, "firstByte": 0, "secondByte": 72, "code": "KC_PAUS", "eventCode": "Pause"
                 },
                 {
                     "f": true, "u": 0.25
@@ -338,7 +338,7 @@ export default [
                     "u": 1, "firstByte": 0, "secondByte": 56, "code": "KC_SLSH", "eventCode": "Slash"
                 },
                 {
-                    "u": 1, "firstByte": 0, "secondByte": 135, "code": "KC_INT1", "eventCode": ""
+                    "u": 1, "firstByte": 0, "secondByte": 135, "code": "KC_INT1", "eventCode": "Int1"
                 },
                 {
                     "u": 1.75, "firstByte": 0, "secondByte": 229, "code": "KC_RSFT", "eventCode": "ShiftRight"
