@@ -66,6 +66,8 @@
                 <div class="rowKeys" *ngFor="let rowKeys of layer.keymap;trackBy: trackByKeymap">
                   <div class="key2" *ngFor="let key of rowKeys;trackBy: trackByKey" [class.selected]="key.selected"
                     [class.pressed]="key.pressed" [ngClass]="{selected: key.selected, isoEnter2: key.h && key.h == 2}"
+                    [class.encoderLeft]="key.s=='ENCODER_LEFT'" [class.encoderRight]="key.s=='ENCODER_RIGHT'"
+                    [class.faderUp]="key.s=='FADER_UP'" [class.faderDown]="key.s=='FADER_DOWN'"
                     [ngStyle]="{top: key.y * sizeKeys + 'px', left: key.x * sizeKeys + 'px', width: key.w * sizeKeys + 'px', height: key.h == 2 ? '48px' : key.h * sizeKeys + 'px', transform: key.t || 'none'}"
                     (click)="toggleSelectedKey($event, key)">
                     <div *ngIf="!key.saving" class="keyLetter" [class.mouseOver]="selectedMapperKey"
@@ -78,7 +80,7 @@
                           }}</span>
                         <span *ngIf="isModKey(key)">{{ key.code.split('(')[0] }}</span>
                         <div *ngIf="isModKey(key)">
-                          <input type="text" [value]="key.secondByte || ''" (enter)="changeModKey($event, key)"
+                          <input type="text" [value]="key.secondByte || ''" (enter)="changeModKey($event, key)"
                             (change)="changeModKey($event, key)" (drop)="dropInput($event, key)">
                         </div>
                       </div>

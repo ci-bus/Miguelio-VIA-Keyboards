@@ -50,23 +50,42 @@
 .key2.isoEnter2 {
   width: 72px !important;
   position: relative;
-  margin-left: -12px;
 }
-.key2.isoEnter2:after {
+.key2.isoEnter2 .keyContent {
+  box-shadow: rgba(255, 255, 255, 0.02) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px 0px 0px inset;
+  border-bottom-right-radius: 0px;
+}
+.key2.isoEnter2 .keyLetter:before {
   width: 58px;
   height: 51px;
-  background: #121517;
-  color: #121517;
+  background-color: inherit;
+  color: inherit;
   position: absolute;
-  content: "X";
+  content: " ";
   top: 44px;
   left: 13px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.key2.isoEnter2 div {
-  background: #121517 !important;
-  color: white !important;
+.key2.isoEnter2 .keyLetter:after {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 90%,
+    rgba(255, 255, 255, 0) 99%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  box-shadow: rgba(255, 255, 255, 0.02) 1px 0px 0px inset, rgba(255, 255, 255, 0.05) -1px 0px 0px inset;
+  color: inherit;
+  position: absolute;
+  content: " ";
+  top: 41px;
+  left: 18px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .dragOver:not(.isoEnter2) {
@@ -166,26 +185,39 @@
   width: 0px;
 }
 
-.key {
+.key, .key2 {
   &.encoderLeft,
   &.encoderRight,
   &.faderUp,
   &.faderDown {
     overflow: hidden;
     border-radius: 0;
+    z-index: 8880;
+  }
+  &.encoderLeft {
+    width: 48px !important;
   }
   &.encoderLeft .keyLetter:not(.dragOver) {
     border-radius: 50%;
     position: relative;
     left: 50%;
+    .keyContent {
+      border-radius: 50%;
+    }
+  }
+  &.encoderRight {
+    width: 48px !important;
   }
   &.encoderRight .keyLetter:not(.dragOver) {
     border-radius: 50%;
     position: relative;
     right: 50%;
+    .keyContent {
+      border-radius: 50%;
+    }
   }
   &.faderUp .keyLetter:not(.dragOver) {
-    width: 50%;
+    width: calc(50% - 10px);
     padding: 0;
     position: relative;
     left: 25%;
@@ -193,17 +225,18 @@
     &::before {
       content: " ";
       position: absolute;
-      margin-left: 18px;
-      margin-top: -30px;
+      margin-left: calc(50% - 8px);
+      margin-top: -35px;
       border: 1px solid #727577;
-      width: 10px;
+      background: #727577;
+      width: 6px;
       height: 48px;
       border-radius: 5px;
       z-index: -1;
     }
   }
   &.faderDown .keyLetter:not(.dragOver) {
-    width: 50%;
+    width: calc(50% - 10px);
     padding: 0;
     position: relative;
     left: 25%;
@@ -211,10 +244,11 @@
     &::before {
       content: " ";
       position: absolute;
-      margin-left: 18px;
+      margin-left: calc(50% - 8px);
       margin-top: 25px;
       border: 1px solid #727577;
-      width: 10px;
+      background: #727577;
+      width: 6px;
       height: 48px;
       border-radius: 5px;
       z-index: -1;
@@ -228,7 +262,7 @@
     span {
       display: none;
     }
-    &:hover {
+    &:hover, &.selected {
       width: auto;
       border-radius: 5px;
       position: static;
@@ -248,15 +282,39 @@
     width: 72px;
     position: relative;
   }
-  &.isoEnter:after {
+  &.isoEnter .keyContent {
+    box-shadow: rgba(255, 255, 255, 0.02) 1px 1px 0px inset, rgba(255, 255, 255, 0.05) -1px 0px 0px inset;
+    border-bottom-right-radius: 0px;
+  }
+  &.isoEnter .keyLetter:before {
     width: 58px;
     height: 51px;
-    background: #121517;
-    color: #121517;
+    background-color: inherit;
+    color: inherit;
     position: absolute;
-    content: "X";
+    content: " ";
     top: 44px;
     left: 13px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  &.isoEnter .keyLetter:after {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.06);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0) 90%,
+      rgba(255, 255, 255, 0) 99%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+    box-shadow: rgba(255, 255, 255, 0.02) 1px 0px 0px inset, rgba(255, 255, 255, 0.05) -1px 0px 0px inset;
+    color: inherit;
+    position: absolute;
+    content: " ";
+    top: 41px;
+    left: 18px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }
