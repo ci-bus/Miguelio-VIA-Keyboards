@@ -185,7 +185,8 @@
   width: 0px;
 }
 
-.key, .key2 {
+.key,
+.key2 {
   &.encoderLeft,
   &.encoderRight,
   &.faderUp,
@@ -262,7 +263,8 @@
     span {
       display: none;
     }
-    &:hover, &.selected {
+    &:hover,
+    &.selected {
       width: auto;
       border-radius: 5px;
       position: static;
@@ -383,4 +385,12 @@ input.color {
   transform: scale(1.1) !important;
   box-shadow: white 0 0 0 2px, black 0 0 10px 1px;
   border-radius: 5px;
+}
+
+.extra {
+  position: absolute;
+  transform-origin: 50% 50%;
+  &.oled128x32h {
+    background-image: url("../../../assets/oled128x32h.png");
+  }
 }

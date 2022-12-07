@@ -1,0 +1,53 @@
+{
+  "index": 42,
+  "id": "napoleonic_green",
+  "label": "Napoleonic green",
+  "manufacturer": "",
+  "swatches": {
+    "base": {
+      "background": "#f0ece1",
+      "color": "#242424"
+    },
+    "mods": {
+      "background": "#004f3a",
+      "color": "#f0ece1"
+    },
+    "accent": {
+      "background": "#004f3a",
+      "color": "#f0ece1"
+    }
+  },
+  "override": {
+    "KC_SPC": "accent",
+    "KC_PENT": "accent",
+    "KC_ENT": "accent",
+    "KC_ESC": "accent",
+    "KC_GESC": "accent",
+    "KC_F5": "mods",
+    "KC_F6": "mods",
+    "KC_F7": "mods",
+    "KC_F8": "mods",
+    "KC_UP": "mods",
+    "KC_DOWN": "mods",
+    "KC_LEFT": "mods",
+    "KC_RGHT": "mods",
+    "KC_PSCR": "mods",
+    "KC_DEL": "mods",
+    "KC_HOME": "mods",
+    "KC_END": "mods",
+    "KC_RALT": "mods",
+    "MO(1)": "mods",
+    "MO(2)": "mods",
+    "MO(3)": "mods",
+    "MO(4)": "mods",
+    "KC_RCTL": "mods",
+    "KC_SCRL": "mods",
+    "KC_PAUS": "mods",
+    "KC_INS": "mods",
+    "KC_PGUP": "mods",
+    "KC_PGDN": "mods",
+    "KC_NUM": "mods",
+    "KC_BSPC": "mods",
+    "KC_SLCK": "mods"
+  }
+}

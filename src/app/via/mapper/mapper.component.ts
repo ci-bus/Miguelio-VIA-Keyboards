@@ -90,11 +90,9 @@ export class MapperComponent implements OnInit, OnDestroy {
         // First setting
         if (!this.layoutsmapper.length) {
           // Calcule layout size
-          if (this.defs.vdoc > 1) {
-            const sizes = this.getContainerSize(layoutsmapper[0]);
-            this.containerWidth = `${sizes[0]}px`;
-            this.containerHeight = `${sizes[1]}px`;
-          }
+          const sizes = this.getContainerSize(layoutsmapper[0]);
+          this.containerWidth = `${sizes[0]}px`;
+          this.containerHeight = `${sizes[1]}px`;
           // Init testing funcionality
           this.initTestingListeners();
         }
@@ -228,56 +226,28 @@ export class MapperComponent implements OnInit, OnDestroy {
   createLayoutsmapper(): void {
     let layoutsmapper = [];
     if (this.defs.layouts.length && this.keymaps.length) {
-      // V2
-      if (this.defs.vdoc == 2) {
-        // Each json layouts
-        this.defs.layouts.forEach(layout => {
-          let tempLayout = {
-            ...layout,
-            rows: this.defs.rows,
-            cols: this.defs.cols
-          },
-            tempLayers = [];
-          // Each eeprom keymaps
-          this.keymaps.forEach(keymap => {
-            tempLayers.push({
-              number: keymap.number,
-              keymap: [this.keymapsHelper.compileKeymapperV2(tempLayout, keymap, keymap.number)]
-            });
-          });
-          layoutsmapper.push({
-            name: layout.name,
-            layers: tempLayers
+      // Each json layouts
+      this.defs.layouts.forEach(layout => {
+        let tempLayout = {
+          ...layout,
+          rows: this.defs.rows,
+          cols: this.defs.cols
+        },
+          tempLayers = [];
+        // Each eeprom keymaps
+        this.keymaps.forEach(keymap => {
+          tempLayers.push({
+            number: keymap.number,
+            keymap: [this.keymapsHelper.compileKeymapperV2(tempLayout, keymap, keymap.number)]
           });
         });
-
-        this.store.dispatch(mapperActions.set({ layoutsmapper }));
-
-        // V1
-      } else {
-        // Each json layouts
-        this.defs.layouts.forEach(layout => {
-          let tempLayout = {
-            ...layout,
-            rows: this.defs.rows,
-            cols: this.defs.cols
-          },
-            tempLayers = [];
-          // Each eeprom keymaps
-          this.keymaps.forEach(keymap => {
-            tempLayers.push({
-              number: keymap.number,
-              keymap: this.keymapsHelper.compileKeymapper(tempLayout, keymap, keymap.number)
-            });
-          });
-          layoutsmapper.push({
-            name: layout.name,
-            layers: tempLayers
-          });
+        layoutsmapper.push({
+          name: layout.name,
+          layers: tempLayers,
+          extras: layout.extras
         });
-
-        this.store.dispatch(mapperActions.set({ layoutsmapper }));
-      }
+      });
+      this.store.dispatch(mapperActions.set({ layoutsmapper }));
     }
   }
 

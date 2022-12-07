@@ -69,6 +69,7 @@ import colorway_demonic from "./colorway_demonic.json";
 import colorway_nuclear_data from "./colorway_nuclear_data.json";
 import colorway_finer_things from "./colorway_finer_things.json";
 import colorway_gregory from "./colorway_gregory.json";
+import colorway_napoleonic_green from "./colorway_napoleonic_green.json";
 
 const COLORWAYS = [
     //APPEND
@@ -142,6 +143,7 @@ const COLORWAYS = [
     colorway_nuclear_data,
     colorway_finer_things,
     colorway_gregory,
+    colorway_napoleonic_green
 ];
 
 export default COLORWAYS;

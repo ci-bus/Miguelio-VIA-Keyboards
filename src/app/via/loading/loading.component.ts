@@ -189,7 +189,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
       },
       support = {
         name: this.firmware.qmkKeyboard.keyboard_name,
-        vdoc: 2,
         lighting: {},
         ...this.firmware.qmkKeyboard.matrix_size,
         layouts: this.layoutsSelected.map(layoutData => ({
@@ -274,7 +273,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
     if (this.validationJSON(data)) {
       let support = {
         name: data.name,
-        vdoc: 2,
         lighting: data.lighting || {},
         rows: data.matrix_size.rows,
         cols: data.matrix_size.cols,
